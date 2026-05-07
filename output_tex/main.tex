@@ -2,9 +2,8 @@
 % "What next in medical AI?" -- Andreas Maier, AIMed 2026 (Krakow, 7-9 May 2026).
 % Conversion of "Besonderer Vortrag Maier.pptx" to fau-beamer template.
 % Source PowerPoint had ultra-wide canvas slides with 1-4 animation panels per
-% slide; each panel becomes its own beamer frame.  GIFs are embedded as true
-% animations via the `animate' package (extracted frame sequences in
-% figures/anim_*).
+% slide; each panel becomes its own beamer frame.  Animated GIFs from the deck
+% are shown as their static PNG renders (figures/img_08_*.png).
 % ------------------------------------------------------------------------------
 \documentclass[final]{beamer}
 
@@ -22,8 +21,6 @@
 \usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{textcomp}
-\usepackage{animate}
-\usepackage{qrcode}
 \usetikzlibrary{positioning,arrows.meta,shadows}
 
 \graphicspath{{figures/}}
@@ -102,7 +99,7 @@ What is deep learning?
 \begin{columns}[c]
   \begin{column}{0.45\textwidth}
     \centering
-    \includegraphics[height=.35\textheight]{img_03_06.jpg}\\
+    \includegraphics[height=.30\textheight]{img_03_06.jpg}\\
     {\footnotesize AlphaGo (DeepMind, 2016)}
   \end{column}
   \begin{column}{0.5\textwidth}
@@ -127,7 +124,7 @@ What is deep learning?
 \begin{columns}[T]
   \begin{column}{0.32\textwidth}
     \centering
-    \includegraphics[height=.78\textheight]{img_04_01.jpg}
+    \includegraphics[height=.75\textheight]{img_04_01.jpg}
   \end{column}
   \begin{column}{0.66\textwidth}
     \vspace{0.4em}
@@ -157,7 +154,7 @@ What is deep learning?
   \end{column}
   \begin{column}{0.5\textwidth}
     \centering
-    \includegraphics[height=.7\textheight]{img_04_05.jpg}
+    \onslide<2->{\includegraphics[height=.7\textheight]{img_04_05.jpg}}
   \end{column}
 \end{columns}
 \end{frame}
@@ -230,12 +227,12 @@ $\varepsilon_k=0$ and strictly tightens this bound.
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
     \centering
-    \includegraphics[height=.55\textheight]{img_05_03.jpg}\\[0.4em]
+    \includegraphics[height=.65\textheight]{img_05_03.jpg}\\[0.4em]
     \footnotesize Conventional
   \end{column}
   \begin{column}{0.5\textwidth}
     \centering
-    \includegraphics[height=.55\textheight]{img_05_02.jpg}\\[0.4em]
+    \includegraphics[height=.65\textheight]{img_05_02.jpg}\\[0.4em]
     \footnotesize With deep learning
   \end{column}
 \end{columns}
@@ -324,17 +321,16 @@ Always observe traffic rules and adapt your driving to road and weather.
   \begin{column}{0.28\textwidth}
     \centering
     \includegraphics[height=.4\textheight]{img_07_03.jpg}\\[0.3em]
-    \footnotesize Andreas Maier
+    \footnotesize Moritz Zaiss
   \end{column}
   \begin{column}{0.7\textwidth}
     \centering
-    \includegraphics[height=.78\textheight,keepaspectratio]{img_07_01.png}
+    \includegraphics[height=.76\textheight,keepaspectratio]{img_07_01.png}
   \end{column}
 \end{columns}
 \vspace{0.2em}
 \begin{center}
-  Equip the language model with tools to act on MR sequences.\quad
-  {\footnotesize Maier et al., \emph{GPT4MR}, 2024.}
+  {\footnotesize Zaiss et al., \emph{GPT4MR}, 2024.}
 \end{center}
 \end{frame}
 
@@ -378,19 +374,19 @@ Always observe traffic rules and adapt your driving to road and weather.
 
 \begin{frame}[t]{What is agentic AI?}{Human baseline}
 \begin{center}
-  \animategraphics[autoplay,loop,height=.78\textheight]{12}{anim_08_02/frame-}{0}{36}
+  \includegraphics[height=.78\textheight]{img_08_02.png}
 \end{center}
 \end{frame}
 
 \begin{frame}[t]{What is agentic AI?}{GPT-4o attempt}
 \begin{center}
-  \animategraphics[autoplay,loop,height=.78\textheight]{12}{anim_08_03/frame-}{0}{36}
+  \includegraphics[height=.78\textheight]{img_08_03.png}
 \end{center}
 \end{frame}
 
 \begin{frame}[t]{What is agentic AI?}{GROK-3-think attempt}
 \begin{center}
-  \animategraphics[autoplay,loop,height=.78\textheight]{12}{anim_08_04/frame-}{0}{36}
+  \includegraphics[height=.78\textheight]{img_08_04.png}
 \end{center}
 \end{frame}
 
@@ -554,12 +550,10 @@ What is coming next?
 % --------------------------------------------------------------------------
 % Slide 16 - Thank You + QR code to GitHub repo (centered, B/W QR)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{-}
-\vspace*{0.6em}
+\begin{frame}[t]{Thank you!}
 \begin{center}
-  {\Huge\bfseries Thank you!}\\[0.6em]
   {\Large Slides on GitHub}\\[1.2em]
-  {\color{black}\qrcode[height=5cm,padding]{https://github.com/akmaier/AIMed2026Slides}}\\[0.8em]
+  \includegraphics[height=5cm]{qr_github.png}\\[0.8em]
   {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides}
 \end{center}
 \end{frame}
@@ -569,7 +563,14 @@ What is coming next?
 % --------------------------------------------------------------------------
 \begin{frame}[t]{References}
 \small
-\begin{itemize}\itemsep=0.4em
+\begin{itemize}\itemsep=0.3em
+  \item V.~Mnih, K.~Kavukcuoglu, D.~Silver, A.~Graves, I.~Antonoglou,
+        D.~Wierstra and M.~Riedmiller,
+        \emph{Playing Atari with Deep Reinforcement Learning},
+        arXiv:1312.5602, 2013.
+  \item D.~Silver et al.,
+        \emph{Mastering the game of Go with deep neural networks and tree search},
+        \emph{Nature}, 529:484--489, 2016 (AlphaGo).
   \item K.~Hammernik, T.~Klatzer, E.~Kobler, M.~P.~Recht, D.~K.~Sodickson,
         T.~Pock and \textbf{F.~Knoll},
         \emph{Learning a Variational Network for Reconstruction of
@@ -580,15 +581,22 @@ What is coming next?
         W.~Fu, L.~Mill, L.~Kling, S.~Christiansen,
         \emph{Learning with Known Operators Reduces Maximum Error Bounds},
         \emph{Nature Machine Intelligence}, 1:373--380, 2019.
-  \item Maier et al., \emph{GPT4MR -- a tool-using LLM for MR sequence design},
-        2024.
+  \item M.~Zaiss, J.~R.~Rajput, H.~N.~Dang, V.~Golkov, D.~Cremers,
+        F.~Knoll and \textbf{A.~Maier},
+        \emph{Exploring GPT-4 as MR sequence and reconstruction programming
+        assistant: GPT4MR},
+        BVM Workshop, pp.~94--99, Springer, 2024.
+  \item M.~Zaiss, A.~Aly, J.~Endres, T.~Dornstetter, S.~Weinm\"uller and
+        \textbf{A.~Maier},
+        \emph{Agentic MR sequence development: leveraging LLMs with MR skills
+        for automatic physics-informed sequence development},
+        arXiv:2604.13282, 2026 (Agent4MR).
   \item Deutscher Zukunftspreis (low-field MRI):
-        \url{https://www.deutscher-zukunftspreis.de}
+        \url{https://www.deutscher-zukunftspreis.de/de/die-gewinner-des-deutschen-zukunftspreises-2023-spendeten-ein-mrt-geraet}
   \item Bavarian Foundation AI Model:
-        \url{https://lme.tf.fau.eu/bavarian-foundation-model}
+        \url{https://www.ai-bay.eu}
   \item Conference statistics tooling:
         \url{https://github.com/akmaier/ConferenceStats}
-  \item AIMed 2026 conference: \url{https://my.ebm.one/aimed}
 \end{itemize}
 \end{frame}
 

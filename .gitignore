@@ -10,7 +10,9 @@ extracted_pptx/
 
 # --- LaTeX build artefacts ---
 *.aux
+*.bbl
 *.bcf
+*.blg
 *.fdb_latexmk
 *.fls
 *.log
@@ -19,8 +21,12 @@ extracted_pptx/
 *.run.xml
 *.snm
 *.synctex.gz
+*.synctex(busy)
 *.toc
 *.xdv
+
+# --- Claude Code worktrees / local agent state ---
+.claude/
 
 # --- Local TeX vendor copies (kept under output_tex/, regeneratable) ---
 faubeamer_newdesign-main/
