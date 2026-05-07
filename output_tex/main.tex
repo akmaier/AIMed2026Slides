@@ -1,0 +1,487 @@
+% ..............................................................................
+% "What next in medical AI?" -- Andreas Maier, AIMed 2026 (Krakow, 7-9 May 2026).
+% Conversion of "Besonderer Vortrag Maier.pptx" to fau-beamer template.
+% Source PowerPoint had ultra-wide canvas slides with 1-4 animation panels per
+% slide; each panel becomes its own beamer frame.  GIFs are embedded as true
+% animations via the `animate' package (extracted frame sequences in
+% figures/anim_*).
+% ------------------------------------------------------------------------------
+\documentclass[final]{beamer}
+
+\usepackage[institute=Tech,
+            SecondLogo = template-art/FAUWortmarkeBlau.pdf,
+            ThirdLogo  = template-art/FAUWortmarkeBlau.pdf,
+            aspectratio=169,
+            fontsize=11,
+            fontbaselineskip=13,
+            scale=1.,
+            InsertTotalFoot
+           ]{styles/beamerthemefau}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{animate}
+\usepackage{qrcode}
+
+\graphicspath{{figures/}}
+
+% ----------------------------------------------------------------------------------------
+% Title page metadata
+% ----------------------------------------------------------------------------------------
+\title[What next in medical AI?]{What next in medical AI?}
+\subtitle{AIMed 2026 -- From code to clinic}
+\author[A.~Maier]{Andreas Maier}
+\institute[FAU]{Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg}
+\date{7--9 May 2026, Krak\'ow}
+
+% ================================================
+% The main document
+% ------------------------------------------------
+\begin{document}
+
+% --------------------------------------------------------------------------
+% Slide 1 - Title (clean layout, AIMed logo + conference info)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{-}
+\vspace*{1.2em}
+\begin{center}
+  \includegraphics[height=2.2cm]{aimed_logo.pdf}\\[1.4em]
+  {\Huge\bfseries What next in medical AI?}\\[0.6em]
+  {\Large From code to clinic}\\[2.4em]
+  {\Large Andreas Maier}\\[0.4em]
+  {\normalsize Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg}\\[1.6em]
+  {\normalsize\itshape AIMed 2026 -- 7--9 May 2026, Krak\'ow}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 2 - Outline (3 progressive sub-slides)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Outline}
+\begin{itemize}
+  \item What is deep learning?
+  \item What is agentic AI?
+  \item What is coming next?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Outline}{Deep learning}
+\begin{columns}[T]
+  \begin{column}{0.45\textwidth}
+    \begin{itemize}
+      \item \textbf{What is deep learning?}
+      \item What is agentic AI?
+      \item What is coming next?
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.55\textwidth}
+    \centering
+    \includegraphics[height=.7\textheight]{img_01_03.png}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{Outline}{Agentic AI}
+\begin{columns}[T]
+  \begin{column}{0.45\textwidth}
+    \begin{itemize}
+      \item What is deep learning?
+      \item \textbf{What is agentic AI?}
+      \item What is coming next?
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.55\textwidth}
+    \centering
+    \includegraphics[height=.7\textheight]{img_01_02.png}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 3 - Section divider
+% --------------------------------------------------------------------------
+\begin{frame}[t,title]{-}
+What is deep learning?
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 4 - Deep Learning (4 sub-slides)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Deep learning}{Speech}
+\begin{itemize}
+  \item Revolutionising pattern recognition and AI for more than 10~years.
+\end{itemize}
+\vspace{0.2em}
+\begin{center}
+  \includegraphics[height=.6\textheight]{img_03_03.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Deep learning}{Image classification}
+\begin{center}
+  \includegraphics[height=.7\textheight]{img_03_04.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Deep learning}{Learning to play}
+\begin{center}
+  \includegraphics[width=.85\textwidth]{img_03_05.png}\\
+  \footnotesize{[Mnih 2013]}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Deep learning}{AlphaGo}
+\begin{center}
+  \includegraphics[height=.7\textheight]{img_03_06.jpg}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 5 - Generative AI (4 sub-slides)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Generative AI}{Source image}
+\begin{center}
+  \includegraphics[height=.75\textheight]{img_04_01.jpg}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Generative AI}{Image description}
+\begin{columns}[T]
+  \begin{column}{0.35\textwidth}
+    \centering
+    \includegraphics[height=.75\textheight]{img_04_01.jpg}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+    \vspace{1em}
+    \footnotesize\itshape
+    ``An athletically built man with a serious expression stands in a
+    well-lit room with a wooden ceiling. He is wearing a blue t-shirt with
+    the phrase `SAVE THE CHUBBY UNICORNS' and an image of a rhinoceros.
+    The man is taking a selfie with a modern smartphone, capturing his
+    reflection in a mirror. In the background, one can see gym equipment
+    including dumbbells and a weight rack. There is also a hanging
+    chandelier with a unique design, illuminating the room.''
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{Generative AI}{Generated image}
+\begin{center}
+  \includegraphics[height=.75\textheight]{img_04_04.jpg}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Generative AI}{Style variations}
+\begin{columns}[c]
+  \begin{column}{0.5\textwidth}
+    \centering
+    \includegraphics[height=.7\textheight]{img_04_06.jpg}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \centering
+    \includegraphics[height=.7\textheight]{img_04_05.jpg}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 6 - Deep learning in medicine (4 sub-slides)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Deep learning in medicine}{Segmentation}
+\begin{columns}[c]
+  \begin{column}{0.55\textwidth}
+    \centering
+    \includegraphics[height=.7\textheight]{img_05_01.jpg}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+    \centering
+    \includegraphics[height=.5\textheight]{img_05_02.jpg}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{Deep learning in medicine}{Reconstruction}
+\begin{columns}[c]
+  \begin{column}{0.5\textwidth}
+    \centering
+    \includegraphics[height=.55\textheight]{img_05_02.jpg}\\[0.4em]
+    \footnotesize Conventional
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \centering
+    \includegraphics[height=.55\textheight]{img_05_03.jpg}\\[0.4em]
+    \footnotesize With deep learning
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{Deep learning in medicine}{MRI variational network}
+\begin{center}
+  \includegraphics[width=.55\textwidth]{img_05_05.png}\\[0.5em]
+  \includegraphics[width=.6\textwidth]{img_05_04.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Deep learning in medicine}{Recognition}
+\begin{center}
+  \vspace*{2em}
+  {\Large Hopfield and Hinton}\\[0.7em]
+  {\large Nobel Prize in Physics 2024}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 7 - Section divider
+% --------------------------------------------------------------------------
+\begin{frame}[t,title]{-}
+What is agentic AI?
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 8 - What is agentic AI? Intro (3 sub-slides)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{What is agentic AI?}{A simple question}
+\begin{center}
+  \vspace*{1.5em}
+  \begin{minipage}{.7\textwidth}
+    \begin{flushright}
+      \large\itshape\textquotedblleft How do you drive a car?\textquotedblright
+    \end{flushright}
+    \vspace*{2em}
+    \footnotesize\color{gray} Thought for a few seconds\dots
+  \end{minipage}
+\end{center}
+\vspace*{1em}
+\begin{itemize}
+  \item A classic prompt to a large language model.
+  \item After a short ``thinking pause'' the answer arrives as long-form text.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{Long text answer of an LLM}
+\begin{center}
+  \includegraphics[height=.7\textheight]{img_07_05.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{From language model to agent}
+\begin{columns}[c]
+  \begin{column}{0.4\textwidth}
+    \centering
+    \includegraphics[height=.7\textheight]{img_07_03.jpg}\\[0.3em]
+    \footnotesize Andreas Maier
+  \end{column}
+  \begin{column}{0.55\textwidth}
+    \centering
+    \includegraphics[height=.82\textheight]{img_07_01.png}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 9 - Spin-echo EPI: 3 model attempts (4 sub-slides, animated)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{What is agentic AI?}{Task for the models}
+\begin{center}
+  \vspace*{0.5em}
+  \begin{minipage}{.9\textwidth}
+    \large\itshape
+    \textquotedblleft Code a spin echo EPI (64$\times$64,
+    fov\,=\,(0.2,\,0.2,\,0.08)\,m,
+    TE\,=\,150\,ms)!\textquotedblright
+  \end{minipage}
+\end{center}
+\vspace*{1em}
+\begin{itemize}
+  \item Spin-echo echo-planar imaging -- an advanced MRI sequence.
+  \item Three models receive the same natural-language instruction.
+  \item We compare \emph{Human} (reference), \emph{GPT-4o}, and
+        \emph{GROK-3-think}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{Human baseline}
+\begin{center}
+  \animategraphics[autoplay,loop,height=.78\textheight]{12}{anim_08_02/frame-}{0}{36}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{GPT-4o attempt}
+\begin{center}
+  \animategraphics[autoplay,loop,height=.78\textheight]{12}{anim_08_03/frame-}{0}{36}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{GROK-3-think attempt}
+\begin{center}
+  \animategraphics[autoplay,loop,height=.78\textheight]{12}{anim_08_04/frame-}{0}{36}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 10 - Agent4MR results (4 sub-slides)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{What is agentic AI?}{LLM vs.\ Agent4MR}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_09_01.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{Interactions per model}
+\begin{center}
+  \includegraphics[width=.92\textwidth]{img_09_02.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{Cost comparison}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_09_03.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{Iterative progress}
+\begin{columns}[c]
+  \begin{column}{0.6\textwidth}
+    \centering
+    \includegraphics[height=.78\textheight]{img_09_04.png}
+  \end{column}
+  \begin{column}{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{img_09_05.png}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 11 - Adaptive AI in practice (3 sub-slides)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{What is agentic AI?}{Adaptive systems}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_10_02.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{From sketch to diagram}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_10_01.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{Patient information}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_10_04.png}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 12 - Vibe coding & advanced AI techniques (4 sub-slides)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{What is agentic AI?}{Vibe coding}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_11_01.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{Advanced AI-assisted techniques}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_11_02.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{Markdown-driven quality gates}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_11_03.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{What is agentic AI?}{Textbook}
+\begin{columns}[c]
+  \begin{column}{0.5\textwidth}
+    \centering
+    \includegraphics[height=.78\textheight]{img_11_04.png}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \centering
+    \includegraphics[height=.6\textheight]{img_11_05.png}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 13 - Section divider
+% --------------------------------------------------------------------------
+\begin{frame}[t,title]{-}
+What is coming next?
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 14 - Almost everything is easy now (4 sub-slides)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Almost everything is easy now\dots}{China and AI}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_13_01.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Almost everything is easy now\dots}{Conference shares}
+\begin{center}
+  \includegraphics[width=.9\textwidth]{img_13_02.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Almost everything is easy now\dots}{ConferenceStats workflow}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_13_03.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Almost everything is easy now\dots}{Conference contributions from China}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_13_04.png}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 15 - Foundation models (4 sub-slides)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Foundation models}{Bavarian foundation AI model}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_14_01.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Foundation models}{Multimodal architecture}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_14_02.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Foundation models}{Speech and emotions}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_14_03.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Foundation models}{Knowledge and interaction}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_14_04.png}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 16 - Thank You + QR code to GitHub repo (centered)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{-}
+\vspace*{0.6em}
+\begin{center}
+  {\Huge\bfseries Thank you!}\\[0.6em]
+  {\Large Slides on GitHub}\\[1.2em]
+  \qrcode[height=5cm,padding]{https://github.com/akmaier/AIMed2026Slides}\\[0.8em]
+  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides}
+\end{center}
+\end{frame}
+
+\end{document}

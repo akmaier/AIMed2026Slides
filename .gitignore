@@ -1,0 +1,32 @@
+# --- Source PowerPoint and derived bulk assets (not for the public repo) ---
+*.pptx
+slide_images/
+extracted_pptx/
+
+# --- macOS / editor noise ---
+.DS_Store
+*~
+*.swp
+
+# --- LaTeX build artefacts ---
+*.aux
+*.bcf
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.xdv
+
+# --- Local TeX vendor copies (kept under output_tex/, regeneratable) ---
+faubeamer_newdesign-main/
+
+# --- PowerPoint analysis helper output (regenerable from the pptx) ---
+analyze_layout.py
+check_timing.py
+extract_pptx.py
+inspect_clicks.py
