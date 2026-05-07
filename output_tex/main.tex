@@ -9,8 +9,7 @@
 \documentclass[final]{beamer}
 
 \usepackage[institute=Tech,
-            SecondLogo = template-art/FAUWortmarkeBlau.pdf,
-            ThirdLogo  = template-art/FAUWortmarkeBlau.pdf,
+            SecondLogo = figures/aimed_logo_black.pdf,
             aspectratio=169,
             fontsize=11,
             fontbaselineskip=13,
@@ -25,6 +24,7 @@
 \usepackage{textcomp}
 \usepackage{animate}
 \usepackage{qrcode}
+\usetikzlibrary{positioning,arrows.meta,shadows}
 
 \graphicspath{{figures/}}
 
@@ -43,22 +43,15 @@
 \begin{document}
 
 % --------------------------------------------------------------------------
-% Slide 1 - Title (clean layout, AIMed logo + conference info)
+% Slide 1 - Title (FAU titleimage layout; AIMed branding is now in the
+% header via ThirdLogo, so the title body is the standard \titlepage).
 % --------------------------------------------------------------------------
-\begin{frame}[t]{-}
-\vspace*{1.2em}
-\begin{center}
-  \includegraphics[height=2.2cm]{aimed_logo.pdf}\\[1.4em]
-  {\Huge\bfseries What next in medical AI?}\\[0.6em]
-  {\Large From code to clinic}\\[2.4em]
-  {\Large Andreas Maier}\\[0.4em]
-  {\normalsize Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg}\\[1.6em]
-  {\normalsize\itshape AIMed 2026 -- 7--9 May 2026, Krak\'ow}
-\end{center}
+\begin{frame}[t,titleimage]{-}
+\titlepage%
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 2 - Outline (3 progressive sub-slides)
+% Slide 2 - Outline
 % --------------------------------------------------------------------------
 \begin{frame}[t]{Outline}
 \begin{itemize}
@@ -66,38 +59,6 @@
   \item What is agentic AI?
   \item What is coming next?
 \end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Outline}{Deep learning}
-\begin{columns}[T]
-  \begin{column}{0.45\textwidth}
-    \begin{itemize}
-      \item \textbf{What is deep learning?}
-      \item What is agentic AI?
-      \item What is coming next?
-    \end{itemize}
-  \end{column}
-  \begin{column}{0.55\textwidth}
-    \centering
-    \includegraphics[height=.7\textheight]{img_01_03.png}
-  \end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}[t]{Outline}{Agentic AI}
-\begin{columns}[T]
-  \begin{column}{0.45\textwidth}
-    \begin{itemize}
-      \item What is deep learning?
-      \item \textbf{What is agentic AI?}
-      \item What is coming next?
-    \end{itemize}
-  \end{column}
-  \begin{column}{0.55\textwidth}
-    \centering
-    \includegraphics[height=.7\textheight]{img_01_02.png}
-  \end{column}
-\end{columns}
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -128,15 +89,29 @@ What is deep learning?
 
 \begin{frame}[t]{Deep learning}{Learning to play}
 \begin{center}
-  \includegraphics[width=.85\textwidth]{img_03_05.png}\\
-  \footnotesize{[Mnih 2013]}
+  \includegraphics[width=.95\textwidth]{img_03_05.png}\\[0.2em]
+  {\footnotesize [Mnih 2013]}
 \end{center}
-\end{frame}
-
-\begin{frame}[t]{Deep learning}{AlphaGo}
-\begin{center}
-  \includegraphics[height=.7\textheight]{img_03_06.jpg}
-\end{center}
+\vspace{0.3em}
+\begin{itemize}\itemsep=0.15em
+  \item Deep Q-Networks learn Atari games from raw pixels alone.
+  \item One agent, many games -- super-human on several titles.
+\end{itemize}
+\pause
+\vspace{0.4em}
+\begin{columns}[c]
+  \begin{column}{0.45\textwidth}
+    \centering
+    \includegraphics[height=.35\textheight]{img_03_06.jpg}\\
+    {\footnotesize AlphaGo (DeepMind, 2016)}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{itemize}\itemsep=0.15em
+      \item Self-play + Monte-Carlo tree search.
+      \item Defeats world champion Lee Sedol 4--1.
+    \end{itemize}
+  \end{column}
+\end{columns}
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -150,13 +125,13 @@ What is deep learning?
 
 \begin{frame}[t]{Generative AI}{Image description}
 \begin{columns}[T]
-  \begin{column}{0.35\textwidth}
+  \begin{column}{0.32\textwidth}
     \centering
-    \includegraphics[height=.75\textheight]{img_04_01.jpg}
+    \includegraphics[height=.78\textheight]{img_04_01.jpg}
   \end{column}
-  \begin{column}{0.6\textwidth}
-    \vspace{1em}
-    \footnotesize\itshape
+  \begin{column}{0.66\textwidth}
+    \vspace{0.4em}
+    \normalsize\itshape
     ``An athletically built man with a serious expression stands in a
     well-lit room with a wooden ceiling. He is wearing a blue t-shirt with
     the phrase `SAVE THE CHUBBY UNICORNS' and an image of a rhinoceros.
@@ -190,7 +165,7 @@ What is deep learning?
 % --------------------------------------------------------------------------
 % Slide 6 - Deep learning in medicine (4 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Deep learning in medicine}{Segmentation}
+\begin{frame}[t]{Deep learning in medicine}{From Segmentation to Reconstruction}
 \begin{columns}[c]
   \begin{column}{0.55\textwidth}
     \centering
@@ -203,16 +178,64 @@ What is deep learning?
 \end{columns}
 \end{frame}
 
+\begin{frame}[t]{Deep learning in medicine}{Known operators}
+\vspace*{0.4em}
+\begin{center}
+\begin{tikzpicture}[
+    every node/.style={font=\normalsize},
+    transform shape, scale=1.35,
+    box/.style ={draw, rounded corners=3pt, minimum height=1.4cm,
+                 minimum width=2.6cm, align=center, thick,
+                 drop shadow={shadow xshift=0.6mm, shadow yshift=-0.6mm,
+                              opacity=0.35}},
+    train/.style={box, fill=gray!12},
+    known/.style={box, fill=blue!12, draw=blue!60!black},
+    arr/.style ={-{Latex[length=3mm]}, thick}
+  ]
+  \node                                 (in)  {\large $x$};
+  \node[train, right=4mm of in]         (t1)  {Trainable\\$\hat f_1$};
+  \node[known, right=5mm of t1]         (k1)  {Known op.\\$f_2$};
+  \node[train, right=5mm of k1]         (t2)  {Trainable\\$\hat f_3$};
+  \node[known, right=5mm of t2]         (k2)  {Known op.\\$f_4$};
+  \node[right=4mm of k2]                (out) {\large $\hat f(x)$};
+  \draw[arr] (in)  -- (t1);
+  \draw[arr] (t1)  -- (k1);
+  \draw[arr] (k1)  -- (t2);
+  \draw[arr] (t2)  -- (k2);
+  \draw[arr] (k2)  -- (out);
+\end{tikzpicture}\\[0.5em]
+{\small Mix \emph{trainable} layers with deterministic operators
+(Fourier transform, gradient descent, projection, \dots).}
+\end{center}
+\pause
+\vspace{0.5em}
+\begin{block}{Theorem -- known operators reduce the error bound}
+For $f=f_n\circ\dots\circ f_1$ approximated by
+$\hat f=\hat f_n\circ\dots\circ \hat f_1$ with per-layer errors
+$\varepsilon_i$ and Lipschitz constants $\hat L_j$,
+\[
+  \varepsilon(\hat f) \;\leq\;
+  \sum_{i=1}^{n}\Bigl(\prod_{j=i+1}^{n}\hat L_j\Bigr)\,\varepsilon_i .
+\]
+Replacing $\hat f_k$ with the \emph{known} $f_k$ forces
+$\varepsilon_k=0$ and strictly tightens this bound.
+\end{block}
+\vspace{-0.3em}
+\begin{center}\footnotesize
+  Maier et al., \emph{Nature Machine Intelligence}, 2019.
+\end{center}
+\end{frame}
+
 \begin{frame}[t]{Deep learning in medicine}{Reconstruction}
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
     \centering
-    \includegraphics[height=.55\textheight]{img_05_02.jpg}\\[0.4em]
+    \includegraphics[height=.55\textheight]{img_05_03.jpg}\\[0.4em]
     \footnotesize Conventional
   \end{column}
   \begin{column}{0.5\textwidth}
     \centering
-    \includegraphics[height=.55\textheight]{img_05_03.jpg}\\[0.4em]
+    \includegraphics[height=.55\textheight]{img_05_02.jpg}\\[0.4em]
     \footnotesize With deep learning
   \end{column}
 \end{columns}
@@ -226,10 +249,19 @@ What is deep learning?
 \end{frame}
 
 \begin{frame}[t]{Deep learning in medicine}{Recognition}
+\begin{columns}[c]
+  \begin{column}{0.35\textwidth}
+    \centering
+    \includegraphics[height=.72\textheight,keepaspectratio]{siemens01.jpg}
+  \end{column}
+  \begin{column}{0.62\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=.72\textheight,keepaspectratio]{siemens02.jpg}
+  \end{column}
+\end{columns}
+\vspace{0.4em}
 \begin{center}
-  \vspace*{2em}
-  {\Large Hopfield and Hinton}\\[0.7em]
-  {\large Nobel Prize in Physics 2024}
+  Deutscher Zukunftspreis -- low-field MRI made possible by deep learning.
 \end{center}
 \end{frame}
 
@@ -244,63 +276,104 @@ What is agentic AI?
 % Slide 8 - What is agentic AI? Intro (3 sub-slides)
 % --------------------------------------------------------------------------
 \begin{frame}[t]{What is agentic AI?}{A simple question}
-\begin{center}
-  \vspace*{1.5em}
-  \begin{minipage}{.7\textwidth}
-    \begin{flushright}
-      \large\itshape\textquotedblleft How do you drive a car?\textquotedblright
-    \end{flushright}
-    \vspace*{2em}
-    \footnotesize\color{gray} Thought for a few seconds\dots
-  \end{minipage}
-\end{center}
-\vspace*{1em}
-\begin{itemize}
+\vspace*{0.6em}
+\begin{flushleft}
+  {\Huge\itshape\textquotedblleft How do you drive a car?\textquotedblright}
+\end{flushleft}
+\vspace*{0.6em}
+{\large\color{gray}\itshape Thought for a few seconds\dots}
+\vspace*{1.4em}
+\begin{itemize}\large
   \item A classic prompt to a large language model.
-  \item After a short ``thinking pause'' the answer arrives as long-form text.
+  \item After a short ``thinking pause'' the answer arrives as
+        long-form running text.
+  \item No tools, no actions -- the model just \emph{describes} how to drive.
 \end{itemize}
 \end{frame}
 
 \begin{frame}[t]{What is agentic AI?}{Long text answer of an LLM}
-\begin{center}
-  \includegraphics[height=.7\textheight]{img_07_05.png}
+\normalsize
+To drive a car, follow these steps:
+\begin{itemize}\itemsep=0.3em
+  \item \textbf{Get in and adjust:} fasten your \textbf{seat belt}, set the
+        \textbf{seat} and \textbf{mirrors} so you can see the road clearly.
+  \item \textbf{Start the engine:} press the \textbf{brake pedal}, turn the
+        key or push the start button. Make sure the gear selector is in
+        \textbf{Park (P)} or \textbf{Neutral (N)}.
+  \item \textbf{Engage a gear:} for an automatic, move the lever to
+        \textbf{Drive (D)}; for a manual, press the \textbf{clutch} and
+        select \textbf{1st gear}.
+  \item \textbf{Release the parking brake} and slowly lift your foot off
+        the brake. Gently press the \textbf{accelerator} to move forward.
+  \item \textbf{Steer} smoothly with both hands and \textbf{check mirrors}
+        regularly. Keep a safe distance from the vehicle in front.
+  \item \textbf{To stop:} ease off the accelerator, press the brake, and
+        bring the car to a complete stop. Shift to \textbf{Park} and apply
+        the parking brake before turning off the engine.
+\end{itemize}
+\vspace{0.6em}
+\begin{center}\itshape\color{gray}
+Always observe traffic rules and adapt your driving to road and weather.
 \end{center}
+\vspace{0.4em}
+\hfill\textbf{$\Rightarrow$ Lots of words, but no \emph{action}.}\hfill\,
 \end{frame}
 
 \begin{frame}[t]{What is agentic AI?}{From language model to agent}
 \begin{columns}[c]
-  \begin{column}{0.4\textwidth}
+  \begin{column}{0.28\textwidth}
     \centering
-    \includegraphics[height=.7\textheight]{img_07_03.jpg}\\[0.3em]
+    \includegraphics[height=.4\textheight]{img_07_03.jpg}\\[0.3em]
     \footnotesize Andreas Maier
   \end{column}
-  \begin{column}{0.55\textwidth}
+  \begin{column}{0.7\textwidth}
     \centering
-    \includegraphics[height=.82\textheight]{img_07_01.png}
+    \includegraphics[height=.78\textheight,keepaspectratio]{img_07_01.png}
   \end{column}
 \end{columns}
+\vspace{0.2em}
+\begin{center}
+  Equip the language model with tools to act on MR sequences.\quad
+  {\footnotesize Maier et al., \emph{GPT4MR}, 2024.}
+\end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
 % Slide 9 - Spin-echo EPI: 3 model attempts (4 sub-slides, animated)
 % --------------------------------------------------------------------------
 \begin{frame}[t]{What is agentic AI?}{Task for the models}
+\vspace*{0.4em}
 \begin{center}
-  \vspace*{0.5em}
-  \begin{minipage}{.9\textwidth}
+  \begin{minipage}{.92\textwidth}
     \large\itshape
     \textquotedblleft Code a spin echo EPI (64$\times$64,
     fov\,=\,(0.2,\,0.2,\,0.08)\,m,
     TE\,=\,150\,ms)!\textquotedblright
   \end{minipage}
 \end{center}
-\vspace*{1em}
-\begin{itemize}
-  \item Spin-echo echo-planar imaging -- an advanced MRI sequence.
-  \item Three models receive the same natural-language instruction.
-  \item We compare \emph{Human} (reference), \emph{GPT-4o}, and
-        \emph{GROK-3-think}.
+\vspace*{0.6em}
+\begin{itemize}\large\itemsep=0.3em
+  \item \textbf{Spin-echo EPI} -- an advanced MRI sequence used for
+        diffusion and functional imaging.
+  \item Three models receive the \emph{same} natural-language
+        instruction and must produce runnable Python code.
+  \item Contestants:
 \end{itemize}
+\vspace*{0.2em}
+\begin{center}
+\begin{tikzpicture}[
+    every node/.style={font=\large\bfseries},
+    box/.style={draw, rounded corners=3pt, thick,
+                minimum height=1.4cm, minimum width=4.2cm,
+                text width=3.8cm, align=center,
+                drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
+                             opacity=0.35}}
+  ]
+  \node[box, fill=green!12, draw=green!50!black] (h)               {Human\\\normalsize\mdseries reference};
+  \node[box, fill=blue!12,  draw=blue!60!black,  right=8mm of h]  (g) {GPT-4o\\\normalsize\mdseries OpenAI};
+  \node[box, fill=orange!18,draw=orange!70!black,right=8mm of g]  (k) {GROK-3-think\\\normalsize\mdseries xAI};
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}[t]{What is agentic AI?}{Human baseline}
@@ -319,6 +392,13 @@ What is agentic AI?
 \begin{center}
   \animategraphics[autoplay,loop,height=.78\textheight]{12}{anim_08_04/frame-}{0}{36}
 \end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Sub-section divider before Agent4MR results
+% --------------------------------------------------------------------------
+\begin{frame}[t,title]{-}
+How about real agentic AI?
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -472,16 +552,44 @@ What is coming next?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 16 - Thank You + QR code to GitHub repo (centered)
+% Slide 16 - Thank You + QR code to GitHub repo (centered, B/W QR)
 % --------------------------------------------------------------------------
 \begin{frame}[t]{-}
 \vspace*{0.6em}
 \begin{center}
   {\Huge\bfseries Thank you!}\\[0.6em]
   {\Large Slides on GitHub}\\[1.2em]
-  \qrcode[height=5cm,padding]{https://github.com/akmaier/AIMed2026Slides}\\[0.8em]
+  {\color{black}\qrcode[height=5cm,padding]{https://github.com/akmaier/AIMed2026Slides}}\\[0.8em]
   {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides}
 \end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 17 - References
+% --------------------------------------------------------------------------
+\begin{frame}[t]{References}
+\small
+\begin{itemize}\itemsep=0.4em
+  \item K.~Hammernik, T.~Klatzer, E.~Kobler, M.~P.~Recht, D.~K.~Sodickson,
+        T.~Pock and \textbf{F.~Knoll},
+        \emph{Learning a Variational Network for Reconstruction of
+        Accelerated MRI Data},
+        \emph{Magnetic Resonance in Medicine}, 79(6):3055--3071, 2018
+        (FastMRI / variational network).
+  \item A.~Maier, C.~Syben, B.~Stimpel, T.~Wuerfl, M.~Hoffmann, F.~Schebesch,
+        W.~Fu, L.~Mill, L.~Kling, S.~Christiansen,
+        \emph{Learning with Known Operators Reduces Maximum Error Bounds},
+        \emph{Nature Machine Intelligence}, 1:373--380, 2019.
+  \item Maier et al., \emph{GPT4MR -- a tool-using LLM for MR sequence design},
+        2024.
+  \item Deutscher Zukunftspreis (low-field MRI):
+        \url{https://www.deutscher-zukunftspreis.de}
+  \item Bavarian Foundation AI Model:
+        \url{https://lme.tf.fau.eu/bavarian-foundation-model}
+  \item Conference statistics tooling:
+        \url{https://github.com/akmaier/ConferenceStats}
+  \item AIMed 2026 conference: \url{https://my.ebm.one/aimed}
+\end{itemize}
 \end{frame}
 
 \end{document}
