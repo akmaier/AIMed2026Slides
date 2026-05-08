@@ -4,10 +4,10 @@ Slides for the talk **"What next in medical AI?"** by Andreas Maier
 (FAU Erlangen-N&#252;rnberg) at the AIMed 2026 conference,
 Krak&#243;w, 7-9 May 2026.
 
-The compiled deck is `output_tex/main.pdf` (49 pages). Source is
+The compiled deck is `output_tex/main.pdf` (50 pages). Source is
 `output_tex/main.tex`, built against the FAU beamer template (the
-`styles/` and `template-art/` directories are vendored under
-`output_tex/`).
+`styles/`, `template-art/` and `conf-art/` directories are vendored
+under `output_tex/`).
 
 ## Build
 
@@ -50,10 +50,6 @@ re-run the script, then rebuild the deck.
 * `output_tex/bibliography.bib` -- biblatex entries (loaded by the FAU theme)
 * `output_tex/figures/` -- images, including `qr_github.png` and
   the static `img_08_0*.png` renders that replaced the original GIFs
-* `output_tex/styles/`, `output_tex/template-art/` -- FAU beamer template
+* `output_tex/styles/`, `output_tex/template-art/`,
+  `output_tex/conf-art/` -- FAU beamer template
 * `generate_qr.py` -- QR-code generation script
-* `slide_check.md` -- typesetting / translation report
-
-The original PowerPoint, the rasterised slide previews and the
-`extracted_pptx/` JSON dump are kept locally for traceability but are
-excluded from this repository via `.gitignore`.
