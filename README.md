@@ -93,3 +93,34 @@ re-run the script, then rebuild the deck.
   embeds the GIFs at the right location
 * `build_pptx/probe_layout.py` -- diagnostic for finding the FAU
   theme's body region on a rasterised page
+
+## References
+
+* V. Mnih, K. Kavukcuoglu, D. Silver, A. Graves, I. Antonoglou,
+  D. Wierstra and M. Riedmiller, *Playing Atari with Deep Reinforcement
+  Learning*, [arXiv:1312.5602](https://arxiv.org/abs/1312.5602), 2013.
+* D. Silver et al., *Mastering the game of Go with deep neural networks
+  and tree search*, *Nature*, 529:484-489, 2016 (AlphaGo).
+* K. Hammernik, T. Klatzer, E. Kobler, M. P. Recht, D. K. Sodickson,
+  T. Pock and **F. Knoll**, *Learning a Variational Network for
+  Reconstruction of Accelerated MRI Data*, *Magnetic Resonance in
+  Medicine*, 79(6):3055-3071, 2018 (FastMRI / variational network).
+* A. Maier, C. Syben, B. Stimpel, T. Wuerfl, M. Hoffmann, F. Schebesch,
+  W. Fu, L. Mill, L. Kling, S. Christiansen, *Learning with Known
+  Operators Reduces Maximum Error Bounds*, *Nature Machine
+  Intelligence*, 1:373-380, 2019.
+* M. Zaiss, J. R. Rajput, H. N. Dang, V. Golkov, D. Cremers, F. Knoll
+  and **A. Maier**, *Exploring GPT-4 as MR sequence and reconstruction
+  programming assistant: GPT4MR*, BVM Workshop, pp. 94-99, Springer,
+  2024.
+* M. Zaiss, A. Aly, J. Endres, T. Dornstetter, S. Weinm&#252;ller and
+  **A. Maier**, *Agentic MR sequence development: leveraging LLMs with
+  MR skills for automatic physics-informed sequence development*,
+  [arXiv:2604.13282](https://arxiv.org/abs/2604.13282), 2026 (Agent4MR).
+* Deutscher Zukunftspreis 2023 (low-field MRI):
+  [deutscher-zukunftspreis.de][zukunftspreis].
+* Bavarian Foundation AI Model: [www.ai-bay.eu](https://www.ai-bay.eu).
+* Conference statistics tooling:
+  [github.com/akmaier/ConferenceStats](https://github.com/akmaier/ConferenceStats).
+
+[zukunftspreis]: https://www.deutscher-zukunftspreis.de/de/die-gewinner-des-deutschen-zukunftspreises-2023-spendeten-ein-mrt-geraet
