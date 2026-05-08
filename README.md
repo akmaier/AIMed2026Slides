@@ -1,7 +1,8 @@
 # AIMed 2026 Slides
 
 Slides for the talk **"What next in medical AI?"** by Andreas Maier
-(FAU Erlangen-N&#252;rnberg) at the AIMed 2026 conference,
+(FAU Erlangen-N&#252;rnberg) at the
+[AIMed 2026](https://my.ebm.one/aimed) conference,
 Krak&#243;w, 7-9 May 2026.
 
 The compiled deck is `output_tex/main.pdf` (50 pages). Source is
