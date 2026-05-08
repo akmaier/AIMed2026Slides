@@ -1,5 +1,14 @@
 # --- Source PowerPoint and derived bulk assets (not for the public repo) ---
-*.pptx
+# We DO track the final (manually-edited) AIMed2026_What_next_in_medical_AI.pptx
+# at the repo root; everything else .pptx-shaped stays local:
+#   * the original Besonderer Vortrag Maier.pptx (private source);
+#   * Office lock files like ~$AIMed2026_*.pptx;
+#   * regenerated build_pptx/*.pptx artefacts from build_pptx.py.
+Besonderer Vortrag Maier.pptx
+~$*.pptx
+build_pptx/*.pptx
+build_pptx/pages/
+build_pptx/verify/
 slide_images/
 extracted_pptx/
 
