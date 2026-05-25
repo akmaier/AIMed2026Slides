@@ -437,6 +437,12 @@ How about real agentic AI?
 % --------------------------------------------------------------------------
 % Slide 11 - Adaptive AI in practice (3 sub-slides)
 % --------------------------------------------------------------------------
+\begin{frame}[t]{What is agentic AI?}{Patient information}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_10_04.png}
+\end{center}
+\end{frame}
+
 \begin{frame}[t]{What is agentic AI?}{Adaptive systems}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_10_02.png}
@@ -446,12 +452,6 @@ How about real agentic AI?
 \begin{frame}[t]{What is agentic AI?}{From sketch to diagram}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_10_01.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{What is agentic AI?}{Patient information}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_10_04.png}
 \end{center}
 \end{frame}
 
@@ -528,19 +528,42 @@ What is coming next?
 % structured software process).  Source: github.com/akmaier/Agent4CT.
 % --------------------------------------------------------------------------
 \begin{frame}[t]{Agent4CT}{All deep-learning CT methods, in one weekend}
-\begin{itemize}\itemsep=0.25em
-  \item Continuously-running LLM agent that improves a CT
-        reconstruction codebase: edits it, runs short GPU experiments,
-        keeps changes only when the metrics agree.
-  \item Five agents run in parallel across five CT imaging benchmarks
-        and pool findings through a common scratch pad.
-  \item Re-implements over a weekend:
-        Wagner \emph{et~al.}\ 2023 (dual-domain self-supervised LDCT),
-        Wagner \emph{et~al.}\ 2022 (trainable bilateral filters),
-        Hendriksen \emph{et~al.}\ 2020 (Noise2Inverse) and
-        Syben \emph{et~al.}\ 2019 (PYRO-NN differentiable FBP).
+\begin{itemize}\itemsep=0.15em
+  \item Continuously-running LLM agent that edits a CT reconstruction
+        codebase, runs short GPU experiments, and keeps changes only
+        when the metrics agree.  Five agents run in parallel across
+        five CT challenges and pool findings through a shared
+        scratch pad.
 \end{itemize}
-\vspace{0.5em}
+\vspace{0.3em}
+\textbf{Re-implemented solvers}
+({\small\ttfamily pentathlon/demo\_dl\_reference}):
+\begin{columns}[T]
+  \begin{column}{0.49\textwidth}
+    \begin{itemize}\itemsep=0.1em\small
+      \item \textbf{Analytical:} PyroNN FBP (Syben 2019).
+      \item \textbf{Classical iterative:} TV (iterative, supervised,
+            hyper-search); Wu \emph{et~al.}\ 2015 ($+$ trainable port).
+      \item \textbf{Variational / unrolled:} Hammernik 2017 variational
+            network ($+$ CT port); Learned Primal-Dual
+            (Adler \& \"Oktem); ITNet v1--v3.
+      \item \textbf{Self-supervised denoising:} dual-domain U-Net and
+            trainable bilateral filters (Wagner 2023 / 2022, with
+            supervised variants).
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.49\textwidth}
+    \begin{itemize}\itemsep=0.1em\small
+      \item \textbf{Per-scene neural fields:} NAF
+            (neural attenuation field); R2Gaussian.
+      \item \textbf{Foundation models:} RAM (Terris 2025).
+      \item \textbf{Diffusion priors:} DDPM; diffusion-prior sampling;
+            diffusion-recon with data consistency.
+      \item \textbf{Transformer:} U-Swin.
+    \end{itemize}
+  \end{column}
+\end{columns}
+\vspace{0.3em}
 \begin{center}
   {\small\ttfamily github.com/akmaier/Agent4CT}
 \end{center}
@@ -650,7 +673,7 @@ What is coming next?
 \begin{center}
   {\Large Slides on GitHub}\\[1.2em]
   \includegraphics[height=10cm]{qr_github.png}\\[0.8em]
-  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides}
+  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/india-talk}
 \end{center}
 \end{frame}
 
