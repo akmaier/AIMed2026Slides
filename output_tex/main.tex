@@ -569,6 +569,22 @@ What is coming next?
 \end{center}
 \end{frame}
 
+\begin{frame}[t]{Agent4CT}{From paper to benchmark -- a structured loop}
+\begin{itemize}\itemsep=0.25em
+  \item \textbf{Tight iteration budget.} 5~min per GPU experiment forces
+        the agent to trade architecture against throughput.
+  \item \textbf{Stage checks every 30 iterations.} 1~h validation on a
+        $3\times$ larger subset catches overfit before it propagates.
+  \item \textbf{Git-backed journal.} Every kept change is a commit;
+        discards are \texttt{git reset} plus a row in the experiment TSV.
+  \item \textbf{Shared scratch pad.} \texttt{observations.jsonl} pools
+        rules-of-thumb across the five agents.
+  \item \textbf{Anti-overfit rules} bootstrapped into every agent's
+        \texttt{program.md} -- so each new run starts on the others'
+        shoulders, not from scratch.
+\end{itemize}
+\end{frame}
+
 \begin{frame}[t]{Agent4CT}{The Pentathlon -- five CT leaderboards}
 \begin{columns}[T]
   \begin{column}{0.55\textwidth}
@@ -593,22 +609,6 @@ What is coming next?
 \end{columns}
 \end{frame}
 
-\begin{frame}[t]{Agent4CT}{From paper to benchmark -- a structured loop}
-\begin{itemize}\itemsep=0.25em
-  \item \textbf{Tight iteration budget.} 5~min per GPU experiment forces
-        the agent to trade architecture against throughput.
-  \item \textbf{Stage checks every 30 iterations.} 1~h validation on a
-        $3\times$ larger subset catches overfit before it propagates.
-  \item \textbf{Git-backed journal.} Every kept change is a commit;
-        discards are \texttt{git reset} plus a row in the experiment TSV.
-  \item \textbf{Shared scratch pad.} \texttt{observations.jsonl} pools
-        rules-of-thumb across the five agents.
-  \item \textbf{Anti-overfit rules} bootstrapped into every agent's
-        \texttt{program.md} -- so each new run starts on the others'
-        shoulders, not from scratch.
-\end{itemize}
-\end{frame}
-
 % --------------------------------------------------------------------------
 % Slide 15 - Foundation models (Bavarian launch only; the three other
 % Foundation-models sub-slides were dropped for the India branch).
@@ -625,8 +625,8 @@ What is coming next?
 % Slide 16 - References
 % --------------------------------------------------------------------------
 \begin{frame}[t]{References}
-\small
-\begin{itemize}\itemsep=0.3em
+\footnotesize
+\begin{itemize}\itemsep=0.2em
   \item V.~Mnih, K.~Kavukcuoglu, D.~Silver, A.~Graves, I.~Antonoglou,
         D.~Wierstra and M.~Riedmiller,
         \emph{Playing Atari with Deep Reinforcement Learning},

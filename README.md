@@ -35,7 +35,7 @@ deck identically.
 ## PowerPoint variant
 
 The talk is given from
-`AIMed2026_What_next_in_medical_AI.pptx`, **not** the PDF, because three
+`Towards_Bringing_Agentic_AI_to_Healthcare.pptx`, **not** the PDF, because three
 slides on the "What is agentic AI?" sequence -- *Human baseline*,
 *GPT-4o attempt* and *GROK-3-think attempt* -- need to display animated
 GIFs of the MR sequence playing back, which a static PDF cannot do.
@@ -52,7 +52,7 @@ python3 build_pptx/build_pptx.py
 ```
 
 The script writes its output to
-`build_pptx/AIMed2026_What_next_in_medical_AI.pptx`. The committed
+`build_pptx/Towards_Bringing_Agentic_AI_to_Healthcare.pptx`. The committed
 PPTX at the repo root contains additional manual polish on top of that
 baseline, so the script never overwrites it -- copy the regenerated
 file over the root one explicitly if you want to start from a fresh
@@ -79,7 +79,7 @@ re-run the script, then rebuild the deck.
 
 * `output_tex/main.tex` -- LaTeX source
 * `output_tex/main.pdf` -- compiled deck
-* `AIMed2026_What_next_in_medical_AI.pptx` -- presentable PowerPoint
+* `Towards_Bringing_Agentic_AI_to_Healthcare.pptx` -- presentable PowerPoint
   variant with animated GIFs on the three "What is agentic AI?" attempt
   slides
 * `output_tex/bibliography.bib` -- biblatex entries (loaded by the FAU theme)
