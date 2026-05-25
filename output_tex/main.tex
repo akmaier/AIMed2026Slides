@@ -1,6 +1,8 @@
 % ..............................................................................
-% "What next in medical AI?" -- Andreas Maier, AIMed 2026 (Krakow, 7-9 May 2026).
-% Conversion of "Besonderer Vortrag Maier.pptx" to fau-beamer template.
+% "Towards Bringing Agentic AI to Healthcare" -- Andreas Maier, India 2026.
+% India branch of the AIMed 2026 deck: AIMed branding stripped from the
+% header, three slides on Agent4CT inserted before the Bavarian foundation
+% model slide, and the three later Foundation-models sub-slides dropped.
 % Source PowerPoint had ultra-wide canvas slides with 1-4 animation panels per
 % slide; each panel becomes its own beamer frame.  Animated GIFs from the deck
 % are shown as their static PNG renders (figures/img_08_*.png).
@@ -8,7 +10,6 @@
 \documentclass[final]{beamer}
 
 \usepackage[institute=Tech,
-            SecondLogo = figures/aimed_logo_black.pdf,
             aspectratio=169,
             fontsize=11,
             fontbaselineskip=13,
@@ -28,11 +29,11 @@
 % ----------------------------------------------------------------------------------------
 % Title page metadata
 % ----------------------------------------------------------------------------------------
-\title[What next in medical AI?]{What next in medical AI?}
-\subtitle{AIMed 2026 -- From code to clinic}
+\title[Agentic AI in Healthcare]{Towards Bringing Agentic AI to Healthcare}
+\subtitle{From code to clinic}
 \author[A.~Maier]{Andreas Maier}
 \institute[FAU]{Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg}
-\date{7--9 May 2026, Krak\'ow}
+\date{26 May 2026, India}
 
 % ================================================
 % The main document
@@ -40,8 +41,9 @@
 \begin{document}
 
 % --------------------------------------------------------------------------
-% Slide 1 - Title (FAU titleimage layout; AIMed branding is now in the
-% header via ThirdLogo, so the title body is the standard \titlepage).
+% Slide 1 - Title (FAU titleimage layout; AIMed branding removed for the
+% India branch, so the title body is the standard \titlepage on the
+% default FAU template image).
 % --------------------------------------------------------------------------
 \begin{frame}[t,titleimage]{-}
 \titlepage%
@@ -522,29 +524,75 @@ What is coming next?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 15 - Foundation models (4 sub-slides)
+% Slide 15a-c - Agent4CT (India branch insertion: project intro, leaderboard,
+% structured software process).  Source: github.com/akmaier/Agent4CT.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Agent4CT}{All deep-learning CT methods, in one weekend}
+\begin{itemize}\itemsep=0.25em
+  \item Continuously-running LLM agent that improves a CT
+        reconstruction codebase: edits it, runs short GPU experiments,
+        keeps changes only when the metrics agree.
+  \item Five agents run in parallel across five CT imaging benchmarks
+        and pool findings through a common scratch pad.
+  \item Re-implements over a weekend:
+        Wagner \emph{et~al.}\ 2023 (dual-domain self-supervised LDCT),
+        Wagner \emph{et~al.}\ 2022 (trainable bilateral filters),
+        Hendriksen \emph{et~al.}\ 2020 (Noise2Inverse) and
+        Syben \emph{et~al.}\ 2019 (PYRO-NN differentiable FBP).
+\end{itemize}
+\vspace{0.5em}
+\begin{center}
+  {\small\ttfamily github.com/akmaier/Agent4CT}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Agent4CT}{The Pentathlon -- five CT leaderboards}
+\begin{columns}[T]
+  \begin{column}{0.55\textwidth}
+    \begin{itemize}\itemsep=0.2em
+      \item AAPM 2016 Low-Dose CT (Mayo)
+      \item AAPM 2021 DL Sparse-View CT (128-view fan-beam)
+      \item AAPM 2022 TrueCT
+      \item AAPM 2022 DL-Spectral CT
+      \item AAPM 2024 CT Metal Artifact Reduction
+    \end{itemize}
+    \vspace{0.4em}
+    Score: \emph{headroom recovered} $\in [0,1]$;
+    $1$ matches the oracle.
+  \end{column}
+  \begin{column}{0.45\textwidth}
+    \centering
+    \textbf{Current best -- Breast CT}\\[0.4em]
+    Learned Primal-Dual\\
+    SSIM $\mathbf{0.9062}$\\
+    at $1.49$\,M parameters
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{Agent4CT}{From paper to benchmark -- a structured loop}
+\begin{itemize}\itemsep=0.25em
+  \item \textbf{Tight iteration budget.} 5~min per GPU experiment forces
+        the agent to trade architecture against throughput.
+  \item \textbf{Stage checks every 30 iterations.} 1~h validation on a
+        $3\times$ larger subset catches overfit before it propagates.
+  \item \textbf{Git-backed journal.} Every kept change is a commit;
+        discards are \texttt{git reset} plus a row in the experiment TSV.
+  \item \textbf{Shared scratch pad.} \texttt{observations.jsonl} pools
+        rules-of-thumb across the five agents.
+  \item \textbf{Anti-overfit rules} bootstrapped into every agent's
+        \texttt{program.md} -- so each new run starts on the others'
+        shoulders, not from scratch.
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 15 - Foundation models (Bavarian launch only; the three other
+% Foundation-models sub-slides were dropped for the India branch).
 % --------------------------------------------------------------------------
 \begin{frame}[t]{Foundation models}{Bavarian foundation AI model}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_14_01.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Foundation models}{Multimodal architecture}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_14_02.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Foundation models}{Speech and emotions}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_14_03.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Foundation models}{Knowledge and interaction}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_14_04.png}
 \end{center}
 \end{frame}
 
@@ -589,6 +637,9 @@ What is coming next?
         \url{https://www.ai-bay.eu}
   \item Conference statistics tooling:
         \url{https://github.com/akmaier/ConferenceStats}
+  \item Agent4CT -- agentic re-implementation of deep-learning CT
+        methods:
+        \url{https://github.com/akmaier/Agent4CT}
 \end{itemize}
 \end{frame}
 
