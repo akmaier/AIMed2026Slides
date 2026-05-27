@@ -1,14 +1,24 @@
 # AIMed 2026 Slides
 
-Slides for the talk **"What next in medical AI?"** by Andreas Maier
-(FAU Erlangen-N&#252;rnberg) at the
-[AIMed 2026](https://my.ebm.one/aimed) conference,
-Krak&#243;w, 7-9 May 2026.
+Folien zum Vortrag **„KI in der Onkologie -- Neueste Fortschritte
+und zuk&#252;nftige Anwendungen“** von Andreas Maier
+(FAU Erlangen-N&#252;rnberg) beim **MSD Senso-Abend**,
+M&#252;nchen, 11. Juni 2026. Dies ist der Branch `de-msd-senso`
+(deutsche Fassung mit zwei zus&#228;tzlichen Folien zu multimodalen
+Basismodellen und der [PRAEGNANT-Studie](https://praegnant.org)).
 
-The compiled deck is `output_tex/main.pdf` (50 pages). Source is
-`output_tex/main.tex`, built against the FAU beamer template (the
-`styles/`, `template-art/` and `conf-art/` directories are vendored
-under `output_tex/`).
+Andere Versionen dieses Foliensatzes:
+
+* `main` -- englische Originalfassung *„What next in medical AI?“*
+  ([AIMed 2026](https://my.ebm.one/aimed), Krak&#243;w, 7.--9. Mai 2026).
+* `india-talk` -- englische Indien-Variante
+  *„Towards Bringing Agentic AI to Healthcare“* (Bangalore,
+  26. Mai 2026).
+
+Das fertig kompilierte Foliendeck ist `output_tex/main.pdf` (52 Seiten).
+Quelle ist `output_tex/main.tex`, gebaut gegen das FAU-Beamer-Template
+(die Verzeichnisse `styles/`, `template-art/` und `conf-art/` sind
+unter `output_tex/` mit eingecheckt).
 
 ## Build
 
