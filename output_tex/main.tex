@@ -443,7 +443,15 @@ Wie sieht echte agentische KI aus?
 
 % --------------------------------------------------------------------------
 % Folie 11 - Adaptive KI in der Praxis (3 Unterfolien)
+% Reihenfolge: Patienteninformation -> Adaptive Systeme -> Skizze zum Diagramm
+% (passt zur überarbeiteten PowerPoint-Variante)
 % --------------------------------------------------------------------------
+\begin{frame}[t]{Was ist agentische KI?}{Patienteninformation}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_10_04.png}
+\end{center}
+\end{frame}
+
 \begin{frame}[t]{Was ist agentische KI?}{Adaptive Systeme}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_10_02.png}
@@ -452,13 +460,8 @@ Wie sieht echte agentische KI aus?
 
 \begin{frame}[t]{Was ist agentische KI?}{Von der Skizze zum Diagramm}
 \begin{center}
-  \includegraphics[height=.78\textheight]{img_10_01.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Was ist agentische KI?}{Patienteninformation}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_10_04.png}
+  \only<1>{\includegraphics[height=.78\textheight]{img_10_01.png}}%
+  \only<2>{\includegraphics[width=.95\textwidth,keepaspectratio]{img_10_03.png}}
 \end{center}
 \end{frame}
 
@@ -528,6 +531,95 @@ Wie geht es weiter?
 \begin{center}
   \includegraphics[height=.78\textheight]{img_13_04.png}
 \end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Agent4CT - drei Folien aus dem Bangalore-Vortrag (india-talk), ins
+% Deutsche übertragen für den MSD Senso-Abend.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Agent4CT}{Alle DL-CT-Methoden an einem Wochenende}
+\begin{itemize}\itemsep=0.15em
+  \item Kontinuierlich laufender LLM-Agent, der eine
+        CT-Rekonstruktions-Codebasis bearbeitet, kurze GPU-Experimente
+        ausführt und Änderungen nur dann übernimmt, wenn die Metriken
+        es bestätigen. Fünf Agenten arbeiten parallel an fünf
+        CT-Wettbewerben und tauschen Erkenntnisse über ein gemeinsames
+        Scratchpad aus.
+\end{itemize}
+\vspace{0.3em}
+\textbf{Nachimplementierte Solver}
+({\small\ttfamily pentathlon/demo\_dl\_reference}):
+\begin{columns}[T]
+  \begin{column}{0.49\textwidth}
+    \begin{itemize}\itemsep=0.1em\small
+      \item \textbf{Analytisch:} PyroNN FBP (Syben 2019).
+      \item \textbf{Klassisch-iterativ:} TV (iterativ, überwacht,
+            Hyperparametersuche); Wu \emph{et~al.}\ 2015
+            ($+$ trainierbarer Port).
+      \item \textbf{Variational / unrolled:} Hammernik 2017
+            Variational Network ($+$ CT-Port); Learned Primal-Dual
+            (Adler \& \"Oktem); ITNet v1--v3.
+      \item \textbf{Selbstüberwachtes Denoising:}
+            Dual-Domain-U-Net und trainierbare bilaterale Filter
+            (Wagner 2023 / 2022, mit überwachten Varianten).
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.49\textwidth}
+    \begin{itemize}\itemsep=0.1em\small
+      \item \textbf{Szenenbasierte neuronale Felder:} NAF
+            (neural attenuation field); R2Gaussian.
+      \item \textbf{Basismodelle:} RAM (Terris 2025).
+      \item \textbf{Diffusions-Priors:} DDPM;
+            Diffusions-Prior-Sampling; Diffusions-Rekonstruktion mit
+            Datenkonsistenz.
+      \item \textbf{Transformer:} U-Swin.
+    \end{itemize}
+  \end{column}
+\end{columns}
+\vspace{0.3em}
+\begin{center}
+  {\small\ttfamily github.com/akmaier/Agent4CT}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Agent4CT}{Vom Paper zum Benchmark}
+\begin{itemize}\itemsep=0.25em
+  \item \textbf{Enges Iterationsbudget.} 5~min pro GPU-Experiment
+        zwingen den Agenten, Architektur gegen Durchsatz abzuwägen.
+  \item \textbf{Zwischenkontrollen alle 30 Iterationen.}
+        1~h Validierung auf einem $3\times$ größeren Subset erkennt
+        Overfitting, bevor es sich ausbreitet.
+  \item \textbf{Git-gestütztes Logbuch.} Jede übernommene Änderung
+        ist ein Commit; verworfene Versuche entsprechen einem
+        \texttt{git reset} plus einer Zeile in der Experiment-TSV.
+  \item \textbf{Anti-Overfit-Regeln} werden in das
+        \texttt{program.md} jedes Agenten übernommen -- so beginnt
+        jeder neue Lauf auf den Schultern der anderen, nicht bei Null.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Agent4CT}{Das Pentathlon -- fünf CT-Bestenlisten}
+\begin{columns}[T]
+  \begin{column}{0.55\textwidth}
+    \begin{itemize}\itemsep=0.2em
+      \item AAPM 2016 Low-Dose-CT (Mayo)
+      \item AAPM 2021 DL Sparse-View-CT (128-Sicht-Fächerstrahl)
+      \item AAPM 2022 TrueCT
+      \item AAPM 2022 DL-Spektral-CT
+      \item AAPM 2024 CT-Metallartefaktreduktion
+    \end{itemize}
+    \vspace{0.4em}
+    Bewertung: zurückgewonnenes \emph{Headroom} $\in [0,1]$;
+    $1$ entspricht dem Orakel.
+  \end{column}
+  \begin{column}{0.45\textwidth}
+    \centering
+    \textbf{Aktuell bestes Ergebnis -- Brust-CT}\\[0.4em]
+    Learned Primal-Dual\\
+    SSIM $\mathbf{0{,}9062}$\\
+    bei $1{,}49$\,Mio.\ Parametern
+  \end{column}
+\end{columns}
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -622,30 +714,13 @@ in einem gemeinsamen Repräsentationsraum:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[t]{Basismodelle}{Multimodale Architektur}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_14_02.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Basismodelle}{Sprache und Emotionen}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_14_03.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Basismodelle}{Wissen und Interaktion}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_14_04.png}
-\end{center}
-\end{frame}
-
 % --------------------------------------------------------------------------
 % Folie 16 - Referenzen
 % --------------------------------------------------------------------------
 \begin{frame}[t]{Referenzen}
-\footnotesize
-\begin{itemize}\itemsep=0.2em
+\scriptsize
+\linespread{0.94}\selectfont
+\begin{itemize}\itemsep=0.02em
   \item V.~Mnih, K.~Kavukcuoglu, D.~Silver, A.~Graves, I.~Antonoglou,
         D.~Wierstra und M.~Riedmiller,
         \emph{Playing Atari with Deep Reinforcement Learning},
@@ -681,6 +756,9 @@ in einem gemeinsamen Repräsentationsraum:
         \url{https://www.ai-bay.eu}
   \item Konferenz-Statistik-Werkzeug:
         \url{https://github.com/akmaier/ConferenceStats}
+  \item Agent4CT -- agentische Nachimplementierung von
+        Deep-Learning-CT-Methoden:
+        \url{https://github.com/akmaier/Agent4CT}
 \end{itemize}
 \end{frame}
 
