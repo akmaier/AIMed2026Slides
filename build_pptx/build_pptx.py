@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Convert the rendered PDF deck to a PowerPoint, embedding animated GIFs
-on the three "What is agentic AI?" attempt slides.
+on the three "Agentic AI" spin-echo attempt slides.
 
 For every PDF page we add a full-bleed picture of the rasterized page.
-On pages 25/26/27 we additionally drop the source GIF on top of the
-static PNG so PowerPoint shows the animation in slideshow mode.
+On the Human-baseline / GPT-4o / GROK-3-think pages we additionally drop
+the source GIF on top of the static PNG so PowerPoint shows the
+animation in slideshow mode.
 
 The GIF placement matches the static image's bounding box on the
 rasterized page exactly:
@@ -37,11 +38,13 @@ PAGES_DIR = ROOT / "build_pptx" / "pages"
 # the manually-edited committed copy at the repo root.
 OUT = ROOT / "build_pptx" / "AIMed2026_What_next_in_medical_AI.pptx"
 
-# Slide-page -> (gif filename, source png filename)
+# Slide-page -> (gif filename, source png filename).
+# Pages 28/29/30 of the wch-80-years-orthopedics deck are the
+# Human-baseline / GPT-4o / GROK-3-think spin-echo attempt slides.
 TARGETS = {
-    25: ("img_08_02.gif", "img_08_02.png"),
-    26: ("img_08_03.gif", "img_08_03.png"),
-    27: ("img_08_04.gif", "img_08_04.png"),
+    28: ("img_08_02.gif", "img_08_02.png"),
+    29: ("img_08_03.gif", "img_08_03.png"),
+    30: ("img_08_04.gif", "img_08_04.png"),
 }
 
 # Body region of an FAU-themed slide (fractions of page height).

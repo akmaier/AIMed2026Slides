@@ -1,17 +1,22 @@
 % ..............................................................................
-% "KI in der Onkologie" -- Andreas Maier, MSD Senso-Abend (München, 11.06.2026).
-% Deutsche Variante (Branch de-msd-senso) der "What next in medical AI?"-Folien
-% mit zwei zusätzlichen Folien nach dem Bayerischen Basismodell zur
-% multimodalen Datenintegration und Hypothesengenerierung am Beispiel
-% der PRAEGNANT-Studie.
+% "What's next in Medical AI?" -- Andreas Maier.
+% Branch wch-80-years-orthopedics: English version of the de-msd-senso deck
+% (same content and high-quality images, current slide sequence) prepared for
+% a Chinese academic audience at the 80th anniversary of the Department of
+% Orthopedics, West China Hospital (30 May 2026).
+%
+% Every slide title and subtitle carries an idiomatic Chinese rendering next
+% to the English; the remaining slide body stays in English.  Three extra
+% opening slides introduce the speaker, the lab's history (PDP-11) and the
+% lab today.
+%
+% BUILD: this file must be compiled with XeLaTeX (xeCJK + system CJK fonts),
+%        NOT pdflatex.  On macOS:
+%            xelatex main.tex   (run twice; biber for the bibliography if used)
+%        Chinese is set in Songti SC (宋体, body) and Heiti SC (黑体, titles),
+%        both shipped with macOS, so no extra font install is needed.
 % ------------------------------------------------------------------------------
 \documentclass[final]{beamer}
-
-% Sneak ngerman + main=ngerman into babel BEFORE the FAU theme loads
-% babel with english.  Once the theme later does \RequirePackage[english]{babel}
-% the english option is already in the queue, so no option clash, and
-% ngerman is the active main language.
-\PassOptionsToPackage{main=ngerman,ngerman,english}{babel}
 
 \usepackage[institute=Tech,
             aspectratio=169,
@@ -21,59 +26,162 @@
             InsertTotalFoot
            ]{styles/beamerthemefau}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usetikzlibrary{positioning,arrows.meta,shadows}
 
+% --- Chinese typesetting (XeLaTeX only) -----------------------------------
+% xeCJK auto-switches to the CJK font for Han characters and keeps Latin in
+% the theme's Helvetica.  Titles run in \sffamily -> Heiti SC (sans, matches
+% the FAU Helvetica); body Chinese -> Songti SC (a scholarly serif).
+\usepackage{xeCJK}
+\setCJKmainfont{Songti SC}
+\setCJKsansfont{Heiti SC}
+\setCJKmonofont{Heiti SC}
+% \cn{...} = a Chinese title/subtitle fragment placed next to the English one.
+\newcommand{\cn}[1]{\hspace{0.7em}\mbox{#1}}
+
 \graphicspath{{figures/}}
 
 % ----------------------------------------------------------------------------------------
-% Titel-Metadaten
+% Title page metadata
 % ----------------------------------------------------------------------------------------
-\title[KI in der Onkologie]{KI in der Onkologie}
-\subtitle{Neueste Fortschritte und zukünftige Anwendungen}
+\title[What's next in Medical AI?]{What's next in Medical AI?\\[0.35em]
+  {\large\sffamily 医学人工智能，路在何方？}\\[0.6em]\strut}
+\subtitle{From the early days of Pattern Recognition to the Future of AI\\[0.25em]
+  {\normalsize\sffamily 自模式识别之发轫，至人工智能之未来}}
 \author[A.~Maier]{Andreas Maier}
 \institute[FAU]{Friedrich-Alexander-Universität Erlangen-Nürnberg}
-\date{11.~Juni 2026, München}
+\date{30 May 2026 \,\textbullet\, West China Hospital \,\textbullet\, \sffamily 华西医院骨科八十周年}
 
 % ================================================
-% Hauptdokument
+% The main document
 % ------------------------------------------------
 \begin{document}
 
 % --------------------------------------------------------------------------
-% Folie 1 - Titel
+% Slide 1 - Title
 % --------------------------------------------------------------------------
 \begin{frame}[t,titleimage]{-}
 \titlepage%
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 2 - Übersicht
+% Slide 2 - About the speaker (Andreas Maier)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Übersicht}
+\begin{frame}[t]{About the Speaker\cn{主讲人简介}}{Prof.\ Dr.-Ing.\ Andreas Maier}
+\begin{columns}[T]
+  \begin{column}{0.54\textwidth}
+    \textbf{Responsibilities \& Experience}
+    \begin{itemize}\itemsep=0.12em\small
+      \item Head of the Pattern Recognition Lab, FAU
+      \item Head of the Competence Center Medical Engineering Erlangen
+      \item Head of the Medical AI Hub of Bavaria
+      \item Member, AI Council of the Free State of Bavaria
+      \item Scientific Counselor, Fraunhofer Institute
+      \item AI Council, German Radiation Protection Society
+      \item European Research Council (grantee \& reviewer)
+      \item Visiting Professor at Stanford University and MIT
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.44\textwidth}
+    \textbf{Industry \& Entrepreneurship}
+    \begin{itemize}\itemsep=0.12em\small
+      \item Siemens Healthineers
+            (innovation manager / tech lead)
+      \item Start-ups: \emph{Mira Vision} (shareholder, valued
+            at EUR~10\,M); \emph{Norizon} (council, early VC phase)
+      \item Holds more than 15 active US and EU patents
+    \end{itemize}
+    \vspace{0.6em}
+    \begin{center}\itshape\small\color{gray}
+      Theory first, application always.
+    \end{center}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 3 - History: know the past to understand the future (PDP-11)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Know the Past, Understand the Future\cn{温故而知新}}{The Pattern Recognition Lab\cn{模式识别实验室}}
+\begin{columns}[c]
+  \begin{column}{0.56\textwidth}
+    \begin{itemize}\itemsep=0.35em
+      \item Founded in 1975 by Heinrich Niemann.
+      \item Germany's first dedicated Pattern Recognition /
+            Machine Learning lab.
+      \item Medical imaging research as early as 1981.
+      \item First computer: a \textbf{PDP-11/34} -- 248\,kB, 2.5\,MHz.
+      \item Focus from day one: sound theory and a deep
+            understanding of the hardware.
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.42\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,keepaspectratio]{pdp11.png}\\[0.3em]
+    {\footnotesize PDP-11/34 -- the lab's first computer.}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 4 - The lab today (text only)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Our Team Today\cn{群策群力}}{The Pattern Recognition Lab\cn{模式识别实验室}}
+\begin{columns}[T]
+  \begin{column}{0.48\textwidth}
+    \textbf{People}
+    \begin{itemize}\itemsep=0.12em\small
+      \item Head: Prof.\ Dr.-Ing.\ Andreas Maier
+      \item 2 emeritus professors
+      \item 60+ PhD students and 8 postdocs
+      \item 3\,000 master's and bachelor's students each semester
+      \item Secretaries (Alexandra H., Claudia S.)
+            and our technician (Sven G.)
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.48\textwidth}
+    \textbf{Partners}
+    \begin{itemize}\itemsep=0.12em\small
+      \item Academic partners across Europe, Asia, the Americas
+            and Australia
+      \item Industry partners: Siemens, Fraunhofer, Adidas,
+            Intel, Audi, IBM, and more
+    \end{itemize}
+    \vspace{0.6em}
+    \begin{center}\itshape\small\color{gray}
+      One lab, many hands, one shared effort.
+    \end{center}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Slide 5 - Outline
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Outline\cn{提纲}}
 \begin{itemize}
-  \item Was ist Deep Learning?
-  \item Was ist agentische KI?
-  \item Wie geht es weiter?
+  \item What is deep learning?
+  \item What is agentic AI?
+  \item What is coming next?
 \end{itemize}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 3 - Abschnittstrenner
+% Section divider
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-Was ist Deep Learning?
+What is deep learning?\\[0.25em]{\large\sffamily 何谓深度学习？}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 4 - Deep Learning (4 Unterfolien)
+% Deep Learning (4 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Deep Learning}{Spracherkennung}
+\begin{frame}[t]{Deep Learning\cn{深度学习}}{Speech\cn{语音识别}}
 \begin{itemize}
-  \item Revolutioniert Mustererkennung und KI seit über 10~Jahren.
+  \item Revolutionising pattern recognition and AI for more than 10~years.
 \end{itemize}
 \vspace{0.2em}
 \begin{center}
@@ -81,21 +189,21 @@ Was ist Deep Learning?
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Deep Learning}{Bildklassifikation}
+\begin{frame}[t]{Deep Learning\cn{深度学习}}{Image Classification\cn{图像分类}}
 \begin{center}
   \includegraphics[height=.7\textheight]{img_03_04.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Deep Learning}{Spielen lernen}
+\begin{frame}[t]{Deep Learning\cn{深度学习}}{Learning to Play\cn{无师自通}}
 \begin{center}
   \includegraphics[width=.95\textwidth]{img_03_05.png}\\[0.2em]
   {\footnotesize [Mnih 2013]}
 \end{center}
 \vspace{0.3em}
 \begin{itemize}\itemsep=0.15em
-  \item Deep Q-Networks lernen Atari-Spiele allein aus den Pixeln.
-  \item Ein Agent, viele Spiele -- in mehreren Titeln übermenschlich.
+  \item Deep Q-Networks learn Atari games from raw pixels alone.
+  \item One agent, many games -- super-human on several titles.
 \end{itemize}
 \pause
 \vspace{0.4em}
@@ -107,23 +215,23 @@ Was ist Deep Learning?
   \end{column}
   \begin{column}{0.5\textwidth}
     \begin{itemize}\itemsep=0.15em
-      \item Selbstspiel $+$ Monte-Carlo-Baumsuche.
-      \item Schlägt Weltmeister Lee Sedol mit 4--1.
+      \item Self-play $+$ Monte-Carlo tree search.
+      \item Defeats world champion Lee Sedol 4--1.
     \end{itemize}
   \end{column}
 \end{columns}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 5 - Generative KI (4 Unterfolien)
+% Generative AI (4 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Generative KI}{Originalbild}
+\begin{frame}[t]{Generative AI\cn{生成式AI}}{Source Image\cn{原始图像}}
 \begin{center}
   \includegraphics[height=.75\textheight]{img_04_01.jpg}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Generative KI}{Bildbeschreibung}
+\begin{frame}[t]{Generative AI\cn{生成式AI}}{Image Description\cn{图像描述}}
 \begin{columns}[T]
   \begin{column}{0.32\textwidth}
     \centering
@@ -132,25 +240,24 @@ Was ist Deep Learning?
   \begin{column}{0.66\textwidth}
     \vspace{0.4em}
     \normalsize\itshape
-    \glqq Ein athletisch gebauter Mann mit ernstem Gesichtsausdruck steht
-    in einem gut beleuchteten Raum mit Holzdecke. Er trägt ein blaues
-    T-Shirt mit dem Aufdruck \glq SAVE THE CHUBBY UNICORNS\grq{} und
-    dem Bild eines Nashorns. Der Mann macht ein Selfie mit einem
-    modernen Smartphone und fotografiert sein Spiegelbild. Im
-    Hintergrund sind Trainingsgeräte zu sehen, darunter Hanteln und
-    ein Hantelständer. Außerdem hängt ein Kronleuchter mit
-    eigenwilligem Design von der Decke und beleuchtet den Raum.\grqq
+    ``An athletically built man with a serious expression stands in a
+    well-lit room with a wooden ceiling. He is wearing a blue t-shirt with
+    the phrase `SAVE THE CHUBBY UNICORNS' and an image of a rhinoceros.
+    The man is taking a selfie with a modern smartphone, capturing his
+    reflection in a mirror. In the background, one can see gym equipment
+    including dumbbells and a weight rack. There is also a hanging
+    chandelier with a unique design, illuminating the room.''
   \end{column}
 \end{columns}
 \end{frame}
 
-\begin{frame}[t]{Generative KI}{Generiertes Bild}
+\begin{frame}[t]{Generative AI\cn{生成式AI}}{Generated Image\cn{生成图像}}
 \begin{center}
   \includegraphics[height=.75\textheight]{img_04_04.jpg}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Generative KI}{Stilvarianten}
+\begin{frame}[t]{Generative AI\cn{生成式AI}}{Style Variations\cn{风格变换}}
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
     \centering
@@ -164,9 +271,9 @@ Was ist Deep Learning?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 6 - Deep Learning in der Medizin (4 Unterfolien)
+% Deep learning in medicine (5 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Deep Learning in der Medizin}{Von der Segmentierung zur Rekonstruktion}
+\begin{frame}[t]{Medical Deep Learning\cn{医学深度学习}}{From Segmentation to Reconstruction\cn{从分割到重建}}
 \begin{columns}[c]
   \begin{column}{0.55\textwidth}
     \centering
@@ -179,7 +286,7 @@ Was ist Deep Learning?
 \end{columns}
 \end{frame}
 
-\begin{frame}[t]{Deep Learning in der Medizin}{Bekannte Operatoren}
+\begin{frame}[t]{Medical Deep Learning\cn{医学深度学习}}{Known Operators\cn{已知算子}}
 \vspace*{0.4em}
 \begin{center}
 \begin{tikzpicture}[
@@ -194,10 +301,10 @@ Was ist Deep Learning?
     arr/.style ={-{Latex[length=3mm]}, thick}
   ]
   \node                                 (in)  {\large $x$};
-  \node[train, right=4mm of in]         (t1)  {Trainierbar\\$\hat f_1$};
-  \node[known, right=5mm of t1]         (k1)  {Bekannt\\$f_2$};
-  \node[train, right=5mm of k1]         (t2)  {Trainierbar\\$\hat f_3$};
-  \node[known, right=5mm of t2]         (k2)  {Bekannt\\$f_4$};
+  \node[train, right=4mm of in]         (t1)  {Trainable\\$\hat f_1$};
+  \node[known, right=5mm of t1]         (k1)  {Known op.\\$f_2$};
+  \node[train, right=5mm of k1]         (t2)  {Trainable\\$\hat f_3$};
+  \node[known, right=5mm of t2]         (k2)  {Known op.\\$f_4$};
   \node[right=4mm of k2]                (out) {\large $\hat f(x)$};
   \draw[arr] (in)  -- (t1);
   \draw[arr] (t1)  -- (k1);
@@ -205,21 +312,21 @@ Was ist Deep Learning?
   \draw[arr] (t2)  -- (k2);
   \draw[arr] (k2)  -- (out);
 \end{tikzpicture}\\[0.5em]
-{\small Kombination \emph{trainierbarer} Schichten mit deterministischen
-Operatoren (Fourier-Transformation, Gradientenabstieg, Projektion, \dots).}
+{\small Mix \emph{trainable} layers with deterministic operators
+(Fourier transform, gradient descent, projection, \dots).}
 \end{center}
 \pause
 \vspace{0.5em}
-\begin{block}{Theorem -- bekannte Operatoren verkleinern die Fehlerschranke}
-Für $f=f_n\circ\dots\circ f_1$, approximiert durch
-$\hat f=\hat f_n\circ\dots\circ \hat f_1$ mit Schichtfehlern
-$\varepsilon_i$ und Lipschitz-Konstanten $\hat L_j$, gilt
+\begin{block}{Theorem -- known operators reduce the error bound}
+For $f=f_n\circ\dots\circ f_1$ approximated by
+$\hat f=\hat f_n\circ\dots\circ \hat f_1$ with per-layer errors
+$\varepsilon_i$ and Lipschitz constants $\hat L_j$,
 \[
   \varepsilon(\hat f) \;\leq\;
   \sum_{i=1}^{n}\Bigl(\prod_{j=i+1}^{n}\hat L_j\Bigr)\,\varepsilon_i .
 \]
-Ersetzt man $\hat f_k$ durch den \emph{bekannten} Operator $f_k$, wird
-$\varepsilon_k=0$ und die Schranke verbessert sich strikt.
+Replacing $\hat f_k$ with the \emph{known} $f_k$ forces
+$\varepsilon_k=0$ and strictly tightens this bound.
 \end{block}
 \vspace{-0.3em}
 \begin{center}\footnotesize
@@ -227,29 +334,29 @@ $\varepsilon_k=0$ und die Schranke verbessert sich strikt.
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Deep Learning in der Medizin}{Rekonstruktion}
+\begin{frame}[t]{Medical Deep Learning\cn{医学深度学习}}{Reconstruction\cn{图像重建}}
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
     \centering
     \includegraphics[height=.65\textheight]{img_05_03.jpg}\\[0.4em]
-    \footnotesize Klassisch
+    \footnotesize Conventional
   \end{column}
   \begin{column}{0.5\textwidth}
     \centering
     \includegraphics[height=.65\textheight]{img_05_02.jpg}\\[0.4em]
-    \footnotesize Mit Deep Learning
+    \footnotesize With deep learning
   \end{column}
 \end{columns}
 \end{frame}
 
-\begin{frame}[t]{Deep Learning in der Medizin}{MRT-Variational-Network}
+\begin{frame}[t]{Medical Deep Learning\cn{医学深度学习}}{MRI Variational Network\cn{磁共振变分网络}}
 \begin{center}
   \includegraphics[width=.55\textwidth]{img_05_05.png}\\[0.5em]
   \includegraphics[width=.6\textwidth]{img_05_04.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Deep Learning in der Medizin}{Auszeichnung}
+\begin{frame}[t]{Medical Deep Learning\cn{医学深度学习}}{Recognition\cn{殊荣}}
 \begin{columns}[c]
   \begin{column}{0.35\textwidth}
     \centering
@@ -262,70 +369,65 @@ $\varepsilon_k=0$ und die Schranke verbessert sich strikt.
 \end{columns}
 \vspace{0.4em}
 \begin{center}
-  Deutscher Zukunftspreis -- Niederfeld-MRT, ermöglicht durch Deep Learning.
+  Deutscher Zukunftspreis -- low-field MRI made possible by deep learning.
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 7 - Abschnittstrenner
+% Section divider
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-Was ist agentische KI?
+What is agentic AI?\\[0.25em]{\large\sffamily 何谓智能体？}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 8 - Was ist agentische KI? Einführung (3 Unterfolien)
+% What is agentic AI? Intro (3 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Was ist agentische KI?}{Eine einfache Frage}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{A Simple Question\cn{一个简单的问题}}
 \vspace*{0.6em}
 \begin{flushleft}
-  {\Huge\itshape\glqq Wie fährt man ein Auto?\grqq}
+  {\Huge\itshape\textquotedblleft How do you drive a car?\textquotedblright}
 \end{flushleft}
 \vspace*{0.6em}
-{\large\color{gray}\itshape Hat einige Sekunden nachgedacht\dots}
+{\large\color{gray}\itshape Thought for a few seconds\dots}
 \vspace*{1.4em}
 \begin{itemize}\large
-  \item Ein klassischer Prompt an ein großes Sprachmodell.
-  \item Nach einer kurzen \glqq Denkpause\grqq{} erscheint die Antwort
-        als langer Fließtext.
-  \item Keine Werkzeuge, keine Aktionen -- das Modell \emph{beschreibt}
-        nur, wie man fährt.
+  \item A classic prompt to a large language model.
+  \item After a short ``thinking pause'' the answer arrives as
+        long-form running text.
+  \item No tools, no actions -- the model just \emph{describes} how to drive.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Lange Textantwort eines LLMs}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{Long Text Answer of an LLM\cn{长篇大论}}
 \normalsize
-Um ein Auto zu fahren, gehen Sie wie folgt vor:
+To drive a car, follow these steps:
 \begin{itemize}\itemsep=0.3em
-  \item \textbf{Einsteigen und einstellen:} \textbf{Sicherheitsgurt}
-        anlegen, \textbf{Sitz} und \textbf{Spiegel} so einstellen, dass
-        Sie die Straße gut überblicken.
-  \item \textbf{Motor starten:} \textbf{Bremspedal} treten, Schlüssel
-        drehen oder Startknopf drücken. Der Wählhebel muss auf
-        \textbf{Park (P)} oder \textbf{Neutral (N)} stehen.
-  \item \textbf{Gang einlegen:} Beim Automatikgetriebe Hebel auf
-        \textbf{Drive (D)}; beim Schaltgetriebe \textbf{Kupplung}
-        treten und den \textbf{1.~Gang} einlegen.
-  \item \textbf{Handbremse lösen} und Fuß langsam von der Bremse
-        nehmen. Sanft auf das \textbf{Gaspedal} treten, um anzufahren.
-  \item \textbf{Lenken} Sie mit beiden Händen und beobachten Sie
-        regelmäßig die \textbf{Spiegel}. Sicherheitsabstand zum
-        vorausfahrenden Fahrzeug einhalten.
-  \item \textbf{Zum Anhalten:} Gas wegnehmen, Bremse treten und das
-        Fahrzeug vollständig zum Stehen bringen. In \textbf{Park}
-        schalten und Handbremse anziehen, bevor der Motor
-        ausgeschaltet wird.
+  \item \textbf{Get in and adjust:} fasten your \textbf{seat belt}, set the
+        \textbf{seat} and \textbf{mirrors} so you can see the road clearly.
+  \item \textbf{Start the engine:} press the \textbf{brake pedal}, turn the
+        key or push the start button. Make sure the gear selector is in
+        \textbf{Park (P)} or \textbf{Neutral (N)}.
+  \item \textbf{Engage a gear:} for an automatic, move the lever to
+        \textbf{Drive (D)}; for a manual, press the \textbf{clutch} and
+        select \textbf{1st gear}.
+  \item \textbf{Release the parking brake} and slowly lift your foot off
+        the brake. Gently press the \textbf{accelerator} to move forward.
+  \item \textbf{Steer} smoothly with both hands and \textbf{check mirrors}
+        regularly. Keep a safe distance from the vehicle in front.
+  \item \textbf{To stop:} ease off the accelerator, press the brake, and
+        bring the car to a complete stop. Shift to \textbf{Park} and apply
+        the parking brake before turning off the engine.
 \end{itemize}
 \vspace{0.6em}
 \begin{center}\itshape\color{gray}
-Beachten Sie stets die Verkehrsregeln und passen Sie Ihre Fahrweise
-an Straße und Wetter an.
+Always observe traffic rules and adapt your driving to road and weather.
 \end{center}
 \vspace{0.4em}
-\hfill\textbf{$\Rightarrow$ Viele Worte, aber keine \emph{Aktion}.}\hfill\,
+\hfill\textbf{$\Rightarrow$ Lots of words, but no \emph{action}.}\hfill\,
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Vom Sprachmodell zum Agenten}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{From Language Model to Agent\cn{从语言模型到智能体}}
 \begin{columns}[c]
   \begin{column}{0.48\textwidth}
     \centering
@@ -345,25 +447,25 @@ an Straße und Wetter an.
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 9 - Spin-Echo-EPI: 3 Modellversuche (4 Unterfolien, animiert)
+% Spin-echo EPI: 3 model attempts (4 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Was ist agentische KI?}{Aufgabe für die Modelle}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{Task for the Models\cn{给模型的任务}}
 \vspace*{0.4em}
 \begin{center}
   \begin{minipage}{.92\textwidth}
     \large\itshape
-    \glqq Programmiere ein Spin-Echo-EPI (64$\times$64,
-    fov\,=\,(0{,}2,\,0{,}2,\,0{,}08)\,m,
-    TE\,=\,150\,ms)!\grqq
+    \textquotedblleft Code a spin echo EPI (64$\times$64,
+    fov\,=\,(0.2,\,0.2,\,0.08)\,m,
+    TE\,=\,150\,ms)!\textquotedblright
   \end{minipage}
 \end{center}
 \vspace*{0.6em}
 \begin{itemize}\large\itemsep=0.3em
-  \item \textbf{Spin-Echo-EPI} -- eine fortgeschrittene MRT-Sequenz
-        für Diffusions- und funktionelle Bildgebung.
-  \item Drei Modelle erhalten \emph{dieselbe} natürlichsprachliche
-        Anweisung und müssen lauffähigen Python-Code erzeugen.
-  \item Teilnehmer:
+  \item \textbf{Spin-echo EPI} -- an advanced MRI sequence used for
+        diffusion and functional imaging.
+  \item Three models receive the \emph{same} natural-language
+        instruction and must produce runnable Python code.
+  \item Contestants:
 \end{itemize}
 \vspace*{0.2em}
 \begin{center}
@@ -375,60 +477,60 @@ an Straße und Wetter an.
                 drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
                              opacity=0.35}}
   ]
-  \node[box, fill=green!12, draw=green!50!black] (h)               {Mensch\\\normalsize\mdseries Referenz};
+  \node[box, fill=green!12, draw=green!50!black] (h)               {Human\\\normalsize\mdseries reference};
   \node[box, fill=blue!12,  draw=blue!60!black,  right=8mm of h]  (g) {GPT-4o\\\normalsize\mdseries OpenAI};
   \node[box, fill=orange!18,draw=orange!70!black,right=8mm of g]  (k) {GROK-3-think\\\normalsize\mdseries xAI};
 \end{tikzpicture}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Mensch als Referenz}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{Human Baseline\cn{人类基准}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_08_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Versuch von GPT-4o}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{GPT-4o Attempt\cn{GPT-4o 的尝试}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_08_03.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Versuch von GROK-3-think}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{GROK-3-think Attempt\cn{GROK-3-think 的尝试}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_08_04.png}
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Abschnittstrenner vor Agent4MR-Ergebnissen
+% Sub-section divider before Agent4MR results
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-Wie sieht echte agentische KI aus?
+How about real agentic AI?\\[0.25em]{\large\sffamily 何为真正的智能体？}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 10 - Agent4MR-Ergebnisse (4 Unterfolien)
+% Agent4MR results (4 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Was ist agentische KI?}{LLM vs.\ Agent4MR}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{LLM vs.\ Agent4MR\cn{大模型 对 Agent4MR}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_09_01.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Interaktionen pro Modell}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{Interactions per Model\cn{各模型的交互次数}}
 \begin{center}
   \includegraphics[width=.92\textwidth]{img_09_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Kostenvergleich}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{Cost Comparison\cn{成本对比}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_09_03.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Iterativer Fortschritt}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{Iterative Progress\cn{迭代精进}}
 \begin{columns}[c]
   \begin{column}{0.6\textwidth}
     \centering
@@ -442,23 +544,21 @@ Wie sieht echte agentische KI aus?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 11 - Adaptive KI in der Praxis (3 Unterfolien)
-% Reihenfolge: Patienteninformation -> Adaptive Systeme -> Skizze zum Diagramm
-% (passt zur überarbeiteten PowerPoint-Variante)
+% Adaptive AI in practice (3 sub-slides) -- order: patient, adaptive, sketch
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Was ist agentische KI?}{Patienteninformation}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{Patient Information\cn{患者宣教}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_10_04.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Adaptive Systeme}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{Adaptive Systems\cn{自适应系统}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_10_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Von der Skizze zum Diagramm}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{From Sketch to Diagram\cn{从草图到图表}}
 \begin{center}
   \only<1>{\includegraphics[height=.78\textheight]{img_10_01.png}}%
   \only<2>{\includegraphics[width=.95\textwidth,keepaspectratio]{img_10_03.png}}
@@ -466,27 +566,27 @@ Wie sieht echte agentische KI aus?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 12 - Vibe Coding und fortgeschrittene KI-Techniken (4 Unterfolien)
+% Vibe coding & advanced AI techniques (4 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Was ist agentische KI?}{Vibe Coding}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{Vibe Coding\cn{氛围编程}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_11_01.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Fortgeschrittene KI-gestützte Techniken}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{Advanced AI-assisted Techniques\cn{进阶AI辅助技巧}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_11_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Markdown-gesteuerte Qualitätssicherung}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{Markdown-driven Quality Gates\cn{Markdown 质量管控}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_11_03.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Lehrbuch}
+\begin{frame}[t]{Agentic AI\cn{智能体}}{Textbook\cn{教科书}}
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
     \centering
@@ -500,78 +600,75 @@ Wie sieht echte agentische KI aus?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 13 - Abschnittstrenner
+% Section divider
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-Wie geht es weiter?
+What is coming next?\\[0.25em]{\large\sffamily 未来何去何从？}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 14 - Fast alles ist jetzt einfach (4 Unterfolien)
+% Almost everything is easy now (4 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{China und KI}
+\begin{frame}[t]{Everything is Easy Now\cn{易如反掌}}{China and AI\cn{中国与人工智能}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_13_01.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{Konferenzanteile}
+\begin{frame}[t]{Everything is Easy Now\cn{易如反掌}}{Conference Shares\cn{会议份额}}
 \begin{center}
   \includegraphics[width=.9\textwidth]{img_13_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{ConferenceStats-Workflow}
+\begin{frame}[t]{Everything is Easy Now\cn{易如反掌}}{ConferenceStats Workflow\cn{ConferenceStats 工作流}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_13_03.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{Konferenzbeiträge aus China}
+\begin{frame}[t]{Everything is Easy Now\cn{易如反掌}}{Conference Contributions from China\cn{来自中国的会议贡献}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_13_04.png}
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Agent4CT - drei Folien aus dem Bangalore-Vortrag (india-talk), ins
-% Deutsche übertragen für den MSD Senso-Abend.
+% Agent4CT -- three slides (Gemeinsames-Scratchpad bullet dropped, matching
+% the de-msd-senso content decision).
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Agent4CT}{Alle DL-CT-Methoden an einem Wochenende}
+\begin{frame}[t]{Agent4CT}{All DL-CT Methods in One Weekend\cn{一周尽试众法}}
 \begin{itemize}\itemsep=0.15em
-  \item Kontinuierlich laufender LLM-Agent, der eine
-        CT-Rekonstruktions-Codebasis bearbeitet, kurze GPU-Experimente
-        ausführt und Änderungen nur dann übernimmt, wenn die Metriken
-        es bestätigen. Fünf Agenten arbeiten parallel an fünf
-        CT-Wettbewerben und tauschen Erkenntnisse über ein gemeinsames
-        Scratchpad aus.
+  \item Continuously-running LLM agent that edits a CT reconstruction
+        codebase, runs short GPU experiments, and keeps changes only
+        when the metrics agree.  Five agents run in parallel across
+        five CT challenges and pool findings through a shared
+        scratch pad.
 \end{itemize}
 \vspace{0.3em}
-\textbf{Nachimplementierte Solver}
+\textbf{Re-implemented solvers}
 ({\small\ttfamily pentathlon/demo\_dl\_reference}):
 \begin{columns}[T]
   \begin{column}{0.49\textwidth}
     \begin{itemize}\itemsep=0.1em\small
-      \item \textbf{Analytisch:} PyroNN FBP (Syben 2019).
-      \item \textbf{Klassisch-iterativ:} TV (iterativ, überwacht,
-            Hyperparametersuche); Wu \emph{et~al.}\ 2015
-            ($+$ trainierbarer Port).
-      \item \textbf{Variational / unrolled:} Hammernik 2017
-            Variational Network ($+$ CT-Port); Learned Primal-Dual
+      \item \textbf{Analytical:} PyroNN FBP (Syben 2019).
+      \item \textbf{Classical iterative:} TV (iterative, supervised,
+            hyper-search); Wu \emph{et~al.}\ 2015 ($+$ trainable port).
+      \item \textbf{Variational / unrolled:} Hammernik 2017 variational
+            network ($+$ CT port); Learned Primal-Dual
             (Adler \& \"Oktem); ITNet v1--v3.
-      \item \textbf{Selbstüberwachtes Denoising:}
-            Dual-Domain-U-Net und trainierbare bilaterale Filter
-            (Wagner 2023 / 2022, mit überwachten Varianten).
+      \item \textbf{Self-supervised denoising:} dual-domain U-Net and
+            trainable bilateral filters (Wagner 2023 / 2022, with
+            supervised variants).
     \end{itemize}
   \end{column}
   \begin{column}{0.49\textwidth}
     \begin{itemize}\itemsep=0.1em\small
-      \item \textbf{Szenenbasierte neuronale Felder:} NAF
+      \item \textbf{Per-scene neural fields:} NAF
             (neural attenuation field); R2Gaussian.
-      \item \textbf{Basismodelle:} RAM (Terris 2025).
-      \item \textbf{Diffusions-Priors:} DDPM;
-            Diffusions-Prior-Sampling; Diffusions-Rekonstruktion mit
-            Datenkonsistenz.
+      \item \textbf{Foundation models:} RAM (Terris 2025).
+      \item \textbf{Diffusion priors:} DDPM; diffusion-prior sampling;
+            diffusion-recon with data consistency.
       \item \textbf{Transformer:} U-Swin.
     \end{itemize}
   \end{column}
@@ -582,195 +679,130 @@ Wie geht es weiter?
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Agent4CT}{Vom Paper zum Benchmark}
+\begin{frame}[t]{Agent4CT}{From Paper to Benchmark\cn{从论文到基准}}
 \begin{itemize}\itemsep=0.25em
-  \item \textbf{Enges Iterationsbudget.} 5~min pro GPU-Experiment
-        zwingen den Agenten, Architektur gegen Durchsatz abzuwägen.
-  \item \textbf{Zwischenkontrollen alle 30 Iterationen.}
-        1~h Validierung auf einem $3\times$ größeren Subset erkennt
-        Overfitting, bevor es sich ausbreitet.
-  \item \textbf{Git-gestütztes Logbuch.} Jede übernommene Änderung
-        ist ein Commit; verworfene Versuche entsprechen einem
-        \texttt{git reset} plus einer Zeile in der Experiment-TSV.
-  \item \textbf{Anti-Overfit-Regeln} werden in das
-        \texttt{program.md} jedes Agenten übernommen -- so beginnt
-        jeder neue Lauf auf den Schultern der anderen, nicht bei Null.
+  \item \textbf{Tight iteration budget.} 5~min per GPU experiment forces
+        the agent to trade architecture against throughput.
+  \item \textbf{Stage checks every 30 iterations.} 1~h validation on a
+        $3\times$ larger subset catches overfit before it propagates.
+  \item \textbf{Git-backed journal.} Every kept change is a commit;
+        discards are \texttt{git reset} plus a row in the experiment TSV.
+  \item \textbf{Anti-overfit rules} bootstrapped into every agent's
+        \texttt{program.md} -- so each new run starts on the others'
+        shoulders, not from scratch.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[t]{Agent4CT}{Das Pentathlon -- fünf CT-Bestenlisten}
+\begin{frame}[t]{Agent4CT}{The Pentathlon -- Five CT Leaderboards\cn{五项全能}}
 \begin{columns}[T]
   \begin{column}{0.55\textwidth}
     \begin{itemize}\itemsep=0.2em
-      \item AAPM 2016 Low-Dose-CT (Mayo)
-      \item AAPM 2021 DL Sparse-View-CT (128-Sicht-Fächerstrahl)
+      \item AAPM 2016 Low-Dose CT (Mayo)
+      \item AAPM 2021 DL Sparse-View CT (128-view fan-beam)
       \item AAPM 2022 TrueCT
-      \item AAPM 2022 DL-Spektral-CT
-      \item AAPM 2024 CT-Metallartefaktreduktion
+      \item AAPM 2022 DL-Spectral CT
+      \item AAPM 2024 CT Metal Artifact Reduction
     \end{itemize}
     \vspace{0.4em}
-    Bewertung: zurückgewonnenes \emph{Headroom} $\in [0,1]$;
-    $1$ entspricht dem Orakel.
+    Score: \emph{headroom recovered} $\in [0,1]$;
+    $1$ matches the oracle.
   \end{column}
   \begin{column}{0.45\textwidth}
     \centering
-    \textbf{Aktuell bestes Ergebnis -- Brust-CT}\\[0.4em]
+    \textbf{Current best -- Breast CT}\\[0.4em]
     Learned Primal-Dual\\
-    SSIM $\mathbf{0{,}9062}$\\
-    bei $1{,}49$\,Mio.\ Parametern
+    SSIM $\mathbf{0.9062}$\\
+    at $1.49$\,M parameters
   \end{column}
 \end{columns}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 15 - Basismodelle: Bayerisches KI-Basismodell
+% Foundation models (Bavarian launch)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Basismodelle}{Bayerisches KI-Basismodell}
+\begin{frame}[t]{Foundation Models\cn{基础模型}}{Bavarian Foundation AI Model\cn{巴伐利亚基础大模型}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_14_01.png}
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folien 15a-b - Neue Folien für MSD Senso-Abend: multimodale
-% Basismodelle in der Onkologie am Beispiel PRAEGNANT
+% References
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Basismodelle}{Multimodale Datenintegration in der Onkologie}
-\vspace{0.2em}
-Multimodale Basismodelle vereinen sehr unterschiedliche Datenquellen
-in einem gemeinsamen Repräsentationsraum:
-\vspace{0.4em}
-\begin{columns}[T]
-  \begin{column}{0.49\textwidth}
-    \begin{itemize}\itemsep=0.15em\small
-      \item \textbf{Multi-Omics:} Genom, Transkriptom, Proteom,
-            Methylom.
-      \item \textbf{Bildgebung:} CT, MRT, PET, Histopathologie,
-            Mammographie.
-      \item \textbf{Sprache:} Anamnese, Tumorboard-Mitschnitte,
-            Arztbriefe.
-    \end{itemize}
-  \end{column}
-  \begin{column}{0.49\textwidth}
-    \begin{itemize}\itemsep=0.15em\small
-      \item \textbf{Labordaten:} Blutwerte, Tumormarker,
-            therapiebegleitende Verlaufsparameter.
-      \item \textbf{LLMs:} Fachliteratur, Leitlinien,
-            Studienprotokolle.
-      \item \textbf{Simulationen:} Pharmakokinetik,
-            Behandlungssimulationen, \emph{Digital Twins}.
-    \end{itemize}
-  \end{column}
-\end{columns}
-\vspace{0.6em}
-\begin{center}\small
-  $\Rightarrow$ Ein gemeinsames Modell anstelle vieler isolierter Werkzeuge.
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Basismodelle}{Hypothesen aus Studiendaten -- PRAEGNANT}
-\vspace{0.1em}
-\begin{itemize}\itemsep=0.15em\small
-  \item \textbf{PRAEGNANT}: deutsches akademisches Studiennetzwerk zum
-        fortgeschrittenen Mammakarzinom (Fasching et~al.); Tumorgewebe,
-        Blut, Biomarker und Patient-Reported Outcomes aus vielen
-        Zentren und tausenden Patientinnen
-        ({\ttfamily praegnant.org}).
-\end{itemize}
-\vspace{0.3em}
-\begin{center}
-\begin{tikzpicture}[
-    every node/.style={font=\small\bfseries},
-    box/.style={draw, rounded corners=3pt, thick, minimum height=1.1cm,
-                minimum width=3.2cm, text width=3.0cm, align=center,
-                drop shadow={shadow xshift=0.6mm, shadow yshift=-0.6mm,
-                             opacity=0.35}},
-    gen/.style ={box, fill=blue!12,   draw=blue!60!black},
-    ver/.style ={box, fill=green!14,  draw=green!50!black},
-    fal/.style ={box, fill=orange!18, draw=orange!70!black},
-    arr/.style ={-{Latex[length=3mm]}, thick}
-  ]
-  \node[gen]                    (g) {Generieren\\\small\mdseries Hypothesen aus den Daten};
-  \node[ver, right=10mm of g]   (v) {Verifizieren\\\small\mdseries Kohorte, Subgruppe};
-  \node[fal, right=10mm of v]   (f) {Falsifizieren\\\small\mdseries gezielte Gegenprobe};
-  \draw[arr] (g) -- (v);
-  \draw[arr] (v) -- (f);
-  \draw[arr, dashed] (f.south) to[bend left=45] (g.south);
-\end{tikzpicture}
-\end{center}
-\vspace{0.3em}
-\begin{itemize}\itemsep=0.15em\small
-  \item Das Basismodell schlägt aus den vereinheitlichten
-        Multi-Omics-, Bildgebungs- und Klinikdaten \emph{neue
-        Hypothesen} vor (z.\,B. Mutations-Therapie-Interaktionen,
-        Bildmarker für das Therapieansprechen).
-  \item \emph{Verifikation} per simulierter und retrospektiver
-        Subgruppenanalyse in PRAEGNANT-ähnlichen Kohorten;
-        \emph{Falsifikation} per gezielter Gegenprobe -- alles
-        automatisch protokolliert und für Klinikerinnen und Kliniker
-        nachvollziehbar.
-  \item Ergebnis: vom Datensatz zu prüfbaren Studienhypothesen in
-        Stunden statt Monaten.
-\end{itemize}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Folie 16 - Referenzen
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Referenzen}
+\begin{frame}[t]{References\cn{参考文献}}
 \scriptsize
 \linespread{0.94}\selectfont
 \begin{itemize}\itemsep=0.02em
   \item V.~Mnih, K.~Kavukcuoglu, D.~Silver, A.~Graves, I.~Antonoglou,
-        D.~Wierstra und M.~Riedmiller,
+        D.~Wierstra and M.~Riedmiller,
         \emph{Playing Atari with Deep Reinforcement Learning},
         arXiv:1312.5602, 2013.
-  \item D.~Silver et~al.,
+  \item D.~Silver et al.,
         \emph{Mastering the game of Go with deep neural networks and tree search},
         \emph{Nature}, 529:484--489, 2016 (AlphaGo).
   \item K.~Hammernik, T.~Klatzer, E.~Kobler, M.~P.~Recht, D.~K.~Sodickson,
-        T.~Pock und \textbf{F.~Knoll},
+        T.~Pock and \textbf{F.~Knoll},
         \emph{Learning a Variational Network for Reconstruction of
         Accelerated MRI Data},
         \emph{Magnetic Resonance in Medicine}, 79(6):3055--3071, 2018
-        (FastMRI / Variational Network).
+        (FastMRI / variational network).
   \item A.~Maier, C.~Syben, B.~Stimpel, T.~Wuerfl, M.~Hoffmann, F.~Schebesch,
         W.~Fu, L.~Mill, L.~Kling, S.~Christiansen,
         \emph{Learning with Known Operators Reduces Maximum Error Bounds},
         \emph{Nature Machine Intelligence}, 1:373--380, 2019.
   \item M.~Zaiss, J.~R.~Rajput, H.~N.~Dang, V.~Golkov, D.~Cremers,
-        F.~Knoll und \textbf{A.~Maier},
-        \emph{Exploring GPT-4 as MR sequence and reconstruction
-        programming assistant: GPT4MR},
-        BVM Workshop, S.~94--99, Springer, 2024.
-  \item M.~Zaiss, A.~Aly, J.~Endres, T.~Dornstetter, S.~Weinmüller und
+        F.~Knoll and \textbf{A.~Maier},
+        \emph{Exploring GPT-4 as MR sequence and reconstruction programming
+        assistant: GPT4MR},
+        BVM Workshop, pp.~94--99, Springer, 2024.
+  \item M.~Zaiss, A.~Aly, J.~Endres, T.~Dornstetter, S.~Weinm\"uller and
         \textbf{A.~Maier},
-        \emph{Agentic MR sequence development: leveraging LLMs with MR
-        skills for automatic physics-informed sequence development},
+        \emph{Agentic MR sequence development: leveraging LLMs with MR skills
+        for automatic physics-informed sequence development},
         arXiv:2604.13282, 2026 (Agent4MR).
-  \item PRAEGNANT-Studie (metastasiertes Mammakarzinom):
-        \url{https://praegnant.org}
-  \item Deutscher Zukunftspreis (Niederfeld-MRT):
+  \item Deutscher Zukunftspreis (low-field MRI):
         \url{https://www.deutscher-zukunftspreis.de/de/die-gewinner-des-deutschen-zukunftspreises-2023-spendeten-ein-mrt-geraet}
-  \item Bayerisches KI-Basismodell:
+  \item Bavarian Foundation AI Model:
         \url{https://www.ai-bay.eu}
-  \item Konferenz-Statistik-Werkzeug:
+  \item Conference statistics tooling:
         \url{https://github.com/akmaier/ConferenceStats}
-  \item Agent4CT -- agentische Nachimplementierung von
-        Deep-Learning-CT-Methoden:
+  \item Agent4CT -- agentic re-implementation of deep-learning CT methods:
         \url{https://github.com/akmaier/Agent4CT}
 \end{itemize}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Folie 17 - Vielen Dank + QR-Code (zentriert, schwarz/weiß)
+% Closing slide - thanks + congratulations to WCH Orthopedics
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Vielen Dank!}
+\begin{frame}[t]{Thank You \& Congratulations!\cn{致谢与祝贺}}
+\vspace{0.4em}
 \begin{center}
-  {\Large Folien auf GitHub}\\[1.2em]
-  \includegraphics[height=10cm]{qr_github.png}\\[0.8em]
-  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/de-msd-senso}
+  Congratulations to the \textbf{Department of Orthopedics,
+  West China Hospital}\\
+  on \textbf{80 years} of healing, teaching and discovery.
 \end{center}
+\vspace{0.6em}
+\begin{center}\large\sffamily
+  谨祝华西医院骨科\,\textbf{八秩华诞}！\\[0.35em]
+  {\normalsize 杏林春暖，桃李芬芳；悬壶济世，再谱新篇。}
+\end{center}
+\vspace{0.8em}
+\begin{columns}[c]
+  \begin{column}{0.5\textwidth}
+    \centering
+    {\normalsize Slides on GitHub\cn{幻灯片见 GitHub}}\\[0.6em]
+    \includegraphics[height=5.4cm]{qr_github.png}\\[0.4em]
+    {\footnotesize\ttfamily github.com/akmaier/AIMed2026Slides/tree/wch-80-years-orthopedics}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \centering
+    \itshape\color{gray}
+    From the early days of pattern recognition\\
+    to the future of medical AI --\\
+    thank you for joining this journey.\\[0.6em]
+    \upshape\sffamily 温故而知新，止于至善。
+  \end{column}
+\end{columns}
 \end{frame}
 
 \end{document}
