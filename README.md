@@ -1,77 +1,85 @@
-# AIMed 2026 Slides
+# What's next in Medical AI? — West China Hospital (Orthopedics, 80 Years)
 
-Folien zum Vortrag **„KI in der Onkologie -- Neueste Fortschritte
-und zuk&#252;nftige Anwendungen“** von Andreas Maier
-(FAU Erlangen-N&#252;rnberg) beim **MSD Senso-Abend**,
-M&#252;nchen, 11. Juni 2026. Dies ist der Branch `de-msd-senso`
-(deutsche Fassung mit zwei zus&#228;tzlichen Folien zu multimodalen
-Basismodellen und der [PRAEGNANT-Studie](https://praegnant.org)).
+Slides for the talk **“What's next in Medical AI?”** by Andreas Maier
+(FAU Erlangen-N&#252;rnberg), given at the **80th Anniversary of the
+Department of Orthopedics, West China Hospital** (&#21326;&#35199;&#21307;&#38498;&#39592;&#31185;),
+on **30 May 2026**. Subtitle: *From the early days of Pattern
+Recognition to the Future of AI*.
 
-Andere Versionen dieses Foliensatzes:
+This is the `wch-80-years-orthopedics` branch: an English deck prepared
+for a Chinese academic audience. Every slide **title and subtitle**
+carries an idiomatic Chinese rendering next to the English (the slide
+body stays English). The translations deliberately lean on classical
+idioms and allusions rather than word-for-word glosses — for example
+&#28201;&#25925;&#32780;&#30693;&#26032; (“review the old to know the new”, on the history
+slide), &#26131;&#22914;&#21453;&#25484; (China & AI), &#20116;&#39033;&#20840;&#33021; (the Agent4CT
+“pentathlon”), and a closing congratulation on the department's
+&#20843;&#31171;&#21326;&#35806; (80th anniversary): &#26447;&#26519;&#26149;&#26262;&#65292;&#26691;&#26446;&#33437;&#33459;&#65307;&#24748;&#22774;&#27982;&#19990;&#65292;&#20877;&#35889;&#26032;&#31687;&#12290;
+Three opening slides introduce the speaker, the lab's history (the
+PDP-11), and the lab today.
 
-* `main` -- englische Originalfassung *„What next in medical AI?“*
-  ([AIMed 2026](https://my.ebm.one/aimed), Krak&#243;w, 7.--9. Mai 2026).
-* `india-talk` -- englische Indien-Variante
-  *„Towards Bringing Agentic AI to Healthcare“* (Bangalore,
-  26. Mai 2026).
+Other versions of this deck:
 
-Das fertig kompilierte Foliendeck ist `output_tex/main.pdf` (52 Seiten).
-Quelle ist `output_tex/main.tex`, gebaut gegen das FAU-Beamer-Template
-(die Verzeichnisse `styles/`, `template-art/` und `conf-art/` sind
-unter `output_tex/` mit eingecheckt).
+* `main` — English original *“What next in medical AI?”*
+  ([AIMed 2026](https://my.ebm.one/aimed), Krak&#243;w, 7.–9. May 2026).
+* `de-msd-senso` — German version *“KI in der Onkologie”* (MSD
+  Senso-Abend, Munich, 11 June 2026).
+* `india-talk` — English India variant *“Towards Bringing Agentic AI
+  to Healthcare”* (Bangalore, 26 May 2026).
+
+The compiled deck is `output_tex/main.pdf` (54 pages). Source is
+`output_tex/main.tex`, built against the FAU beamer template (the
+`styles/`, `template-art/` and `conf-art/` directories are checked in
+under `output_tex/`).
 
 ## Build
 
+This branch typesets Chinese with **xeCJK**, so it must be compiled
+with **XeLaTeX** (not `pdflatex`):
+
 ```
 cd output_tex
-latexmk -pdf main.tex
+xelatex main.tex
+xelatex main.tex
 ```
 
-A single `latexmk` run handles the biber bibliography pass automatically.
-If you prefer to drive the engines by hand:
+(Two passes settle the page-counter in the footer; `latexmk -xelatex
+main.tex` works too.) Chinese glyphs use the macOS system fonts
+**Songti SC** (&#23435;&#20307;, body) and **Heiti SC** (&#40657;&#20307;, titles); on
+other systems substitute any installed CJK fonts via the
+`\setCJKmainfont` / `\setCJKsansfont` lines in the preamble.
 
-```
-pdflatex main.tex
-biber    main
-pdflatex main.tex
-pdflatex main.tex
-```
-
-The deck is self-contained: no `animate` package, no extracted frame
-sequences, and the QR code on the Thank-you slide is a pre-rendered PNG
-(`output_tex/figures/qr_github.png`) - so any PDF reader displays the
-deck identically.
+The deck is otherwise self-contained: no `animate` package, no
+extracted frame sequences, and the QR code on the closing slide is a
+pre-rendered PNG (`output_tex/figures/qr_github.png`).
 
 ## PowerPoint variant
 
 The talk is given from
 `AIMed2026_What_next_in_medical_AI.pptx`, **not** the PDF, because three
-slides on the "What is agentic AI?" sequence -- *Human baseline*,
-*GPT-4o attempt* and *GROK-3-think attempt* -- need to display animated
-GIFs of the MR sequence playing back, which a static PDF cannot do.
+slides in the “Agentic AI” sequence — *Human baseline*, *GPT-4o attempt*
+and *GROK-3-think attempt* — need to display animated GIFs of the MR
+sequence playing back, which a static PDF cannot do.
 
-To get to that PPTX, the rendered PDF is converted slide-by-slide:
-each PDF page is rasterised at 200 DPI and dropped onto a 16:9 slide
-as a full-bleed picture; on the three GIF pages, the matching
-`figures/img_08_0*.gif` is additionally placed on top of the static
-image at exactly the same bounding box (detected from the rasterised
-page so it aligns pixel-for-pixel). Re-run the conversion with:
+To get to that PPTX, the rendered PDF is converted slide-by-slide: each
+PDF page is rasterised at 200 DPI and dropped onto a 16:9 slide as a
+full-bleed picture; on the three GIF pages (pages 28/29/30 of this
+deck) the matching `figures/img_08_0*.gif` is additionally placed on
+top of the static image at exactly the same bounding box (detected from
+the rasterised page so it aligns pixel-for-pixel). Re-run the
+conversion with:
 
 ```
 python3 build_pptx/build_pptx.py
 ```
 
 The script writes its output to
-`build_pptx/AIMed2026_What_next_in_medical_AI.pptx`. The committed
-PPTX at the repo root contains additional manual polish on top of that
-baseline, so the script never overwrites it -- copy the regenerated
-file over the root one explicitly if you want to start from a fresh
-baseline.
+`build_pptx/AIMed2026_What_next_in_medical_AI.pptx`; copy that over the
+committed PPTX at the repo root to publish a fresh build. The committed
+root PPTX is exactly that build (no manual post-editing on this branch).
 
-If you are reading this to figure out how the deck was built, the
-script is intentionally short and commented; `build_pptx/probe_layout.py`
-is the small diagnostic used to find the FAU theme's body region on a
-rasterised page.
+`build_pptx/probe_layout.py` is the small diagnostic used to find the
+FAU theme's body region on a rasterised page.
 
 ## Regenerating the QR code
 
@@ -82,27 +90,28 @@ package (pure black on white, error correction M):
 python3 generate_qr.py
 ```
 
-Edit `URL` at the top of `generate_qr.py` if the target ever changes,
-re-run the script, then rebuild the deck.
+Edit `URL` at the top of `generate_qr.py` if the target ever changes
+(it should point at this branch), re-run the script, then rebuild the
+deck.
 
 ## Contents
 
-* `output_tex/main.tex` -- LaTeX source
-* `output_tex/main.pdf` -- compiled deck
-* `AIMed2026_What_next_in_medical_AI.pptx` -- presentable PowerPoint
-  variant with animated GIFs on the three "What is agentic AI?" attempt
-  slides
-* `output_tex/bibliography.bib` -- biblatex entries (loaded by the FAU theme)
-* `output_tex/figures/` -- images, including `qr_github.png`, the
-  static `img_08_0*.png` renders, and the original `img_08_0*.gif`
-  source animations used by the PowerPoint variant
+* `output_tex/main.tex` — LaTeX source (XeLaTeX + xeCJK)
+* `output_tex/main.pdf` — compiled deck (54 pages)
+* `AIMed2026_What_next_in_medical_AI.pptx` — presentable PowerPoint
+  variant with animated GIFs on the three “Agentic AI” attempt slides
+* `output_tex/bibliography.bib` — biblatex entries (loaded by the FAU theme)
+* `output_tex/figures/` — images, including `pdp11.png` (lab history
+  slide), `qr_github.png`, the static `img_08_0*.png` renders, and the
+  original `img_08_0*.gif` source animations used by the PowerPoint
+  variant
 * `output_tex/styles/`, `output_tex/template-art/`,
-  `output_tex/conf-art/` -- FAU beamer template
-* `generate_qr.py` -- QR-code generation script
-* `build_pptx/build_pptx.py` -- PDF-to-PowerPoint converter that
-  embeds the GIFs at the right location
-* `build_pptx/probe_layout.py` -- diagnostic for finding the FAU
-  theme's body region on a rasterised page
+  `output_tex/conf-art/` — FAU beamer template
+* `generate_qr.py` — QR-code generation script
+* `build_pptx/build_pptx.py` — PDF-to-PowerPoint converter that embeds
+  the GIFs at the right location
+* `build_pptx/probe_layout.py` — diagnostic for finding the FAU theme's
+  body region on a rasterised page
 
 ## References
 
@@ -132,5 +141,7 @@ re-run the script, then rebuild the deck.
 * Bavarian Foundation AI Model: [www.ai-bay.eu](https://www.ai-bay.eu).
 * Conference statistics tooling:
   [github.com/akmaier/ConferenceStats](https://github.com/akmaier/ConferenceStats).
+* Agent4CT — agentic re-implementation of deep-learning CT methods:
+  [github.com/akmaier/Agent4CT](https://github.com/akmaier/Agent4CT).
 
 [zukunftspreis]: https://www.deutscher-zukunftspreis.de/de/die-gewinner-des-deutschen-zukunftspreises-2023-spendeten-ein-mrt-geraet
