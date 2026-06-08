@@ -37,12 +37,10 @@ PAGES_DIR = ROOT / "build_pptx" / "pages"
 # the manually-edited committed copy at the repo root.
 OUT = ROOT / "build_pptx" / "AIMed2026_What_next_in_medical_AI.pptx"
 
-# Slide-page -> (gif filename, source png filename)
-TARGETS = {
-    25: ("img_08_02.gif", "img_08_02.png"),
-    26: ("img_08_03.gif", "img_08_03.png"),
-    27: ("img_08_04.gif", "img_08_04.png"),
-}
+# Slide-page -> (gif filename, source png filename).
+# The BAIOSPHERE MEDICAL 2026 Opening deck has no animated panels, so this
+# is empty -- every slide is a full-bleed raster, no GIF overlays.
+TARGETS: dict[int, tuple[str, str]] = {}
 
 # Body region of an FAU-themed slide (fractions of page height).
 # Tightened to skip the title bar / logos (top) and footer (bottom);
