@@ -75,6 +75,10 @@ cp build_pptx/AIMed2026_What_next_in_medical_AI.pptx \
   (from baiomed.fau.de)
 * `output_tex/figures/medical_valley_logo.png` — sponsor logo
   (Medical Valley EMN e.V.)
+* `output_tex/figures/siemens_healthineers_logo.png` — sponsor
+  logo (rendered from the official SVG on Wikimedia Commons)
+* `output_tex/figures/kimed_logo.jpg` — sponsor logo (German
+  Society for AI in Medicine, KImed)
 * `output_tex/styles/`, `output_tex/template-art/`,
   `output_tex/conf-art/` — FAU beamer template
 * `build_pptx/build_pptx.py` — PDF-to-PowerPoint converter
