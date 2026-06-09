@@ -1,11 +1,11 @@
 % ..............................................................................
-% BAIOSPHERE MEDICAL 2026 -- Opening
-% Andreas Maier (FAU Erlangen-Nuernberg), 8-9 June 2026, Erlangen.
-% Branch `baiosphere-medical-2026-opening`.
+% BAIOSPHERE MEDICAL 2026 -- Closing Remarks
+% Siming Bayer & Andreas Maier (FAU Erlangen-Nuernberg), 9 June 2026, Erlangen.
+% Branch `baiosphere-medical-2026-closing`.
 %
-% A short opening deck for the symposium: meeting story, programme stats,
-% topics, keynotes, Best Contribution Award, both venues, program at a glance,
-% conference dinner, agentic-AI proceedings note, sponsors and thanks.
+% Short closing deck: title, thanks to keynote speakers, thanks to
+% colleagues and student helpers, final thanks to the audience plus the
+% practical bus-transfer note for the conference dinner.
 % ------------------------------------------------------------------------------
 \documentclass[final]{beamer}
 
@@ -22,8 +22,7 @@
 \usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{textcomp}
-\usepackage{array}
-\usetikzlibrary{positioning,arrows.meta,shadows,calc}
+\usetikzlibrary{positioning,arrows.meta,shadows}
 
 \graphicspath{{figures/}}
 
@@ -31,10 +30,10 @@
 % Title metadata (used in the title page and the running footer).
 % ----------------------------------------------------------------------------------------
 \title[BAIOSPHERE MEDICAL 2026]{BAIOSPHERE MEDICAL 2026}
-\subtitle{Opening \,\textbullet\, Welcome}
-\author[A.~Maier]{Andreas Maier}
+\subtitle{Closing Remarks}
+\author[Bayer \& Maier]{Siming Bayer \& Andreas Maier}
 \institute[FAU]{Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg}
-\date{8--9 June 2026 \,\textbullet\, Erlangen, Germany}
+\date{9 June 2026 \,\textbullet\, Erlangen, Germany}
 
 % ================================================
 % The main document
@@ -42,9 +41,7 @@
 \begin{document}
 
 % --------------------------------------------------------------------------
-% Slide 1 - Title (custom, with the BAIOMED banner above the title block)
-% [plain] hides the FAU header / frametitle rule / footer so the BAIOMED
-% banner gets the centre of attention.
+% Slide 1 - Title (matches the opening deck: plain layout, BAIOMED banner)
 % --------------------------------------------------------------------------
 \begin{frame}[plain,c]
 \vspace{0.4em}
@@ -54,346 +51,73 @@
 \vspace{1.2em}
 \begin{center}
   {\Huge\bfseries BAIOSPHERE MEDICAL 2026}\\[0.6em]
-  {\Large Opening \,\textbullet\, Welcome}\\[1.4em]
+  {\Large Closing Remarks}\\[1.4em]
   {\large Siming Bayer \,\textbullet\, Andreas Maier}\\[0.15em]
   {\small\itshape Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg}\\[1.0em]
-  {\normalsize 8--9 June 2026 \,\textbullet\, Erlangen, Germany}
+  {\normalsize 9 June 2026 \,\textbullet\, Erlangen, Germany}
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 2 - Welcome
+% Slide 2 - Thank you to the keynote speakers
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Welcome to BAIOSPHERE MEDICAL 2026}{Erlangen \,\textbullet\, 8--9 June 2026}
-\vspace{0.4em}
-\begin{itemize}\itemsep=0.35em\large
-  \item Clinicians, physicists, computer scientists, engineers.
-  \item One question: how do we make medical AI
-        \emph{useful} \emph{and} \emph{trustworthy}?
-  \item Two days, two venues, one community.
-  \item From prototype, towards the clinic.
-  \item Welcome to Erlangen!
-\end{itemize}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 3 - From an idea at ECR to a meeting in three months
-% --------------------------------------------------------------------------
-\begin{frame}[t]{From an Idea at ECR}{Three months from conversation to symposium}
-\vspace{0.4em}
-\begin{itemize}\itemsep=0.35em\large
-  \item Conceived at ECR Vienna, March 2026.
-  \item About three months to the event.
-  \item Conceived, announced, peer-reviewed, assembled.
-  \item Still: more than 100 submissions.
-  \item The community was ready.
-\end{itemize}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 4 - The programme (numbers)
-% --------------------------------------------------------------------------
-\begin{frame}[t]{The Programme}{By the numbers}
-\vspace{0.6em}
-\begin{columns}[T]
-  \begin{column}{0.46\textwidth}
-    \begin{itemize}\itemsep=0.35em\large
-      \item \textbf{106} submissions received.
-      \item \textbf{93} contributions accepted.
-      \item \textbf{74} Main \,/\, \textbf{19} Highlight.
-      \item \textbf{34} reviewers, 218 assignments.
-      \item $\sim$\textbf{350} authors.
-    \end{itemize}
-  \end{column}
-  \begin{column}{0.50\textwidth}
-    \centering
-    \begin{tikzpicture}[font=\sffamily,
-        small/.style={font=\footnotesize\bfseries, text=gray}]
-      \node (a) at (0, 2.6)
-        {\fontsize{42}{42}\selectfont\bfseries 93\,/\,106};
-      \node[small] at (0, 1.55) {accepted submissions};
-      \node (b) at (0, 0.3)
-        {\fontsize{30}{30}\selectfont\bfseries 4 continents};
-      \node[small] at (0,-0.55) {Asia, Europe, North \& South America};
-    \end{tikzpicture}
-  \end{column}
-\end{columns}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 5 - Topics
-% --------------------------------------------------------------------------
-\begin{frame}[t]{The Programme}{Topics of this conference}
-\vspace{0.4em}
-\begin{itemize}\itemsep=0.35em\large
-  \item Medical imaging.
-  \item General medical AI.
-  \item Benchmarking and domain generalization.
-  \item Multimodal fusion.
-  \item Oncology, neuroradiology, and beyond.
-\end{itemize}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 6 - Keynote speakers
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Keynote Lectures}{Four perspectives on medical AI}
+\begin{frame}[t]{Thank You to Our Keynote Speakers}{For setting the frame of this meeting}
 \vspace{0.3em}
-\begin{itemize}\itemsep=0.4em
-  \item \textbf{Alejandro F.\ Frangi} \;--\;
+\begin{itemize}\itemsep=0.5em\large
+  \item \textbf{Alejandro F.\ Frangi} \,--\,
         Digital twins for in-silico trials.
-  \item \textbf{Mengyun Qiao} \;--\;
+  \item \textbf{Mengyun Qiao} \,--\,
         Generative and agentic cardiac modelling.
-  \item \textbf{Nils D.\ Forkert} \;--\;
-        Biases in medical-imaging machine learning, and
-        their sociotechnical impact.
-  \item \textbf{Lyu Su} \;--\;
+  \item \textbf{Nils D.\ Forkert} \,--\,
+        Biases in medical-imaging machine learning,
+        and their sociotechnical impact.
+  \item \textbf{Lyu Su} \,--\,
         A real-world platform for AI-assisted
         diagnosis of neuropsychiatric disease.
 \end{itemize}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 7 - Best Scientific Contribution Award
+% Slide 3 - Thank you to colleagues and student helpers
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Best Scientific Contribution Award}{Candidates, committee \& public vote}
-\vspace{0.2em}
-\begin{columns}[T]
-  \begin{column}{0.60\textwidth}
-    \textbf{Candidates}\\[0.25em]
-    \footnotesize
-    \begin{itemize}\itemsep=0.4em
-      \item \textbf{P47} -- Prenatal Detection of Congenital Heart
-            Disease Using an End-to-end Deep Learning Pipeline
-            \,{\color{gray}\scriptsize[S2, 11:15--11:23]}
-            \\[0.05em]{\color{gray}Rong Xu et al.}
-      \item \textbf{P48} -- LK-CVT: Hierarchical Hybrid Vision
-            Transformer \dots\ Fetal Cardiac Ultrasound
-            \,{\color{gray}\scriptsize[S2, 11:23--11:30]}
-            \\[0.05em]{\color{gray}Rong Xu et al.}
-      \item \textbf{P70} -- End2Reg: Task-Specific Segmentation for
-            Markerless Registration in Spine Surgery
-            \,{\color{gray}\scriptsize[S2, 11:37--11:44]}
-            \\[0.05em]{\color{gray}Lorenzo Pettinari et al.}
-      \item \textbf{P10} -- MedFuncta: A Unified Framework for
-            Learning Efficient Medical Neural Fields
-            \,{\color{gray}\scriptsize[S3, 14:05--14:13]}
-            \\[0.05em]{\color{gray}Paul Friedrich et al.}
-      \item \textbf{P52} -- Critical Evaluation of Drug Response
-            Prediction Models with DrEval
-            \,{\color{gray}\scriptsize[S4, 15:55--16:03]}
-            \\[0.05em]{\color{gray}Judith Bernett et al.}
-    \end{itemize}
-  \end{column}
-  \begin{column}{0.38\textwidth}
-    \textbf{Award Committee}\\[0.25em]
-    \footnotesize
-    \begin{itemize}\itemsep=0.35em
-      \item \textbf{Prof.\ Dorit Merhof} (chair) \,--\,
-            University of Regensburg, medical image computing
-      \item \textbf{Prof.\ Tatyana Ivanovska} \,--\,
-            OTH Amberg-Weiden, medical image analysis \& machine
-            learning
-      \item \textbf{Dr.\ Han Wenzheng} \,--\,
-            Shanghai Chest Hospital, cardiology (clinical view)
-    \end{itemize}
-    \vspace{0.8em}
-    {\normalsize\textbf{Public Vote}}\\[0.15em]
-    \footnotesize
-    \begin{itemize}\itemsep=0.15em
-      \item Best talk
-      \item Best poster
-    \end{itemize}
-  \end{column}
-\end{columns}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 8 - Day 1, Welcome Reception
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Day 1 \,\textbullet\, Welcome Reception}{8 June 2026 \,\textbullet\, Medical Valley Center}
-\vspace{0.4em}
-\begin{columns}[T]
-  \begin{column}{0.58\textwidth}
-    \begin{itemize}\itemsep=0.35em\large
-      \item \textbf{15:00 -- 17:00} \;Arrival \& registration.
-      \item \textbf{17:00 -- 18:15} \;Opening remarks.
-      \item \textbf{18:15 -- 21:00} \;Reception \& networking.
-    \end{itemize}
-  \end{column}
-  \begin{column}{0.40\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \node[draw=blue!50!black, fill=blue!8, rounded corners=4pt,
-            thick, text width=4.2cm, align=center, inner sep=4mm,
-            drop shadow={shadow xshift=0.5mm, shadow yshift=-0.5mm,
-                          opacity=0.35}]
-        {\textbf{Medical Valley Center}\\[0.25em]
-         \footnotesize Henkestr.~91\\
-         91052 Erlangen};
-    \end{tikzpicture}
-  \end{column}
-\end{columns}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 9 - Day 2, Main Conference
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Day 2 \,\textbullet\, Main Conference}{9 June 2026 \,\textbullet\, FAU Conference Center}
-\vspace{0.4em}
-\begin{columns}[T]
-  \begin{column}{0.58\textwidth}
-    \begin{itemize}\itemsep=0.35em\large
-      \item Four scientific sessions.
-      \item Lunchtime poster session.
-      \item Panel discussion, awards, closing.
-      \item Conference dinner to follow.
-    \end{itemize}
-  \end{column}
-  \begin{column}{0.40\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \node[draw=blue!50!black, fill=blue!8, rounded corners=4pt,
-            thick, text width=4.2cm, align=center, inner sep=4mm,
-            drop shadow={shadow xshift=0.5mm, shadow yshift=-0.5mm,
-                          opacity=0.35}]
-        {\textbf{FAU Conference Center}\\[0.25em]
-         \footnotesize Freyeslebenstr.~1\\
-         91058 Erlangen};
-    \end{tikzpicture}
-  \end{column}
-\end{columns}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 10 - Program at a Glance
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Program at a Glance}{Two days, two venues}
-\vspace{0.2em}
-\footnotesize
-\begin{columns}[T]
-  % ---------- Day 1 ----------
-  \begin{column}{0.42\textwidth}
-    \centering
-    \textbf{Day 1 -- 8 June \,\textbullet\, Medical Valley Center}\\[0.4em]
-    \begin{tabular}{@{}>{\ttfamily}l@{\hspace{1.4em}}l@{}}
-      15:00 -- 17:00 & Arrival \& Registration\\
-      17:00 -- 18:15 & Opening Remarks\\
-      18:15 -- 21:00 & Reception \& Networking\\
-    \end{tabular}
-  \end{column}
-  % ---------- Day 2 ----------
-  \begin{column}{0.55\textwidth}
-    \centering
-    \textbf{Day 2 -- 9 June \,\textbullet\, FAU Conference Center}\\[0.4em]
-    \begin{tabular}{@{}>{\ttfamily}l@{\hspace{1.0em}}l@{}}
-      08:00 -- 08:30 & Arrival \& Coffee\\
-      08:30 -- 08:45 & Opening Ceremony\\
-      08:45 -- 10:15 & \emph{Session 1:} Radiology Systems, Reconstruction \&\\
-                     & \hspace{0.4em} Quantitative Imaging\\
-      10:15 -- 10:45 & Coffee Break\\
-      10:45 -- 12:05 & \emph{Session 2:} Cardiac, Fetal \& Interventional Imaging\\
-      12:05 -- 13:35 & Lunch \& Poster Session\\
-      13:35 -- 14:55 & \emph{Session 3:} Trustworthy Imaging AI \& Clinical\\
-                     & \hspace{0.4em} Foundation Models\\
-      14:55 -- 15:25 & Coffee Break\\
-      15:25 -- 16:55 & \emph{Session 4:} Agents, Multimodal AI \& Broader\\
-                     & \hspace{0.4em} Biomedical Applications\\
-      16:55 -- 18:00 & Panel Discussion, Awards \& Closing\\
-      18:15          & Departure to Conference Dinner\\
-    \end{tabular}
-  \end{column}
-\end{columns}
-\vspace{0.5em}
-\begin{center}
-  Full programme: {\ttfamily baiomed.fau.de/program-at-a-glance}
-\end{center}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 11 - Conference Dinner
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Conference Dinner}{Entla's Keller \,\textbullet\, Erlangen}
-\vspace{0.4em}
-\begin{itemize}\itemsep=0.35em\large
-  \item Dinner at \textbf{Entla's Keller}, Erlangen.
-  \item \textbf{Bus transfer at 18:15 sharp.}
-  \item Tour of the historic beer cellars.
-  \item \textbf{Two groups: A and B.}
-  \item \textbf{Keep your badge} -- it shows you are entitled to
-        take part in the dinner.
-\end{itemize}
-\vspace{0.6em}
-\begin{center}
-  \begin{tikzpicture}
-    \node[draw=orange!70!black, fill=orange!10, rounded corners=4pt,
-          thick, inner sep=3mm,
-          text width=.85\textwidth, align=center]
-      {\small \textbf{Note:} Due to construction sites, many bus
-       routes are different today.};
-  \end{tikzpicture}
-\end{center}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 12 - Proceedings by agentic AI
-% --------------------------------------------------------------------------
-\begin{frame}[t]{The Proceedings}{Prepared with the help of agentic AI}
-\vspace{0.4em}
-\begin{itemize}\itemsep=0.3em\large
-  \item Three months from idea to event \,--\,
-        also for the Book of Abstracts.
-  \item An AI coding agent reformatted every submission
-        (PDF or Word) into a uniform \LaTeX{} layout.
-  \item Automated checks: word and reference limits,
-        required sections, track-specific rules.
-  \item Flagged items returned to authors for resolution.
-  \item Editors remain responsible for the final content.
-\end{itemize}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 13 - Sponsors and thanks
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Sponsors \& Thanks}{We could not do this without them}
+\begin{frame}[t]{Thank You to Our Team}{Colleagues, reviewers and student helpers}
 \vspace{0.3em}
-\begin{columns}[c]
-  \begin{column}{0.56\textwidth}
-    \begin{itemize}\itemsep=0.35em
-      \item \textbf{Siemens Healthineers} \,--\, conference
-            dinner and international travel grants.
-      \item \textbf{Medical Valley EMN e.V.} \,--\,
-            welcome reception on Day 1.
-      \item \textbf{German Society for AI in Medicine (KImed)}
-            \,--\, Best Scientific Contribution Award.
-      \item Program committee and reviewers.
-      \item Organising team: Maryam Mirzaei, Greta Giese,
-            Sven Gr\"unke.
-      \item FAU University Press \,--\, Open Access proceedings.
-    \end{itemize}
-  \end{column}
-  \begin{column}{0.42\textwidth}
-    \centering
-    \includegraphics[height=2.4cm,keepaspectratio]{siemens_healthineers_logo.png}\\[0.9em]
-    \includegraphics[height=2.6cm,keepaspectratio]{medical_valley_logo.png}\\[0.7em]
-    \includegraphics[height=3.4cm,keepaspectratio]{kimed_logo.jpg}
-  \end{column}
-\end{columns}
+\begin{itemize}\itemsep=0.45em\large
+  \item \textbf{Organising team:} Maryam Mirzaei,
+        Greta Giese, Sven Gr\"unke.
+  \item \textbf{Editors and co-chairs:} Siming Bayer,
+        Tri-Thien Nguyen, Sheethal Bhat, Andreas Maier.
+  \item \textbf{Program committee and reviewers}
+        \,--\, 34 reviewers, 218 careful assessments.
+  \item \textbf{Award committee:} Dorit Merhof (chair),
+        Tatyana Ivanovska, Han Wenzheng.
+  \item \textbf{Our student helpers} \,--\, registration,
+        microphones, posters, signs, coffee.
+        Thank you for keeping the day running.
+\end{itemize}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 14 - Final welcome (same plain layout as the title slide).
+% Slide 4 - Final thanks + dinner logistics
 % --------------------------------------------------------------------------
 \begin{frame}[plain,c]
-\vspace{0.4em}
+\vspace{0.2em}
 \begin{center}
   \includegraphics[width=.6\textwidth]{baiomed_logo.jpg}
 \end{center}
-\vspace{1.2em}
+\vspace{1.0em}
 \begin{center}
-  {\Huge\bfseries Welcome to BAIOSPHERE MEDICAL 2026!}\\[1.0em]
-  {\Large Enjoy the science, the conversations, and Erlangen.}\\[1.6em]
-  {\normalsize Siming Bayer \,\textbullet\, Andreas Maier}
+  {\Huge\bfseries Thank You!}\\[0.8em]
+  {\Large To all of you \,\textbullet\, speakers, authors, participants.}\\[2.0em]
+\end{center}
+\begin{center}
+  \begin{tikzpicture}
+    \node[draw=blue!50!black, fill=blue!8, rounded corners=4pt, thick,
+          inner sep=3.5mm, text width=.78\textwidth, align=center]
+      {\large \textbf{Conference dinner:} bus transfer at
+       \textbf{18:15} \,--\, please be on time.\\[0.3em]
+       \normalsize Have a wonderful evening at Entla's Keller.};
+  \end{tikzpicture}
 \end{center}
 \end{frame}
 
