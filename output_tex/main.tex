@@ -435,25 +435,10 @@ How about real agentic AI?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 11 - Adaptive AI in practice (3 sub-slides)
+% (Three "adaptive AI in practice" sub-slides -- Patient information,
+% Adaptive systems, From sketch to diagram -- dropped for DLDxHealth: the
+% 15-min slot leaves no room for them.)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{Patient information}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_10_04.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{What is agentic AI?}{Adaptive systems}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_10_02.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{What is agentic AI?}{From sketch to diagram}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_10_01.png}
-\end{center}
-\end{frame}
 
 % --------------------------------------------------------------------------
 % Slide 12 - Vibe coding & advanced AI techniques (4 sub-slides)
@@ -524,6 +509,49 @@ What is coming next?
 \end{frame}
 
 % --------------------------------------------------------------------------
+% Publishing, disrupted -- the agentic Overleaf -> FAU University Press
+% workflow built for BAIOSPHERE MEDICAL 2026. Flash callout: 10,000 EUR
+% Springer Open Access vs 150 EUR FAU University Press.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Publishing, Disrupted}{Open Access for the price of a pizza party}
+\vspace{0.2em}
+\begin{center}
+  \includegraphics[height=1.25cm,keepaspectratio]{baiomed_logo.jpg}
+\end{center}
+\vspace{0.2em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily,
+    box/.style={rounded corners=6pt, thick, inner sep=4mm,
+                text width=5.2cm, align=center,
+                drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
+                             opacity=0.35}},
+    old/.style={box, draw=red!55!black,    fill=red!8},
+    new/.style={box, draw=green!45!black,  fill=green!10},
+    arr/.style={-{Latex[length=3.5mm]}, very thick, draw=blue!50!black}]
+  \node[old]                  (a) {\large\bfseries Springer Open Access\\[0.4em]
+                                  {\fontsize{36}{36}\selectfont\bfseries\color{red!55!black} 10\,000 EUR}\\[0.15em]
+                                  \footnotesize per Open Access fee};
+  \node[right=22mm of a, new] (b) {\large\bfseries FAU University Press\\[0.4em]
+                                  {\fontsize{36}{36}\selectfont\bfseries\color{green!45!black} 150 EUR}\\[0.15em]
+                                  \footnotesize per Open Access fee};
+  \draw[arr] (a.east) -- node[above=1mm, font=\small\bfseries, text=blue!50!black]
+        {$\sim$\,66$\times$ cheaper} (b.west);
+\end{tikzpicture}
+\end{center}
+\vspace{0.4em}
+\begin{itemize}\itemsep=0.18em\small
+  \item Built for \textbf{BAIOSPHERE MEDICAL 2026} (Erlangen, this week):
+        an AI coding agent reformats every PDF/Word submission into a
+        uniform \LaTeX{} layout, places figures and runs editorial
+        compliance checks automatically.
+  \item \textbf{106 submissions \,\textrightarrow\, 93 accepted contributions
+        \,\textrightarrow\, one Open Access volume,} from idea to printed
+        book in \textbf{three months}.
+  \item Authors keep their sources; the editors keep the final word.
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------------------
 % Slide 15a-c - Agent4CT (India branch insertion: project intro, leaderboard,
 % structured software process).  Source: github.com/akmaier/Agent4CT.
 % --------------------------------------------------------------------------
@@ -569,21 +597,9 @@ What is coming next?
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Agent4CT}{From paper to benchmark -- a structured loop}
-\begin{itemize}\itemsep=0.25em
-  \item \textbf{Tight iteration budget.} 5~min per GPU experiment forces
-        the agent to trade architecture against throughput.
-  \item \textbf{Stage checks every 30 iterations.} 1~h validation on a
-        $3\times$ larger subset catches overfit before it propagates.
-  \item \textbf{Git-backed journal.} Every kept change is a commit;
-        discards are \texttt{git reset} plus a row in the experiment TSV.
-  \item \textbf{Shared scratch pad.} \texttt{observations.jsonl} pools
-        rules-of-thumb across the five agents.
-  \item \textbf{Anti-overfit rules} bootstrapped into every agent's
-        \texttt{program.md} -- so each new run starts on the others'
-        shoulders, not from scratch.
-\end{itemize}
-\end{frame}
+% (Agent4CT "From paper to benchmark -- a structured loop" slide
+% dropped for DLDxHealth: 15-min slot, audience cares about results, not
+% the iteration plumbing.)
 
 \begin{frame}[t]{Agent4CT}{The Pentathlon -- five CT leaderboards}
 \begin{columns}[T]
@@ -607,6 +623,47 @@ What is coming next?
     at $1.49$\,M parameters
   \end{column}
 \end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Flash callout: what an LLM coding agent can build now, in wall-clock.
+% Four data points -- 3 h paper-reproduction + new paper, 1 d paper without
+% code, 3 d study-program scraper + RAG chatbot, 1 w ATARI emulator.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Speed of Agentic AI}{Wall-clock from idea to working artefact}
+\vspace{0.4em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily,
+    row/.style={inner sep=2.5mm},
+    time/.style={text=blue!55!black, font=\fontsize{30}{30}\selectfont\bfseries},
+    label/.style={font=\large},
+    src/.style={text=gray, font=\scriptsize\ttfamily}]
+  % time         |  what was built                              |  reference
+  \node[row, time, anchor=east] (t1) at (0,2.7) {3\,h};
+  \node[row, label, anchor=west] at (0.6,2.7)
+    {Reproduce a paper + code, find new insights, draft a follow-up paper.};
+  \node[src, anchor=west] at (0.6,2.25)
+    {arxiv.org/abs/2605.02620};
+  %
+  \node[row, time, anchor=east] (t2) at (0,1.3) {1\,d};
+  \node[row, label, anchor=west] at (0.6,1.3)
+    {Reproduce a paper \emph{without} its code or data.};
+  \node[src, anchor=west] at (0.6,0.85)
+    {arxiv.org/abs/2605.12772};
+  %
+  \node[row, time, anchor=east] (t3) at (0,-0.1) {3\,d};
+  \node[row, label, anchor=west] at (0.6,-0.1)
+    {Scrape 200 study programs + ship a RAG chatbot.};
+  \node[src, anchor=west] at (0.6,-0.55)
+    {github.com/akmaier/IfCampoKnew};
+  %
+  \node[row, time, anchor=east] (t4) at (0,-1.5) {1\,w};
+  \node[row, label, anchor=west] at (0.6,-1.5)
+    {Reimplement an entire ATARI VCS emulator.};
+  \node[src, anchor=west] at (0.6,-1.95)
+    {github.com/akmaier/UnderstandingVCS};
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -655,6 +712,16 @@ What is coming next?
   \item Agent4CT -- agentic re-implementation of deep-learning CT
         methods:
         \url{https://github.com/akmaier/Agent4CT}
+  \item Agent-driven paper reproduction with new insights and follow-up
+        write-up: arXiv:2605.02620, 2026.
+  \item Agent-driven paper reproduction without code or data:
+        arXiv:2605.12772, 2026.
+  \item \emph{IfCampoKnew}\,\textendash\,scraper for 200 study programs
+        and an AI RAG chatbot:
+        \url{https://github.com/akmaier/IfCampoKnew}
+  \item \emph{UnderstandingVCS}\,\textendash\,agent-reimplemented
+        ATARI VCS emulator:
+        \url{https://github.com/akmaier/UnderstandingVCS}
 \end{itemize}
 \end{frame}
 
