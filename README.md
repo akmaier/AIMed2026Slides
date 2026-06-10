@@ -1,12 +1,26 @@
-# AIMed 2026 Slides
+# What's Next in Medical AI? — DLDxHealth 2026
 
-Slides for the talk **"Towards Bringing Agentic AI to Healthcare"** by
-Andreas Maier (FAU Erlangen-N&#252;rnberg), Bangalore, India,
-26 May 2026. (This is the `india-talk` branch; the `main` branch carries
-the original [AIMed 2026](https://my.ebm.one/aimed) deck given in
-Krak&#243;w on 7-9 May 2026.)
+Slides for the talk **“What's Next in Medical AI?”** by Andreas Maier
+(FAU Erlangen-N&#252;rnberg) at
+[**DLDxHealth 2026**](https://www.dld-conference.com/conference/dld-health26),
+Auditorium Stage, **12 June 2026, Munich**.
 
-The compiled deck is `output_tex/main.pdf` (50 pages). Source is
+This is the `dldxhealth-2026` branch, based on the
+`india-talk` deck. The Bavarian Foundation Model slide and its
+reference have been removed (that piece is presented by other
+speakers at DLDxHealth); the title, subtitle, date and QR target
+have been retargeted at the DLDxHealth audience.
+
+Other versions of the deck:
+
+* `main` — original *“What next in medical AI?”* (AIMed 2026, Krak&#243;w).
+* `india-talk` — *“Towards Bringing Agentic AI to Healthcare”* (Bangalore).
+* `de-msd-senso` — German *„KI in der Onkologie“* (MSD Senso-Abend, Munich).
+* `wch-80-years-orthopedics` — bilingual EN/中文 deck for the West China
+  Hospital orthopedics 80th anniversary.
+* `baiosphere-medical-2026-opening` / `…-closing` — BAIOSPHERE MEDICAL 2026.
+
+The compiled deck is `output_tex/main.pdf` (49 pages). Source is
 `output_tex/main.tex`, built against the FAU beamer template (the
 `styles/`, `template-art/` and `conf-art/` directories are vendored
 under `output_tex/`).
@@ -30,39 +44,33 @@ pdflatex main.tex
 
 The deck is self-contained: no `animate` package, no extracted frame
 sequences, and the QR code on the Thank-you slide is a pre-rendered PNG
-(`output_tex/figures/qr_github.png`) - so any PDF reader displays the
-deck identically.
+(`output_tex/figures/qr_github.png`).
 
 ## PowerPoint variant
 
-The talk is given from
-`Towards_Bringing_Agentic_AI_to_Healthcare.pptx`, **not** the PDF, because three
-slides on the "What is agentic AI?" sequence -- *Human baseline*,
-*GPT-4o attempt* and *GROK-3-think attempt* -- need to display animated
-GIFs of the MR sequence playing back, which a static PDF cannot do.
+The talk is given from `Whats_Next_in_Medical_AI_DLDxHealth.pptx`,
+**not** the PDF, because three slides in the “What is agentic AI?”
+sequence — *Human baseline*, *GPT-4o attempt* and *GROK-3-think
+attempt* — display animated GIFs of the MR sequence playing back, which
+a static PDF cannot do.
 
-To get to that PPTX, the rendered PDF is converted slide-by-slide:
-each PDF page is rasterised at 200 DPI and dropped onto a 16:9 slide
-as a full-bleed picture; on the three GIF pages, the matching
-`figures/img_08_0*.gif` is additionally placed on top of the static
-image at exactly the same bounding box (detected from the rasterised
-page so it aligns pixel-for-pixel). Re-run the conversion with:
+To get to that PPTX, the rendered PDF is converted slide-by-slide: each
+PDF page is rasterised at 200 DPI and dropped onto a 16:9 slide as a
+full-bleed picture; on the three GIF pages (pages 25/26/27 of this
+deck) the matching `figures/img_08_0*.gif` is additionally placed on
+top of the static image at exactly the same bounding box. Re-run the
+conversion with:
 
 ```
 python3 build_pptx/build_pptx.py
 ```
 
 The script writes its output to
-`build_pptx/Towards_Bringing_Agentic_AI_to_Healthcare.pptx`. The committed
-PPTX at the repo root contains additional manual polish on top of that
-baseline, so the script never overwrites it -- copy the regenerated
-file over the root one explicitly if you want to start from a fresh
-baseline.
+`build_pptx/Whats_Next_in_Medical_AI_DLDxHealth.pptx`; copy that over
+the committed PPTX at the repo root to publish a fresh build.
 
-If you are reading this to figure out how the deck was built, the
-script is intentionally short and commented; `build_pptx/probe_layout.py`
-is the small diagnostic used to find the FAU theme's body region on a
-rasterised page.
+`build_pptx/probe_layout.py` is the small diagnostic used to find the
+FAU theme's body region on a rasterised page.
 
 ## Regenerating the QR code
 
@@ -78,21 +86,21 @@ re-run the script, then rebuild the deck.
 
 ## Contents
 
-* `output_tex/main.tex` -- LaTeX source
-* `output_tex/main.pdf` -- compiled deck
-* `Towards_Bringing_Agentic_AI_to_Healthcare.pptx` -- presentable PowerPoint
-  variant with animated GIFs on the three "What is agentic AI?" attempt
+* `output_tex/main.tex` — LaTeX source
+* `output_tex/main.pdf` — compiled deck (49 slides)
+* `Whats_Next_in_Medical_AI_DLDxHealth.pptx` — presentable PowerPoint
+  variant with animated GIFs on the three “What is agentic AI?” attempt
   slides
-* `output_tex/bibliography.bib` -- biblatex entries (loaded by the FAU theme)
-* `output_tex/figures/` -- images, including `qr_github.png`, the
+* `output_tex/bibliography.bib` — biblatex entries (loaded by the FAU theme)
+* `output_tex/figures/` — images, including `qr_github.png`, the
   static `img_08_0*.png` renders, and the original `img_08_0*.gif`
   source animations used by the PowerPoint variant
 * `output_tex/styles/`, `output_tex/template-art/`,
-  `output_tex/conf-art/` -- FAU beamer template
-* `generate_qr.py` -- QR-code generation script
-* `build_pptx/build_pptx.py` -- PDF-to-PowerPoint converter that
+  `output_tex/conf-art/` — FAU beamer template
+* `generate_qr.py` — QR-code generation script
+* `build_pptx/build_pptx.py` — PDF-to-PowerPoint converter that
   embeds the GIFs at the right location
-* `build_pptx/probe_layout.py` -- diagnostic for finding the FAU
+* `build_pptx/probe_layout.py` — diagnostic for finding the FAU
   theme's body region on a rasterised page
 
 ## References
@@ -120,8 +128,9 @@ re-run the script, then rebuild the deck.
   [arXiv:2604.13282](https://arxiv.org/abs/2604.13282), 2026 (Agent4MR).
 * Deutscher Zukunftspreis 2023 (low-field MRI):
   [deutscher-zukunftspreis.de][zukunftspreis].
-* Bavarian Foundation AI Model: [www.ai-bay.eu](https://www.ai-bay.eu).
 * Conference statistics tooling:
   [github.com/akmaier/ConferenceStats](https://github.com/akmaier/ConferenceStats).
+* Agent4CT — agentic re-implementation of deep-learning CT methods:
+  [github.com/akmaier/Agent4CT](https://github.com/akmaier/Agent4CT).
 
 [zukunftspreis]: https://www.deutscher-zukunftspreis.de/de/die-gewinner-des-deutschen-zukunftspreises-2023-spendeten-ein-mrt-geraet
