@@ -484,20 +484,17 @@ How about real agentic AI?
 \vspace{0.1em}
 \begin{itemize}\itemsep=0.15em\small
   \item Local RAG chat over the FAU intranet (\emph{Personalhandbuch}
-        plus four sibling topic clusters), reachable at
-        {\ttfamily lme28.cs.fau.de:3000} inside the FAU network.
+        plus four sibling topic clusters), reachable inside the
+        FAU network.
   \item Open WebUI shell, local {\ttfamily bge-m3} embeddings on CPU,
         LLM via the NHR@FAU gateway ({\ttfamily gpt-oss-120b});
         five knowledge collections + five custom models, currently
         indexing $\sim$980 documents.
-  \item Two function-calling tool modes on top of the chat:
-        \begin{itemize}\itemsep=0.05em
-          \item \textbf{FAU Brief} -- generate FAU letterhead letters
-                as real {\ttfamily .docx} downloads for any
-                FAUdir-resolvable unit.
-          \item \textbf{FAUdir} -- read-only SQL over a local snapshot
-                of the FAU directory (people, orgs, offices, phones).
-        \end{itemize}
+  \item Two function-calling tool modes on top of the chat -- {\bfseries
+        FAU Brief}: generate FAU letterhead letters as real
+        {\ttfamily .docx} downloads for any FAUdir-resolvable unit;
+        {\bfseries FAUdir}: read-only SQL over a local snapshot of the
+        FAU directory (people, orgs, offices, phones).
   \item Every piece -- scraper, ingest pipeline, GPU embedding batch,
         Open WebUI patches, letter tool, ticket workflow -- built
         \emph{incrementally with an AI coding agent} working from a
