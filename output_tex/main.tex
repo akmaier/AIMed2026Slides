@@ -1,9 +1,11 @@
 % ..............................................................................
-% "What's Next in Medical AI?" -- Andreas Maier, DLDxHealth 2026 (Munich,
-% 12 June 2026, Auditorium Stage).  Branch `dldxhealth-2026`, based on the
-% india-talk deck with the Bavarian Foundation Model slide removed (that
-% piece is presented by other speakers at DLDxHealth) and the title /
-% running metadata retargeted at the DLDxHealth audience.
+% "Vibe Coding: Software Engineering in the Age of AI" -- Andreas Maier,
+% BaCAI Lecture Series (University of Bamberg, 13 July 2026, 18:00, WE5/00.022).
+% Branch `bacai-vibe-coding`, based on the `dldxhealth-2026` deck with
+% four new slides after the Textbook slide that walk through the
+% software-engineering harness used for the Personalhandbuch / FAU-Intranet
+% RAG assistant (see /Users/maier/Documents/code/personalhandbuch), and
+% a two-QR Thank-you slide (slides deck + book preprint).
 % Animated GIFs from the Agent4MR sequence demo (figures/img_08_*) are
 % kept; they ship as static PNGs in the PDF and live GIFs in the PPTX.
 % ------------------------------------------------------------------------------
@@ -29,11 +31,11 @@
 % ----------------------------------------------------------------------------------------
 % Title page metadata
 % ----------------------------------------------------------------------------------------
-\title[What's next in medical AI?]{What's next in medical AI?}
-\subtitle{From code to clinic -- at startup speed}
+\title[Vibe Coding]{Vibe Coding: Software Engineering in the Age of AI}
+\subtitle{BaCAI Lecture Series -- University of Bamberg}
 \author[A.~Maier]{Andreas Maier}
 \institute[FAU]{Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg}
-\date{12 June 2026 \,\textbullet\, DLDxHealth, Munich}
+\date{13 July 2026, 18:00 \,\textbullet\, WE5/00.022, Bamberg}
 
 % ================================================
 % The main document
@@ -475,6 +477,109 @@ How about real agentic AI?
 \end{frame}
 
 % --------------------------------------------------------------------------
+% Vibe-coded software engineering -- four slides on the Personalhandbuch
+% harness (BaCAI insertion).  Source: /Users/maier/Documents/code/personalhandbuch
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Vibe-coded software}{Personalhandbuch -- the idea}
+\vspace{0.1em}
+\begin{itemize}\itemsep=0.15em\small
+  \item Local RAG chat over the FAU intranet (\emph{Personalhandbuch}
+        plus four sibling topic clusters), reachable at
+        {\ttfamily lme28.cs.fau.de:3000} inside the FAU network.
+  \item Open WebUI shell, local {\ttfamily bge-m3} embeddings on CPU,
+        LLM via the NHR@FAU gateway ({\ttfamily gpt-oss-120b});
+        five knowledge collections + five custom models, currently
+        indexing $\sim$980 documents.
+  \item Two function-calling tool modes on top of the chat:
+        \begin{itemize}\itemsep=0.05em
+          \item \textbf{FAU Brief} -- generate FAU letterhead letters
+                as real {\ttfamily .docx} downloads for any
+                FAUdir-resolvable unit.
+          \item \textbf{FAUdir} -- read-only SQL over a local snapshot
+                of the FAU directory (people, orgs, offices, phones).
+        \end{itemize}
+  \item Every piece -- scraper, ingest pipeline, GPU embedding batch,
+        Open WebUI patches, letter tool, ticket workflow -- built
+        \emph{incrementally with an AI coding agent} working from a
+        single {\ttfamily README.md}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Vibe-coded software}{Requirements engineering -- SPEC-first}
+\vspace{0.1em}
+\begin{itemize}\itemsep=0.15em\small
+  \item \textbf{Single Source of Truth:} \texttt{README.md} plus the
+        linked docs (\texttt{SOFTWARE\_MAINTENANCE.md},
+        \texttt{SCRUM.md}, \texttt{CLAUDE.md},
+        \texttt{BACKLOG\_LETTER.md}, \dots) hold every architectural
+        decision.  \emph{No} auto-memory as knowledge; nothing lives
+        only in a chat log.
+  \item \textbf{SPEC-first workflow} for every change:
+        SPEC delta $\rightarrow$ product-owner sign-off $\rightarrow$
+        freeze $\rightarrow$ acceptance tests (red) $\rightarrow$
+        implementation (green) $\rightarrow$ deploy per
+        \texttt{SOFTWARE\_MAINTENANCE.md}.  \emph{No ad-hoc code.}
+  \item \textbf{Hard product constraints} written down and never
+        allowed to regress -- e.g. every tool mode must call its tool
+        and return a real \texttt{.docx}; no arena / two-column
+        compare mode; one specific base model per mode.  Each
+        constraint carries its verified mechanism and the date it was
+        last checked.
+  \item \textbf{Recursive knowledge propagation:} every subagent
+        (human or AI) must read the README + linked docs \emph{before}
+        working -- the rule is baked into \texttt{CLAUDE.md}, so the
+        harness enforces it on every new session.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Vibe-coded software}{Regression, backlog \& SCRUM}
+\vspace{0.1em}
+\begin{itemize}\itemsep=0.15em\small
+  \item \textbf{Regression suite} built from real user feedback
+        (\texttt{tests/regression\_cases.md}), plus dedicated suites
+        for the LetterTool and FAUdir.  All run against the live
+        container, LLM-in-the-loop.
+  \item \textbf{Pre-deploy gate} \texttt{scripts/predeploy\_check.sh}
+        chains all three suites; exit code $0$ only when everything is
+        green.  Nothing ships that regresses a resolved ticket.
+  \item \textbf{Backlogs} (\texttt{BACKLOG\_LETTER.md},
+        \texttt{BACKLOG\_THESIS.md}) hold user stories with acceptance
+        criteria, Definition of Done, a permanent regression test, and
+        \emph{disjoint} \texttt{file\_scope}s per story.
+  \item \textbf{SCRUM sprint mechanics} (\texttt{SCRUM.md}): several
+        subagents in parallel, one Scrum-Master integrates, drives
+        regression back to green, then deploys.  The Scrum-Master
+        \emph{never} edits the SPEC in-sprint -- any gap $=$ a change
+        request back to the Requirements phase.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Vibe-coded software}{Maintenance \& evolution -- humans in the loop}
+\vspace{0.1em}
+\begin{itemize}\itemsep=0.15em\small
+  \item \textbf{Shared feedback mailbox}
+        \texttt{AI\_SH\_TEST\_SUPPORT@exch.fau.de} plus a
+        \textbf{``Report bug''} button on the site funnel every
+        test-user observation into one queue -- one inbox, one Claude
+        pipeline, one maintainer.
+  \item Ticket pipeline \textbf{P1--P6} (defined in
+        \texttt{SOFTWARE\_MAINTENANCE.md}):
+        \emph{mirror} $\rightarrow$ \emph{triage \& coverage check}
+        (bot bug vs.\ knowledge gap) $\rightarrow$ \emph{regression
+        test case} $\rightarrow$ \emph{fix} $\rightarrow$
+        \emph{verify} $\rightarrow$ \emph{reply}.
+  \item \textbf{Half-automatic:} mailbox ingest, ticket DB, coverage
+        check and subagent parallelisation are automated; triage
+        decision, fix, and outgoing reply stay human-confirmed --
+        deploy and mail send are always human-approved.
+  \item Every accepted ticket $\rightarrow$ a \emph{new regression
+        test}, so the same bug can never come back silently.  Claude,
+        the Scrum-Master and the human maintainer all read from the
+        same README, so the loop stays coherent as the system evolves.
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------------------
 % Slide 13 - Section divider
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
@@ -733,11 +838,20 @@ What is coming next?
 % Slide 17 - Thank You + QR code to GitHub repo (centered, B/W QR)
 % --------------------------------------------------------------------------
 \begin{frame}[t]{Thank you!}
-\begin{center}
-  {\Large Slides on GitHub}\\[1.2em]
-  \includegraphics[height=10cm]{qr_github.png}\\[0.8em]
-  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/dldxhealth-2026}
-\end{center}
+\begin{columns}[c]
+  \begin{column}{0.48\textwidth}
+    \centering
+    {\Large Slides on GitHub}\\[1.0em]
+    \includegraphics[height=6.5cm]{qr_github.png}\\[0.7em]
+    {\footnotesize\ttfamily github.com/akmaier/\\AIMed2026Slides/tree/bacai-vibe-coding}
+  \end{column}
+  \begin{column}{0.48\textwidth}
+    \centering
+    {\Large Book preprint}\\[1.0em]
+    \includegraphics[height=6.5cm]{qr_book.png}\\[0.7em]
+    {\footnotesize\ttfamily faubox.rrze.uni-erlangen.de/\\getlink/fi23C1i8prL7K57xaTsZGS/\\book\_build.pdf}
+  \end{column}
+\end{columns}
 \end{frame}
 
 \end{document}

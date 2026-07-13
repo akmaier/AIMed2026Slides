@@ -1,26 +1,30 @@
-# What's Next in Medical AI? — DLDxHealth 2026
+# Vibe Coding — BaCAI Lecture, 13 July 2026
 
-Slides for the talk **“What's Next in Medical AI?”** by Andreas Maier
-(FAU Erlangen-N&#252;rnberg) at
-[**DLDxHealth 2026**](https://www.dld-conference.com/conference/dld-health26),
-Auditorium Stage, **12 June 2026, Munich**.
+Slides for the talk **“Vibe Coding: Software Engineering in the Age of
+AI”** by Andreas Maier (FAU Erlangen-N&#252;rnberg) in the
+[**BaCAI Lecture Series**](https://www.uni-bamberg.de/en/bacai/lectures/)
+at the Bamberg Center for Artificial Intelligence, University of
+Bamberg, **13 July 2026, 18:00, WE5/00.022**.
 
-This is the `dldxhealth-2026` branch, based on the
-`india-talk` deck. The Bavarian Foundation Model slide and its
-reference have been removed (that piece is presented by other
-speakers at DLDxHealth); the title, subtitle, date and QR target
-have been retargeted at the DLDxHealth audience.
+This is the `bacai-vibe-coding` branch, based on `dldxhealth-2026`.
+Four new slides after the *Textbook* slide walk through the software-
+engineering harness used for the **Personalhandbuch / FAU-Intranet RAG
+assistant** (project idea, SPEC-first requirements, regression + SCRUM
+backlog, and the maintenance loop with a shared support mailbox and a
+“Report bug” button on the site). The Thank-you slide shows two QR
+codes side by side — the slides deck and the [book preprint](https://faubox.rrze.uni-erlangen.de/getlink/fi23C1i8prL7K57xaTsZGS/book_build.pdf).
 
 Other versions of the deck:
 
 * `main` — original *“What next in medical AI?”* (AIMed 2026, Krak&#243;w).
 * `india-talk` — *“Towards Bringing Agentic AI to Healthcare”* (Bangalore).
 * `de-msd-senso` — German *„KI in der Onkologie“* (MSD Senso-Abend, Munich).
+* `dldxhealth-2026` — *“What's Next in Medical AI?”* (DLDxHealth, Munich).
 * `wch-80-years-orthopedics` — bilingual EN/中文 deck for the West China
   Hospital orthopedics 80th anniversary.
 * `baiosphere-medical-2026-opening` / `…-closing` — BAIOSPHERE MEDICAL 2026.
 
-The compiled deck is `output_tex/main.pdf` (49 pages). Source is
+The compiled deck is `output_tex/main.pdf` (51 pages). Source is
 `output_tex/main.tex`, built against the FAU beamer template (the
 `styles/`, `template-art/` and `conf-art/` directories are vendored
 under `output_tex/`).
