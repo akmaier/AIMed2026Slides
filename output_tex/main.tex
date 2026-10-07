@@ -1,9 +1,11 @@
 % ..............................................................................
-% "What's Next in Medical AI?" -- Andreas Maier, DLDxHealth 2026 (Munich,
-% 12 June 2026, Auditorium Stage).  Branch `dldxhealth-2026`, based on the
-% india-talk deck with the Bavarian Foundation Model slide removed (that
-% piece is presented by other speakers at DLDxHealth) and the title /
-% running metadata retargeted at the DLDxHealth audience.
+% "The Impact of Agentic AI on Science" -- Andreas Maier, Invited Talk 5,
+% Visual Heritage Doctoral Colloquium 2026 (Hainburg an der Donau,
+% 7 October 2026; ca. 20 min talk + 5 min Q&A).
+% Branch `visual-heritage-2026`, based on `dldxhealth-2026`: medical part
+% trimmed to Known operators + Zukunftspreis, an Odeuropa/ODOR slide for the
+% visual-heritage audience, and two closing slides on what agentic AI means
+% for science and for a PhD.
 % Animated GIFs from the Agent4MR sequence demo (figures/img_08_*) are
 % kept; they ship as static PNGs in the PDF and live GIFs in the PPTX.
 % ------------------------------------------------------------------------------
@@ -29,11 +31,11 @@
 % ----------------------------------------------------------------------------------------
 % Title page metadata
 % ----------------------------------------------------------------------------------------
-\title[What's next in medical AI?]{What's next in medical AI?}
-\subtitle{From code to clinic -- at startup speed}
+\title[The Impact of Agentic AI on Science]{The Impact of Agentic AI on Science}
+\subtitle{Invited Talk \,\textbullet\, Visual Heritage Doctoral Colloquium 2026}
 \author[A.~Maier]{Andreas Maier}
 \institute[FAU]{Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg}
-\date{12 June 2026 \,\textbullet\, DLDxHealth, Munich}
+\date{7 October 2026 \,\textbullet\, Hainburg an der Donau}
 
 % ================================================
 % The main document
@@ -56,7 +58,7 @@
 \begin{itemize}
   \item What is deep learning?
   \item What is agentic AI?
-  \item What is coming next?
+  \item What does it mean for science?
 \end{itemize}
 \end{frame}
 
@@ -162,21 +164,11 @@ What is deep learning?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 6 - Deep learning in medicine (4 sub-slides)
+% Slide 6 - Deep learning in medicine, trimmed for the Visual Heritage
+% audience to the science-method point (known operators) and the
+% research-to-product story (Zukunftspreis).  The three MRI reconstruction
+% image slides were dropped.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Deep learning in medicine}{From Segmentation to Reconstruction}
-\begin{columns}[c]
-  \begin{column}{0.55\textwidth}
-    \centering
-    \includegraphics[height=.7\textheight]{img_05_01.jpg}
-  \end{column}
-  \begin{column}{0.45\textwidth}
-    \centering
-    \includegraphics[height=.5\textheight]{img_05_02.jpg}
-  \end{column}
-\end{columns}
-\end{frame}
-
 \begin{frame}[t]{Deep learning in medicine}{Known operators}
 \vspace*{0.4em}
 \begin{center}
@@ -225,28 +217,6 @@ $\varepsilon_k=0$ and strictly tightens this bound.
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Deep learning in medicine}{Reconstruction}
-\begin{columns}[c]
-  \begin{column}{0.5\textwidth}
-    \centering
-    \includegraphics[height=.65\textheight]{img_05_03.jpg}\\[0.4em]
-    \footnotesize Conventional
-  \end{column}
-  \begin{column}{0.5\textwidth}
-    \centering
-    \includegraphics[height=.65\textheight]{img_05_02.jpg}\\[0.4em]
-    \footnotesize With deep learning
-  \end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}[t]{Deep learning in medicine}{MRI variational network}
-\begin{center}
-  \includegraphics[width=.55\textwidth]{img_05_05.png}\\[0.5em]
-  \includegraphics[width=.6\textwidth]{img_05_04.png}
-\end{center}
-\end{frame}
-
 \begin{frame}[t]{Deep learning in medicine}{Recognition}
 \begin{columns}[c]
   \begin{column}{0.35\textwidth}
@@ -262,6 +232,32 @@ $\varepsilon_k=0$ and strictly tightens this bound.
 \begin{center}
   Deutscher Zukunftspreis -- low-field MRI made possible by deep learning.
 \end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Deep learning in visual heritage -- Odeuropa / ODOR (Mathias Zinnen et al.).
+% Examples: Fig. 1 of the ODOR paper (arXiv:2507.08384); numbers from the
+% ODOR paper and the Odeuropa project pages.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Deep learning in visual heritage}{Odeuropa -- how to see smells in historical art}
+\vspace{0.2em}
+\begin{columns}[c]
+  \begin{column}{0.60\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,height=.74\textheight,keepaspectratio]{odor_examples.png}\\[0.2em]
+    {\scriptsize\color{gray} ODOR examples: flowers, chimneys \& smoke, pipe, jug.}
+  \end{column}
+  \begin{column}{0.38\textwidth}
+    \centering
+    {\fontsize{30}{30}\selectfont\bfseries\color{blue!55!black} 43\,000}\\[0.1em]
+    {\small historical images \,+\, 167\,000 books,\\ six languages, 1600--1920}\\[0.7em]
+    {\fontsize{30}{30}\selectfont\bfseries\color{blue!55!black} 2.5\,M}\\[0.1em]
+    {\small smell references in the\\ European Olfactory Knowledge Graph}\\[0.7em]
+    {\fontsize{30}{30}\selectfont\bfseries\color{blue!55!black} 38\,116}\\[0.1em]
+    {\small boxes on 4\,712 artworks, 139 classes\\ (ODOR dataset, FAU)}\\[0.8em]
+    {\small\bfseries European Heritage Award 2025 (Research)}
+  \end{column}
+\end{columns}
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -475,10 +471,28 @@ How about real agentic AI?
 \end{frame}
 
 % --------------------------------------------------------------------------
+% Agent M -- the companion tool to the Vibe Coding book (screenshot of
+% akmaier.github.io/agent-m, header + hero banner).
+% --------------------------------------------------------------------------
+\begin{frame}[t]{What is agentic AI?}{Agent M -- the book's companion tool}
+\vspace{0.1em}
+\begin{center}
+  \includegraphics[width=.72\textwidth,keepaspectratio]{agentm_screenshot.png}
+\end{center}
+\vspace{0.3em}
+\begin{itemize}\itemsep=0.25em\Large
+  \item Runs the book's six-stage cycle on \emph{your} repositories.
+  \item Agents do the work -- people decide at every gate.
+  \item No server, MIT licence:
+        {\ttfamily akmaier.github.io/agent-m}
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------------------
 % Slide 13 - Section divider
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-What is coming next?
+What does it mean for science?
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -594,33 +608,9 @@ What is coming next?
 \end{center}
 \end{frame}
 
-% (Agent4CT "From paper to benchmark -- a structured loop" slide
-% dropped for DLDxHealth: 15-min slot, audience cares about results, not
-% the iteration plumbing.)
-
-\begin{frame}[t]{Agent4CT}{The Pentathlon -- five CT leaderboards}
-\begin{columns}[T]
-  \begin{column}{0.55\textwidth}
-    \begin{itemize}\itemsep=0.2em
-      \item AAPM 2016 Low-Dose CT (Mayo)
-      \item AAPM 2021 DL Sparse-View CT (128-view fan-beam)
-      \item AAPM 2022 TrueCT
-      \item AAPM 2022 DL-Spectral CT
-      \item AAPM 2024 CT Metal Artifact Reduction
-    \end{itemize}
-    \vspace{0.4em}
-    Score: \emph{headroom recovered} $\in [0,1]$;
-    $1$ matches the oracle.
-  \end{column}
-  \begin{column}{0.45\textwidth}
-    \centering
-    \textbf{Current best -- Breast CT}\\[0.4em]
-    Learned Primal-Dual\\
-    SSIM $\mathbf{0.9062}$\\
-    at $1.49$\,M parameters
-  \end{column}
-\end{columns}
-\end{frame}
+% (Agent4CT "From paper to benchmark -- a structured loop" and "The
+% Pentathlon -- five CT leaderboards" slides dropped: the Visual Heritage
+% audience needs the headline, not the CT benchmark details.)
 
 % --------------------------------------------------------------------------
 % Flash callout: what an LLM coding agent can build now, in wall-clock.
@@ -665,10 +655,63 @@ What is coming next?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% (The Bavarian Foundation Model slide was here in the india-talk deck.
-% Other speakers at DLDxHealth cover that piece, so it has been dropped
-% for this branch.)
+% Science at agent speed -- opportunities vs. risks.  The two risk items
+% with arXiv numbers are the papers already cited on the Speed slide.
 % --------------------------------------------------------------------------
+\begin{frame}[t]{Science at Agent Speed}{Opportunities and risks}
+\vspace{0.6em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily,
+    box/.style={rounded corners=6pt, thick, inner sep=5mm,
+                text width=13.4cm, align=left, minimum height=8.4cm,
+                drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
+                             opacity=0.35}},
+    pro/.style={box, draw=green!45!black, fill=green!8},
+    con/.style={box, draw=red!55!black,   fill=red!7}]
+  \node[pro, anchor=north] (p) at (-7.4,0) {%
+    {\LARGE\bfseries\color{green!40!black} Opportunities}\\[0.6em]
+    {\Large\begin{tabular}{@{}l@{}}
+      \textbullet\; Months of work in hours.\\[0.6em]
+      \textbullet\; Reproduce papers without code.\\[0.6em]
+      \textbullet\; Open Access for 150 EUR.\\[0.6em]
+      \textbullet\; Coding for every discipline.
+    \end{tabular}}};
+  \node[con, anchor=north] (c) at ( 7.4,0) {%
+    {\LARGE\bfseries\color{red!50!black} Risks}\\[0.6em]
+    {\Large\begin{tabular}{@{}l@{}}
+      \textbullet\; Plausible is not correct.\\[0.6em]
+      \textbullet\; Hallucinated references.\\[0.6em]
+      \textbullet\; AI-text detectors beaten in 3\,h.\\[0.6em]
+      \textbullet\; Sponsored bias in 12 LLMs.
+    \end{tabular}}};
+\end{tikzpicture}\\[0.6em]
+{\small\color{gray} Maier et al., arXiv:2605.02620 (style detector)
+ \,\textbullet\, Maier et al., arXiv:2605.12772 (sponsored recommendations)}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Closing advice for the doctoral audience (5x5 style).
+% --------------------------------------------------------------------------
+\begin{frame}[t]{What This Means for Your PhD}{Five rules for working with agents}
+\vspace{0.6em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily,
+    num/.style={circle, fill=blue!55!black, text=white, minimum size=1.5cm,
+                font=\LARGE\bfseries, inner sep=0pt},
+    txt/.style={anchor=west, font=\LARGE,
+                text height=2.2ex, text depth=0.6ex}]
+  \foreach \i/\t in {1/{Be the verifier, not the typist.},
+                     2/{Reproduce before you build.},
+                     3/{Keep a git-backed lab journal.},
+                     4/{Write quality gates, not just prompts.},
+                     5/{Disclose AI use -- own the final word.}} {
+    \node[num] (n\i) at (0, -2.0*\i) {\i};
+    \node[txt] at (1.2, -2.0*\i) {\t};
+  }
+\end{tikzpicture}
+\end{center}
+\end{frame}
 
 % --------------------------------------------------------------------------
 % References
@@ -677,23 +720,21 @@ What is coming next?
 \scriptsize
 \linespread{0.90}\selectfont
 \begin{itemize}\itemsep=0em
-  \item V.~Mnih, K.~Kavukcuoglu, D.~Silver, A.~Graves, I.~Antonoglou,
-        D.~Wierstra and M.~Riedmiller,
+  \item V.~Mnih et~al.,
         \emph{Playing Atari with Deep Reinforcement Learning},
         arXiv:1312.5602, 2013.
   \item D.~Silver et al.,
         \emph{Mastering the game of Go with deep neural networks and tree search},
-        \emph{Nature}, 529:484--489, 2016 (AlphaGo).
-  \item K.~Hammernik, T.~Klatzer, E.~Kobler, M.~P.~Recht, D.~K.~Sodickson,
-        T.~Pock and \textbf{F.~Knoll},
-        \emph{Learning a Variational Network for Reconstruction of
-        Accelerated MRI Data},
-        \emph{Magnetic Resonance in Medicine}, 79(6):3055--3071, 2018
-        (FastMRI / variational network).
-  \item A.~Maier, C.~Syben, B.~Stimpel, T.~Wuerfl, M.~Hoffmann, F.~Schebesch,
-        W.~Fu, L.~Mill, L.~Kling, S.~Christiansen,
+        \emph{Nature}, 529:484--489, 2016.
+  \item M.~Zinnen et~al.\ (incl.\ \textbf{A.~Maier}, V.~Christlein),
+        \emph{Smelly, dense, and spreaded: The Object Detection for
+        Olfactory References (ODOR) dataset},
+        \emph{Expert Systems with Applications}, 255:124576, 2024.
+  \item Odeuropa -- Europe's olfactory heritage (EU Horizon 2020):
+        \url{https://odeuropa.eu}
+  \item \textbf{A.~Maier} et~al.,
         \emph{Learning with Known Operators Reduces Maximum Error Bounds},
-        \emph{Nature Machine Intelligence}, 1:373--380, 2019.
+        \emph{Nat.\ Mach.\ Intell.}, 1:373--380, 2019.
   \item M.~Zaiss, J.~R.~Rajput, H.~N.~Dang, V.~Golkov, D.~Cremers,
         F.~Knoll and \textbf{A.~Maier},
         \emph{Exploring GPT-4 as MR sequence and reconstruction programming
@@ -706,6 +747,8 @@ What is coming next?
         arXiv:2604.13282, 2026 (Agent4MR).
   \item Deutscher Zukunftspreis (low-field MRI):
         \url{https://www.deutscher-zukunftspreis.de}
+  \item Agent M -- companion tool to the book \emph{Vibe Coding}:
+        \url{https://github.com/akmaier/agent-m}
   \item Conference statistics tooling:
         \url{https://github.com/akmaier/ConferenceStats}
   \item Agent4CT -- agentic re-implementation of deep-learning CT
@@ -732,11 +775,11 @@ What is coming next?
 % --------------------------------------------------------------------------
 % Slide 17 - Thank You + QR code to GitHub repo (centered, B/W QR)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Thank you!}
+\begin{frame}[t]{Thank you! Questions?}
 \begin{center}
   {\Large Slides on GitHub}\\[1.2em]
   \includegraphics[height=10cm]{qr_github.png}\\[0.8em]
-  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/dldxhealth-2026}
+  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/visual-heritage-2026}
 \end{center}
 \end{frame}
 

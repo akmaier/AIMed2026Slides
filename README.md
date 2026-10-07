@@ -1,18 +1,28 @@
-# What's Next in Medical AI? — DLDxHealth 2026
+# The Impact of Agentic AI on Science — Visual Heritage Doctoral Colloquium 2026
 
-Slides for the talk **“What's Next in Medical AI?”** by Andreas Maier
-(FAU Erlangen-N&#252;rnberg) at
-[**DLDxHealth 2026**](https://www.dld-conference.com/conference/dld-health26),
-Auditorium Stage, **12 June 2026, Munich**.
+Slides for **Invited Talk 5: “The Impact of Agentic AI on Science”** by
+Andreas Maier (FAU Erlangen-N&#252;rnberg) at the **Visual Heritage
+Doctoral Colloquium 2026**, Hainburg an der Donau, **7 October 2026**
+(ca. 20 min talk + 5 min Q&A).
 
-This is the `dldxhealth-2026` branch, based on the
-`india-talk` deck. The Bavarian Foundation Model slide and its
-reference have been removed (that piece is presented by other
-speakers at DLDxHealth); the title, subtitle, date and QR target
-have been retargeted at the DLDxHealth audience.
+This is the `visual-heritage-2026` branch, based on `dldxhealth-2026`.
+Changes for this audience:
+
+* The medical part is trimmed to *Known operators* and the
+  *Deutscher Zukunftspreis* slide (now with the high-resolution photos).
+* New slide *Deep learning in visual heritage*: Odeuropa and the ODOR
+  dataset (Zinnen et al.), with examples from the ODOR paper.
+* The last section is now *What does it mean for science?*, closing
+  with two new slides: *Science at Agent Speed* (opportunities and
+  risks) and *What This Means for Your PhD* (five rules).
+* New slide *Agent M*, the companion tool to the book *Vibe Coding*
+  (screenshot of akmaier.github.io/agent-m), right after the textbook slide.
+* The Agent4CT Pentathlon slide is dropped; the QR code points at this
+  branch.
 
 Other versions of the deck:
 
+* `dldxhealth-2026` — *“What's Next in Medical AI?”* (DLDxHealth, Munich).
 * `main` — original *“What next in medical AI?”* (AIMed 2026, Krak&#243;w).
 * `india-talk` — *“Towards Bringing Agentic AI to Healthcare”* (Bangalore).
 * `de-msd-senso` — German *„KI in der Onkologie“* (MSD Senso-Abend, Munich).
@@ -20,7 +30,7 @@ Other versions of the deck:
   Hospital orthopedics 80th anniversary.
 * `baiosphere-medical-2026-opening` / `…-closing` — BAIOSPHERE MEDICAL 2026.
 
-The compiled deck is `output_tex/main.pdf` (49 pages). Source is
+The compiled deck is `output_tex/main.pdf` (47 pages). Source is
 `output_tex/main.tex`, built against the FAU beamer template (the
 `styles/`, `template-art/` and `conf-art/` directories are vendored
 under `output_tex/`).
@@ -48,7 +58,7 @@ sequences, and the QR code on the Thank-you slide is a pre-rendered PNG
 
 ## PowerPoint variant
 
-The talk is given from `Whats_Next_in_Medical_AI_DLDxHealth.pptx`,
+The talk is given from `Impact_of_Agentic_AI_on_Science_VisualHeritage.pptx`,
 **not** the PDF, because three slides in the “What is agentic AI?”
 sequence — *Human baseline*, *GPT-4o attempt* and *GROK-3-think
 attempt* — display animated GIFs of the MR sequence playing back, which
@@ -56,7 +66,7 @@ a static PDF cannot do.
 
 To get to that PPTX, the rendered PDF is converted slide-by-slide: each
 PDF page is rasterised at 200 DPI and dropped onto a 16:9 slide as a
-full-bleed picture; on the three GIF pages (pages 25/26/27 of this
+full-bleed picture; on the three GIF pages (pages 23/24/25 of this
 deck) the matching `figures/img_08_0*.gif` is additionally placed on
 top of the static image at exactly the same bounding box. Re-run the
 conversion with:
@@ -66,7 +76,7 @@ python3 build_pptx/build_pptx.py
 ```
 
 The script writes its output to
-`build_pptx/Whats_Next_in_Medical_AI_DLDxHealth.pptx`; copy that over
+`build_pptx/Impact_of_Agentic_AI_on_Science_VisualHeritage.pptx`; copy that over
 the committed PPTX at the repo root to publish a fresh build.
 
 `build_pptx/probe_layout.py` is the small diagnostic used to find the
@@ -87,8 +97,8 @@ re-run the script, then rebuild the deck.
 ## Contents
 
 * `output_tex/main.tex` — LaTeX source
-* `output_tex/main.pdf` — compiled deck (49 slides)
-* `Whats_Next_in_Medical_AI_DLDxHealth.pptx` — presentable PowerPoint
+* `output_tex/main.pdf` — compiled deck (47 slides)
+* `Impact_of_Agentic_AI_on_Science_VisualHeritage.pptx` — presentable PowerPoint
   variant with animated GIFs on the three “What is agentic AI?” attempt
   slides
 * `output_tex/bibliography.bib` — biblatex entries (loaded by the FAU theme)
@@ -110,10 +120,13 @@ re-run the script, then rebuild the deck.
   Learning*, [arXiv:1312.5602](https://arxiv.org/abs/1312.5602), 2013.
 * D. Silver et al., *Mastering the game of Go with deep neural networks
   and tree search*, *Nature*, 529:484-489, 2016 (AlphaGo).
-* K. Hammernik, T. Klatzer, E. Kobler, M. P. Recht, D. K. Sodickson,
-  T. Pock and **F. Knoll**, *Learning a Variational Network for
-  Reconstruction of Accelerated MRI Data*, *Magnetic Resonance in
-  Medicine*, 79(6):3055-3071, 2018 (FastMRI / variational network).
+* M. Zinnen, P. Madhu, I. Leemans, P. Bell, A. Hussian, H. Tran,
+  A. H&#252;rriyeto&#287;lu, **A. Maier** and V. Christlein, *Smelly,
+  dense, and spreaded: The Object Detection for Olfactory References
+  (ODOR) dataset*, *Expert Systems with Applications*, 255:124576, 2024
+  ([arXiv:2507.08384](https://arxiv.org/abs/2507.08384)).
+* Odeuropa — Europe's olfactory heritage (EU Horizon 2020):
+  [odeuropa.eu](https://odeuropa.eu).
 * A. Maier, C. Syben, B. Stimpel, T. Wuerfl, M. Hoffmann, F. Schebesch,
   W. Fu, L. Mill, L. Kling, S. Christiansen, *Learning with Known
   Operators Reduces Maximum Error Bounds*, *Nature Machine
@@ -128,9 +141,22 @@ re-run the script, then rebuild the deck.
   [arXiv:2604.13282](https://arxiv.org/abs/2604.13282), 2026 (Agent4MR).
 * Deutscher Zukunftspreis 2023 (low-field MRI):
   [deutscher-zukunftspreis.de][zukunftspreis].
+* Agent M — companion tool to the book *Vibe Coding*:
+  [github.com/akmaier/agent-m](https://github.com/akmaier/agent-m).
 * Conference statistics tooling:
   [github.com/akmaier/ConferenceStats](https://github.com/akmaier/ConferenceStats).
 * Agent4CT — agentic re-implementation of deep-learning CT methods:
   [github.com/akmaier/Agent4CT](https://github.com/akmaier/Agent4CT).
+* **A. Maier**, M. Zaiss and S. Bayer, *Beating the Style Detector: Three
+  Hours of Agentic Research on the AI-Text Arms Race*,
+  [arXiv:2605.02620](https://arxiv.org/abs/2605.02620), 2026.
+* **A. Maier**, J. Sopa, G. G. Sahin, P. Perez-Toro and S. Bayer, *Just
+  Ask for a Table: A Thirty-Token User Prompt Defeats Sponsored
+  Recommendations in Twelve LLMs*,
+  [arXiv:2605.12772](https://arxiv.org/abs/2605.12772), 2026.
+* *IfCampoKnew* — scraper for 200 study programs and an AI RAG chatbot:
+  [github.com/akmaier/IfCampoKnew](https://github.com/akmaier/IfCampoKnew).
+* *UnderstandingVCS* — agent-reimplemented ATARI VCS emulator:
+  [github.com/akmaier/UnderstandingVCS](https://github.com/akmaier/UnderstandingVCS).
 
 [zukunftspreis]: https://www.deutscher-zukunftspreis.de/de/die-gewinner-des-deutschen-zukunftspreises-2023-spendeten-ein-mrt-geraet
