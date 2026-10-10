@@ -237,31 +237,8 @@ $\varepsilon_k=0$ and strictly tightens this bound.
 \end{center}
 \end{frame}
 
-% --------------------------------------------------------------------------
-% Deep learning in visual heritage -- Odeuropa / ODOR (Mathias Zinnen et al.).
-% Examples: Fig. 1 of the ODOR paper (arXiv:2507.08384); numbers from the
-% ODOR paper and the Odeuropa project pages.
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Deep learning in visual heritage}{Odeuropa -- how to see smells in historical art}
-\vspace{0.2em}
-\begin{columns}[c]
-  \begin{column}{0.60\textwidth}
-    \centering
-    \includegraphics[width=\linewidth,height=.74\textheight,keepaspectratio]{odor_examples.png}\\[0.2em]
-    {\scriptsize\color{gray} ODOR examples: flowers, chimneys \& smoke, pipe, jug.}
-  \end{column}
-  \begin{column}{0.38\textwidth}
-    \centering
-    {\fontsize{30}{30}\selectfont\bfseries\color{blue!55!black} 43\,000}\\[0.1em]
-    {\small historical images \,+\, 167\,000 books,\\ six languages, 1600--1920}\\[0.7em]
-    {\fontsize{30}{30}\selectfont\bfseries\color{blue!55!black} 2.5\,M}\\[0.1em]
-    {\small smell references in the\\ European Olfactory Knowledge Graph}\\[0.7em]
-    {\fontsize{30}{30}\selectfont\bfseries\color{blue!55!black} 38\,116}\\[0.1em]
-    {\small boxes on 4\,712 artworks, 139 classes\\ (ODOR dataset, FAU)}\\[0.8em]
-    {\small\bfseries European Heritage Award 2025 (Research)}
-  \end{column}
-\end{columns}
-\end{frame}
+% (The "Deep learning in visual heritage" / Odeuropa slide from the Visual
+% Heritage deck is dropped for the PULS audience.)
 
 % --------------------------------------------------------------------------
 % Slide 7 - Section divider
@@ -610,6 +587,58 @@ What does it mean for science?
 % audience needs the headline, not the CT benchmark details.)
 
 % --------------------------------------------------------------------------
+% UnderstandingVCS (1/2) -- the pitch.  Facts from the project's results
+% audit page, akmaier.github.io/UnderstandingVCS.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{UnderstandingVCS}{A differentiable Atari 2600 -- built by agents, proven bit-exact}
+\vspace{0.5em}
+\begin{columns}[T]
+  \begin{column}{0.60\textwidth}
+    \begin{itemize}\itemsep=0.6em\large
+      \item \textbf{Two differentiable ports} of the Atari 2600
+            VCS -- in JAX and in Julia.
+      \item Checked against \textbf{xitari}, an independent C++
+            emulator that is not part of the project.
+      \item \textbf{Ground truth for XAI}: score interpretability
+            methods against a machine we know \emph{exactly}.
+    \end{itemize}
+    \vspace{1.0em}
+    {\large\itshape\color{blue!55!black}
+     ``Hallucinated code does not accidentally match\\
+     an external reference to the bit.''}
+  \end{column}
+  \begin{column}{0.38\textwidth}
+    \centering
+    {\fontsize{34}{34}\selectfont\bfseries\color{blue!55!black} 64\,/\,64}\\[0.15em]
+    {\small games: RAM byte-exact,\\ screen pixel-exact}\\[0.9em]
+    {\fontsize{34}{34}\selectfont\bfseries\color{blue!55!black} 16\,k}\\[0.15em]
+    {\small lines of code in one week}\\[0.9em]
+    {\fontsize{34}{34}\selectfont\bfseries\color{blue!55!black} 769}\\[0.15em]
+    {\small commits with the open\\ prompt\,$\rightarrow$\,code log}
+  \end{column}
+\end{columns}
+\vfill
+\begin{center}\small\color{gray}
+  Paper~1: AAAI 2027 (submitted) \,\textbullet\,
+  Paper~2: \emph{Nature Machine Intelligence} (in preparation)
+  \,\textbullet\, {\ttfamily akmaier.github.io/UnderstandingVCS}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% UnderstandingVCS (2/2) -- the result.  Static frame in the PDF; the PPTX
+% overlays the animated GIF (figures/vcs_si_compare.gif, 3x nearest-
+% neighbour upscale of the project's si_compare.gif).  Keep the body to the
+% image only: build_pptx.py places the GIF from the image's bounding box.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{UnderstandingVCS}{Space Invaders -- C++ reference vs.\ our Julia port: zero difference}
+\vspace{0.6em}
+\begin{center}
+  \includegraphics[width=\textwidth,height=.74\textheight,keepaspectratio]{vcs_si_compare.png}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
 % Flash callout: what an LLM coding agent can build now, in wall-clock.
 % Four data points -- 3 h paper-reproduction + new paper, 1 d paper without
 % code, 3 d study-program scraper + RAG chatbot, 1 w ATARI emulator.
@@ -723,12 +752,6 @@ What does it mean for science?
   \item D.~Silver et al.,
         \emph{Mastering the game of Go with deep neural networks and tree search},
         \emph{Nature}, 529:484--489, 2016.
-  \item M.~Zinnen et~al.\ (incl.\ \textbf{A.~Maier}, V.~Christlein),
-        \emph{Smelly, dense, and spreaded: The Object Detection for
-        Olfactory References (ODOR) dataset},
-        \emph{Expert Systems with Applications}, 255:124576, 2024.
-  \item Odeuropa -- Europe's olfactory heritage (EU Horizon 2020):
-        \url{https://odeuropa.eu}
   \item \textbf{A.~Maier} et~al.,
         \emph{Learning with Known Operators Reduces Maximum Error Bounds},
         \emph{Nat.\ Mach.\ Intell.}, 1:373--380, 2019.
@@ -774,9 +797,10 @@ What does it mean for science?
 % --------------------------------------------------------------------------
 \begin{frame}[t]{Thank you! Questions?}
 \begin{center}
-  {\Large Slides on GitHub}\\[1.2em]
-  \includegraphics[height=10cm]{qr_github.png}\\[0.8em]
-  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/puls-retreat-2026}
+  {\Large Slides on GitHub}\\[1.0em]
+  \includegraphics[height=8.6cm]{qr_github.png}\\[0.6em]
+  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/puls-retreat-2026}\\[1.0em]
+  {\Large\bfseries\color{blue!55!black} Hands-on AI today, 16:30--18:30 -- bring your own problem!}
 \end{center}
 \end{frame}
 

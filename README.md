@@ -8,19 +8,21 @@ Underlying Life Sciences Workshop), Hotel Kolovare, Zadar, Croatia —
 30 min).
 
 This is the `puls-retreat-2026` branch, forked from
-`visual-heritage-2026` with the same content. Changes:
+`visual-heritage-2026`. Changes:
 
 * Subtitle, date, venue and footer retargeted at the PULS Retreat; the
   QR code and printed URL point at this branch.
-* The *Agent M* slide (right after the textbook slide) is now a
-  full-slide screenshot of akmaier.github.io/agent-m, taken with the
-  page fully loaded (live progress card: six stages, 67 % to first
-  release).
-
-The `visual-heritage-2026` deck this is based on trimmed the medical
-part to *Known operators* and the *Zukunftspreis* slide, added the
-Odeuropa/ODOR slide and closed with *Science at Agent Speed* and
-*What This Means for Your PhD*.
+* The *Agent M* slide (right after the textbook slide) is a full-slide
+  screenshot of akmaier.github.io/agent-m, taken with the page fully
+  loaded (live progress card: six stages, 67 % to first release).
+* Two new slides after Agent4CT on **UnderstandingVCS**: the pitch (a
+  differentiable Atari 2600, bit-exact against the independent xitari
+  C++ emulator on 64/64 games) and the result GIF (Space Invaders:
+  reference vs. Julia port vs. pixel difference). The PPTX plays the
+  GIF; the PDF shows a still frame.
+* The Odeuropa / visual-heritage slide is dropped.
+* The closing slide points to the *Hands-on AI* session the same day,
+  16:30–18:30.
 
 Other versions of the deck:
 
@@ -34,7 +36,7 @@ Other versions of the deck:
   Hospital orthopedics 80th anniversary.
 * `baiosphere-medical-2026-opening` / `…-closing` — BAIOSPHERE MEDICAL 2026.
 
-The compiled deck is `output_tex/main.pdf` (47 pages). Source is
+The compiled deck is `output_tex/main.pdf` (48 pages). Source is
 `output_tex/main.tex`, built against the FAU beamer template (the
 `styles/`, `template-art/` and `conf-art/` directories are vendored
 under `output_tex/`).
@@ -63,16 +65,18 @@ sequences, and the QR code on the Thank-you slide is a pre-rendered PNG
 ## PowerPoint variant
 
 The talk is given from `Impact_of_Agentic_AI_on_Science_PULS_Retreat.pptx`,
-**not** the PDF, because three slides in the “What is agentic AI?”
-sequence — *Human baseline*, *GPT-4o attempt* and *GROK-3-think
-attempt* — display animated GIFs of the MR sequence playing back, which
-a static PDF cannot do.
+**not** the PDF, because four slides display animated GIFs, which a
+static PDF cannot do: *Human baseline*, *GPT-4o attempt* and
+*GROK-3-think attempt* in the “What is agentic AI?” sequence (the MR
+sequence playing back), and the UnderstandingVCS result slide
+(Space Invaders, reference vs. port vs. difference).
 
 To get to that PPTX, the rendered PDF is converted slide-by-slide: each
 PDF page is rasterised at 200 DPI and dropped onto a 16:9 slide as a
-full-bleed picture; on the three GIF pages (pages 23/24/25 of this
-deck) the matching `figures/img_08_0*.gif` is additionally placed on
-top of the static image at exactly the same bounding box. Re-run the
+full-bleed picture; on the GIF pages (22/23/24 with
+`figures/img_08_0*.gif`, 43 with `figures/vcs_si_compare.gif`) the
+animation is additionally placed on top of the static image at exactly
+the same bounding box. Re-run the
 conversion with:
 
 ```
@@ -101,7 +105,7 @@ re-run the script, then rebuild the deck.
 ## Contents
 
 * `output_tex/main.tex` — LaTeX source
-* `output_tex/main.pdf` — compiled deck (47 slides)
+* `output_tex/main.pdf` — compiled deck (48 slides)
 * `Impact_of_Agentic_AI_on_Science_PULS_Retreat.pptx` — presentable PowerPoint
   variant with animated GIFs on the three “What is agentic AI?” attempt
   slides
