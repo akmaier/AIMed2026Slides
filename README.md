@@ -1,27 +1,31 @@
-# The Impact of Agentic AI on Science — Visual Heritage Doctoral Colloquium 2026
+# The Impact of Agentic AI on Science — PULS Retreat 2026
 
-Slides for **Invited Talk 5: “The Impact of Agentic AI on Science”** by
-Andreas Maier (FAU Erlangen-N&#252;rnberg) at the **Visual Heritage
-Doctoral Colloquium 2026**, Hainburg an der Donau, **7 October 2026**
-(ca. 20 min talk + 5 min Q&A).
+Slides for the invited talk **“The Impact of Agentic AI on Science”** by
+Andreas Maier (FAU Erlangen-N&#252;rnberg) at the
+[**PULS Retreat 2026**](https://puls-retreat-2026.vercel.app) (Physics
+Underlying Life Sciences Workshop), Hotel Kolovare, Zadar, Croatia —
+**Sunday, 11 October 2026**, 9:00–10:30 invited-talks block (approx.
+30 min).
 
-This is the `visual-heritage-2026` branch, based on `dldxhealth-2026`.
-Changes for this audience:
+This is the `puls-retreat-2026` branch, forked from
+`visual-heritage-2026` with the same content. Changes:
 
-* The medical part is trimmed to *Known operators* and the
-  *Deutscher Zukunftspreis* slide (now with the high-resolution photos).
-* New slide *Deep learning in visual heritage*: Odeuropa and the ODOR
-  dataset (Zinnen et al.), with examples from the ODOR paper.
-* The last section is now *What does it mean for science?*, closing
-  with two new slides: *Science at Agent Speed* (opportunities and
-  risks) and *What This Means for Your PhD* (five rules).
-* New slide *Agent M*, the companion tool to the book *Vibe Coding*
-  (screenshot of akmaier.github.io/agent-m), right after the textbook slide.
-* The Agent4CT Pentathlon slide is dropped; the QR code points at this
-  branch.
+* Subtitle, date, venue and footer retargeted at the PULS Retreat; the
+  QR code and printed URL point at this branch.
+* The *Agent M* slide (right after the textbook slide) is now a
+  full-slide screenshot of akmaier.github.io/agent-m, taken with the
+  page fully loaded (live progress card: six stages, 67 % to first
+  release).
+
+The `visual-heritage-2026` deck this is based on trimmed the medical
+part to *Known operators* and the *Zukunftspreis* slide, added the
+Odeuropa/ODOR slide and closed with *Science at Agent Speed* and
+*What This Means for Your PhD*.
 
 Other versions of the deck:
 
+* `visual-heritage-2026` — same talk at the Visual Heritage Doctoral
+  Colloquium 2026 (Hainburg an der Donau).
 * `dldxhealth-2026` — *“What's Next in Medical AI?”* (DLDxHealth, Munich).
 * `main` — original *“What next in medical AI?”* (AIMed 2026, Krak&#243;w).
 * `india-talk` — *“Towards Bringing Agentic AI to Healthcare”* (Bangalore).
@@ -58,7 +62,7 @@ sequences, and the QR code on the Thank-you slide is a pre-rendered PNG
 
 ## PowerPoint variant
 
-The talk is given from `Impact_of_Agentic_AI_on_Science_VisualHeritage.pptx`,
+The talk is given from `Impact_of_Agentic_AI_on_Science_PULS_Retreat.pptx`,
 **not** the PDF, because three slides in the “What is agentic AI?”
 sequence — *Human baseline*, *GPT-4o attempt* and *GROK-3-think
 attempt* — display animated GIFs of the MR sequence playing back, which
@@ -76,7 +80,7 @@ python3 build_pptx/build_pptx.py
 ```
 
 The script writes its output to
-`build_pptx/Impact_of_Agentic_AI_on_Science_VisualHeritage.pptx`; copy that over
+`build_pptx/Impact_of_Agentic_AI_on_Science_PULS_Retreat.pptx`; copy that over
 the committed PPTX at the repo root to publish a fresh build.
 
 `build_pptx/probe_layout.py` is the small diagnostic used to find the
@@ -98,7 +102,7 @@ re-run the script, then rebuild the deck.
 
 * `output_tex/main.tex` — LaTeX source
 * `output_tex/main.pdf` — compiled deck (47 slides)
-* `Impact_of_Agentic_AI_on_Science_VisualHeritage.pptx` — presentable PowerPoint
+* `Impact_of_Agentic_AI_on_Science_PULS_Retreat.pptx` — presentable PowerPoint
   variant with animated GIFs on the three “What is agentic AI?” attempt
   slides
 * `output_tex/bibliography.bib` — biblatex entries (loaded by the FAU theme)

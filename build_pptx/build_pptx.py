@@ -35,7 +35,7 @@ FIG_DIR = ROOT / "output_tex" / "figures"
 PAGES_DIR = ROOT / "build_pptx" / "pages"
 # Write the regenerated deck *inside* build_pptx/ so we never clobber
 # the manually-edited committed copy at the repo root.
-OUT = ROOT / "build_pptx" / "Impact_of_Agentic_AI_on_Science_VisualHeritage.pptx"
+OUT = ROOT / "build_pptx" / "Impact_of_Agentic_AI_on_Science_PULS_Retreat.pptx"
 
 # Slide-page -> (gif filename, source png filename)
 TARGETS = {
