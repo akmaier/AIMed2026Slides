@@ -1,8 +1,11 @@
 % ..............................................................................
-% "The Impact of Agentic AI on Science" -- Andreas Maier, Invited Talk 5,
-% Visual Heritage Doctoral Colloquium 2026 (Hainburg an der Donau,
-% 7 October 2026; ca. 20 min talk + 5 min Q&A).
-% Branch `visual-heritage-2026`, based on `dldxhealth-2026`: medical part
+% "Vibe Coding: Software Engineering in the Age of AI" -- Andreas Maier,
+% keynote at the Robotics & AI Hackathon 2026, Siemens Healthineers
+% Innovation Center, Erlangen (Thursday 22 October 2026, 16:00-16:30).
+% Branch `robotics-ai-hackathon-2026`, forked from `visual-heritage-2026`:
+% Odeuropa/visual-heritage slide dropped for the medical/robotics audience,
+% Agent M as a full-slide screenshot (as on `puls-retreat-2026`).
+% `visual-heritage-2026` itself was based on `dldxhealth-2026`: medical part
 % trimmed to Known operators + Zukunftspreis, an Odeuropa/ODOR slide for the
 % visual-heritage audience, and two closing slides on what agentic AI means
 % for science and for a PhD.
@@ -31,11 +34,11 @@
 % ----------------------------------------------------------------------------------------
 % Title page metadata
 % ----------------------------------------------------------------------------------------
-\title[The Impact of Agentic AI on Science]{The Impact of Agentic AI on Science}
-\subtitle{Invited Talk \,\textbullet\, Visual Heritage Doctoral Colloquium 2026}
+\title[Vibe Coding: Software Engineering in the Age of AI]{Vibe Coding: Software Engineering in the Age of AI}
+\subtitle{Keynote \,\textbullet\, Robotics \& AI Hackathon 2026}
 \author[A.~Maier]{Andreas Maier}
 \institute[FAU]{Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg}
-\date{7 October 2026 \,\textbullet\, Hainburg an der Donau}
+\date{22 October 2026 \,\textbullet\, Siemens Healthineers Innovation Center, Erlangen}
 
 % ================================================
 % The main document
@@ -234,31 +237,8 @@ $\varepsilon_k=0$ and strictly tightens this bound.
 \end{center}
 \end{frame}
 
-% --------------------------------------------------------------------------
-% Deep learning in visual heritage -- Odeuropa / ODOR (Mathias Zinnen et al.).
-% Examples: Fig. 1 of the ODOR paper (arXiv:2507.08384); numbers from the
-% ODOR paper and the Odeuropa project pages.
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Deep learning in visual heritage}{Odeuropa -- how to see smells in historical art}
-\vspace{0.2em}
-\begin{columns}[c]
-  \begin{column}{0.60\textwidth}
-    \centering
-    \includegraphics[width=\linewidth,height=.74\textheight,keepaspectratio]{odor_examples.png}\\[0.2em]
-    {\scriptsize\color{gray} ODOR examples: flowers, chimneys \& smoke, pipe, jug.}
-  \end{column}
-  \begin{column}{0.38\textwidth}
-    \centering
-    {\fontsize{30}{30}\selectfont\bfseries\color{blue!55!black} 43\,000}\\[0.1em]
-    {\small historical images \,+\, 167\,000 books,\\ six languages, 1600--1920}\\[0.7em]
-    {\fontsize{30}{30}\selectfont\bfseries\color{blue!55!black} 2.5\,M}\\[0.1em]
-    {\small smell references in the\\ European Olfactory Knowledge Graph}\\[0.7em]
-    {\fontsize{30}{30}\selectfont\bfseries\color{blue!55!black} 38\,116}\\[0.1em]
-    {\small boxes on 4\,712 artworks, 139 classes\\ (ODOR dataset, FAU)}\\[0.8em]
-    {\small\bfseries European Heritage Award 2025 (Research)}
-  \end{column}
-\end{columns}
-\end{frame}
+% (The "Deep learning in visual heritage" / Odeuropa slide from the Visual
+% Heritage deck is dropped for this medical/robotics audience.)
 
 % --------------------------------------------------------------------------
 % Slide 7 - Section divider
@@ -471,21 +451,15 @@ How about real agentic AI?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Agent M -- the companion tool to the Vibe Coding book (screenshot of
-% akmaier.github.io/agent-m, header + hero banner).
+% Agent M -- the companion tool to the Vibe Coding book.  Full-slide
+% screenshot of akmaier.github.io/agent-m (1600x900 viewport, loaded live
+% with the project's progress card), same as on `puls-retreat-2026`.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{Agent M -- the book's companion tool}
-\vspace{0.1em}
+\begin{frame}[t]{What is agentic AI?}{Agent M -- the companion tool to the book \emph{Vibe Coding}}
 \begin{center}
-  \includegraphics[width=.72\textwidth,keepaspectratio]{agentm_screenshot.png}
+  \includegraphics[width=\textwidth,height=.72\textheight,keepaspectratio]{agentm_screenshot.png}\\[0.15em]
+  {\small\ttfamily akmaier.github.io/agent-m}
 \end{center}
-\vspace{0.3em}
-\begin{itemize}\itemsep=0.25em\Large
-  \item Runs the book's six-stage cycle on \emph{your} repositories.
-  \item Agents do the work -- people decide at every gate.
-  \item No server, MIT licence:
-        {\ttfamily akmaier.github.io/agent-m}
-\end{itemize}
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -726,12 +700,6 @@ What does it mean for science?
   \item D.~Silver et al.,
         \emph{Mastering the game of Go with deep neural networks and tree search},
         \emph{Nature}, 529:484--489, 2016.
-  \item M.~Zinnen et~al.\ (incl.\ \textbf{A.~Maier}, V.~Christlein),
-        \emph{Smelly, dense, and spreaded: The Object Detection for
-        Olfactory References (ODOR) dataset},
-        \emph{Expert Systems with Applications}, 255:124576, 2024.
-  \item Odeuropa -- Europe's olfactory heritage (EU Horizon 2020):
-        \url{https://odeuropa.eu}
   \item \textbf{A.~Maier} et~al.,
         \emph{Learning with Known Operators Reduces Maximum Error Bounds},
         \emph{Nat.\ Mach.\ Intell.}, 1:373--380, 2019.
@@ -779,7 +747,7 @@ What does it mean for science?
 \begin{center}
   {\Large Slides on GitHub}\\[1.2em]
   \includegraphics[height=10cm]{qr_github.png}\\[0.8em]
-  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/visual-heritage-2026}
+  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/robotics-ai-hackathon-2026}
 \end{center}
 \end{frame}
 

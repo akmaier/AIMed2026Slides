@@ -1,27 +1,25 @@
-# The Impact of Agentic AI on Science — Visual Heritage Doctoral Colloquium 2026
+# Vibe Coding: Software Engineering in the Age of AI — Robotics & AI Hackathon 2026
 
-Slides for **Invited Talk 5: “The Impact of Agentic AI on Science”** by
-Andreas Maier (FAU Erlangen-N&#252;rnberg) at the **Visual Heritage
-Doctoral Colloquium 2026**, Hainburg an der Donau, **7 October 2026**
-(ca. 20 min talk + 5 min Q&A).
+Slides for the keynote **“Vibe Coding: Software Engineering in the Age of
+AI”** by Andreas Maier (FAU Erlangen-N&#252;rnberg) at the **Robotics & AI
+Hackathon 2026**, Siemens Healthineers Innovation Center, Erlangen —
+**Thursday, 22 October 2026, 16:00–16:30** (hackathon 22–24 October;
+about 200 participants from FAU and EELISA partner universities).
 
-This is the `visual-heritage-2026` branch, based on `dldxhealth-2026`.
-Changes for this audience:
+This is the `robotics-ai-hackathon-2026` branch, forked from
+`visual-heritage-2026`. Changes:
 
-* The medical part is trimmed to *Known operators* and the
-  *Deutscher Zukunftspreis* slide (now with the high-resolution photos).
-* New slide *Deep learning in visual heritage*: Odeuropa and the ODOR
-  dataset (Zinnen et al.), with examples from the ODOR paper.
-* The last section is now *What does it mean for science?*, closing
-  with two new slides: *Science at Agent Speed* (opportunities and
-  risks) and *What This Means for Your PhD* (five rules).
-* New slide *Agent M*, the companion tool to the book *Vibe Coding*
-  (screenshot of akmaier.github.io/agent-m), right after the textbook slide.
-* The Agent4CT Pentathlon slide is dropped; the QR code points at this
-  branch.
+* Title set to the announced keynote title; subtitle, date, venue and
+  footer retargeted; the QR code and printed URL point at this branch.
+* The Odeuropa / visual-heritage slide is dropped (medical / robotics
+  audience).
+* The *Agent M* slide (right after the textbook slide) is the full-slide
+  screenshot of akmaier.github.io/agent-m, as on `puls-retreat-2026`.
 
 Other versions of the deck:
 
+* `puls-retreat-2026` — *“The Impact of Agentic AI on Science”* (PULS
+  Retreat, Zadar), with the UnderstandingVCS slides.
 * `dldxhealth-2026` — *“What's Next in Medical AI?”* (DLDxHealth, Munich).
 * `main` — original *“What next in medical AI?”* (AIMed 2026, Krak&#243;w).
 * `india-talk` — *“Towards Bringing Agentic AI to Healthcare”* (Bangalore).
@@ -30,7 +28,7 @@ Other versions of the deck:
   Hospital orthopedics 80th anniversary.
 * `baiosphere-medical-2026-opening` / `…-closing` — BAIOSPHERE MEDICAL 2026.
 
-The compiled deck is `output_tex/main.pdf` (47 pages). Source is
+The compiled deck is `output_tex/main.pdf` (46 pages). Source is
 `output_tex/main.tex`, built against the FAU beamer template (the
 `styles/`, `template-art/` and `conf-art/` directories are vendored
 under `output_tex/`).
@@ -58,7 +56,7 @@ sequences, and the QR code on the Thank-you slide is a pre-rendered PNG
 
 ## PowerPoint variant
 
-The talk is given from `Impact_of_Agentic_AI_on_Science_VisualHeritage.pptx`,
+The talk is given from `Vibe_Coding_Robotics_AI_Hackathon_2026.pptx`,
 **not** the PDF, because three slides in the “What is agentic AI?”
 sequence — *Human baseline*, *GPT-4o attempt* and *GROK-3-think
 attempt* — display animated GIFs of the MR sequence playing back, which
@@ -66,7 +64,7 @@ a static PDF cannot do.
 
 To get to that PPTX, the rendered PDF is converted slide-by-slide: each
 PDF page is rasterised at 200 DPI and dropped onto a 16:9 slide as a
-full-bleed picture; on the three GIF pages (pages 23/24/25 of this
+full-bleed picture; on the three GIF pages (pages 22/23/24 of this
 deck) the matching `figures/img_08_0*.gif` is additionally placed on
 top of the static image at exactly the same bounding box. Re-run the
 conversion with:
@@ -76,7 +74,7 @@ python3 build_pptx/build_pptx.py
 ```
 
 The script writes its output to
-`build_pptx/Impact_of_Agentic_AI_on_Science_VisualHeritage.pptx`; copy that over
+`build_pptx/Vibe_Coding_Robotics_AI_Hackathon_2026.pptx`; copy that over
 the committed PPTX at the repo root to publish a fresh build.
 
 `build_pptx/probe_layout.py` is the small diagnostic used to find the
@@ -97,8 +95,8 @@ re-run the script, then rebuild the deck.
 ## Contents
 
 * `output_tex/main.tex` — LaTeX source
-* `output_tex/main.pdf` — compiled deck (47 slides)
-* `Impact_of_Agentic_AI_on_Science_VisualHeritage.pptx` — presentable PowerPoint
+* `output_tex/main.pdf` — compiled deck (46 slides)
+* `Vibe_Coding_Robotics_AI_Hackathon_2026.pptx` — presentable PowerPoint
   variant with animated GIFs on the three “What is agentic AI?” attempt
   slides
 * `output_tex/bibliography.bib` — biblatex entries (loaded by the FAU theme)
@@ -120,13 +118,6 @@ re-run the script, then rebuild the deck.
   Learning*, [arXiv:1312.5602](https://arxiv.org/abs/1312.5602), 2013.
 * D. Silver et al., *Mastering the game of Go with deep neural networks
   and tree search*, *Nature*, 529:484-489, 2016 (AlphaGo).
-* M. Zinnen, P. Madhu, I. Leemans, P. Bell, A. Hussian, H. Tran,
-  A. H&#252;rriyeto&#287;lu, **A. Maier** and V. Christlein, *Smelly,
-  dense, and spreaded: The Object Detection for Olfactory References
-  (ODOR) dataset*, *Expert Systems with Applications*, 255:124576, 2024
-  ([arXiv:2507.08384](https://arxiv.org/abs/2507.08384)).
-* Odeuropa — Europe's olfactory heritage (EU Horizon 2020):
-  [odeuropa.eu](https://odeuropa.eu).
 * A. Maier, C. Syben, B. Stimpel, T. Wuerfl, M. Hoffmann, F. Schebesch,
   W. Fu, L. Mill, L. Kling, S. Christiansen, *Learning with Known
   Operators Reduces Maximum Error Bounds*, *Nature Machine

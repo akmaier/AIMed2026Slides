@@ -3,7 +3,7 @@
 on the three "What is agentic AI?" attempt slides.
 
 For every PDF page we add a full-bleed picture of the rasterized page.
-On pages 23/24/25 we additionally drop the source GIF on top of the
+On pages 22/23/24 we additionally drop the source GIF on top of the
 static PNG so PowerPoint shows the animation in slideshow mode.
 
 The GIF placement matches the static image's bounding box on the
@@ -35,13 +35,13 @@ FIG_DIR = ROOT / "output_tex" / "figures"
 PAGES_DIR = ROOT / "build_pptx" / "pages"
 # Write the regenerated deck *inside* build_pptx/ so we never clobber
 # the manually-edited committed copy at the repo root.
-OUT = ROOT / "build_pptx" / "Impact_of_Agentic_AI_on_Science_VisualHeritage.pptx"
+OUT = ROOT / "build_pptx" / "Vibe_Coding_Robotics_AI_Hackathon_2026.pptx"
 
 # Slide-page -> (gif filename, source png filename)
 TARGETS = {
-    23: ("img_08_02.gif", "img_08_02.png"),
-    24: ("img_08_03.gif", "img_08_03.png"),
-    25: ("img_08_04.gif", "img_08_04.png"),
+    22: ("img_08_02.gif", "img_08_02.png"),
+    23: ("img_08_03.gif", "img_08_03.png"),
+    24: ("img_08_04.gif", "img_08_04.png"),
 }
 
 # Body region of an FAU-themed slide (fractions of page height).
