@@ -15,6 +15,13 @@ This is the `robotics-ai-hackathon-2026` branch, forked from
   audience).
 * The *Agent M* slide (right after the textbook slide) is the full-slide
   screenshot of akmaier.github.io/agent-m, as on `puls-retreat-2026`.
+* New slide after Agent4CT on **UnderstandingVCS** / the jutari paper
+  (*A Differentiable Atari VCS: A Complex, Fully Known Ground Truth for
+  Explainable AI*): the xitari-vs-jutari Space Invaders comparison video
+  (the repo's current `docs/assets/video/cmp_space_invaders.mp4`, 30 s,
+  zero pixel difference throughout) next to the key numbers. The PPTX
+  embeds the MP4 set to start automatically and loop; the PDF shows a
+  still frame.
 
 Other versions of the deck:
 
@@ -28,7 +35,7 @@ Other versions of the deck:
   Hospital orthopedics 80th anniversary.
 * `baiosphere-medical-2026-opening` / `…-closing` — BAIOSPHERE MEDICAL 2026.
 
-The compiled deck is `output_tex/main.pdf` (46 pages). Source is
+The compiled deck is `output_tex/main.pdf` (47 pages). Source is
 `output_tex/main.tex`, built against the FAU beamer template (the
 `styles/`, `template-art/` and `conf-art/` directories are vendored
 under `output_tex/`).
@@ -95,7 +102,7 @@ re-run the script, then rebuild the deck.
 ## Contents
 
 * `output_tex/main.tex` — LaTeX source
-* `output_tex/main.pdf` — compiled deck (46 slides)
+* `output_tex/main.pdf` — compiled deck (47 slides)
 * `Vibe_Coding_Robotics_AI_Hackathon_2026.pptx` — presentable PowerPoint
   variant with animated GIFs on the three “What is agentic AI?” attempt
   slides

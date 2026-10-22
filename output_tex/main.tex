@@ -587,6 +587,40 @@ What does it mean for science?
 % audience needs the headline, not the CT benchmark details.)
 
 % --------------------------------------------------------------------------
+% UnderstandingVCS / jutari paper (github.com/akmaier/UnderstandingVCS,
+% folder jutari_paper): "A Differentiable Atari VCS: A Complex, Fully Known
+% Ground Truth for Explainable AI".  The left column holds ONLY the video
+% still: build_pptx.py finds it there and embeds
+% figures/vcs_si_xitari_vs_jutari.mp4 on top (autoplay, loop).  The clip is
+% the repo's current docs/assets/video/cmp_space_invaders.mp4 (30 s, rendered
+% 30 June 2026); its difference panel is pure black for the whole clip.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{UnderstandingVCS}{A differentiable Atari 2600 -- built by agents, proven bit-exact}
+\vspace{0.4em}
+\begin{columns}[c]
+  \begin{column}{0.62\textwidth}
+    \centering
+    \includegraphics[width=\linewidth,keepaspectratio]{vcs_si_video_still.png}
+  \end{column}
+  \begin{column}{0.36\textwidth}
+    \centering
+    {\fontsize{38}{38}\selectfont\bfseries\color{blue!55!black} 0}\\[0.15em]
+    {\small pixels differ: xitari (C++ reference)\\ vs.\ jutari (our Julia port)}\\[0.9em]
+    {\fontsize{34}{34}\selectfont\bfseries\color{blue!55!black} 64\,/\,64}\\[0.15em]
+    {\small games: RAM byte-exact,\\ screen pixel-exact}\\[0.9em]
+    {\fontsize{34}{34}\selectfont\bfseries\color{blue!55!black} 16\,k}\\[0.15em]
+    {\small lines of code, largely written by agents}
+  \end{column}
+\end{columns}
+\vfill
+\begin{center}\small\color{gray}
+  \emph{A Differentiable Atari VCS: A Complex, Fully Known Ground Truth
+  for Explainable AI} -- AAAI 2027 (submitted)\\
+  {\ttfamily akmaier.github.io/UnderstandingVCS}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
 % Flash callout: what an LLM coding agent can build now, in wall-clock.
 % Four data points -- 3 h paper-reproduction + new paper, 1 d paper without
 % code, 3 d study-program scraper + RAG chatbot, 1 w ATARI emulator.
