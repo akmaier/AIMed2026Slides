@@ -35,23 +35,18 @@ FIG_DIR = ROOT / "output_tex" / "figures"
 PAGES_DIR = ROOT / "build_pptx" / "pages"
 # Write the regenerated deck *inside* build_pptx/ so we never clobber
 # the manually-edited committed copy at the repo root.
-OUT = ROOT / "build_pptx" / "Vibe_Coding_Robotics_AI_Hackathon_2026.pptx"
+OUT = ROOT / "build_pptx" / "Gesundheitsdaten_Innovationsmotor_GDLH_2026.pptx"
 
-# Slide-page -> (gif filename, source png filename)
-TARGETS = {
-    22: ("img_08_02.gif", "img_08_02.png"),
-    23: ("img_08_03.gif", "img_08_03.png"),
-    24: ("img_08_04.gif", "img_08_04.png"),
-}
+# Slide-page -> (gif filename, source png filename).  The GDLH deck has
+# no animated slides, so nothing is overlaid.
+TARGETS: dict[int, tuple[str, str]] = {}
 
 # Slide-page -> (mp4 filename, poster png, x-range of the page to search for
 # the video still, as fractions of the page width).  The still is located as
 # the dense dark rectangle in that range, so text elsewhere on the slide
 # does not disturb the placement.  The video is embedded on top of it and
-# set to start automatically and loop.
-MOVIES = {
-    42: ("vcs_si_xitari_vs_jutari.mp4", "vcs_si_video_still.png", (0.0, 0.68)),
-}
+# set to start automatically and loop.  No video slides in the GDLH deck.
+MOVIES: dict[int, tuple[str, str, tuple[float, float]]] = {}
 
 # Body region of an FAU-themed slide (fractions of page height).
 # Tightened to skip the title bar / logos (top) and footer (bottom);

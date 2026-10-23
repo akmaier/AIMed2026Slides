@@ -1,18 +1,23 @@
 % ..............................................................................
-% "Vibe Coding: Software Engineering in the Age of AI" -- Andreas Maier,
-% keynote at the Robotics & AI Hackathon 2026, Siemens Healthineers
-% Innovation Center, Erlangen (Thursday 22 October 2026, 16:00-16:30).
-% Branch `robotics-ai-hackathon-2026`, forked from `visual-heritage-2026`:
-% Odeuropa/visual-heritage slide dropped for the medical/robotics audience,
-% Agent M as a full-slide screenshot (as on `puls-retreat-2026`).
-% `visual-heritage-2026` itself was based on `dldxhealth-2026`: medical part
-% trimmed to Known operators + Zukunftspreis, an Odeuropa/ODOR slide for the
-% visual-heritage audience, and two closing slides on what agentic AI means
-% for science and for a PhD.
-% Animated GIFs from the Agent4MR sequence demo (figures/img_08_*) are
-% kept; they ship as static PNGs in the PDF and live GIFs in the PPTX.
+% "Gesundheitsdaten als Innovationsmotor: Möglichkeiten von morgen,
+% Voraussetzungen von heute" -- Andreas Maier, Politische Frührunde
+% "Global denken, lokal handeln" (GDLH): "Gesundheitsdaten, die wirken --
+% Bayerns Weg zu besserer Versorgung und belastbarer Evidenz",
+% Amgen GmbH, München, Freitag 23.10.2026, Slot 08:35-08:45 (10 Minuten).
+% Branch `gdlh-gesundheitsdaten-2026`, geforkt von `robotics-ai-hackathon-2026`;
+% deutsche Präambel wie auf `de-msd-senso`.
+% Botschaften: Agenten lesen alle Daten (Vorab-Harmonisierung wird zur
+% Option), Auswertung dezentral, Kosten im freien Fall (Agent4MR, Tempo,
+% Open Access), zwei Ebenen (Datenseen + Basismodelle zentral, Rechenleistung
+% und Anpassung in der Klinik), Antworten auf die drei Leitfragen.
 % ------------------------------------------------------------------------------
 \documentclass[final]{beamer}
+
+% Sneak ngerman + main=ngerman into babel BEFORE the FAU theme loads
+% babel with english.  Once the theme later does \RequirePackage[english]{babel}
+% the english option is already in the queue, so no option clash, and
+% ngerman is the active main language.
+\PassOptionsToPackage{main=ngerman,ngerman,english}{babel}
 
 \usepackage[institute=Tech,
             aspectratio=169,
@@ -24,638 +29,232 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usetikzlibrary{positioning,arrows.meta,shadows}
 
 \graphicspath{{figures/}}
 
+% Farben ausschließlich aus dem FAU-Template (institute=Tech, fau-colors.sty):
+% FAUBlue für Hervorhebungen, BaseColor/BaseDarkColor (TechMetallic /
+% TechDarkMetallic) und ihre Abstufungen BaseColorB..D für Rahmen, Flächen
+% und Nebentext.
+
 % ----------------------------------------------------------------------------------------
-% Title page metadata
+% Titel-Metadaten
 % ----------------------------------------------------------------------------------------
-\title[Vibe Coding: Software Engineering in the Age of AI]{Vibe Coding: Software Engineering in the Age of AI}
-\subtitle{Keynote \,\textbullet\, Robotics \& AI Hackathon 2026}
+\title[Gesundheitsdaten als Innovationsmotor]{Gesundheitsdaten als Innovationsmotor}
+\subtitle{Möglichkeiten von morgen, Voraussetzungen von heute}
 \author[A.~Maier]{Andreas Maier}
-\institute[FAU]{Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg}
-\date{22 October 2026 \,\textbullet\, Siemens Healthineers Innovation Center, Erlangen}
+\institute[FAU]{Friedrich-Alexander-Universität Erlangen-Nürnberg}
+\date{23.~Oktober 2026 \,\textbullet\, Politische Frührunde GDLH, München}
 
 % ================================================
-% The main document
+% Hauptdokument
 % ------------------------------------------------
 \begin{document}
 
 % --------------------------------------------------------------------------
-% Slide 1 - Title (FAU titleimage layout; AIMed branding removed for the
-% India branch, so the title body is the standard \titlepage on the
-% default FAU template image).
+% Folie 1 - Titel
 % --------------------------------------------------------------------------
 \begin{frame}[t,titleimage]{-}
 \titlepage%
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 2 - Outline
+% Folie 2 - Zur Person (nach Folie 2 von PRL_7min_landtag.pptx, ergänzt um
+% die Funktionen im Department Informatik; deutsche Bezeichnungen wie vom
+% Referenten vorgegeben)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Outline}
-\begin{itemize}
-  \item What is deep learning?
-  \item What is agentic AI?
-  \item What does it mean for science?
-\end{itemize}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 3 - Section divider
-% --------------------------------------------------------------------------
-\begin{frame}[t,title]{-}
-What is deep learning?
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 4 - Deep Learning (4 sub-slides)
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Deep learning}{Speech}
-\begin{itemize}
-  \item Revolutionising pattern recognition and AI for more than 10~years.
-\end{itemize}
-\vspace{0.2em}
-\begin{center}
-  \includegraphics[height=.6\textheight]{img_03_03.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Deep learning}{Image classification}
-\begin{center}
-  \includegraphics[height=.7\textheight]{img_03_04.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Deep learning}{Learning to play}
-\begin{center}
-  \includegraphics[width=.95\textwidth]{img_03_05.png}\\[0.2em]
-  {\footnotesize [Mnih 2013]}
-\end{center}
-\vspace{0.3em}
-\begin{itemize}\itemsep=0.15em
-  \item Deep Q-Networks learn Atari games from raw pixels alone.
-  \item One agent, many games -- super-human on several titles.
-\end{itemize}
-\pause
-\vspace{0.4em}
-\begin{columns}[c]
-  \begin{column}{0.45\textwidth}
-    \centering
-    \includegraphics[height=.30\textheight]{img_03_06.jpg}\\
-    {\footnotesize AlphaGo (DeepMind, 2016)}
-  \end{column}
-  \begin{column}{0.5\textwidth}
-    \begin{itemize}\itemsep=0.15em
-      \item Self-play + Monte-Carlo tree search.
-      \item Defeats world champion Lee Sedol 4--1.
+\begin{frame}[t]{Zur Person}{Prof.\ Dr.-Ing.\ Andreas Maier}
+\vspace{0.6em}
+\begin{columns}[T]
+  \begin{column}{0.58\textwidth}
+    {\Large\bfseries\color{FAUBlue} Funktionen \& Erfahrung}
+    \vspace{0.3em}
+    \begin{itemize}\itemsep=0.6em
+      \item Stellvertretender Leiter der Kollegialen Leitung\\
+            des Department Informatik, FAU
+      \item Inhaber des Lehrstuhls für Mustererkennung, FAU
+      \item Leiter des Profilzentrums Medizintechnik, FAU
+      \item Leiter des Medical AI Hub Bayern
+      \item Mitglied im KI-Rat des Freistaats Bayern
+      \item Wissenschaftlicher Berater eines Fraunhofer-Instituts
+      \item Berater für KI für die Deutsche Gesellschaft für Strahlenschutz
+      \item ERC-Grant-Träger und Gutachter des European Research Council
+      \item Gastprofessuren an der Stanford University und am MIT
     \end{itemize}
   \end{column}
-\end{columns}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 5 - Generative AI (4 sub-slides)
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Generative AI}{Source image}
-\begin{center}
-  \includegraphics[height=.75\textheight]{img_04_01.jpg}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Generative AI}{Image description}
-\begin{columns}[T]
-  \begin{column}{0.32\textwidth}
-    \centering
-    \includegraphics[height=.75\textheight]{img_04_01.jpg}
-  \end{column}
-  \begin{column}{0.66\textwidth}
-    \vspace{0.4em}
-    \normalsize\itshape
-    ``An athletically built man with a serious expression stands in a
-    well-lit room with a wooden ceiling. He is wearing a blue t-shirt with
-    the phrase `SAVE THE CHUBBY UNICORNS' and an image of a rhinoceros.
-    The man is taking a selfie with a modern smartphone, capturing his
-    reflection in a mirror. In the background, one can see gym equipment
-    including dumbbells and a weight rack. There is also a hanging
-    chandelier with a unique design, illuminating the room.''
-  \end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}[t]{Generative AI}{Generated image}
-\begin{center}
-  \includegraphics[height=.75\textheight]{img_04_04.jpg}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Generative AI}{Style variations}
-\begin{columns}[c]
-  \begin{column}{0.5\textwidth}
-    \centering
-    \includegraphics[height=.7\textheight]{img_04_06.jpg}
-  \end{column}
-  \begin{column}{0.5\textwidth}
-    \centering
-    \onslide<2->{\includegraphics[height=.7\textheight]{img_04_05.jpg}}
+  \begin{column}{0.40\textwidth}
+    {\Large\bfseries\color{FAUBlue} Industrie \& Gründungen}
+    \vspace{0.3em}
+    \begin{itemize}\itemsep=0.6em
+      \item Siemens Healthineers: Innovationsmanager und Tech Lead
+      \item Start-ups: \emph{Mira Vision} (Anteilseigner, Bewertung
+            10~Mio.~€) und \emph{Norizon} (Beirat, frühe VC-Phase)
+      \item Mehr als 15 aktive US- und EU-Patente
+    \end{itemize}
+    \vspace{2.0em}
+    \begin{center}\itshape\large\color{BaseColor}
+      Theorie zuerst -- Anwendung immer.
+    \end{center}
   \end{column}
 \end{columns}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 6 - Deep learning in medicine, trimmed for the Visual Heritage
-% audience to the science-method point (known operators) and the
-% research-to-product story (Zukunftspreis).  The three MRI reconstruction
-% image slides were dropped.
+% Folie 3 - Kernthese: drei Botschaften
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Deep learning in medicine}{Known operators}
-\vspace*{0.4em}
+\begin{frame}[t]{Kernthese}{Was sich gerade ändert}
+\vspace{2.2em}
 \begin{center}
-\begin{tikzpicture}[
-    every node/.style={font=\normalsize},
-    transform shape, scale=1.35,
-    box/.style ={draw, rounded corners=3pt, minimum height=1.4cm,
-                 minimum width=2.6cm, align=center, thick,
-                 drop shadow={shadow xshift=0.6mm, shadow yshift=-0.6mm,
-                              opacity=0.35}},
-    train/.style={box, fill=gray!12},
-    known/.style={box, fill=blue!12, draw=blue!60!black},
-    arr/.style ={-{Latex[length=3mm]}, thick}
-  ]
-  \node                                 (in)  {\large $x$};
-  \node[train, right=4mm of in]         (t1)  {Trainable\\$\hat f_1$};
-  \node[known, right=5mm of t1]         (k1)  {Known op.\\$f_2$};
-  \node[train, right=5mm of k1]         (t2)  {Trainable\\$\hat f_3$};
-  \node[known, right=5mm of t2]         (k2)  {Known op.\\$f_4$};
-  \node[right=4mm of k2]                (out) {\large $\hat f(x)$};
-  \draw[arr] (in)  -- (t1);
-  \draw[arr] (t1)  -- (k1);
-  \draw[arr] (k1)  -- (t2);
-  \draw[arr] (t2)  -- (k2);
-  \draw[arr] (k2)  -- (out);
-\end{tikzpicture}\\[0.5em]
-{\small Mix \emph{trainable} layers with deterministic operators
-(Fourier transform, gradient descent, projection, \dots).}
-\end{center}
-\pause
-\vspace{0.5em}
-\begin{block}{Theorem -- known operators reduce the error bound}
-For $f=f_n\circ\dots\circ f_1$ approximated by
-$\hat f=\hat f_n\circ\dots\circ \hat f_1$ with per-layer errors
-$\varepsilon_i$ and Lipschitz constants $\hat L_j$,
-\[
-  \varepsilon(\hat f) \;\leq\;
-  \sum_{i=1}^{n}\Bigl(\prod_{j=i+1}^{n}\hat L_j\Bigr)\,\varepsilon_i .
-\]
-Replacing $\hat f_k$ with the \emph{known} $f_k$ forces
-$\varepsilon_k=0$ and strictly tightens this bound.
-\end{block}
-\vspace{-0.3em}
-\begin{center}\footnotesize
-  Maier et al., \emph{Nature Machine Intelligence}, 2019.
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Deep learning in medicine}{Recognition}
-\begin{columns}[c]
-  \begin{column}{0.35\textwidth}
-    \centering
-    \includegraphics[height=.72\textheight,keepaspectratio]{siemens01.jpg}
-  \end{column}
-  \begin{column}{0.62\textwidth}
-    \centering
-    \includegraphics[width=\linewidth,height=.72\textheight,keepaspectratio]{siemens02.jpg}
-  \end{column}
-\end{columns}
-\vspace{0.4em}
-\begin{center}
-  Deutscher Zukunftspreis -- low-field MRI made possible by deep learning.
-\end{center}
-\end{frame}
-
-% (The "Deep learning in visual heritage" / Odeuropa slide from the Visual
-% Heritage deck is dropped for this medical/robotics audience.)
-
-% --------------------------------------------------------------------------
-% Slide 7 - Section divider
-% --------------------------------------------------------------------------
-\begin{frame}[t,title]{-}
-What is agentic AI?
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 8 - What is agentic AI? Intro (3 sub-slides)
-% --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{A simple question}
-\vspace*{0.6em}
-\begin{flushleft}
-  {\Huge\itshape\textquotedblleft How do you drive a car?\textquotedblright}
-\end{flushleft}
-\vspace*{0.6em}
-{\large\color{gray}\itshape Thought for a few seconds\dots}
-\vspace*{1.4em}
-\begin{itemize}\large
-  \item A classic prompt to a large language model.
-  \item After a short ``thinking pause'' the answer arrives as
-        long-form running text.
-  \item No tools, no actions -- the model just \emph{describes} how to drive.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[t]{What is agentic AI?}{Long text answer of an LLM}
-\normalsize
-To drive a car, follow these steps:
-\begin{itemize}\itemsep=0.3em
-  \item \textbf{Get in and adjust:} fasten your \textbf{seat belt}, set the
-        \textbf{seat} and \textbf{mirrors} so you can see the road clearly.
-  \item \textbf{Start the engine:} press the \textbf{brake pedal}, turn the
-        key or push the start button. Make sure the gear selector is in
-        \textbf{Park (P)} or \textbf{Neutral (N)}.
-  \item \textbf{Engage a gear:} for an automatic, move the lever to
-        \textbf{Drive (D)}; for a manual, press the \textbf{clutch} and
-        select \textbf{1st gear}.
-  \item \textbf{Release the parking brake} and slowly lift your foot off
-        the brake. Gently press the \textbf{accelerator} to move forward.
-  \item \textbf{Steer} smoothly with both hands and \textbf{check mirrors}
-        regularly. Keep a safe distance from the vehicle in front.
-  \item \textbf{To stop:} ease off the accelerator, press the brake, and
-        bring the car to a complete stop. Shift to \textbf{Park} and apply
-        the parking brake before turning off the engine.
-\end{itemize}
-\vspace{0.6em}
-\begin{center}\itshape\color{gray}
-Always observe traffic rules and adapt your driving to road and weather.
-\end{center}
-\vspace{0.4em}
-\hfill\textbf{$\Rightarrow$ Lots of words, but no \emph{action}.}\hfill\,
-\end{frame}
-
-\begin{frame}[t]{What is agentic AI?}{From language model to agent}
-\begin{columns}[c]
-  \begin{column}{0.48\textwidth}
-    \centering
-    \includegraphics[height=.4\textheight]{img_07_03.jpg}\\[0.3em]
-    \footnotesize Moritz Zaiss
-  \end{column} \pause
-  \begin{column}{0.48\textwidth}
-    \centering
-    \includegraphics[height=.76\textheight,keepaspectratio]{img_07_01.png}
-    \vspace{-0.5cm}
-    \begin{center}
-  {\footnotesize Zaiss et al., \emph{GPT4MR}, 2024.}
-\end{center}
-  \end{column}
-\end{columns}
-\vspace{0.2em}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 9 - Spin-echo EPI: 3 model attempts (4 sub-slides, animated)
-% --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{Task for the models}
-\vspace*{0.4em}
-\begin{center}
-  \begin{minipage}{.92\textwidth}
-    \large\itshape
-    \textquotedblleft Code a spin echo EPI (64$\times$64,
-    fov\,=\,(0.2,\,0.2,\,0.08)\,m,
-    TE\,=\,150\,ms)!\textquotedblright
-  \end{minipage}
-\end{center}
-\vspace*{0.6em}
-\begin{itemize}\large\itemsep=0.3em
-  \item \textbf{Spin-echo EPI} -- an advanced MRI sequence used for
-        diffusion and functional imaging.
-  \item Three models receive the \emph{same} natural-language
-        instruction and must produce runnable Python code.
-  \item Contestants:
-\end{itemize}
-\vspace*{0.2em}
-\begin{center}
-\begin{tikzpicture}[
-    every node/.style={font=\large\bfseries},
-    box/.style={draw, rounded corners=3pt, thick,
-                minimum height=1.4cm, minimum width=4.2cm,
-                text width=3.8cm, align=center,
+\begin{tikzpicture}[font=\sffamily,
+    box/.style={rounded corners=6pt, very thick, inner xsep=5mm,
+                inner ysep=11mm, text width=8.6cm, minimum height=9.6cm,
+                align=center,
                 drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
-                             opacity=0.35}}
-  ]
-  \node[box, fill=green!12, draw=green!50!black] (h)               {Human\\\normalsize\mdseries reference};
-  \node[box, fill=blue!12,  draw=blue!60!black,  right=8mm of h]  (g) {GPT-4o\\\normalsize\mdseries OpenAI};
-  \node[box, fill=orange!18,draw=orange!70!black,right=8mm of g]  (k) {GROK-3-think\\\normalsize\mdseries xAI};
+                             opacity=0.35}},
+    num/.style={circle, text=white, minimum size=1.8cm,
+                font=\Huge\bfseries, inner sep=0pt}]
+  \node[box, draw=BaseDarkColor, fill=BaseColorD, anchor=north] (a) at (-10.4,0) {%
+    {\LARGE\bfseries\color{FAUBlue} Alle Daten\\ werden nutzbar\par}
+    \vspace{0.8em}
+    {\Large Agenten lesen\\ Arztbriefe, PDFs,\\ Scans und Freitext.\par}};
+  \node[box, draw=BaseDarkColor, fill=BaseColorD, anchor=north] (b) at (0,0) {%
+    {\LARGE\bfseries\color{FAUBlue} Kosten\\ im freien Fall\par}
+    \vspace{0.8em}
+    {\Large $\approx$\,30$\times$ schneller,\\ $\approx$\,300$\times$ günstiger.\par}};
+  \node[box, draw=BaseDarkColor, fill=BaseColorD, anchor=north] (c) at (10.4,0) {%
+    {\LARGE\bfseries\color{FAUBlue} Zwei\\ Ebenen\par}
+    \vspace{0.8em}
+    {\Large Datenseen für\\ Basismodelle +\\ Rechenleistung\\ in der Klinik.\par}};
+  \node[num, fill=FAUBlue] at (a.north) {1};
+  \node[num, fill=FAUBlue] at (b.north) {2};
+  \node[num, fill=FAUBlue] at (c.north) {3};
 \end{tikzpicture}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Human baseline}
+% --------------------------------------------------------------------------
+% Folien 4-5 - Erfolg auf unstrukturierten Daten: ConferenceStats
+% (Diagramm: generate_china_chart.py, FAU-Farben, Daten aus
+% output/country_overview_all_papers.md)
+% (github.com/akmaier/ConferenceStats; Substack "I Didn't Read 88,000
+% Papers. I Built an Agentic Pipeline Instead").
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Alle Daten werden nutzbar}{88.000 Paper -- ohne sie zu lesen}
 \begin{center}
-  \includegraphics[height=.78\textheight]{img_08_02.png}
+  \includegraphics[height=.66\textheight]{img_13_03.png}\\[0.5em]
+  {\large Unstrukturierte PDFs \textrightarrow{} Erstseiten \textrightarrow{}
+   Affiliationen \textrightarrow{} Institutionen \textrightarrow{} Länder
+   \textrightarrow{} Statistik}\\[0.3em]
+  {\small\ttfamily github.com/akmaier/ConferenceStats}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{GPT-4o attempt}
+\begin{frame}[t]{Alle Daten werden nutzbar}{Ergebnis: Anteil Chinas an den KI-Top-Konferenzen 2015--2025}
 \begin{center}
-  \includegraphics[height=.78\textheight]{img_08_03.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{What is agentic AI?}{GROK-3-think attempt}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_08_04.png}
+  \includegraphics[height=.62\textheight]{china_share_de.png}\\[0.3em]
+  {\large AAAI: von rund \textbf{\color{FAUBlue}20\,\%} auf über \textbf{\color{FAUBlue}60\,\%} --
+   direkt aus den PDFs ausgewertet.}\\[0.2em]
+  {\small\color{BaseDarkColor} Anteil der angenommenen Paper mit mindestens einem
+   Autor aus China \,\textbullet\, {\ttfamily github.com/akmaier/ConferenceStats}}
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Sub-section divider before Agent4MR results
+% Folien 6-7 - MRT-Agent (Agent4MR, Zaiss et al., arXiv:2604.13282), kurz
+% gehalten und auf die Kosten fokussiert.  Zahlen aus img_09_03.png:
+% Gemini 2.5 Pro 4,8 min / 0,12 EUR; GPT-5 15 min / 0,48 EUR;
+% Claude 4.1 Opus 10,2 min / 10,00 EUR; Mensch 150 min / 37,50 EUR
+% (frisch eingearbeiteter Student ohne EPI-Erfahrung, 2,5 h).
 % --------------------------------------------------------------------------
-\begin{frame}[t,title]{-}
-How about real agentic AI?
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 10 - Agent4MR results (4 sub-slides)
-% --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{LLM vs.\ Agent4MR}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_09_01.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{What is agentic AI?}{Interactions per model}
-\begin{center}
-  \includegraphics[width=.92\textwidth]{img_09_02.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{What is agentic AI?}{Cost comparison}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_09_03.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{What is agentic AI?}{Iterative progress}
+\begin{frame}[t]{Kosten im freien Fall}{MRT-Agent: Sprachmodell vs.\ Agent4MR}
 \begin{columns}[c]
-  \begin{column}{0.6\textwidth}
+  \begin{column}{0.56\textwidth}
     \centering
-    \includegraphics[height=.78\textheight]{img_09_04.png}
+    \includegraphics[height=.76\textheight,keepaspectratio]{img_09_01.png}
   \end{column}
-  \begin{column}{0.4\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{img_09_05.png}
+  \begin{column}{0.42\textwidth}
+    \begin{itemize}\itemsep=0.8em\large
+      \item \textbf{Aufgabe:} eine Spin-Echo-EPI-Sequenz für die MRT
+            programmieren.
+      \item \textbf{Sprachmodell allein:} fehlerhafte Sequenz, kein
+            verwertbares Bild.
+      \item \textbf{Agent4MR:} schreibt Code, simuliert, prüft und
+            korrigiert -- bis das Bild stimmt.
+    \end{itemize}
+    \vspace{1.0em}
+    {\small\color{BaseDarkColor} Zaiss et al., \emph{Agent4MR}, arXiv:2604.13282}
   \end{column}
 \end{columns}
 \end{frame}
 
-% --------------------------------------------------------------------------
-% (Three "adaptive AI in practice" sub-slides -- Patient information,
-% Adaptive systems, From sketch to diagram -- dropped for DLDxHealth: the
-% 15-min slot leaves no room for them.)
-% --------------------------------------------------------------------------
-
-% --------------------------------------------------------------------------
-% Slide 12 - Vibe coding & advanced AI techniques (4 sub-slides)
-% --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{Vibe coding}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_11_01.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{What is agentic AI?}{Advanced AI-assisted techniques}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_11_02.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{What is agentic AI?}{Markdown-driven quality gates}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_11_03.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{What is agentic AI?}{Textbook}
-\begin{columns}[c]
-  \begin{column}{0.5\textwidth}
-    \centering
-    \includegraphics[height=.78\textheight]{img_11_04.png}
-  \end{column}
-  \begin{column}{0.5\textwidth}
-    \centering
-    \includegraphics[height=.6\textheight]{img_11_05.png}
-  \end{column}
-\end{columns}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Agent M -- the companion tool to the Vibe Coding book.  Full-slide
-% screenshot of akmaier.github.io/agent-m (1600x900 viewport, loaded live
-% with the project's progress card), same as on `puls-retreat-2026`.
-% --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{Agent M -- the companion tool to the book \emph{Vibe Coding}}
-\begin{center}
-  \includegraphics[width=\textwidth,height=.72\textheight,keepaspectratio]{agentm_screenshot.png}\\[0.15em]
-  {\small\ttfamily akmaier.github.io/agent-m}
-\end{center}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 13 - Section divider
-% --------------------------------------------------------------------------
-\begin{frame}[t,title]{-}
-What does it mean for science?
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 14 - Almost everything is easy now (4 sub-slides)
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Almost everything is easy now\dots}{China and AI}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_13_01.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Almost everything is easy now\dots}{Conference shares}
-\begin{center}
-  \includegraphics[width=.9\textwidth]{img_13_02.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Almost everything is easy now\dots}{ConferenceStats workflow}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_13_03.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Almost everything is easy now\dots}{Conference contributions from China}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_13_04.png}
-\end{center}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Publishing, disrupted -- the agentic Overleaf -> FAU University Press
-% workflow built for BAIOSPHERE MEDICAL 2026. Flash callout: 10,000 EUR
-% Springer Open Access vs 150 EUR FAU University Press.
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Publishing, Disrupted}{Open Access for the price of a pizza party}
-\vspace{0.5em}
+\begin{frame}[t]{Kosten im freien Fall}{MRT-Agent: Mensch vs.\ Agent}
+\vspace{0.8em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
-    box/.style={rounded corners=6pt, thick, inner sep=4mm,
-                text width=5.2cm, align=center,
+    box/.style={rounded corners=6pt, very thick, inner sep=5mm,
+                text width=7.6cm, align=center,
                 drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
                              opacity=0.35}},
-    old/.style={box, draw=red!55!black,    fill=red!8},
-    new/.style={box, draw=green!45!black,  fill=green!10},
-    arr/.style={-{Latex[length=3.5mm]}, very thick, draw=blue!50!black}]
-  \node[old]                  (a) {\large\bfseries Springer Open Access\\[0.4em]
-                                  {\fontsize{36}{36}\selectfont\bfseries\color{red!55!black} 10\,000 EUR}\\[0.15em]
-                                  \footnotesize per Open Access fee};
-  \node[right=50mm of a, new] (b) {\large\bfseries FAU University Press\\[0.4em]
-                                  {\fontsize{36}{36}\selectfont\bfseries\color{green!45!black} 150 EUR}\\[0.15em]
-                                  \footnotesize per Open Access fee};
-  \draw[arr] (a.east) -- node[above=1mm, font=\bfseries, text=blue!50!black]
-        {$\sim$\,66$\times$ cheaper} (b.west);
+    old/.style={box, draw=BaseColor,  fill=BaseColorD},
+    new/.style={box, draw=FAUBlue,    fill=FAUBlue!8},
+    arr/.style={-{Latex[length=5mm]}, line width=2.5pt, draw=FAUBlue}]
+  \node[old]                   (a) {{\LARGE\bfseries Mensch\par}\vspace{0.6em}
+                                   {\color{BaseDarkColor}\fontsize{48}{56}\selectfont\bfseries 150\,min\\ 37,50\,€\par}};
+  \node[right=110mm of a, new] (b) {{\LARGE\bfseries Agent\par}\vspace{0.6em}
+                                   {\color{FAUBlue}\fontsize{48}{56}\selectfont\bfseries 4,8\,min\\ 0,12\,€\par}};
+  \draw[arr] (a.east) -- node[above=2mm, font=\LARGE\bfseries, text=FAUBlue, align=center]
+        {$\approx$\,30$\times$ schneller\\ $\approx$\,300$\times$ günstiger} (b.west);
 \end{tikzpicture}
 \end{center}
 \vspace{0.8em}
 \begin{itemize}\itemsep=0.4em\Large
-  \item \textbf{106} submissions \,\textrightarrow\, \textbf{93} accepted
-        \,\textrightarrow\, one Open Access volume.
-  \item Idea to printed book: \textbf{three months}, including
-        \textbf{peer review}.
+  \item Alle getesteten Agenten-Varianten: \textbf{0,12--10\,€} pro
+        fertiger Sequenz.
+  \item Referenz: frisch eingearbeiteter Student ohne EPI-Erfahrung.
 \end{itemize}
 \vfill
-\begin{center}
-  \includegraphics[height=3.4cm,keepaspectratio]{baiomed_logo.jpg}
-\end{center}
-\vspace{0.2em}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Slide 15a-c - Agent4CT (India branch insertion: project intro, leaderboard,
-% structured software process).  Source: github.com/akmaier/Agent4CT.
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Agent4CT}{All deep-learning CT methods, in one weekend}
-\begin{itemize}\itemsep=0.15em
-  \item Continuously-running LLM agent that edits a CT reconstruction
-        codebase, runs short GPU experiments, and keeps changes only
-        when the metrics agree.  Five agents run in parallel across
-        five CT challenges and pool findings through a shared
-        scratch pad.
-\end{itemize}
-\vspace{0.3em}
-\textbf{Re-implemented solvers}
-({\small\ttfamily pentathlon/demo\_dl\_reference}):
-\begin{columns}[T]
-  \begin{column}{0.49\textwidth}
-    \begin{itemize}\itemsep=0.1em\small
-      \item \textbf{Analytical:} PyroNN FBP (Syben 2019).
-      \item \textbf{Classical iterative:} TV (iterative, supervised,
-            hyper-search); Wu \emph{et~al.}\ 2015 ($+$ trainable port).
-      \item \textbf{Variational / unrolled:} Hammernik 2017 variational
-            network ($+$ CT port); Learned Primal-Dual
-            (Adler \& \"Oktem); ITNet v1--v3.
-      \item \textbf{Self-supervised denoising:} dual-domain U-Net and
-            trainable bilateral filters (Wagner 2023 / 2022, with
-            supervised variants).
-    \end{itemize}
-  \end{column}
-  \begin{column}{0.49\textwidth}
-    \begin{itemize}\itemsep=0.1em\small
-      \item \textbf{Per-scene neural fields:} NAF
-            (neural attenuation field); R2Gaussian.
-      \item \textbf{Foundation models:} RAM (Terris 2025).
-      \item \textbf{Diffusion priors:} DDPM; diffusion-prior sampling;
-            diffusion-recon with data consistency.
-      \item \textbf{Transformer:} U-Swin.
-    \end{itemize}
-  \end{column}
-\end{columns}
-\vspace{0.3em}
-\begin{center}
-  {\small\ttfamily github.com/akmaier/Agent4CT}
-\end{center}
-\end{frame}
-
-% (Agent4CT "From paper to benchmark -- a structured loop" and "The
-% Pentathlon -- five CT leaderboards" slides dropped: the Visual Heritage
-% audience needs the headline, not the CT benchmark details.)
-
-% --------------------------------------------------------------------------
-% UnderstandingVCS / jutari paper (github.com/akmaier/UnderstandingVCS,
-% folder jutari_paper): "A Differentiable Atari VCS: A Complex, Fully Known
-% Ground Truth for Explainable AI".  The left column holds ONLY the video
-% still: build_pptx.py finds it there and embeds
-% figures/vcs_si_xitari_vs_jutari.mp4 on top (autoplay, loop).  The clip is
-% the repo's current docs/assets/video/cmp_space_invaders.mp4 (30 s, rendered
-% 30 June 2026); its difference panel is pure black for the whole clip.
-% --------------------------------------------------------------------------
-\begin{frame}[t]{UnderstandingVCS}{A differentiable Atari 2600 -- built by agents, proven bit-exact}
-\vspace{0.4em}
-\begin{columns}[c]
-  \begin{column}{0.62\textwidth}
-    \centering
-    \includegraphics[width=\linewidth,keepaspectratio]{vcs_si_video_still.png}
-  \end{column}
-  \begin{column}{0.36\textwidth}
-    \centering
-    {\fontsize{38}{38}\selectfont\bfseries\color{blue!55!black} 0}\\[0.15em]
-    {\small pixels differ: xitari (C++ reference)\\ vs.\ jutari (our Julia port)}\\[0.9em]
-    {\fontsize{34}{34}\selectfont\bfseries\color{blue!55!black} 64\,/\,64}\\[0.15em]
-    {\small games: RAM byte-exact,\\ screen pixel-exact}\\[0.9em]
-    {\fontsize{34}{34}\selectfont\bfseries\color{blue!55!black} 16\,k}\\[0.15em]
-    {\small lines of code, largely written by agents}
-  \end{column}
-\end{columns}
-\vfill
-\begin{center}\small\color{gray}
-  \emph{A Differentiable Atari VCS: A Complex, Fully Known Ground Truth
-  for Explainable AI} -- AAAI 2027 (submitted)\\
-  {\ttfamily akmaier.github.io/UnderstandingVCS}
+\begin{center}\small\color{BaseDarkColor}
+  Zaiss et al., \emph{Agent4MR}, arXiv:2604.13282, 2026
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Flash callout: what an LLM coding agent can build now, in wall-clock.
-% Four data points -- 3 h paper-reproduction + new paper, 1 d paper without
-% code, 3 d study-program scraper + RAG chatbot, 1 w ATARI emulator.
+% Folie 8 - Tempo agentischer KI: Echtzeit von der Idee zum Ergebnis.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Speed of Agentic AI}{Wall-clock from idea to working artefact}
+\begin{frame}[t]{Tempo agentischer KI}{Von der Idee zum funktionierenden Ergebnis}
 \vspace{0.4em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
     row/.style={inner sep=2.5mm},
-    time/.style={text=blue!55!black, font=\fontsize{30}{30}\selectfont\bfseries},
+    time/.style={text=FAUBlue, font=\fontsize{30}{30}\selectfont\bfseries},
     label/.style={font=\large},
-    src/.style={text=gray, font=\small\ttfamily}]
-  % time         |  what was built                              |  reference
+    src/.style={text=BaseDarkColor, font=\small\ttfamily}]
+  % Zeit         |  was entstanden ist                         |  Quelle
   \node[row, time, anchor=east] (t1) at (0, 3.0) {3\,h};
   \node[row, label, anchor=west] at (0.6, 3.0)
-    {Reproduce a paper + code, find new insights, draft a follow-up paper.};
+    {Paper samt Code reproduzieren, neue Erkenntnisse finden, Folge-Paper entwerfen.};
   \node[src, anchor=west] at (0.6, 2.4)
     {arxiv.org/abs/2605.02620};
   %
-  \node[row, time, anchor=east] (t2) at (0, 1.0) {1\,d};
+  \node[row, time, anchor=east] (t2) at (0, 1.0) {1\,Tag};
   \node[row, label, anchor=west] at (0.6, 1.0)
-    {Reproduce a paper \emph{without} its code or data.};
+    {Paper reproduzieren -- \emph{ohne} Code und Daten.};
   \node[src, anchor=west] at (0.6, 0.4)
     {arxiv.org/abs/2605.12772};
   %
-  \node[row, time, anchor=east] (t3) at (0,-1.0) {3\,d};
+  \node[row, time, anchor=east] (t3) at (0,-1.0) {3\,Tage};
   \node[row, label, anchor=west] at (0.6,-1.0)
-    {Scrape 200 study programs + ship a RAG chatbot.};
+    {200 Studiengänge erfassen + RAG-Chatbot ausliefern.};
   \node[src, anchor=west] at (0.6,-1.6)
     {github.com/akmaier/IfCampoKnew};
   %
-  \node[row, time, anchor=east] (t4) at (0,-3.0) {1\,w};
+  \node[row, time, anchor=east] (t4) at (0,-3.0) {1\,Woche};
   \node[row, label, anchor=west] at (0.6,-3.0)
-    {Reimplement an entire ATARI VCS emulator
-     -- bit-exact, 16\,k lines of code.};
+    {Kompletten ATARI-VCS-Emulator nachbauen
+     -- bitgenau, 16.000 Zeilen Code.};
   \node[src, anchor=west] at (0.6,-3.6)
     {github.com/akmaier/UnderstandingVCS};
 \end{tikzpicture}
@@ -663,125 +262,237 @@ What does it mean for science?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Science at agent speed -- opportunities vs. risks.  The two risk items
-% with arXiv numbers are the papers already cited on the Speed slide.
+% Folie 9 - Kosten im freien Fall: Open Access (agentischer Overleaf ->
+% FAU University Press Workflow für BAIOSPHERE MEDICAL 2026).
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Science at Agent Speed}{Opportunities and risks}
+\begin{frame}[t]{Kosten im freien Fall}{Open Access zum Preis einer Pizzarunde}
+\vspace{0.5em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily,
+    box/.style={rounded corners=6pt, very thick, inner sep=5mm,
+                text width=8.6cm, align=center,
+                drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
+                             opacity=0.35}},
+    old/.style={box, draw=BaseColor,  fill=BaseColorD},
+    new/.style={box, draw=FAUBlue,    fill=FAUBlue!8},
+    arr/.style={-{Latex[length=5mm]}, line width=2.5pt, draw=FAUBlue}]
+  \node[old]                   (a) {{\LARGE\bfseries Springer\\ Open Access\par}\vspace{0.5em}
+                                   {\fontsize{44}{52}\selectfont\bfseries\color{BaseDarkColor} 10.000\,€\par}\vspace{0.2em}
+                                   {\large Open-Access-Gebühr\par}};
+  \node[right=95mm of a, new] (b) {{\LARGE\bfseries FAU\\ University Press\par}\vspace{0.5em}
+                                   {\fontsize{44}{52}\selectfont\bfseries\color{FAUBlue} 150\,€\par}\vspace{0.2em}
+                                   {\large Open-Access-Gebühr\par}};
+  \draw[arr] (a.east) -- node[above=2mm, font=\LARGE\bfseries, text=FAUBlue]
+        {$\approx$\,66$\times$ günstiger} (b.west);
+\end{tikzpicture}
+\end{center}
+\vspace{0.8em}
+\begin{itemize}\itemsep=0.4em\Large
+  \item \textbf{106} Einreichungen \,\textrightarrow\, \textbf{93} angenommen
+        \,\textrightarrow\, ein Open-Access-Band.
+  \item Von der Idee zum gedruckten Buch: \textbf{drei Monate} --
+        inklusive \textbf{Peer Review}.
+\end{itemize}
+\vfill
+\begin{center}
+  \includegraphics[height=2.6cm,keepaspectratio]{baiomed_logo.jpg}
+\end{center}
+\vspace{0.2em}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Folie 10 - Gesundheitsdaten heute: Vorab-Harmonisierung (MII).
+% Bewusst ohne Zahlen/Daten zur MII, die hier nicht belegt sind.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Gesundheitsdaten heute}{Erst harmonisieren, dann nutzen}
 \vspace{0.6em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
-    box/.style={rounded corners=6pt, thick, inner sep=5mm,
-                text width=13.4cm, align=left, minimum height=8.4cm,
+    box/.style={draw, rounded corners=4pt, very thick, minimum height=3.0cm,
+                text width=6.0cm, align=center, font=\Large,
+                drop shadow={shadow xshift=0.6mm, shadow yshift=-0.6mm,
+                             opacity=0.35}},
+    src/.style={box, fill=BaseColorD, draw=BaseColor},
+    map/.style={box, fill=BaseColorB, draw=FAUBlue},
+    diz/.style={box, fill=BaseColorD, draw=BaseDarkColor},
+    arr/.style={-{Latex[length=4mm]}, line width=2pt, draw=BaseDarkColor}]
+  \node[src]                  (s) {Klinische\\Quellsysteme};
+  \node[map, right=10mm of s] (m) {\bfseries Mapping auf\\Kerndatensatz\\\large(HL7 FHIR)};
+  \node[diz, right=10mm of m] (d) {Daten-\\integrations-\\zentrum};
+  \node[diz, right=10mm of d] (a) {Auswertung};
+  \draw[arr] (s) -- (m);
+  \draw[arr] (m) -- (d);
+  \draw[arr] (d) -- (a);
+  \node[below=2mm of m, font=\LARGE\bfseries, text=FAUBlue] {Engpass};
+\end{tikzpicture}
+\end{center}
+\vspace{0.6em}
+\begin{itemize}\itemsep=0.5em\Large
+  \item Medizininformatik-Initiative: Datenintegrationszentren und ein
+        gemeinsamer Kerndatensatz.
+  \item Jede neue Fragestellung braucht neue Mappings und neue Abstimmung.
+  \item Freitext, Arztbriefe und Scans bleiben weitgehend ungenutzt.
+  \item Bleibt wertvoll: Governance, Datenschutzkonzepte, Vertrauen.
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Folie 11 - Gesundheitsdaten morgen: Agenten lesen alle Daten, dezentral.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Gesundheitsdaten morgen}{Agenten lesen alle Daten}
+\vspace{0.4em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily,
+    src/.style={draw=BaseColor, fill=BaseColorD, rounded corners=3pt, thick,
+                minimum height=1.0cm, text width=6.0cm, align=center,
+                font=\large},
+    agent/.style={draw=FAUBlue, fill=FAUBlue!8, rounded corners=6pt,
+                  very thick, minimum height=5.4cm, text width=6.4cm,
+                  align=center,
+                  drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
+                               opacity=0.35}},
+    res/.style={draw=BaseDarkColor, fill=BaseColorD, rounded corners=6pt,
+                very thick, minimum height=5.4cm, text width=7.4cm,
+                align=center,
                 drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
                              opacity=0.35}},
-    pro/.style={box, draw=green!45!black, fill=green!8},
-    con/.style={box, draw=red!55!black,   fill=red!7}]
-  \node[pro, anchor=north] (p) at (-7.4,0) {%
-    {\LARGE\bfseries\color{green!40!black} Opportunities}\\[0.6em]
-    {\Large\begin{tabular}{@{}l@{}}
-      \textbullet\; Months of work in hours.\\[0.6em]
-      \textbullet\; Reproduce papers without code.\\[0.6em]
-      \textbullet\; Open Access for 150 EUR.\\[0.6em]
-      \textbullet\; Coding for every discipline.
-    \end{tabular}}};
-  \node[con, anchor=north] (c) at ( 7.4,0) {%
-    {\LARGE\bfseries\color{red!50!black} Risks}\\[0.6em]
-    {\Large\begin{tabular}{@{}l@{}}
-      \textbullet\; Plausible is not correct.\\[0.6em]
-      \textbullet\; Hallucinated references.\\[0.6em]
-      \textbullet\; AI-text detectors beaten in 3\,h.\\[0.6em]
-      \textbullet\; Sponsored bias in 12 LLMs.
-    \end{tabular}}};
-\end{tikzpicture}\\[0.6em]
-{\small\color{gray} Maier et al., arXiv:2605.02620 (style detector)
- \,\textbullet\, Maier et al., arXiv:2605.12772 (sponsored recommendations)}
+    arr/.style={-{Latex[length=3mm]}, thick, draw=BaseColor},
+    bigarr/.style={-{Latex[length=5mm]}, line width=2.5pt, draw=FAUBlue}]
+  \foreach \t [count=\i] in {Arztbriefe, PDFs \& Scans, DICOM-Bilder,
+                             Laborexporte, Freitext, Altsysteme} {
+    \node[src] (s\i) at (0, 4.375-1.25*\i) {\t};
+  }
+  \node[agent] (ag) at (10.0, 0)
+    {{\huge\bfseries\color{FAUBlue} KI-Agent\par}\vspace{0.8em}
+     {\LARGE liest, versteht,\\ verknüpft\par}};
+  \node[res, right=22mm of ag] (o)
+    {{\huge\bfseries\color{BaseDarkColor} Auswertung\par}\vspace{0.8em}
+     {\LARGE nach Bedarf,\\ protokolliert \& prüfbar\par}};
+  \foreach \i in {1,...,6} { \draw[arr] (s\i.east) -- (ag.west); }
+  \draw[bigarr] (ag) -- (o);
+\end{tikzpicture}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+  {\LARGE\bfseries\color{FAUBlue} Vorab-Harmonisierung wird zur Option statt zur Voraussetzung.}
+\end{center}
+\vspace{0.2em}
+\begin{itemize}\itemsep=0.3em\Large
+  \item Auswertung läuft dezentral -- dort, wo die Daten liegen.
+  \item Dasselbe Prinzip wie bei den 88.000 Papern.
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Folie 12 - Zwei Ebenen: zentrale Datenseen/Basismodelle + Klinik.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Zwei Ebenen}{Fundament zentral -- Anpassung in der Klinik}
+\vspace{0.4em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily,
+    tier/.style={rounded corners=6pt, very thick, inner sep=4mm,
+                 text width=27cm, align=center,
+                 drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
+                              opacity=0.35}},
+    arr/.style={-{Latex[length=4mm]}, line width=2pt}]
+  \node[tier, draw=FAUBlue, fill=FAUBlue!8] (t1) at (0, 3.2) {%
+    {\LARGE\bfseries\color{FAUBlue} Ebene 1 \textbullet\ Fundament (zentral)\par}\vspace{0.3em}
+    {\Large Große Datenseen \textrightarrow\ Basismodelle\par}\vspace{0.2em}
+    {\Large z.\,B. \textbf{Bavarian Health Cloud} \,\textbullet\,
+     \textbf{Bayerisches KI-Basismodell}\par}};
+  \node[tier, draw=BaseDarkColor, fill=BaseColorD] (t2) at (0,-3.0) {%
+    {\LARGE\bfseries\color{BaseDarkColor} Ebene 2 \textbullet\ Klinik (dezentral)\par}\vspace{0.3em}
+    {\Large Agenten passen Basismodelle an Fächer und Workflows an\par}\vspace{0.2em}
+    {\Large Rechenleistung vor Ort \,\textbullet\, Patientendaten bleiben im Haus\par}};
+  \draw[arr, draw=FAUBlue]  ([xshift=-5cm]t1.south) --
+     node[left=2mm, font=\Large\bfseries, text=FAUBlue] {Basismodelle}
+     ([xshift=-5cm]t2.north);
+  \draw[arr, draw=BaseDarkColor] ([xshift=5cm]t2.north) --
+     node[right=2mm, font=\Large\bfseries, text=BaseDarkColor] {aggregierte Erkenntnisse}
+     ([xshift=5cm]t1.south);
+\end{tikzpicture}
+\end{center}
+\vspace{0.4em}
+\begin{center}
+  {\Large Rechenleistung in der Klinik allein reicht nicht:
+   \textbf{\color{FAUBlue}Basismodelle brauchen Datenseen.}}
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Closing advice for the doctoral audience (5x5 style).
+% Folie 13 - Ebene 1 in Bayern (Foto: Bayerisches KI-Basismodell,
+% Blue-Swan-Plattform; StMWK).
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What This Means for Your PhD}{Five rules for working with agents}
-\vspace{0.6em}
+\begin{frame}[t]{Ebene 1 in Bayern}{Bavarian Health Cloud und Bayerisches KI-Basismodell}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_14_01.png}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Folie 14 - Voraussetzungen von heute = Antworten auf die drei Leitfragen
+% der Veranstaltung (Zugang, Verknüpfung, Infrastruktur).
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Voraussetzungen von heute}{Antworten auf die drei Leitfragen}
+\vspace{0.4em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
-    num/.style={circle, fill=blue!55!black, text=white, minimum size=1.5cm,
+    num/.style={circle, fill=FAUBlue, text=white, minimum size=1.8cm,
                 font=\LARGE\bfseries, inner sep=0pt},
-    txt/.style={anchor=west, font=\LARGE,
-                text height=2.2ex, text depth=0.6ex}]
-  \foreach \i/\t in {1/{Be the verifier, not the typist.},
-                     2/{Reproduce before you build.},
-                     3/{Keep a git-backed lab journal.},
-                     4/{Write quality gates, not just prompts.},
-                     5/{Disclose AI use -- own the final word.}} {
-    \node[num] (n\i) at (0, -2.0*\i) {\i};
-    \node[txt] at (1.2, -2.0*\i) {\t};
+    txt/.style={anchor=west, text width=27cm, align=left}]
+  \foreach \i/\h/\t in {%
+      1/Zugang/{Rechtssicherer Zugang zu Daten im Originalformat --\\
+                ausgewertet von Agenten vor Ort.},
+      2/Verknüpfung/{Agenten verknüpfen nach Bedarf -- jeder Schritt
+                protokolliert und prüfbar.},
+      3/Infrastruktur/{Zwei Ebenen: Datenseen für Basismodelle
+                (Bavarian Health Cloud)\\ + Rechenleistung in jeder Klinik.}} {
+    \node[num] (n\i) at (0, -3.9*\i) {\i};
+    \node[txt] at (1.5, -3.9*\i)
+      {{\LARGE\bfseries\color{FAUBlue} \h\par}\vspace{0.2em}{\Large \t\par}};
   }
 \end{tikzpicture}
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% References
+% Quellen
 % --------------------------------------------------------------------------
-\begin{frame}[t]{References}
-\scriptsize
-\linespread{0.90}\selectfont
-\begin{itemize}\itemsep=0em
-  \item V.~Mnih et~al.,
-        \emph{Playing Atari with Deep Reinforcement Learning},
-        arXiv:1312.5602, 2013.
-  \item D.~Silver et al.,
-        \emph{Mastering the game of Go with deep neural networks and tree search},
-        \emph{Nature}, 529:484--489, 2016.
-  \item \textbf{A.~Maier} et~al.,
-        \emph{Learning with Known Operators Reduces Maximum Error Bounds},
-        \emph{Nat.\ Mach.\ Intell.}, 1:373--380, 2019.
-  \item M.~Zaiss, J.~R.~Rajput, H.~N.~Dang, V.~Golkov, D.~Cremers,
-        F.~Knoll and \textbf{A.~Maier},
-        \emph{Exploring GPT-4 as MR sequence and reconstruction programming
-        assistant: GPT4MR},
-        BVM Workshop, pp.~94--99, Springer, 2024.
-  \item M.~Zaiss, A.~Aly, J.~Endres, T.~Dornstetter, S.~Weinm\"uller and
+\begin{frame}[t]{Quellen}
+\small
+\begin{itemize}\itemsep=0.3em
+  \item M.~Zaiss, A.~Aly, J.~Endres, T.~Dornstetter, S.~Weinmüller und
         \textbf{A.~Maier},
         \emph{Agentic MR sequence development: leveraging LLMs with MR skills
         for automatic physics-informed sequence development},
         arXiv:2604.13282, 2026 (Agent4MR).
-  \item Deutscher Zukunftspreis (low-field MRI):
-        \url{https://www.deutscher-zukunftspreis.de}
-  \item Agent M -- companion tool to the book \emph{Vibe Coding}:
-        \url{https://github.com/akmaier/agent-m}
-  \item Conference statistics tooling:
+  \item Konferenzstatistik aus 88.000 Papern:
         \url{https://github.com/akmaier/ConferenceStats}
-  \item Agent4CT -- agentic re-implementation of deep-learning CT
-        methods:
-        \url{https://github.com/akmaier/Agent4CT}
-  \item \textbf{A.~Maier}, M.~Zaiss and S.~Bayer,
+  \item \textbf{A.~Maier}, M.~Zaiss und S.~Bayer,
         \emph{Beating the Style Detector: Three Hours of Agentic
         Research on the AI-Text Arms Race},
         arXiv:2605.02620, 2026.
-  \item \textbf{A.~Maier}, J.~Sopa, G.~G.~Sahin, P.~Perez-Toro and
+  \item \textbf{A.~Maier}, J.~Sopa, G.~G.~Sahin, P.~Perez-Toro und
         S.~Bayer,
         \emph{Just Ask for a Table: A Thirty-Token User Prompt
         Defeats Sponsored Recommendations in Twelve LLMs},
         arXiv:2605.12772, 2026.
-  \item \emph{IfCampoKnew}\,\textendash\,scraper for 200 study programs
-        and an AI RAG chatbot:
+  \item \emph{IfCampoKnew} -- 200 Studiengänge und RAG-Chatbot:
         \url{https://github.com/akmaier/IfCampoKnew}
-  \item \emph{UnderstandingVCS}\,\textendash\,agent-reimplemented
-        ATARI VCS emulator:
+  \item \emph{UnderstandingVCS} -- von Agenten nachgebauter
+        ATARI-VCS-Emulator:
         \url{https://github.com/akmaier/UnderstandingVCS}
 \end{itemize}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 17 - Thank You + QR code to GitHub repo (centered, B/W QR)
+% Folie 16 - Vielen Dank + QR-Code zum GitHub-Branch
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Thank you! Questions?}
+\begin{frame}[t]{Vielen Dank! Fragen?}
 \begin{center}
-  {\Large Slides on GitHub}\\[1.2em]
+  {\Large Folien auf GitHub}\\[1.2em]
   \includegraphics[height=10cm]{qr_github.png}\\[0.8em]
-  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/robotics-ai-hackathon-2026}
+  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/gdlh-gesundheitsdaten-2026}
 \end{center}
 \end{frame}
 

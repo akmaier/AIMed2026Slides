@@ -1,30 +1,38 @@
-# Vibe Coding: Software Engineering in the Age of AI — Robotics & AI Hackathon 2026
+# Gesundheitsdaten als Innovationsmotor — Politische Frührunde GDLH 2026
 
-Slides for the keynote **“Vibe Coding: Software Engineering in the Age of
-AI”** by Andreas Maier (FAU Erlangen-N&#252;rnberg) at the **Robotics & AI
-Hackathon 2026**, Siemens Healthineers Innovation Center, Erlangen —
-**Thursday, 22 October 2026, 16:00–16:30** (hackathon 22–24 October;
-about 200 participants from FAU and EELISA partner universities).
+Slides (German) for the talk **„Gesundheitsdaten als Innovationsmotor:
+Möglichkeiten von morgen, Voraussetzungen von heute“** by Andreas Maier
+(FAU Erlangen-N&#252;rnberg) at the *Politische Frührunde* of the initiative
+„Global denken, lokal handeln“ (GDLH): **„Gesundheitsdaten, die wirken –
+Bayerns Weg zu besserer Versorgung und belastbarer Evidenz“**, Amgen GmbH,
+München — **Friday, 23 October 2026, 08:35–08:45** (10-minute slot).
 
-This is the `robotics-ai-hackathon-2026` branch, forked from
-`visual-heritage-2026`. Changes:
+This is the `gdlh-gesundheitsdaten-2026` branch, forked from
+`robotics-ai-hackathon-2026` and rewritten as a short German policy talk
+(German babel set-up as on `de-msd-senso`). All highlights, boxes and
+diagrams use only the FAU template colours (FAUBlue, TechMetallic,
+TechDarkMetallic and their tints). Storyline:
 
-* Title set to the announced keynote title; subtitle, date, venue and
-  footer retargeted; the QR code and printed URL point at this branch.
-* The Odeuropa / visual-heritage slide is dropped (medical / robotics
-  audience).
-* The *Agent M* slide (right after the textbook slide) is the full-slide
-  screenshot of akmaier.github.io/agent-m, as on `puls-retreat-2026`.
-* New slide after Agent4CT on **UnderstandingVCS** / the jutari paper
-  (*A Differentiable Atari VCS: A Complex, Fully Known Ground Truth for
-  Explainable AI*): the xitari-vs-jutari Space Invaders comparison video
-  (the repo's current `docs/assets/video/cmp_space_invaders.mp4`, 30 s,
-  zero pixel difference throughout) next to the key numbers. The PPTX
-  embeds the MP4 set to start automatically and loop; the PDF shows a
-  still frame.
+* *Zur Person* — functions and industry roles of the speaker.
+* *Alle Daten werden nutzbar* — agents read unstructured data:
+  ConferenceStats (88,000 conference papers, read from the PDFs) and the
+  resulting share of China at the top AI conferences (chart redrawn in the
+  FAU template colours by `generate_china_chart.py`).
+* *Kosten im freien Fall* — Agent4MR (human 150 min / 37.50 EUR vs. agent
+  4.8 min / 0.12 EUR), the speed of agentic AI, Open Access for 150 EUR.
+* *Gesundheitsdaten heute / morgen* — pre-harmonisation (MII core data set)
+  becomes an option instead of a prerequisite; analysis runs decentrally.
+* *Zwei Ebenen* — central data lakes and foundation models (e.g. Bavarian
+  Health Cloud, Bayerisches KI-Basismodell) plus compute in every clinic
+  for adapting them to disciplines and workflows.
+* *Voraussetzungen von heute* — answers to the event's three guiding
+  questions (access, linkage, infrastructure).
 
 Other versions of the deck:
 
+* `robotics-ai-hackathon-2026` — *“Vibe Coding: Software Engineering in the
+  Age of AI”* (Robotics & AI Hackathon, Erlangen), with the
+  UnderstandingVCS video slide.
 * `puls-retreat-2026` — *“The Impact of Agentic AI on Science”* (PULS
   Retreat, Zadar), with the UnderstandingVCS slides.
 * `dldxhealth-2026` — *“What's Next in Medical AI?”* (DLDxHealth, Munich).
@@ -35,7 +43,7 @@ Other versions of the deck:
   Hospital orthopedics 80th anniversary.
 * `baiosphere-medical-2026-opening` / `…-closing` — BAIOSPHERE MEDICAL 2026.
 
-The compiled deck is `output_tex/main.pdf` (47 pages). Source is
+The compiled deck is `output_tex/main.pdf` (16 pages). Source is
 `output_tex/main.tex`, built against the FAU beamer template (the
 `styles/`, `template-art/` and `conf-art/` directories are vendored
 under `output_tex/`).
@@ -57,32 +65,28 @@ pdflatex main.tex
 pdflatex main.tex
 ```
 
-The deck is self-contained: no `animate` package, no extracted frame
-sequences, and the QR code on the Thank-you slide is a pre-rendered PNG
+The deck is self-contained: no animations or videos, and the QR code
+on the closing slide is a pre-rendered PNG
 (`output_tex/figures/qr_github.png`).
 
 ## PowerPoint variant
 
-The talk is given from `Vibe_Coding_Robotics_AI_Hackathon_2026.pptx`,
-**not** the PDF, because three slides in the “What is agentic AI?”
-sequence — *Human baseline*, *GPT-4o attempt* and *GROK-3-think
-attempt* — display animated GIFs of the MR sequence playing back, which
-a static PDF cannot do.
-
-To get to that PPTX, the rendered PDF is converted slide-by-slide: each
-PDF page is rasterised at 200 DPI and dropped onto a 16:9 slide as a
-full-bleed picture; on the three GIF pages (pages 22/23/24 of this
-deck) the matching `figures/img_08_0*.gif` is additionally placed on
-top of the static image at exactly the same bounding box. Re-run the
-conversion with:
+`Gesundheitsdaten_Innovationsmotor_GDLH_2026.pptx` is the rendered PDF
+converted slide-by-slide: each PDF page is rasterised at 200 DPI and
+dropped onto a 16:9 slide as a full-bleed picture. This deck has no GIF or
+video slides, so nothing is overlaid (the `TARGETS` / `MOVIES` tables in
+the script are empty). Re-run the conversion with:
 
 ```
+mkdir -p build_pptx/pages
+gs -q -dNOPAUSE -dBATCH -sDEVICE=png16m -r200 \
+   -sOutputFile=build_pptx/pages/page-%02d.png output_tex/main.pdf
 python3 build_pptx/build_pptx.py
 ```
 
 The script writes its output to
-`build_pptx/Vibe_Coding_Robotics_AI_Hackathon_2026.pptx`; copy that over
-the committed PPTX at the repo root to publish a fresh build.
+`build_pptx/Gesundheitsdaten_Innovationsmotor_GDLH_2026.pptx`; copy that
+over the committed PPTX at the repo root to publish a fresh build.
 
 `build_pptx/probe_layout.py` is the small diagnostic used to find the
 FAU theme's body region on a rasterised page.
@@ -102,49 +106,30 @@ re-run the script, then rebuild the deck.
 ## Contents
 
 * `output_tex/main.tex` — LaTeX source
-* `output_tex/main.pdf` — compiled deck (47 slides)
-* `Vibe_Coding_Robotics_AI_Hackathon_2026.pptx` — presentable PowerPoint
-  variant with animated GIFs on the three “What is agentic AI?” attempt
-  slides
+* `output_tex/main.pdf` — compiled deck (16 slides)
+* `Gesundheitsdaten_Innovationsmotor_GDLH_2026.pptx` — PowerPoint variant
+  (one full-bleed image per slide)
 * `output_tex/bibliography.bib` — biblatex entries (loaded by the FAU theme)
-* `output_tex/figures/` — images, including `qr_github.png`, the
-  static `img_08_0*.png` renders, and the original `img_08_0*.gif`
-  source animations used by the PowerPoint variant
+* `output_tex/figures/` — images, including `qr_github.png`
 * `output_tex/styles/`, `output_tex/template-art/`,
   `output_tex/conf-art/` — FAU beamer template
 * `generate_qr.py` — QR-code generation script
-* `build_pptx/build_pptx.py` — PDF-to-PowerPoint converter that
-  embeds the GIFs at the right location
+* `generate_china_chart.py` — renders `figures/china_share_de.png` (China's
+  share at the top AI conferences, ConferenceStats data) in the FAU
+  template colours
+* `build_pptx/build_pptx.py` — PDF-to-PowerPoint converter (can also
+  overlay GIFs / embed videos; unused in this deck)
 * `build_pptx/probe_layout.py` — diagnostic for finding the FAU
   theme's body region on a rasterised page
 
 ## References
 
-* V. Mnih, K. Kavukcuoglu, D. Silver, A. Graves, I. Antonoglou,
-  D. Wierstra and M. Riedmiller, *Playing Atari with Deep Reinforcement
-  Learning*, [arXiv:1312.5602](https://arxiv.org/abs/1312.5602), 2013.
-* D. Silver et al., *Mastering the game of Go with deep neural networks
-  and tree search*, *Nature*, 529:484-489, 2016 (AlphaGo).
-* A. Maier, C. Syben, B. Stimpel, T. Wuerfl, M. Hoffmann, F. Schebesch,
-  W. Fu, L. Mill, L. Kling, S. Christiansen, *Learning with Known
-  Operators Reduces Maximum Error Bounds*, *Nature Machine
-  Intelligence*, 1:373-380, 2019.
-* M. Zaiss, J. R. Rajput, H. N. Dang, V. Golkov, D. Cremers, F. Knoll
-  and **A. Maier**, *Exploring GPT-4 as MR sequence and reconstruction
-  programming assistant: GPT4MR*, BVM Workshop, pp. 94-99, Springer,
-  2024.
 * M. Zaiss, A. Aly, J. Endres, T. Dornstetter, S. Weinm&#252;ller and
   **A. Maier**, *Agentic MR sequence development: leveraging LLMs with
   MR skills for automatic physics-informed sequence development*,
   [arXiv:2604.13282](https://arxiv.org/abs/2604.13282), 2026 (Agent4MR).
-* Deutscher Zukunftspreis 2023 (low-field MRI):
-  [deutscher-zukunftspreis.de][zukunftspreis].
-* Agent M — companion tool to the book *Vibe Coding*:
-  [github.com/akmaier/agent-m](https://github.com/akmaier/agent-m).
-* Conference statistics tooling:
+* Conference statistics tooling (88,000 papers):
   [github.com/akmaier/ConferenceStats](https://github.com/akmaier/ConferenceStats).
-* Agent4CT — agentic re-implementation of deep-learning CT methods:
-  [github.com/akmaier/Agent4CT](https://github.com/akmaier/Agent4CT).
 * **A. Maier**, M. Zaiss and S. Bayer, *Beating the Style Detector: Three
   Hours of Agentic Research on the AI-Text Arms Race*,
   [arXiv:2605.02620](https://arxiv.org/abs/2605.02620), 2026.
@@ -156,5 +141,3 @@ re-run the script, then rebuild the deck.
   [github.com/akmaier/IfCampoKnew](https://github.com/akmaier/IfCampoKnew).
 * *UnderstandingVCS* — agent-reimplemented ATARI VCS emulator:
   [github.com/akmaier/UnderstandingVCS](https://github.com/akmaier/UnderstandingVCS).
-
-[zukunftspreis]: https://www.deutscher-zukunftspreis.de/de/die-gewinner-des-deutschen-zukunftspreises-2023-spendeten-ein-mrt-geraet
