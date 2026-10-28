@@ -17,7 +17,7 @@ Shanghai Chest Hospital (poster 14518-77). Common to both China decks:
 * **Introduction of the speaker and the lab** from the Landtag deck, as set in LaTeX on
   branch `west-china-collaboration-2026`: About the Speaker, the team photo, the lab
   history, the team, the research areas and the work at the lab.
-* **One new slide on the living systematic review of robotic active matter** (PRISMA 2020;
+* **One new slide on living PRISMA reviews**, first use case robotic active matter (
   idea: Siming Bayer), with the PRISMA flow redrawn in TikZ from
   [ActiveMatterLivingReview](https://github.com/akmaier/ActiveMatterLivingReview)
   (`_data/prisma_counts.yml`, snapshot 2026-10-17).
@@ -56,8 +56,8 @@ cardiac slides, West China Hospital, 31 October 2026), `puls-retreat-2026`, `vis
 | 43 | Section: What does it mean for science? | 这对科学意味着什么？ |
 | 44–47 | Almost everything is easy now… | 如今几乎一切都变得容易…… |
 | 48 | Publishing, Disrupted | 出版业的变革 |
-| 49 | Agent4CT | 智能体复现CT方法 |
-| 50 | A Living Systematic Review (robotic active matter, PRISMA 2020) | 活体系统综述 |
+| 49 | Agent4CT (diagram: 15 methods in one weekend) | 智能体复现CT方法 |
+| 50 | Living PRISMA Reviews (first use case: robotic active matter) | 活体PRISMA系统综述 |
 | 51 | Speed of Agentic AI | 智能体AI的速度 |
 | 52 | Science at Agent Speed | 智能体速度下的科学 |
 | 53 | What This Means for Your Research | 这对你的研究意味着什么 |
