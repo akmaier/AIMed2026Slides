@@ -501,14 +501,14 @@ Always observe traffic rules and adapt your driving to road and weather.
 \begin{tikzpicture}[
     every node/.style={font=\large\bfseries},
     box/.style={draw, rounded corners=3pt, thick,
-                minimum height=1.4cm, minimum width=4.2cm,
-                text width=3.8cm, align=center,
+                minimum height=1.9cm, minimum width=6.4cm,
+                text width=6.0cm, align=center,
                 drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
                              opacity=0.35}}
   ]
   \node[box, fill=green!12, draw=green!50!black] (h)               {Human\\\normalsize\mdseries reference};
-  \node[box, fill=blue!12,  draw=blue!60!black,  right=8mm of h]  (g) {GPT-4o\\\normalsize\mdseries OpenAI};
-  \node[box, fill=orange!18,draw=orange!70!black,right=8mm of g]  (k) {GROK-3-think\\\normalsize\mdseries xAI};
+  \node[box, fill=blue!12,  draw=blue!60!black,  right=12mm of h]  (g) {GPT-4o\\\normalsize\mdseries OpenAI};
+  \node[box, fill=orange!18,draw=orange!70!black,right=12mm of g]  (k) {GROK-3-think\\\normalsize\mdseries xAI};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -703,42 +703,48 @@ What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着�
 % structured software process).  Source: github.com/akmaier/Agent4CT.
 % --------------------------------------------------------------------------
 \begin{frame}[t]{Agent4CT}{All deep-learning CT methods, in one weekend\cn{智能体复现CT方法}}
-\begin{itemize}\itemsep=0.15em
-  \item Continuously-running LLM agent that edits a CT reconstruction
-        codebase, runs short GPU experiments, and keeps changes only
-        when the metrics agree.  Five agents run in parallel across
-        five CT challenges and pool findings through a shared
-        scratch pad.
-\end{itemize}
-\vspace{0.3em}
-\textbf{Re-implemented solvers}
-({\small\ttfamily pentathlon/demo\_dl\_reference}):
+\vspace{0.2em}
 \begin{columns}[T]
-  \begin{column}{0.49\textwidth}
-    \begin{itemize}\itemsep=0.1em\small
-      \item \textbf{Analytical:} PyroNN FBP (Syben 2019).
-      \item \textbf{Classical iterative:} TV (iterative, supervised,
-            hyper-search); Wu \emph{et~al.}\ 2015 ($+$ trainable port).
-      \item \textbf{Variational / unrolled:} Hammernik 2017 variational
-            network ($+$ CT port); Learned Primal-Dual
-            (Adler \& \"Oktem); ITNet v1--v3.
-      \item \textbf{Self-supervised denoising:} dual-domain U-Net and
-            trainable bilateral filters (Wagner 2023 / 2022, with
-            supervised variants).
-    \end{itemize}
+  \begin{column}{0.65\textwidth}
+    \centering
+    \begin{tikzpicture}[font=\sffamily,
+        hub/.style={circle, fill=FAUBlue, text=white, minimum size=3.9cm, inner sep=1mm, align=center,
+                    font=\sffamily\normalsize},
+        cat/.style={draw=FAUBlue, line width=1pt, rounded corners=5pt, fill=BaseColorC,
+                    text width=6.9cm, minimum height=2.1cm, align=center, inner sep=1.5mm},
+        lnk/.style={thick, draw=FAUBlue!60}]
+      \node[hub] (h) at (0,0) {\textbf{\Large Agent4CT}\\[0.2em]5 agents\\5 CT challenges\\shared\\scratch pad};
+      \foreach \pos/\head/\list [count=\i] in {
+          {-6.6, 3.5}/Analytical/{FBP (PyroNN)},
+          {-6.6, 0.0}/Classical iterative/{TV; Wu et~al.\ 2015},
+          {-6.6,-3.5}/Neural fields/{NAF; R2Gaussian},
+          { 6.6, 3.5}/Variational \& unrolled/{VN; Primal-Dual; ITNet},
+          { 6.6, 0.0}/Denoising/{Self-supervised dual-domain U-Net; trainable bilateral filters},
+          { 6.6,-3.5}/Foundation \& diffusion/{RAM; DDPM; diffusion priors; U-Swin}} {
+        \node[cat] (c\i) at (\pos) {\textbf{\head}\\[0.15em]{\normalsize \list}};
+        \draw[lnk] (h) -- (c\i);
+      }
+    \end{tikzpicture}
   \end{column}
-  \begin{column}{0.49\textwidth}
-    \begin{itemize}\itemsep=0.1em\small
-      \item \textbf{Per-scene neural fields:} NAF
-            (neural attenuation field); R2Gaussian.
-      \item \textbf{Foundation models:} RAM (Terris 2025).
-      \item \textbf{Diffusion priors:} DDPM; diffusion-prior sampling;
-            diffusion-recon with data consistency.
-      \item \textbf{Transformer:} U-Swin.
-    \end{itemize}
+  \begin{column}{0.33\textwidth}
+    \vspace{0.6em}
+    \begin{tikzpicture}[font=\sffamily,
+        bx/.style={rounded corners=6pt, thick, inner sep=3.5mm, text width=8.8cm, align=center}]
+      \node[bx, draw=gray, fill=gray!8] (a) at (0,0)
+        {\large Classical re-implementation\\[0.2em]
+         {\fontsize{26}{28}\selectfont\bfseries\color{gray!40!black} $\approx$\,1 month}\\[0.1em]
+         \normalsize per method -- 15 methods};
+      \node[bx, draw=FAUBlue, fill=BaseColorC, below=7mm of a] (b)
+        {\large Agent4CT\\[0.2em]
+         {\fontsize{26}{28}\selectfont\bfseries\color{FAUBlue} one weekend}\\[0.1em]
+         \normalsize all of them};
+      \draw[-{Latex[length=3mm]}, very thick, draw=FAUBlue] (a) -- (b);
+      \node[below=6mm of b, text width=8.8cm, align=center, font=\sffamily\large]
+        {the work of \textbf{15--20 PhD theses}\\{\normalsize\color{gray}(re-implementation only)}};
+    \end{tikzpicture}
   \end{column}
 \end{columns}
-\vspace{0.3em}
+\vfill
 \begin{center}
   {\small\ttfamily github.com/akmaier/Agent4CT}
 \end{center}
@@ -749,47 +755,56 @@ What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着�
 % audience needs the headline, not the CT benchmark details.)
 
 % --------------------------------------------------------------------------
-% A living systematic review, built with agents.  Numbers from
+% Living PRISMA reviews, run by agents.  Numbers from
 % github.com/akmaier/ActiveMatterLivingReview, _data/prisma_counts.yml
-% (snapshot 2026-10-17) and README.md (first cycle 11-17 Oct 2026).
+% (snapshot 2026-10-17), README.md (first cycle 11-17 Oct 2026) and
+% protocol/PROTOCOL.md (searches re-run monthly).  Review time "about five
+% months" and "automatic monthly update": Andreas, 2026-10-28.
 % The PRISMA 2020 flow is redrawn here in TikZ.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{A Living Systematic Review}{Robotic active matter -- PRISMA 2020\cn{活体系统综述}}
-\vspace{0.3em}
+\begin{frame}[t]{Living PRISMA Reviews}{Systematic reviews at agent speed\cn{活体PRISMA系统综述}}
+\vspace{0.2em}
 \begin{columns}[T]
-  \begin{column}{0.46\textwidth}
+  \begin{column}{0.60\textwidth}
     \centering
-    \begin{tikzpicture}[font=\sffamily\small,
-        st/.style={draw=FAUBlue, line width=0.8pt, rounded corners=3pt, fill=BaseColorC,
-                   minimum width=5.4cm, minimum height=0.95cm, align=center},
-        ex/.style={draw=gray, rounded corners=3pt, fill=white, text=gray!40!black,
-                   minimum width=3.9cm, minimum height=0.8cm, align=center, font=\sffamily\footnotesize},
-        arr/.style={-{Latex[length=2mm]}, thick, draw=FAUBlue}]
-      \node[st] (id) at (0, 0)     {\textbf{15\,034} records identified\\[-0.1em]{\footnotesize in 8 databases}};
-      \node[st] (sc) at (0,-1.75)  {\textbf{8\,699} records screened};
-      \node[st] (so) at (0,-3.5)   {\textbf{1\,276} reports sought};
-      \node[st] (as) at (0,-5.25)  {\textbf{976} full texts\,+\,\textbf{179} abstracts\\[-0.1em]assessed};
-      \node[st, fill=FAUBlue, text=white] (in) at (0,-7.0) {\textbf{489} studies included};
+    {\sffamily\bfseries\Large\color{FAUBlue} PRISMA 2020 flow}\\[0.3em]
+    \begin{tikzpicture}[font=\sffamily\large, scale=0.92, every node/.style={transform shape},
+        st/.style={draw=FAUBlue, line width=1pt, rounded corners=4pt, fill=BaseColorC,
+                   minimum width=8.6cm, minimum height=1.35cm, align=center},
+        ex/.style={draw=gray, rounded corners=4pt, fill=white, text=gray!30!black,
+                   minimum width=5.6cm, minimum height=1.05cm, align=center, font=\sffamily\normalsize},
+        arr/.style={-{Latex[length=2.6mm]}, very thick, draw=FAUBlue},
+        ph/.style={rotate=90, font=\sffamily\bfseries\small, text=FAUBlue}]
+      \node[st] (id) at (0, 0)    {\textbf{15\,034} records identified\\{\normalsize in 8 databases}};
+      \node[st] (sc) at (0,-2.5)  {\textbf{8\,699} records screened};
+      \node[st] (so) at (0,-4.8)  {\textbf{1\,276} reports sought};
+      \node[st] (as) at (0,-7.2)  {\textbf{976} full texts + \textbf{179} abstracts\\assessed};
+      \node[st, fill=FAUBlue, text=white] (in) at (0,-9.6) {\textbf{489} studies included};
       \draw[arr] (id) -- (sc); \draw[arr] (sc) -- (so);
       \draw[arr] (so) -- (as); \draw[arr] (as) -- (in);
-      \foreach \y/\t in {-0.875/{6\,335 duplicates removed}, -2.625/{7\,423 excluded},
-                         -4.375/{300 not retrieved}, -6.125/{662 excluded}} {
-        \node[ex, anchor=west] (x) at (3.7,\y) {\t};
-        \draw[-{Latex[length=1.6mm]}, draw=gray] (0,\y) -- (x.west);
+      \foreach \y/\t in {-1.2/{6\,335 duplicates removed}, -3.6/{7\,423 excluded},
+                         -6.0/{300 not retrieved}, -8.4/{662 excluded}} {
+        \node[ex, anchor=west] (x) at (5.0,\y) {\t};
+        \draw[-{Latex[length=2mm]}, thick, draw=gray] (0,\y) -- (x.west);
       }
+      \node[ph] at (-5.3,-0.6)  {Identification};
+      \node[ph] at (-5.3,-4.8)  {Screening};
+      \node[ph] at (-5.3,-9.0)  {Included};
+      \draw[FAUBlue!40, thick] (-4.95,0.9) -- (-4.95,-1.6) (-4.95,-1.9) -- (-4.95,-8.1) (-4.95,-8.4) -- (-4.95,-9.9);
     \end{tikzpicture}
   \end{column}
-  \begin{column}{0.52\textwidth}
-    \begin{itemize}\itemsep=0.55em\large
-      \item First review cycle in \textbf{seven days} (11--17 Oct 2026).
-      \item Search in OpenAlex, NASA ADS, PubMed, IEEE Xplore, arXiv,
-            Crossref, HAL and bioRxiv; protocol registered on OSF.
-      \item Screening and extraction by a \textbf{three-LLM panel} on
-            NHR@FAU -- every vote is public.
-      \item Author-validated: sensitivity \textbf{1.00} on a 200-record sample.
-      \item \textbf{Living}: anyone can propose a missing paper by pull request.
+  \begin{column}{0.38\textwidth}
+    \vspace{0.4em}
+    {\large Review time}\\[0.2em]
+    {\fontsize{30}{32}\selectfont\bfseries\color{gray} $\sim$5 months}
+    {\fontsize{30}{32}\selectfont\bfseries\color{FAUBlue}\,$\rightarrow$ 7 days}\\[1.0em]
+    \begin{itemize}\itemsep=0.6em\large
+      \item \textbf{PRISMA 2020} end to end: search, screening, extraction by a
+            three-LLM panel; authors validate.
+      \item \textbf{Automatic monthly update}: a \emph{living} review.
+      \item First use case: \textbf{robotic active matter}.
     \end{itemize}
-    \vspace{0.6em}
+    \vspace{0.8em}
     {\small\ttfamily akmaier.github.io/ActiveMatterLivingReview}
   \end{column}
 \end{columns}
@@ -797,7 +812,7 @@ What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着�
 \begin{center}
   {\large\itshape\color{FAUBlue} Thanks to Siming Bayer for the idea!}
 \end{center}
-\vspace{0.2em}
+\vspace{0.1em}
 \end{frame}
 
 % --------------------------------------------------------------------------
