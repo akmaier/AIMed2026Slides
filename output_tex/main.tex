@@ -1,16 +1,18 @@
 % ..............................................................................
-% "The Impact of Agentic AI on Science" -- Andreas Maier, invited talk at
-% the PULS Retreat 2026 (Physics Underlying Life Sciences Workshop),
-% Hotel Kolovare, Zadar, Croatia; Sunday 11 October 2026, 9:00-10:30
-% invited-talks block (approx. 30 min).
-% Branch `puls-retreat-2026`, forked from `visual-heritage-2026` (same
-% content; venue/date retargeted, Agent M as a full-slide screenshot).
-% That branch was based on `dldxhealth-2026`: medical part
-% trimmed to Known operators + Zukunftspreis, an Odeuropa/ODOR slide for the
-% visual-heritage audience, and two closing slides on what agentic AI means
-% for science and for a PhD.
-% Animated GIFs from the Agent4MR sequence demo (figures/img_08_*) are
-% kept; they ship as static PNGs in the PDF and live GIFs in the PPTX.
+% "What's next in Medical AI?" -- Andreas Maier, invited talk at the 2026
+% Annual Radiology Summit of West China Hospital (Sichuan University), Chengdu,
+% Saturday 31 October 2026 (30 min).  Title as on the speaker form (19 Oct 2026).
+% Branch `wch-radiology-summit-2026`.
+%
+% Storyline and examples: the Zadar talk (branch puls-retreat-2026, "The Impact
+% of Agentic AI on Science"), without the two UnderstandingVCS slides and the
+% Hands-on pointer; introduction of the speaker and the lab from the Landtag
+% deck (as on branch west-china-collaboration-2026); a slide on the living
+% systematic review of robotic active matter (idea: Siming Bayer).  Every slide
+% carries the Chinese translation of its title in the subheading.
+%
+% BUILD: XeLaTeX (xeCJK + system CJK fonts), NOT pdflatex:  xelatex main.tex (twice;
+%        the photo slide uses remember-picture overlays)
 % ------------------------------------------------------------------------------
 \documentclass[final]{beamer}
 
@@ -19,45 +21,205 @@
             fontsize=11,
             fontbaselineskip=13,
             scale=1.,
-            InsertTotalFoot
+            SecondLogo=figures/talk/prl_logo.png
            ]{styles/beamerthemefau}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{textcomp}
-\usetikzlibrary{positioning,arrows.meta,shadows}
+\usetikzlibrary{positioning,arrows.meta,shadows,shapes.geometric,calc,fadings}
+
+% --- Chinese typesetting (XeLaTeX only) -----------------------------------
+% xeCJK auto-switches to the CJK font for Han characters and keeps Latin in
+% the theme's Helvetica.  Titles run in \sffamily -> Heiti SC (sans, matches
+% the FAU Helvetica); body Chinese -> Songti SC.
+\usepackage{xeCJK}
+\setCJKmainfont{Songti SC}
+\setCJKsansfont{Heiti SC}
+\setCJKmonofont{Heiti SC}
+% \cn{...} = the Chinese title translation, placed after an English subtitle.
+\newcommand{\cn}[1]{\hspace{0.7em}\mbox{#1}}
 
 \graphicspath{{figures/}}
+
+% Card / box styles shared by the Landtag slides (FAU template colours only)
+\tikzset{
+  card/.style={draw=FAUBlue, line width=1.2pt, rounded corners=8pt, fill=white},
+  softbox/.style={draw=none, rounded corners=10pt, fill=BaseColorC},
+  headbox/.style={draw=none, rounded corners=10pt, fill=FAUBlue},
+}
 
 % ----------------------------------------------------------------------------------------
 % Title page metadata
 % ----------------------------------------------------------------------------------------
-\title[The Impact of Agentic AI on Science]{The Impact of Agentic AI on Science}
-\subtitle{Invited Talk \,\textbullet\, PULS Retreat 2026}
-\author[A.~Maier]{Andreas Maier}
-\institute[FAU]{Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg}
-\date{11 October 2026 \,\textbullet\, Hotel Kolovare, Zadar}
+\title[What's next in Medical AI?]{What's next in Medical AI?}
+\subtitle{\sffamily 医学人工智能的下一步是什么？}
+\author[A.~Maier]{Prof.\ Dr.-Ing.\ habil.\ Andreas Maier, Pattern Recognition Lab}
+\institute[FAU]{Friedrich-Alexander-Universität Erlangen-Nürnberg, Germany}
+\date{31 October 2026 \,\textbullet\, West China Hospital, Chengdu \,\textbullet\, \sffamily 华西医院}
 
-% ================================================
-% The main document
-% ------------------------------------------------
 \begin{document}
+% no hyphenation on slides
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
 
 % --------------------------------------------------------------------------
-% Slide 1 - Title (FAU titleimage layout; AIMed branding removed for the
-% India branch, so the title body is the standard \titlepage on the
-% default FAU template image).
+% Title
 % --------------------------------------------------------------------------
 \begin{frame}[t,titleimage]{-}
 \titlepage%
 \end{frame}
 
+% 2 - About the speaker
 % --------------------------------------------------------------------------
-% Slide 2 - Outline
+\begin{frame}[t]{About the Speaker}{Prof.\ Dr.-Ing.\ Andreas Maier\cn{主讲人简介}}
+\begin{columns}[T]
+  \begin{column}{0.54\textwidth}
+    \textbf{Responsibilities \& Experience}
+    \begin{itemize}\itemsep=0.12em\small
+      \item Head of the Pattern Recognition Lab, FAU
+      \item Head of the Competence Center Medical Engineering Erlangen
+      \item Head of the Medical AI Hub of Bavaria
+      \item Member, AI Council of the Free State of Bavaria
+      \item Scientific Counselor, Fraunhofer Institute
+      \item AI Council, German Radiation Protection Society
+      \item European Research Council (grantee \& reviewer)
+      \item Visiting Professor at Stanford University and MIT
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.44\textwidth}
+    \textbf{Industry \& Entrepreneurship}
+    \begin{itemize}\itemsep=0.12em\small
+      \item Siemens Healthineers
+            (innovation manager / tech lead)
+      \item Start-ups: \emph{Mira Vision} (shareholder, valued
+            at EUR~10\,M); \emph{Norizon} (council, early VC phase)
+      \item Holds more than 15 active US and EU patents
+    \end{itemize}
+    \vspace{0.6em}
+    \begin{center}\itshape\small\color{gray}
+      Theory first, application always.
+    \end{center}
+  \end{column}
+\end{columns}
+\end{frame}
+
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Outline}
+% 7 - Pattern Recognition Lab (team photo, Landtag slide 5)
+% --------------------------------------------------------------------------
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture, overlay]
+  \node[anchor=center, inner sep=0pt] at (current page.center)
+    {\includegraphics[width=\paperwidth,height=\paperheight]{talk/prl_team_photo.jpg}};
+  \fill[black, opacity=0.55, path fading=north] (current page.south west) rectangle ($(current page.south east)+(0,8.0)$);
+  \node[anchor=south west, text=white, font=\sffamily\bfseries, inner sep=0pt]
+    at ($(current page.south west)+(1.3,4.4)$) {\fontsize{58}{58}\selectfont Pattern Recognition Lab};
+  \node[anchor=south west, fill=FAUBlue, fill opacity=0.85, text opacity=1, text=white,
+        font=\sffamily, inner xsep=0.5cm, inner ysep=0.35cm, align=left]
+    at ($(current page.south west)+(0.8,2.2)$)
+    {\LARGE Friedrich-Alexander-Universität Erlangen-Nürnberg\hspace{1.2em}模式识别实验室};
+\end{tikzpicture}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 8 - History (Landtag slide 6)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Know the Past to Understand the Future}{温故而知新}
+\vspace{1.0em}
+\begin{columns}[T]
+  \begin{column}{0.60\textwidth}
+    \begin{itemize}\itemsep=0.6em\Large
+      \item Founded in 1975, founder: Heinrich Niemann
+      \item Germany's first dedicated Pattern Recognition / Machine Learning Lab
+      \item Medical imaging as early as 1981
+      \item First computer: PDP-11/34 with 248\,kB, 2.5\,MHz
+      \item Focus: theory \& good understanding of hardware
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.36\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{talk/pdp11_photo.jpg}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 9 - Team (Landtag slide 7, recreated)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Our Team Today}{Pattern Recognition Lab\cn{我们的团队}}
+\vspace{0.4em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily]
+  % top row: secretaries | head of the lab | technician
+  \node[softbox, minimum width=8.6cm, minimum height=6.2cm, anchor=north] (s) at (-10.2,0) {};
+  \node[headbox, minimum width=8.0cm, minimum height=7.0cm, anchor=north] (h) at (0,0.6) {};
+  \node[softbox, minimum width=8.6cm, minimum height=6.2cm, anchor=north] (t) at (10.2,0) {};
+  \node[anchor=north, font=\sffamily\bfseries\Large, text=FAUBlue] at ($(s.north)+(0,-0.3)$) {Secretaries};
+  \node[anchor=north, font=\sffamily\bfseries\Large, text=white] at ($(h.north)+(0,-0.3)$) {Head of the Lab};
+  \node[anchor=north, font=\sffamily\bfseries\Large, text=FAUBlue] at ($(t.north)+(0,-0.3)$) {Technician};
+  \foreach \x/\img/\name in {-12.2/portrait_alexandra.jpg/Alexandra H., -8.2/portrait_claudia.jpg/Claudia S.,
+                             10.2/portrait_sven.png/Sven G.} {
+    \node[anchor=north, inner sep=0pt] (p) at (\x,-1.5) {\includegraphics[height=3.5cm]{talk/\img}};
+    \node[anchor=north, font=\sffamily\normalsize] at ($(p.south)+(0,-0.15)$) {\name};
+  }
+  \node[anchor=north, inner sep=0pt] (pm) at (0,-0.9) {\includegraphics[height=4.4cm]{talk/portrait_maier.jpg}};
+  \node[anchor=north, font=\sffamily\normalsize, text=white] at ($(pm.south)+(0,-0.15)$) {Prof.\ Dr.-Ing.\ Andreas Maier};
+  % bottom row
+  \node[softbox, minimum width=13.4cm, minimum height=5.4cm, anchor=north west] (b1) at (-14.5,-7.4) {};
+  \node[softbox, minimum width=13.4cm, minimum height=5.4cm, anchor=north west] (b2) at (1.1,-7.4) {};
+  \node[anchor=west, text width=12.4cm] at ($(b1.west)+(0.3,0)$) {%
+    \begin{itemize}\itemsep=0.25em\large
+      \item $\sim$60 PhD students \& 8 postdocs
+      \item 2 emeritus professors
+      \item $\sim$3\,709 master \& bachelor students
+    \end{itemize}};
+  \node[anchor=west, text width=12.4cm] at ($(b2.west)+(0.3,0)$) {%
+    \begin{itemize}\itemsep=0.25em\large
+      \item Academic partners in Europe, Asia, North/South America, Australia
+      \item Industry partners: Siemens, Fraunhofer, Adidas, Intel, Audi, IBM, and more
+    \end{itemize}};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 10 - Research areas (Landtag slide 8, recreated)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Research Areas}{Pattern Recognition Lab\cn{研究方向}}
+\vspace{1.0em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily\bfseries\large, text=FAUBlue,
+    area/.style={softbox, minimum width=13.6cm, minimum height=2.3cm, align=center, text width=13.0cm}]
+  \node[area] at (-7.4,  0.0) {Computer Vision};
+  \node[area] at (-7.4, -3.0) {Time Series Intelligence};
+  \node[area] at (-7.4, -6.0) {Magnetic Resonance Imaging};
+  \node[area] at (-7.4, -9.0) {Data Processing for Utility Infrastructure};
+  \node[area] at ( 7.4, -0.6) {Learning Algorithms for Medical Big Data Analysis};
+  \node[area] at ( 7.4, -4.2) {Speech Processing \& Language Understanding};
+  \node[area] at ( 7.4, -7.8) {Inverse Problems \& Applications};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 11 - Work at the lab (Landtag slide 9)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Work at the Lab}{实验室的工作}
+\vspace{0.4em}
+\begin{center}
+  \includegraphics[height=5.6cm]{talk/work_1.png}\hspace{0.2cm}%
+  \includegraphics[height=5.6cm]{talk/work_2.png}\hspace{0.2cm}%
+  \includegraphics[height=5.6cm]{talk/work_3.png}\\[0.2cm]
+  \includegraphics[height=5.6cm]{talk/work_4.png}\hspace{0.2cm}%
+  \includegraphics[height=5.6cm]{talk/work_5.png}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% --------------------------------------------------------------------------
+% Outline
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Outline}{提纲}
 \begin{itemize}
   \item What is deep learning?
   \item What is agentic AI?
@@ -69,13 +231,13 @@
 % Slide 3 - Section divider
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-What is deep learning?
+What is deep learning?\\[0.25em]{\large\sffamily 什么是深度学习？}
 \end{frame}
 
 % --------------------------------------------------------------------------
 % Slide 4 - Deep Learning (4 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Deep learning}{Speech}
+\begin{frame}[t]{Deep learning}{Speech\cn{深度学习}}
 \begin{itemize}
   \item Revolutionising pattern recognition and AI for more than 10~years.
 \end{itemize}
@@ -85,13 +247,13 @@ What is deep learning?
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Deep learning}{Image classification}
+\begin{frame}[t]{Deep learning}{Image classification\cn{深度学习}}
 \begin{center}
   \includegraphics[height=.7\textheight]{img_03_04.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Deep learning}{Learning to play}
+\begin{frame}[t]{Deep learning}{Learning to play\cn{深度学习}}
 \begin{center}
   \includegraphics[width=.95\textwidth]{img_03_05.png}\\[0.2em]
   {\footnotesize [Mnih 2013]}
@@ -121,13 +283,13 @@ What is deep learning?
 % --------------------------------------------------------------------------
 % Slide 5 - Generative AI (4 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Generative AI}{Source image}
+\begin{frame}[t]{Generative AI}{Source image\cn{生成式人工智能}}
 \begin{center}
   \includegraphics[height=.75\textheight]{img_04_01.jpg}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Generative AI}{Image description}
+\begin{frame}[t]{Generative AI}{Image description\cn{生成式人工智能}}
 \begin{columns}[T]
   \begin{column}{0.32\textwidth}
     \centering
@@ -147,13 +309,13 @@ What is deep learning?
 \end{columns}
 \end{frame}
 
-\begin{frame}[t]{Generative AI}{Generated image}
+\begin{frame}[t]{Generative AI}{Generated image\cn{生成式人工智能}}
 \begin{center}
   \includegraphics[height=.75\textheight]{img_04_04.jpg}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Generative AI}{Style variations}
+\begin{frame}[t]{Generative AI}{Style variations\cn{生成式人工智能}}
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
     \centering
@@ -172,7 +334,7 @@ What is deep learning?
 % research-to-product story (Zukunftspreis).  The three MRI reconstruction
 % image slides were dropped.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Deep learning in medicine}{Known operators}
+\begin{frame}[t]{Deep learning in medicine}{Known operators\cn{医学中的深度学习}}
 \vspace*{0.4em}
 \begin{center}
 \begin{tikzpicture}[
@@ -220,7 +382,7 @@ $\varepsilon_k=0$ and strictly tightens this bound.
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Deep learning in medicine}{Recognition}
+\begin{frame}[t]{Deep learning in medicine}{Recognition\cn{医学中的深度学习}}
 \begin{columns}[c]
   \begin{column}{0.35\textwidth}
     \centering
@@ -244,13 +406,13 @@ $\varepsilon_k=0$ and strictly tightens this bound.
 % Slide 7 - Section divider
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-What is agentic AI?
+What is agentic AI?\\[0.25em]{\large\sffamily 什么是智能体AI？}
 \end{frame}
 
 % --------------------------------------------------------------------------
 % Slide 8 - What is agentic AI? Intro (3 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{A simple question}
+\begin{frame}[t]{What is agentic AI?}{A simple question\cn{什么是智能体AI？}}
 \vspace*{0.6em}
 \begin{flushleft}
   {\Huge\itshape\textquotedblleft How do you drive a car?\textquotedblright}
@@ -266,7 +428,7 @@ What is agentic AI?
 \end{itemize}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Long text answer of an LLM}
+\begin{frame}[t]{What is agentic AI?}{Long text answer of an LLM\cn{什么是智能体AI？}}
 \normalsize
 To drive a car, follow these steps:
 \begin{itemize}\itemsep=0.3em
@@ -294,7 +456,7 @@ Always observe traffic rules and adapt your driving to road and weather.
 \hfill\textbf{$\Rightarrow$ Lots of words, but no \emph{action}.}\hfill\,
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{From language model to agent}
+\begin{frame}[t]{What is agentic AI?}{From language model to agent\cn{什么是智能体AI？}}
 \begin{columns}[c]
   \begin{column}{0.48\textwidth}
     \centering
@@ -316,7 +478,7 @@ Always observe traffic rules and adapt your driving to road and weather.
 % --------------------------------------------------------------------------
 % Slide 9 - Spin-echo EPI: 3 model attempts (4 sub-slides, animated)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{Task for the models}
+\begin{frame}[t]{What is agentic AI?}{Task for the models\cn{什么是智能体AI？}}
 \vspace*{0.4em}
 \begin{center}
   \begin{minipage}{.92\textwidth}
@@ -351,19 +513,19 @@ Always observe traffic rules and adapt your driving to road and weather.
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Human baseline}
+\begin{frame}[t]{What is agentic AI?}{Human baseline\cn{什么是智能体AI？}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_08_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{GPT-4o attempt}
+\begin{frame}[t]{What is agentic AI?}{GPT-4o attempt\cn{什么是智能体AI？}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_08_03.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{GROK-3-think attempt}
+\begin{frame}[t]{What is agentic AI?}{GROK-3-think attempt\cn{什么是智能体AI？}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_08_04.png}
 \end{center}
@@ -373,31 +535,31 @@ Always observe traffic rules and adapt your driving to road and weather.
 % Sub-section divider before Agent4MR results
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-How about real agentic AI?
+How about real agentic AI?\\[0.25em]{\large\sffamily 真正的智能体AI又如何？}
 \end{frame}
 
 % --------------------------------------------------------------------------
 % Slide 10 - Agent4MR results (4 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{LLM vs.\ Agent4MR}
+\begin{frame}[t]{What is agentic AI?}{LLM vs.\ Agent4MR\cn{什么是智能体AI？}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_09_01.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Interactions per model}
+\begin{frame}[t]{What is agentic AI?}{Interactions per model\cn{什么是智能体AI？}}
 \begin{center}
   \includegraphics[width=.92\textwidth]{img_09_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Cost comparison}
+\begin{frame}[t]{What is agentic AI?}{Cost comparison\cn{什么是智能体AI？}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_09_03.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Iterative progress}
+\begin{frame}[t]{What is agentic AI?}{Iterative progress\cn{什么是智能体AI？}}
 \begin{columns}[c]
   \begin{column}{0.6\textwidth}
     \centering
@@ -419,25 +581,25 @@ How about real agentic AI?
 % --------------------------------------------------------------------------
 % Slide 12 - Vibe coding & advanced AI techniques (4 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{Vibe coding}
+\begin{frame}[t]{What is agentic AI?}{Vibe coding\cn{什么是智能体AI？}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_11_01.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Advanced AI-assisted techniques}
+\begin{frame}[t]{What is agentic AI?}{Advanced AI-assisted techniques\cn{什么是智能体AI？}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_11_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Markdown-driven quality gates}
+\begin{frame}[t]{What is agentic AI?}{Markdown-driven quality gates\cn{什么是智能体AI？}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_11_03.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Textbook}
+\begin{frame}[t]{What is agentic AI?}{Textbook\cn{什么是智能体AI？}}
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
     \centering
@@ -455,7 +617,7 @@ How about real agentic AI?
 % screenshot of akmaier.github.io/agent-m (1600x900 viewport, loaded live
 % with the project's progress card: six stages, % to first release).
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{Agent M -- the companion tool to the book \emph{Vibe Coding}}
+\begin{frame}[t]{What is agentic AI?}{Agent M -- companion tool to \emph{Vibe Coding}\cn{什么是智能体AI？}}
 \begin{center}
   \includegraphics[width=\textwidth,height=.72\textheight,keepaspectratio]{agentm_screenshot.png}\\[0.15em]
   {\small\ttfamily akmaier.github.io/agent-m}
@@ -466,31 +628,31 @@ How about real agentic AI?
 % Slide 13 - Section divider
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-What does it mean for science?
+What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着什么？}
 \end{frame}
 
 % --------------------------------------------------------------------------
 % Slide 14 - Almost everything is easy now (4 sub-slides)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Almost everything is easy now\dots}{China and AI}
+\begin{frame}[t]{Almost everything is easy now\dots}{China and AI\cn{如今几乎一切都变得容易……}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_13_01.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Almost everything is easy now\dots}{Conference shares}
+\begin{frame}[t]{Almost everything is easy now\dots}{Conference shares\cn{如今几乎一切都变得容易……}}
 \begin{center}
   \includegraphics[width=.9\textwidth]{img_13_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Almost everything is easy now\dots}{ConferenceStats workflow}
+\begin{frame}[t]{Almost everything is easy now\dots}{ConferenceStats workflow\cn{如今几乎一切都变得容易……}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_13_03.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Almost everything is easy now\dots}{Conference contributions from China}
+\begin{frame}[t]{Almost everything is easy now\dots}{Conference contributions from China\cn{如今几乎一切都变得容易……}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_13_04.png}
 \end{center}
@@ -501,7 +663,7 @@ What does it mean for science?
 % workflow built for BAIOSPHERE MEDICAL 2026. Flash callout: 10,000 EUR
 % Springer Open Access vs 150 EUR FAU University Press.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Publishing, Disrupted}{Open Access for the price of a pizza party}
+\begin{frame}[t]{Publishing, Disrupted}{Open Access for the price of a pizza party\cn{出版业的变革}}
 \vspace{0.5em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
@@ -540,7 +702,7 @@ What does it mean for science?
 % Slide 15a-c - Agent4CT (India branch insertion: project intro, leaderboard,
 % structured software process).  Source: github.com/akmaier/Agent4CT.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Agent4CT}{All deep-learning CT methods, in one weekend}
+\begin{frame}[t]{Agent4CT}{All deep-learning CT methods, in one weekend\cn{智能体复现CT方法}}
 \begin{itemize}\itemsep=0.15em
   \item Continuously-running LLM agent that edits a CT reconstruction
         codebase, runs short GPU experiments, and keeps changes only
@@ -587,55 +749,55 @@ What does it mean for science?
 % audience needs the headline, not the CT benchmark details.)
 
 % --------------------------------------------------------------------------
-% UnderstandingVCS (1/2) -- the pitch.  Facts from the project's results
-% audit page, akmaier.github.io/UnderstandingVCS.
+% A living systematic review, built with agents.  Numbers from
+% github.com/akmaier/ActiveMatterLivingReview, _data/prisma_counts.yml
+% (snapshot 2026-10-17) and README.md (first cycle 11-17 Oct 2026).
+% The PRISMA 2020 flow is redrawn here in TikZ.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{UnderstandingVCS}{A differentiable Atari 2600 -- built by agents, proven bit-exact}
-\vspace{0.5em}
+\begin{frame}[t]{A Living Systematic Review}{Robotic active matter -- PRISMA 2020\cn{活体系统综述}}
+\vspace{0.3em}
 \begin{columns}[T]
-  \begin{column}{0.60\textwidth}
-    \begin{itemize}\itemsep=0.6em\large
-      \item \textbf{Two differentiable ports} of the Atari 2600
-            VCS -- in JAX and in Julia.
-      \item Checked against \textbf{xitari}, an independent C++
-            emulator that is not part of the project.
-      \item \textbf{Ground truth for XAI}: score interpretability
-            methods against a machine we know \emph{exactly}.
-    \end{itemize}
-    \vspace{1.0em}
-    {\large\itshape\color{blue!55!black}
-     ``Hallucinated code does not accidentally match\\
-     an external reference to the bit.''}
-  \end{column}
-  \begin{column}{0.38\textwidth}
+  \begin{column}{0.46\textwidth}
     \centering
-    {\fontsize{34}{34}\selectfont\bfseries\color{blue!55!black} 64\,/\,64}\\[0.15em]
-    {\small games: RAM byte-exact,\\ screen pixel-exact}\\[0.9em]
-    {\fontsize{34}{34}\selectfont\bfseries\color{blue!55!black} 16\,k}\\[0.15em]
-    {\small lines of code in one week}\\[0.9em]
-    {\fontsize{34}{34}\selectfont\bfseries\color{blue!55!black} 769}\\[0.15em]
-    {\small commits with the open\\ prompt\,$\rightarrow$\,code log}
+    \begin{tikzpicture}[font=\sffamily\small,
+        st/.style={draw=FAUBlue, line width=0.8pt, rounded corners=3pt, fill=BaseColorC,
+                   minimum width=5.4cm, minimum height=0.95cm, align=center},
+        ex/.style={draw=gray, rounded corners=3pt, fill=white, text=gray!40!black,
+                   minimum width=3.9cm, minimum height=0.8cm, align=center, font=\sffamily\footnotesize},
+        arr/.style={-{Latex[length=2mm]}, thick, draw=FAUBlue}]
+      \node[st] (id) at (0, 0)     {\textbf{15\,034} records identified\\[-0.1em]{\footnotesize in 8 databases}};
+      \node[st] (sc) at (0,-1.75)  {\textbf{8\,699} records screened};
+      \node[st] (so) at (0,-3.5)   {\textbf{1\,276} reports sought};
+      \node[st] (as) at (0,-5.25)  {\textbf{976} full texts\,+\,\textbf{179} abstracts\\[-0.1em]assessed};
+      \node[st, fill=FAUBlue, text=white] (in) at (0,-7.0) {\textbf{489} studies included};
+      \draw[arr] (id) -- (sc); \draw[arr] (sc) -- (so);
+      \draw[arr] (so) -- (as); \draw[arr] (as) -- (in);
+      \foreach \y/\t in {-0.875/{6\,335 duplicates removed}, -2.625/{7\,423 excluded},
+                         -4.375/{300 not retrieved}, -6.125/{662 excluded}} {
+        \node[ex, anchor=west] (x) at (3.7,\y) {\t};
+        \draw[-{Latex[length=1.6mm]}, draw=gray] (0,\y) -- (x.west);
+      }
+    \end{tikzpicture}
+  \end{column}
+  \begin{column}{0.52\textwidth}
+    \begin{itemize}\itemsep=0.55em\large
+      \item First review cycle in \textbf{seven days} (11--17 Oct 2026).
+      \item Search in OpenAlex, NASA ADS, PubMed, IEEE Xplore, arXiv,
+            Crossref, HAL and bioRxiv; protocol registered on OSF.
+      \item Screening and extraction by a \textbf{three-LLM panel} on
+            NHR@FAU -- every vote is public.
+      \item Author-validated: sensitivity \textbf{1.00} on a 200-record sample.
+      \item \textbf{Living}: anyone can propose a missing paper by pull request.
+    \end{itemize}
+    \vspace{0.6em}
+    {\small\ttfamily akmaier.github.io/ActiveMatterLivingReview}
   \end{column}
 \end{columns}
 \vfill
-\begin{center}\small\color{gray}
-  Paper~1: AAAI 2027 (submitted) \,\textbullet\,
-  Paper~2: \emph{Nature Machine Intelligence} (in preparation)
-  \,\textbullet\, {\ttfamily akmaier.github.io/UnderstandingVCS}
-\end{center}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% UnderstandingVCS (2/2) -- the result.  Static frame in the PDF; the PPTX
-% overlays the animated GIF (figures/vcs_si_compare.gif, 3x nearest-
-% neighbour upscale of the project's si_compare.gif).  Keep the body to the
-% image only: build_pptx.py places the GIF from the image's bounding box.
-% --------------------------------------------------------------------------
-\begin{frame}[t]{UnderstandingVCS}{Space Invaders -- C++ reference vs.\ our Julia port: zero difference}
-\vspace{0.6em}
 \begin{center}
-  \includegraphics[width=\textwidth,height=.74\textheight,keepaspectratio]{vcs_si_compare.png}
+  {\large\itshape\color{FAUBlue} Thanks to Siming Bayer for the idea!}
 \end{center}
+\vspace{0.2em}
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -643,7 +805,7 @@ What does it mean for science?
 % Four data points -- 3 h paper-reproduction + new paper, 1 d paper without
 % code, 3 d study-program scraper + RAG chatbot, 1 w ATARI emulator.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Speed of Agentic AI}{Wall-clock from idea to working artefact}
+\begin{frame}[t]{Speed of Agentic AI}{Wall-clock from idea to working artefact\cn{智能体AI的速度}}
 \vspace{0.4em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
@@ -684,7 +846,7 @@ What does it mean for science?
 % Science at agent speed -- opportunities vs. risks.  The two risk items
 % with arXiv numbers are the papers already cited on the Speed slide.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Science at Agent Speed}{Opportunities and risks}
+\begin{frame}[t]{Science at Agent Speed}{Opportunities and risks\cn{智能体速度下的科学}}
 \vspace{0.6em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
@@ -719,7 +881,7 @@ What does it mean for science?
 % --------------------------------------------------------------------------
 % Closing advice for the doctoral audience (5x5 style).
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What This Means for Your PhD}{Five rules for working with agents}
+\begin{frame}[t]{What This Means for Your PhD}{Five rules for working with agents\cn{这对你的博士研究意味着什么}}
 \vspace{0.6em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
@@ -740,10 +902,11 @@ What does it mean for science?
 \end{frame}
 
 % --------------------------------------------------------------------------
+
 % References
 % --------------------------------------------------------------------------
-\begin{frame}[t]{References}
-\scriptsize
+\begin{frame}[t]{References}{参考文献}
+\tiny
 \linespread{0.90}\selectfont
 \begin{itemize}\itemsep=0em
   \item V.~Mnih et~al.,
@@ -789,19 +952,32 @@ What does it mean for science?
   \item \emph{UnderstandingVCS}\,\textendash\,agent-reimplemented
         ATARI VCS emulator:
         \url{https://github.com/akmaier/UnderstandingVCS}
+  \item \textbf{A.~Maier}, S.~Bayer et~al.,
+        \emph{A Living Systematic Review of Robotic Active Matter}:
+        \url{https://akmaier.github.io/ActiveMatterLivingReview}
 \end{itemize}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 17 - Thank You + QR code to GitHub repo (centered, B/W QR)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Thank you! Questions?}
-\begin{center}
-  {\Large Slides on GitHub}\\[1.0em]
-  \includegraphics[height=8.6cm]{qr_github.png}\\[0.6em]
-  {\normalsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/puls-retreat-2026}\\[1.0em]
-  {\Large\bfseries\color{blue!55!black} Hands-on AI today, 16:30--18:30 -- bring your own problem!}
-\end{center}
+% Closing slide - Thank you + QR code to this branch on GitHub + WeChat
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Thank you! Questions?}{谢谢！欢迎提问}
+\vspace{0.8em}
+\begin{columns}[T]
+  \begin{column}{0.5\textwidth}
+    \centering
+    {\Large Slides on GitHub\cn{幻灯片见 GitHub}}\\[0.8em]
+    \includegraphics[height=8.4cm]{talk/qr_github.png}\\[0.5em]
+    {\scriptsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/wch-radiology-summit-2026}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \centering
+    {\Large WeChat\cn{微信}}\\[0.8em]
+    \includegraphics[height=8.4cm]{talk/wechat_qr.jpg}\\[0.5em]
+    {\scriptsize Andreas Maier}
+  \end{column}
+\end{columns}
 \end{frame}
 
 \end{document}

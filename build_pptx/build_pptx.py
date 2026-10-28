@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Convert the rendered PDF deck to a PowerPoint, embedding animated GIFs
-on the three "What is agentic AI?" attempt slides.
+on the three "What is agentic AI?" attempt slides (and, where the deck has
+it, on the Motion Compensation slide).
 
-For every PDF page we add a full-bleed picture of the rasterized page.
-On pages 22/23/24 (Agent4MR) and 43 (UnderstandingVCS) we drop the source GIF on top of the
+For every PDF page we add a full-bleed picture of the rasterized page
+(the PDF is rasterized here, with Ghostscript at 200 dpi).  The GIF pages
+are found by their subheading text, so inserting or removing slides does
+not break the overlay.  On those pages we drop the source GIF on top of the
 static PNG so PowerPoint shows the animation in slideshow mode.
 
 The GIF placement matches the static image's bounding box on the
@@ -21,6 +24,7 @@ rasterized page exactly:
 
 from __future__ import annotations
 
+import re
 import subprocess
 from pathlib import Path
 
@@ -35,15 +39,37 @@ FIG_DIR = ROOT / "output_tex" / "figures"
 PAGES_DIR = ROOT / "build_pptx" / "pages"
 # Write the regenerated deck *inside* build_pptx/ so we never clobber
 # the manually-edited committed copy at the repo root.
-OUT = ROOT / "build_pptx" / "Impact_of_Agentic_AI_on_Science_PULS_Retreat.pptx"
+OUT = ROOT / "build_pptx" / "What_next_in_Medical_AI_WCH_Radiology_Summit_2026.pptx"
 
-# Slide-page -> (gif filename, source png filename)
+# Subheading text on the page -> (gif filename, source png filename)
 TARGETS = {
-    22: ("img_08_02.gif", "img_08_02.png"),
-    23: ("img_08_03.gif", "img_08_03.png"),
-    24: ("img_08_04.gif", "img_08_04.png"),
-    43: ("vcs_si_compare.gif", "vcs_si_compare.png"),   # UnderstandingVCS result
+    "Human baseline": ("img_08_02.gif", "img_08_02.png"),
+    "GPT-4o attempt": ("img_08_03.gif", "img_08_03.png"),
+    "GROK-3-think attempt": ("img_08_04.gif", "img_08_04.png"),
 }
+
+# Motion Compensation slide: the GIFs sit at fixed page coordinates, the same
+# numbers as in the frame in main.tex -- (gif, x_cm, y_cm, side_cm) on the
+# 33.867 x 19.05 cm page.
+MOTION_MARKER = "Motion Compensation"
+MOTION_GIFS = [("talk/motion_ecg_gated.gif", 5.9, 5.1, 10.8),
+               ("talk/motion_compensated.gif", 17.17, 5.1, 10.8)]
+PAGE_W_CM, PAGE_H_CM = 33.867, 19.05
+
+
+def page_texts() -> list[str]:
+    """Text of every PDF page, first lines only (title + subheading)."""
+    out = subprocess.run(["pdftotext", "-layout", str(PDF), "-"],
+                         capture_output=True, text=True, check=True).stdout
+    return [re.sub(r"\s+", " ", " ".join(pg.splitlines()[:4])) for pg in out.split("\f")]
+
+
+def rasterize() -> None:
+    PAGES_DIR.mkdir(parents=True, exist_ok=True)
+    for old in PAGES_DIR.glob("page-*.png"):
+        old.unlink()
+    subprocess.run(["gs", "-q", "-dNOPAUSE", "-dBATCH", "-sDEVICE=png16m", "-r200",
+                    f"-sOutputFile={PAGES_DIR}/page-%02d.png", str(PDF)], check=True)
 
 # Body region of an FAU-themed slide (fractions of page height).
 # Tightened to skip the title bar / logos (top) and footer (bottom);
@@ -113,10 +139,9 @@ def gif_placement(page_png: Path, source_png: Path,
 
 
 def main() -> None:
+    rasterize()
     page_files = sorted(PAGES_DIR.glob("page-*.png"))
-    if not page_files:
-        raise SystemExit(f"No rasterized pages in {PAGES_DIR}; "
-                         "run pdftoppm first.")
+    texts = page_texts()
 
     prs = Presentation()
     prs.slide_width = Inches(13.333)
@@ -130,8 +155,18 @@ def main() -> None:
             width=prs.slide_width, height=prs.slide_height,
         )
 
-        if i in TARGETS:
-            gif_name, png_name = TARGETS[i]
+        text = texts[i - 1]
+        if text.startswith(MOTION_MARKER):
+            for gif, xc, yc, side in MOTION_GIFS:
+                slide.shapes.add_picture(
+                    str(FIG_DIR / gif),
+                    int(prs.slide_width * xc / PAGE_W_CM), int(prs.slide_height * yc / PAGE_H_CM),
+                    width=int(prs.slide_width * side / PAGE_W_CM),
+                    height=int(prs.slide_height * side / PAGE_H_CM))
+                print(f"  page {i}: overlaid {gif}")
+        hit = [k for k in TARGETS if k in text]
+        if hit:
+            gif_name, png_name = TARGETS[hit[0]]
             with Image.open(page_png) as im:
                 pw, ph = im.size
             xf, yf, wf, hf = gif_placement(

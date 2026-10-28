@@ -1,170 +1,75 @@
-# The Impact of Agentic AI on Science — PULS Retreat 2026
+# What's next in Medical AI? — 2026 Annual Radiology Summit of West China Hospital
 
-Slides for the invited talk **“The Impact of Agentic AI on Science”** by
-Andreas Maier (FAU Erlangen-N&#252;rnberg) at the
-[**PULS Retreat 2026**](https://puls-retreat-2026.vercel.app) (Physics
-Underlying Life Sciences Workshop), Hotel Kolovare, Zadar, Croatia —
-**Sunday, 11 October 2026**, 9:00–10:30 invited-talks block (approx.
-30 min).
+Slides for the invited talk **“What's next in Medical AI?”** (医学人工智能的下一步是什么？) by
+Andreas Maier (FAU Erlangen-Nürnberg) at the **2026 Annual Radiology Summit of West China
+Hospital** (Sichuan University), Chengdu — **Saturday, 31 October 2026**, 30 min. The title
+is the one on the speaker form sent to the organising committee on 19 October 2026.
 
-This is the `puls-retreat-2026` branch, forked from
-`visual-heritage-2026`. Changes:
+This is the `wch-radiology-summit-2026` branch, forked from `puls-retreat-2026`:
 
-* Subtitle, date, venue and footer retargeted at the PULS Retreat; the
-  QR code and printed URL point at this branch.
-* The *Agent M* slide (right after the textbook slide) is a full-slide
-  screenshot of akmaier.github.io/agent-m, taken with the page fully
-  loaded (live progress card: six stages, 67 % to first release).
-* Two new slides after Agent4CT on **UnderstandingVCS**: the pitch (a
-  differentiable Atari 2600, bit-exact against the independent xitari
-  C++ emulator on 64/64 games) and the result GIF (Space Invaders:
-  reference vs. Julia port vs. pixel difference). The PPTX plays the
-  GIF; the PDF shows a still frame.
-* The Odeuropa / visual-heritage slide is dropped.
-* The closing slide points to the *Hands-on AI* session the same day,
-  16:30–18:30.
+* **Storyline and examples** of the Zadar talk (*The Impact of Agentic AI on Science*,
+  PULS Retreat 2026), without the two UnderstandingVCS slides and the Hands-on AI pointer.
+* **Introduction of the speaker and the lab** from the Landtag deck, as set in LaTeX on
+  branch `west-china-collaboration-2026`: About the Speaker, the team photo, the lab
+  history, the team, the research areas and the work at the lab.
+* **One new slide on the living systematic review of robotic active matter** (PRISMA 2020;
+  idea: Siming Bayer), with the PRISMA flow redrawn in TikZ from
+  [ActiveMatterLivingReview](https://github.com/akmaier/ActiveMatterLivingReview)
+  (`_data/prisma_counts.yml`, snapshot 2026-10-17).
+* **Chinese translation of every slide title as subheading**, as in the
+  `west-china-collaboration-2026` deck.
+* **Closing slide** with the QR code to this branch and the WeChat QR code.
 
-Other versions of the deck:
+Other versions of the deck: `shanghai-sino-euro-2026` (same storyline, Shanghai Chest
+Hospital, 30 October 2026), `puls-retreat-2026`, `visual-heritage-2026`,
+`dldxhealth-2026`, `main` (AIMed 2026, Kraków), `india-talk`, `de-msd-senso`,
+`wch-80-years-orthopedics`, `west-china-collaboration-2026`,
+`baiosphere-medical-2026-opening` / `…-closing`.
 
-* `visual-heritage-2026` — same talk at the Visual Heritage Doctoral
-  Colloquium 2026 (Hainburg an der Donau).
-* `dldxhealth-2026` — *“What's Next in Medical AI?”* (DLDxHealth, Munich).
-* `main` — original *“What next in medical AI?”* (AIMed 2026, Krak&#243;w).
-* `india-talk` — *“Towards Bringing Agentic AI to Healthcare”* (Bangalore).
-* `de-msd-senso` — German *„KI in der Onkologie“* (MSD Senso-Abend, Munich).
-* `wch-80-years-orthopedics` — bilingual EN/中文 deck for the West China
-  Hospital orthopedics 80th anniversary.
-* `baiosphere-medical-2026-opening` / `…-closing` — BAIOSPHERE MEDICAL 2026.
+## Slides
 
-The compiled deck is `output_tex/main.pdf` (48 pages). Source is
-`output_tex/main.tex`, built against the FAU beamer template (the
-`styles/`, `template-art/` and `conf-art/` directories are vendored
-under `output_tex/`).
+| # | Slide | Chinese subheading |
+|---|---|---|
+| 1 | What's next in Medical AI? | 医学人工智能的下一步是什么？ |
+| 2 | About the Speaker | 主讲人简介 |
+| 3 | Pattern Recognition Lab (team photo) | 模式识别实验室 |
+| 4 | Know the Past to Understand the Future | 温故而知新 |
+| 5 | Our Team Today | 我们的团队 |
+| 6 | Research Areas | 研究方向 |
+| 7 | Work at the Lab | 实验室的工作 |
+| 8 | Outline | 提纲 |
+| 9 | Section: What is deep learning? | 什么是深度学习？ |
+| 10–13 | Deep learning | 深度学习 |
+| 14–18 | Generative AI | 生成式人工智能 |
+| 19–21 | Deep learning in medicine | 医学中的深度学习 |
+| 22 | Section: What is agentic AI? | 什么是智能体AI？ |
+| 23–30 | What is agentic AI? (GIFs on 28–30 in the PPTX) | 什么是智能体AI？ |
+| 31 | Section: How about real agentic AI? | 真正的智能体AI又如何？ |
+| 32–40 | What is agentic AI? (Agent4MR, vibe coding, textbook, Agent M) | 什么是智能体AI？ |
+| 41 | Section: What does it mean for science? | 这对科学意味着什么？ |
+| 42–45 | Almost everything is easy now… | 如今几乎一切都变得容易…… |
+| 46 | Publishing, Disrupted | 出版业的变革 |
+| 47 | Agent4CT | 智能体复现CT方法 |
+| 48 | A Living Systematic Review (robotic active matter, PRISMA 2020) | 活体系统综述 |
+| 49 | Speed of Agentic AI | 智能体AI的速度 |
+| 50 | Science at Agent Speed | 智能体速度下的科学 |
+| 51 | What This Means for Your PhD | 这对你的博士研究意味着什么 |
+| 52 | References | 参考文献 |
+| 53 | Thank you! Questions? (GitHub + WeChat QR) | 谢谢！欢迎提问 |
 
 ## Build
 
+The deck is typeset in LaTeX; PowerPoint is only the container for presenting and for the
+animated GIFs.
+
 ```
 cd output_tex
-latexmk -pdf main.tex
+xelatex main.tex && xelatex main.tex      # XeLaTeX (xeCJK), twice: remember-picture overlays
+cd ..
+python3 build_pptx/build_pptx.py          # PDF pages at 200 dpi + GIF overlays
+cp build_pptx/What_next_in_Medical_AI_WCH_Radiology_Summit_2026.pptx .
 ```
 
-A single `latexmk` run handles the biber bibliography pass automatically.
-If you prefer to drive the engines by hand:
-
-```
-pdflatex main.tex
-biber    main
-pdflatex main.tex
-pdflatex main.tex
-```
-
-The deck is self-contained: no `animate` package, no extracted frame
-sequences, and the QR code on the Thank-you slide is a pre-rendered PNG
-(`output_tex/figures/qr_github.png`).
-
-## PowerPoint variant
-
-The talk is given from `Impact_of_Agentic_AI_on_Science_PULS_Retreat.pptx`,
-**not** the PDF, because four slides display animated GIFs, which a
-static PDF cannot do: *Human baseline*, *GPT-4o attempt* and
-*GROK-3-think attempt* in the “What is agentic AI?” sequence (the MR
-sequence playing back), and the UnderstandingVCS result slide
-(Space Invaders, reference vs. port vs. difference).
-
-To get to that PPTX, the rendered PDF is converted slide-by-slide: each
-PDF page is rasterised at 200 DPI and dropped onto a 16:9 slide as a
-full-bleed picture; on the GIF pages (22/23/24 with
-`figures/img_08_0*.gif`, 43 with `figures/vcs_si_compare.gif`) the
-animation is additionally placed on top of the static image at exactly
-the same bounding box. Re-run the
-conversion with:
-
-```
-python3 build_pptx/build_pptx.py
-```
-
-The script writes its output to
-`build_pptx/Impact_of_Agentic_AI_on_Science_PULS_Retreat.pptx`; copy that over
-the committed PPTX at the repo root to publish a fresh build.
-
-`build_pptx/probe_layout.py` is the small diagnostic used to find the
-FAU theme's body region on a rasterised page.
-
-## Regenerating the QR code
-
-The QR code is generated by a small Python script using the `qrcode`
-package (pure black on white, error correction M):
-
-```
-python3 generate_qr.py
-```
-
-Edit `URL` at the top of `generate_qr.py` if the target ever changes,
-re-run the script, then rebuild the deck.
-
-## Contents
-
-* `output_tex/main.tex` — LaTeX source
-* `output_tex/main.pdf` — compiled deck (48 slides)
-* `Impact_of_Agentic_AI_on_Science_PULS_Retreat.pptx` — presentable PowerPoint
-  variant with animated GIFs on the three “What is agentic AI?” attempt
-  slides
-* `output_tex/bibliography.bib` — biblatex entries (loaded by the FAU theme)
-* `output_tex/figures/` — images, including `qr_github.png`, the
-  static `img_08_0*.png` renders, and the original `img_08_0*.gif`
-  source animations used by the PowerPoint variant
-* `output_tex/styles/`, `output_tex/template-art/`,
-  `output_tex/conf-art/` — FAU beamer template
-* `generate_qr.py` — QR-code generation script
-* `build_pptx/build_pptx.py` — PDF-to-PowerPoint converter that
-  embeds the GIFs at the right location
-* `build_pptx/probe_layout.py` — diagnostic for finding the FAU
-  theme's body region on a rasterised page
-
-## References
-
-* V. Mnih, K. Kavukcuoglu, D. Silver, A. Graves, I. Antonoglou,
-  D. Wierstra and M. Riedmiller, *Playing Atari with Deep Reinforcement
-  Learning*, [arXiv:1312.5602](https://arxiv.org/abs/1312.5602), 2013.
-* D. Silver et al., *Mastering the game of Go with deep neural networks
-  and tree search*, *Nature*, 529:484-489, 2016 (AlphaGo).
-* M. Zinnen, P. Madhu, I. Leemans, P. Bell, A. Hussian, H. Tran,
-  A. H&#252;rriyeto&#287;lu, **A. Maier** and V. Christlein, *Smelly,
-  dense, and spreaded: The Object Detection for Olfactory References
-  (ODOR) dataset*, *Expert Systems with Applications*, 255:124576, 2024
-  ([arXiv:2507.08384](https://arxiv.org/abs/2507.08384)).
-* Odeuropa — Europe's olfactory heritage (EU Horizon 2020):
-  [odeuropa.eu](https://odeuropa.eu).
-* A. Maier, C. Syben, B. Stimpel, T. Wuerfl, M. Hoffmann, F. Schebesch,
-  W. Fu, L. Mill, L. Kling, S. Christiansen, *Learning with Known
-  Operators Reduces Maximum Error Bounds*, *Nature Machine
-  Intelligence*, 1:373-380, 2019.
-* M. Zaiss, J. R. Rajput, H. N. Dang, V. Golkov, D. Cremers, F. Knoll
-  and **A. Maier**, *Exploring GPT-4 as MR sequence and reconstruction
-  programming assistant: GPT4MR*, BVM Workshop, pp. 94-99, Springer,
-  2024.
-* M. Zaiss, A. Aly, J. Endres, T. Dornstetter, S. Weinm&#252;ller and
-  **A. Maier**, *Agentic MR sequence development: leveraging LLMs with
-  MR skills for automatic physics-informed sequence development*,
-  [arXiv:2604.13282](https://arxiv.org/abs/2604.13282), 2026 (Agent4MR).
-* Deutscher Zukunftspreis 2023 (low-field MRI):
-  [deutscher-zukunftspreis.de][zukunftspreis].
-* Agent M — companion tool to the book *Vibe Coding*:
-  [github.com/akmaier/agent-m](https://github.com/akmaier/agent-m).
-* Conference statistics tooling:
-  [github.com/akmaier/ConferenceStats](https://github.com/akmaier/ConferenceStats).
-* Agent4CT — agentic re-implementation of deep-learning CT methods:
-  [github.com/akmaier/Agent4CT](https://github.com/akmaier/Agent4CT).
-* **A. Maier**, M. Zaiss and S. Bayer, *Beating the Style Detector: Three
-  Hours of Agentic Research on the AI-Text Arms Race*,
-  [arXiv:2605.02620](https://arxiv.org/abs/2605.02620), 2026.
-* **A. Maier**, J. Sopa, G. G. Sahin, P. Perez-Toro and S. Bayer, *Just
-  Ask for a Table: A Thirty-Token User Prompt Defeats Sponsored
-  Recommendations in Twelve LLMs*,
-  [arXiv:2605.12772](https://arxiv.org/abs/2605.12772), 2026.
-* *IfCampoKnew* — scraper for 200 study programs and an AI RAG chatbot:
-  [github.com/akmaier/IfCampoKnew](https://github.com/akmaier/IfCampoKnew).
-* *UnderstandingVCS* — agent-reimplemented ATARI VCS emulator:
-  [github.com/akmaier/UnderstandingVCS](https://github.com/akmaier/UnderstandingVCS).
-
-[zukunftspreis]: https://www.deutscher-zukunftspreis.de/de/die-gewinner-des-deutschen-zukunftspreises-2023-spendeten-ein-mrt-geraet
+`build_pptx.py` finds the GIF slides by their subheading, so slides can be added or removed
+without touching it. The QR code is generated by `generate_qr.py`
+(`output_tex/figures/talk/qr_github.png`).
