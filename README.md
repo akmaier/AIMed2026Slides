@@ -1,147 +1,79 @@
-# What's next in Medical AI? — West China Hospital (Orthopedics, 80 Years)
+# Pattern Recognition Lab – A short introduction — West China Hospital, International Office (October 2026)
 
-Slides for the talk **“What's next in Medical AI?”** by Andreas Maier
-(FAU Erlangen-N&#252;rnberg), given at the **80th Anniversary of the
-Department of Orthopedics, West China Hospital** (&#21326;&#35199;&#21307;&#38498;&#39592;&#31185;),
-on **30 May 2026**. Subtitle: *From the early days of Pattern
-Recognition to the Future of AI*.
+Slides (English, with the **Chinese translation of every slide title as its
+subheading**) for Andreas Maier's introduction of the Pattern Recognition Lab
+and the FAU Profile Center Medical Engineering to the **International Office of
+West China Hospital** (华西医院), Chengdu, October 2026.
 
-This is the `wch-80-years-orthopedics` branch: an English deck prepared
-for a Chinese academic audience. Every slide **title and subtitle**
-carries an idiomatic Chinese rendering next to the English (the slide
-body stays English). The translations deliberately lean on classical
-idioms and allusions rather than word-for-word glosses — for example
-&#28201;&#25925;&#32780;&#30693;&#26032; (“review the old to know the new”, on the history
-slide), &#26131;&#22914;&#21453;&#25484; (China & AI), &#20116;&#39033;&#20840;&#33021; (the Agent4CT
-“pentathlon”), and a closing congratulation on the department's
-&#20843;&#31171;&#21326;&#35806; (80th anniversary): &#26447;&#26519;&#26149;&#26262;&#65292;&#26691;&#26446;&#33437;&#33459;&#65307;&#24748;&#22774;&#27982;&#19990;&#65292;&#20877;&#35889;&#26032;&#31687;&#12290;
-Three opening slides introduce the speaker, the lab's history (the
-PDP-11), and the lab today.
+This is the `west-china-collaboration-2026` branch ("West China Collaboration
+2026"; git branch names cannot contain spaces). It is the deck shown at the
+Bavarian State Parliament (`PRL_7min_landtag.pptx`, 14/15 October 2026) with
+two more Profile Center slides from `BrainLab_maier.pptx`:
 
-Other versions of this deck:
+| # | Slide | Chinese subheading | Source |
+|---|---|---|---|
+| 1 | Pattern Recognition Lab – A short introduction | 模式识别实验室简介 | Landtag 1 |
+| 2 | About the Speaker | 主讲人简介 | Landtag 2 (beamer) |
+| 3 | Profile Center FAU MT | FAU医学工程重点研究中心 | Landtag 3 |
+| 4 | Strategic Goals | 战略目标 | **BrainLab 3** |
+| 5 | Collaboration Building – Our strategy | 合作网络建设：我们的策略 | Landtag 4 |
+| 6 | SFB/CRC Transforming AI with Multimodal Healthcare | 合作研究中心：以多模态人工智能变革医疗 | **BrainLab 5** |
+| 7 | Pattern Recognition Lab (team photo) | 模式识别实验室 | Landtag 5 |
+| 8 | Know the Past to Understand the Future | 温故而知新 | Landtag 6 |
+| 9 | Our Team Today | 我们的团队 | Landtag 7 |
+| 10 | Research Areas | 研究方向 | Landtag 8 |
+| 11 | Work at the Lab | 实验室的工作 | Landtag 9 |
+| 12 | Motion Compensation | 运动补偿 | Landtag 10 |
+| 13 | Multi-Organ Segmentation | 多器官分割 | Landtag 11 |
+| 14 | 50 Years in a Nutshell | 五十年历程概览 | Landtag 12 |
+| 15–16 | What is agentic AI? (Textbook) | 什么是智能体AI？ | Landtag 13–14 (beamer) |
+| 17 | Publishing, Disrupted | 出版业的变革 | Landtag 15 (beamer) |
+| 18–19 | Speed of Agentic AI | 智能体AI的速度 | Landtag 16–17 (beamer) |
+| 20 | NHR @ FAU – Equipment Snapshot | NHR@FAU高性能计算中心：设备概览 | Landtag 18 |
+| 21 | Foundation models | 基础模型 | Landtag 19 (beamer) |
+| 22 | Cooperations | 合作伙伴 | Landtag 20 |
+| 23 | References | 参考文献 | Landtag 21 (beamer) |
 
-* `main` — English original *“What next in medical AI?”*
-  ([AIMed 2026](https://my.ebm.one/aimed), Krak&#243;w, 7.–9. May 2026).
-* `de-msd-senso` — German version *“KI in der Onkologie”* (MSD
-  Senso-Abend, Munich, 11 June 2026).
-* `india-talk` — English India variant *“Towards Bringing Agentic AI
-  to Healthcare”* (Bangalore, 26 May 2026).
+The BrainLab deck's other opening slides (title, Profile Center divider,
+Collaboration Building, team photo, history, team, research areas, work at the
+lab) were already in the Landtag deck. The Landtag deck's text was already
+English; what was German were the footer ("Technische Fakultät" → "Faculty of
+Engineering") and the dates ("14. Oktober 2026" → "October 2026").
 
-The compiled deck is `output_tex/main.pdf` (54 pages). Source is
-`output_tex/main.tex`, built against the FAU beamer template (the
-`styles/`, `template-art/` and `conf-art/` directories are checked in
-under `output_tex/`).
+## The deck
+
+`West_China_Collaboration_2026.pptx` (23 slides) is a **hybrid**:
+
+* **Native PowerPoint slides** (1, 3–14, 20, 22) are taken over from the two
+  source decks unchanged; the Chinese subheading sits on the FAU template's
+  subtitle line (16 pt, theme colour *accent 3*), next to an existing English
+  subtitle where there is one. Chinese is set in **Microsoft YaHei** (shipped
+  with PowerPoint, standard on Chinese Windows).
+* **Beamer slides** (2, 15–19, 21, 23) were full-slide pictures in the Landtag
+  deck, rendered from other branches of this repository (`wch-80-years-orthopedics`,
+  `dldxhealth-2026`, `main`). They are rebuilt from `output_tex/main.tex` with the
+  Chinese subheading, the footer "October 2026 • West China Hospital • 华西医院"
+  and each frame's slide number in this deck. The screenshot overlays on
+  slides 16 (Springer *Vibe Coding*) and 19 (*Agent M*) are kept.
 
 ## Build
 
-This branch typesets Chinese with **xeCJK**, so it must be compiled
-with **XeLaTeX** (not `pdflatex`):
-
 ```
-cd output_tex
-xelatex main.tex
-xelatex main.tex
-```
-
-(Two passes settle the page-counter in the footer; `latexmk -xelatex
-main.tex` works too.) Chinese glyphs use the macOS system fonts
-**Songti SC** (&#23435;&#20307;, body) and **Heiti SC** (&#40657;&#20307;, titles); on
-other systems substitute any installed CJK fonts via the
-`\setCJKmainfont` / `\setCJKsansfont` lines in the preamble.
-
-The deck is otherwise self-contained: no `animate` package, no
-extracted frame sequences, and the QR code on the closing slide is a
-pre-rendered PNG (`output_tex/figures/qr_github.png`).
-
-## PowerPoint variant
-
-The talk is given from
-`AIMed2026_What_next_in_medical_AI.pptx`, **not** the PDF, because three
-slides in the “Agentic AI” sequence — *Human baseline*, *GPT-4o attempt*
-and *GROK-3-think attempt* — need to display animated GIFs of the MR
-sequence playing back, which a static PDF cannot do.
-
-To get to that PPTX, the rendered PDF is converted slide-by-slide: each
-PDF page is rasterised at 200 DPI and dropped onto a 16:9 slide as a
-full-bleed picture; on the three GIF pages (pages 28/29/30 of this
-deck) the matching `figures/img_08_0*.gif` is additionally placed on
-top of the static image at exactly the same bounding box (detected from
-the rasterised page so it aligns pixel-for-pixel). Re-run the
-conversion with:
-
-```
-python3 build_pptx/build_pptx.py
+cd output_tex && xelatex main.tex && xelatex main.tex && cd ..
+rm -f build_pptx/wch_collab_pages/*.png
+gs -q -dNOPAUSE -dBATCH -sDEVICE=png16m -r200 \
+   -sOutputFile=build_pptx/wch_collab_pages/page-%02d.png output_tex/main.pdf
+python3 build_pptx/build_wch_collab.py
+cp build_pptx/West_China_Collaboration_2026.pptx .
 ```
 
-The script writes its output to
-`build_pptx/AIMed2026_What_next_in_medical_AI.pptx`; copy that over the
-committed PPTX at the repo root to publish a fresh build. The committed
-root PPTX is exactly that build (no manual post-editing on this branch).
+`main.tex` needs **XeLaTeX** (xeCJK; Songti SC / Heiti SC from macOS).
+`build_wch_collab.py` reads the two source decks from `~/Downloads`
+(`PRL_7min_landtag.pptx`, `BrainLab_maier.pptx` — not in the repository; the
+BrainLab deck is 172 MB).
 
-`build_pptx/probe_layout.py` is the small diagnostic used to find the
-FAU theme's body region on a rasterised page.
-
-## Regenerating the QR code
-
-The QR code is generated by a small Python script using the `qrcode`
-package (pure black on white, error correction M):
-
-```
-python3 generate_qr.py
-```
-
-Edit `URL` at the top of `generate_qr.py` if the target ever changes
-(it should point at this branch), re-run the script, then rebuild the
-deck.
-
-## Contents
-
-* `output_tex/main.tex` — LaTeX source (XeLaTeX + xeCJK)
-* `output_tex/main.pdf` — compiled deck (54 pages)
-* `AIMed2026_What_next_in_medical_AI.pptx` — presentable PowerPoint
-  variant with animated GIFs on the three “Agentic AI” attempt slides
-* `output_tex/bibliography.bib` — biblatex entries (loaded by the FAU theme)
-* `output_tex/figures/` — images, including `pdp11.png` (lab history
-  slide), `qr_github.png`, the static `img_08_0*.png` renders, and the
-  original `img_08_0*.gif` source animations used by the PowerPoint
-  variant
-* `output_tex/styles/`, `output_tex/template-art/`,
-  `output_tex/conf-art/` — FAU beamer template
-* `generate_qr.py` — QR-code generation script
-* `build_pptx/build_pptx.py` — PDF-to-PowerPoint converter that embeds
-  the GIFs at the right location
-* `build_pptx/probe_layout.py` — diagnostic for finding the FAU theme's
-  body region on a rasterised page
-
-## References
-
-* V. Mnih, K. Kavukcuoglu, D. Silver, A. Graves, I. Antonoglou,
-  D. Wierstra and M. Riedmiller, *Playing Atari with Deep Reinforcement
-  Learning*, [arXiv:1312.5602](https://arxiv.org/abs/1312.5602), 2013.
-* D. Silver et al., *Mastering the game of Go with deep neural networks
-  and tree search*, *Nature*, 529:484-489, 2016 (AlphaGo).
-* K. Hammernik, T. Klatzer, E. Kobler, M. P. Recht, D. K. Sodickson,
-  T. Pock and **F. Knoll**, *Learning a Variational Network for
-  Reconstruction of Accelerated MRI Data*, *Magnetic Resonance in
-  Medicine*, 79(6):3055-3071, 2018 (FastMRI / variational network).
-* A. Maier, C. Syben, B. Stimpel, T. Wuerfl, M. Hoffmann, F. Schebesch,
-  W. Fu, L. Mill, L. Kling, S. Christiansen, *Learning with Known
-  Operators Reduces Maximum Error Bounds*, *Nature Machine
-  Intelligence*, 1:373-380, 2019.
-* M. Zaiss, J. R. Rajput, H. N. Dang, V. Golkov, D. Cremers, F. Knoll
-  and **A. Maier**, *Exploring GPT-4 as MR sequence and reconstruction
-  programming assistant: GPT4MR*, BVM Workshop, pp. 94-99, Springer,
-  2024.
-* M. Zaiss, A. Aly, J. Endres, T. Dornstetter, S. Weinm&#252;ller and
-  **A. Maier**, *Agentic MR sequence development: leveraging LLMs with
-  MR skills for automatic physics-informed sequence development*,
-  [arXiv:2604.13282](https://arxiv.org/abs/2604.13282), 2026 (Agent4MR).
-* Deutscher Zukunftspreis 2023 (low-field MRI):
-  [deutscher-zukunftspreis.de][zukunftspreis].
-* Bavarian Foundation AI Model: [www.ai-bay.eu](https://www.ai-bay.eu).
-* Conference statistics tooling:
-  [github.com/akmaier/ConferenceStats](https://github.com/akmaier/ConferenceStats).
-* Agent4CT — agentic re-implementation of deep-learning CT methods:
-  [github.com/akmaier/Agent4CT](https://github.com/akmaier/Agent4CT).
-
-[zukunftspreis]: https://www.deutscher-zukunftspreis.de/de/die-gewinner-des-deutschen-zukunftspreises-2023-spendeten-ein-mrt-geraet
+Other versions of the deck: `wch-80-years-orthopedics` (bilingual EN/中文,
+West China Hospital orthopedics, May 2026), `main` (AIMed 2026, Kraków),
+`dldxhealth-2026`, `india-talk`, `de-msd-senso`, `gdlh-gesundheitsdaten-2026`,
+`robotics-ai-hackathon-2026`, `puls-retreat-2026`, `visual-heritage-2026`,
+`baiosphere-medical-2026-opening` / `-closing`.
