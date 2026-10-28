@@ -53,7 +53,7 @@ Hospital, 30 October 2026), `puls-retreat-2026`, `visual-heritage-2026`,
 | 48 | A Living Systematic Review (robotic active matter, PRISMA 2020) | 活体系统综述 |
 | 49 | Speed of Agentic AI | 智能体AI的速度 |
 | 50 | Science at Agent Speed | 智能体速度下的科学 |
-| 51 | What This Means for Your PhD | 这对你的博士研究意味着什么 |
+| 51 | What This Means for Your Research | 这对你的研究意味着什么 |
 | 52 | References | 参考文献 |
 | 53 | Thank you! Questions? (GitHub + WeChat QR) | 谢谢！欢迎提问 |
 
