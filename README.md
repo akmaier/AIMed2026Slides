@@ -33,6 +33,7 @@ two more Profile Center slides from `BrainLab_maier.pptx`, recreated in TeX:
 | 21 | Foundation models | 基础模型 | Landtag 19 |
 | 22 | Cooperations | 合作伙伴 | Landtag 20 |
 | 23 | References | 参考文献 | Landtag 21 |
+| 24 | Thank you! (QR code to this branch) | 谢谢！ | closing slide of the LaTeX decks |
 
 The BrainLab deck's other opening slides (title, Profile Center divider,
 Collaboration Building, team photo, history, team, research areas, work at the
@@ -43,7 +44,7 @@ Engineering") and the dates ("14. Oktober 2026" → "October 2026").
 ## The deck
 
 The deck is **typeset in LaTeX** on the FAU beamer template: `output_tex/main.tex`
-→ `output_tex/main.pdf` (23 pages). Every slide is a beamer frame, including the
+→ `output_tex/main.pdf` (24 pages). Every slide is a beamer frame, including the
 ones that were native PowerPoint in the sources. Those are recreated in TeX:
 
 * **Recreated as TikZ layouts**, with only photos, portraits and logos as image
