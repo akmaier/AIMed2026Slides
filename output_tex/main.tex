@@ -1,17 +1,19 @@
 % ..............................................................................
 % "Pattern Recognition Lab -- A short introduction" -- Andreas Maier.
 % Branch west-china-collaboration-2026: the Landtag deck (PRL_7min_landtag.pptx,
-% Bavarian State Parliament, 14/15 October 2026) for West China Hospital,
-% International Office, October 2026, with the Profile Center slides of
-% BrainLab_maier.pptx added.  The deck itself is a PowerPoint
-% (West_China_Collaboration_2026.pptx, built by build_pptx/build_wch_collab.py).
+% Bavarian State Parliament, 14/15 October 2026), set in the FAU beamer template,
+% for West China Hospital, International Office, October 2026.  Three slides of
+% BrainLab_maier.pptx are recreated here as well: Strategic Goals and the
+% SFB/CRC slide of the Profile Center Medical Engineering (the Collaboration
+% Building slide was already in the Landtag deck).
 %
-% Each frame carries its slide number in the PowerPoint deck (\setcounter).
-% THIS FILE holds only the slides of that deck that were rendered from beamer:
-% About the Speaker, Textbook, Publishing, Speed, Foundation Models and
-% References.  Each carries the Chinese translation of its title in the subheading.  The other slides are native PowerPoint slides.
+% Every slide carries the Chinese translation of its title in the subheading.
+% The PowerPoint (West_China_Collaboration_2026.pptx) is this PDF, page by page,
+% with the two animated GIFs of the Motion Compensation slide placed on top
+% (build_pptx/build_wch_collab.py).
 %
-% BUILD: XeLaTeX (xeCJK + system CJK fonts), NOT pdflatex:  xelatex main.tex (twice)
+% BUILD: XeLaTeX (xeCJK + system CJK fonts), NOT pdflatex:  xelatex main.tex (twice;
+%        the photo slide and the motion slide use remember-picture overlays)
 % ------------------------------------------------------------------------------
 \documentclass[final]{beamer}
 
@@ -20,38 +22,58 @@
             fontsize=11,
             fontbaselineskip=13,
             scale=1.,
+            SecondLogo=figures/wchc/prl_logo.png
            ]{styles/beamerthemefau}
 
 \usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{textcomp}
-\usetikzlibrary{positioning,arrows.meta,shadows}
+\usetikzlibrary{positioning,arrows.meta,shadows,shapes.geometric,calc,fadings}
 
 % --- Chinese typesetting (XeLaTeX only) -----------------------------------
 % xeCJK auto-switches to the CJK font for Han characters and keeps Latin in
 % the theme's Helvetica.  Titles run in \sffamily -> Heiti SC (sans, matches
-% the FAU Helvetica); body Chinese -> Songti SC (a scholarly serif).
+% the FAU Helvetica); body Chinese -> Songti SC.
 \usepackage{xeCJK}
 \setCJKmainfont{Songti SC}
 \setCJKsansfont{Heiti SC}
 \setCJKmonofont{Heiti SC}
-% \cn{...} = a Chinese title/subtitle fragment placed next to the English one.
+% \cn{...} = the Chinese title translation, placed after an English subtitle.
 \newcommand{\cn}[1]{\hspace{0.7em}\mbox{#1}}
 
 \graphicspath{{figures/}}
 
+% Card / box styles shared by the recreated slides (FAU template colours only)
+\tikzset{
+  card/.style={draw=FAUBlue, line width=1.2pt, rounded corners=8pt, fill=white},
+  softbox/.style={draw=none, rounded corners=10pt, fill=BaseColorC},
+  headbox/.style={draw=none, rounded corners=10pt, fill=FAUBlue},
+}
+
 % ----------------------------------------------------------------------------------------
-% Title page metadata (only the footer uses it; there is no title frame)
+% Title page metadata
 % ----------------------------------------------------------------------------------------
 \title[Pattern Recognition Lab -- A short introduction]{Pattern Recognition Lab -- A short introduction}
-\author[A.~Maier]{Andreas Maier}
-\institute[FAU]{Friedrich-Alexander-Universität Erlangen-Nürnberg}
+\subtitle{\sffamily 模式识别实验室简介}
+\author[A.~Maier]{Prof.\ Dr.-Ing.\ habil.\ Andreas Maier, Pattern Recognition Lab}
+\institute[FAU]{Friedrich-Alexander-Universität Erlangen-Nürnberg, Germany}
 \date{October 2026 \,\textbullet\, West China Hospital \,\textbullet\, \sffamily 华西医院}
 
 \begin{document}
+% no hyphenation on slides
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
 
-% Landtag slide 2
-\setcounter{framenumber}{1}
+% --------------------------------------------------------------------------
+% 1 - Title
+% --------------------------------------------------------------------------
+\begin{frame}[t,titleimage]{-}
+\titlepage%
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 2 - About the speaker
+% --------------------------------------------------------------------------
 \begin{frame}[t]{About the Speaker}{Prof.\ Dr.-Ing.\ Andreas Maier\cn{主讲人简介}}
 \begin{columns}[T]
   \begin{column}{0.54\textwidth}
@@ -84,8 +106,306 @@
 \end{columns}
 \end{frame}
 
-% Landtag slides 13 and 14 (14 adds a screenshot overlay in the PPTX)
-\setcounter{framenumber}{14}
+% --------------------------------------------------------------------------
+% 3 - Section: Profile Center Medical Engineering
+% --------------------------------------------------------------------------
+\begin{frame}[t,title]{-}
+Profile Center FAU MT\\[0.25em]{\large\sffamily FAU医学工程重点研究中心}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 4 - Strategic goals (recreated from BrainLab_maier.pptx, slide 3)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Strategic Goals}{战略目标}
+\vspace{0.6em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily]
+  \foreach \i/\img/\head/\sub/\task in {%
+      0/goal_1/Research/{Shaping the Medicine of Tomorrow}/{Coordination of interdisciplinary research\\Grant consulting},
+      1/goal_2/Education/{Training Today for the Healthcare of Tomorrow}/{Development of a\\medical AI degree program},
+      2/goal_3/People/{Connecting People, Creating Innovation}/{Network Activities},
+      3/goal_4/Outreach/{Uniting Expertise Across Borders}/{Startup Support}} {
+    \begin{scope}[xshift=\i*8.1cm]
+      \node[card, minimum width=7.4cm, minimum height=8.4cm, anchor=north west] (c\i) at (0,0) {};
+      \node[anchor=north, inner sep=0pt] at ($(c\i.north)+(0,-0.12)$)
+        {\includegraphics[width=7.16cm,height=4.4cm]{wchc/\img.jpg}};
+      \node[anchor=north west, text width=6.4cm, align=left, inner sep=0pt]
+        at (0.5,-4.95) {{\Large\color{FAUBlue}\head}\\[0.35em]{\normalsize\sub}};
+      \node[anchor=north, text width=7.6cm, align=center, inner sep=0pt]
+        at (3.7,-8.9) {\normalsize\color{FAUBlue}\task};
+    \end{scope}
+  }
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 5 - Collaboration building (Landtag slide 4, recreated)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Collaboration Building}{Our strategy\cn{合作网络建设：我们的策略}}
+\begin{columns}[T]
+  \begin{column}{0.52\textwidth}
+    {\large\bfseries\color{FAUBlue} Research Network Analysis Strategies}\\[0.5em]
+    {\large\textbf{Visual Mapping of Collaboration Networks}}
+    \begin{itemize}\itemsep=0.1em\large
+      \item Map existing collaborations and co-authorships
+      \item Identify central actors
+    \end{itemize}
+    \vspace{0.3em}
+    \begin{tikzpicture}[font=\sffamily\bfseries, text=white,
+        bub/.style={circle, align=center, inner sep=0pt}]
+      \node[bub, fill=FAUBlue, minimum size=6.4cm] (sfb) at (0,0)
+        {\LARGE DFG\\[0.1em]\LARGE SFB/TRR\\[0.3em]\fontsize{40}{40}\selectfont 7};
+      \node[bub, fill=FAUBlue!85, minimum size=3.9cm] at (-5.0,1.0)
+        {\large EU/\\\large Horizon\\\large Europe\\[0.2em]\LARGE 2};
+      \node[bub, fill=BaseDarkColor, minimum size=3.7cm] at (4.5,1.9)
+        {\large DFG/GRK\\[0.2em]\LARGE 2};
+      \node[bub, fill=TechMetallic, minimum size=3.6cm] at (3.4,-2.6)
+        {\large BMBF\\[0.2em]\LARGE 2};
+      \node[bub, fill=BaseColorB, text=FAUBlue, minimum size=2.2cm] at (6.3,-0.6)
+        {\normalsize DFG/FOR\\\large 1};
+      \node[bub, fill=BaseColorB, text=FAUBlue, minimum size=2.1cm] at (-3.4,-2.9)
+        {\normalsize StMWK\\\large 1};
+      \foreach \x/\y/\r in {-1.2/2.6/0.28, -0.4/2.7/0.38, 2.6/2.9/0.33, -5.7/-3.4/0.25,
+                            -1.9/-2.7/0.22, -0.4/-2.4/0.25, 5.5/0.9/0.24, 1.0/-3.7/0.3}
+        \fill[FAUBlue!70] (\x,\y) circle (\r);
+    \end{tikzpicture}\\[0.2em]
+    {\large Current large-scale projects of FAU MT members}
+  \end{column}
+  \begin{column}{0.46\textwidth}
+    \vspace{2.2em}
+    {\large\bfseries\color{FAUBlue} Building Connections Among Researchers}\\[0.6em]
+    {\large\textbf{Organize Thematic Networking Events}}
+    \begin{itemize}\itemsep=0.25em\large
+      \item Short pitch sessions to expose researchers to each other's expertise
+      \item Thematic mini-workshops focused on Horizon Europe
+    \end{itemize}
+    \vspace{0.6em}
+    {\large\textbf{Supporting CRC Proposal Development}}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 6 - SFB/CRC (recreated from BrainLab_maier.pptx, slide 5)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Transforming Healthcare with Multimodal AI}{SFB/CRC\cn{合作研究中心：以多模态人工智能变革医疗}}
+\vspace{0.2em}
+\begin{columns}[T]
+  \begin{column}{0.60\textwidth}
+    \begin{tikzpicture}[font=\sffamily]
+      \node[card, minimum width=18.6cm, minimum height=4.3cm, anchor=north west] (a) at (0,0) {};
+      \node[anchor=north, inner sep=0pt] at ($(a.north)+(0,-0.3)$)
+        {\includegraphics[height=1.85cm]{wchc/tha_logo.png}};
+      \node[anchor=north west, text width=17.4cm, inner sep=0pt] at (0.6,-2.4)
+        {\normalsize Develops \textbf{trustworthy, multimodal, and physics-informed AI}
+         that integrates imaging, sensor, omics, and clinical data.};
+      \node[card, minimum width=18.6cm, minimum height=3.7cm, anchor=north west] (b) at (0,-4.6) {};
+      \node[anchor=north west, text width=17.4cm, inner sep=0pt] at (0.4,-4.75) {%
+        \begin{itemize}\itemsep=0em\normalsize
+          \item 30 PIs, from Computer Science, Biology, Clinical, Ethics, among other areas
+          \item 41.4\,\% women
+          \item 20.7\,\% junior PIs
+        \end{itemize}};
+      \node[card, minimum width=16.0cm, minimum height=4.3cm, anchor=north] (c) at (9.3,-8.6) {};
+      \node[anchor=north] at ($(c.north)+(0,-0.15)$) {\large\bfseries\color{FAUBlue} Spokespersons};
+      \foreach \x/\img/\name/\inst/\col in {4.6/maier_round/Prof.\ A.\ Maier/FAU/FAUBlue,
+                                             12.4/rueckert_round/Prof.\ D.\ Rückert/TUM/MedDarkBlue} {
+        \begin{scope}
+          \clip (\x-1.8,-11.0) circle (1.25cm);
+          \node[inner sep=0pt] at (\x-1.8,-11.0) {\includegraphics[width=2.85cm]{wchc/\img.png}};
+        \end{scope}
+        \draw[FAUBlue, line width=1.5pt] (\x-1.8,-11.0) circle (1.25cm);
+        \node[anchor=west, align=left] at (\x-0.35,-11.0) {\large\name\\\large\textbf{\color{\col}\inst}};
+      }
+    \end{tikzpicture}
+  \end{column}
+  \begin{column}{0.38\textwidth}
+    \begin{tikzpicture}[font=\sffamily]
+      \node[card, minimum width=11.8cm, minimum height=13.0cm, anchor=north west] (r) at (0,0) {};
+      \node[anchor=north, inner sep=0pt] at ($(r.north)+(0,-0.6)$)
+        {\includegraphics[height=1.7cm]{wchc/fau_tum.png}};
+      \node[anchor=north, inner sep=0pt] at (3.05,-2.9) {\includegraphics[width=4.9cm]{wchc/fac_tech.png}};
+      \node[anchor=north, inner sep=0pt] at (8.75,-2.9) {\includegraphics[width=4.9cm]{wchc/fac_med.png}};
+      \node[anchor=north, inner sep=0pt] at (3.05,-5.6) {\includegraphics[width=4.9cm]{wchc/fac_phil.png}};
+      \node[anchor=north, inner sep=0pt] at (8.75,-5.6) {\includegraphics[width=4.9cm]{wchc/fac_mt.png}};
+      \draw[FAUBlue!40, line width=0.8pt] (0.6,-8.7) -- (11.2,-8.7);
+      \node[anchor=north, inner sep=0pt] at (5.9,-9.2) {\includegraphics[width=10.6cm]{wchc/partners.png}};
+    \end{tikzpicture}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 7 - Pattern Recognition Lab (team photo, Landtag slide 5)
+% --------------------------------------------------------------------------
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture, overlay]
+  \node[anchor=center, inner sep=0pt] at (current page.center)
+    {\includegraphics[width=\paperwidth,height=\paperheight]{wchc/prl_team_photo.jpg}};
+  \fill[black, opacity=0.55, path fading=north] (current page.south west) rectangle ($(current page.south east)+(0,8.0)$);
+  \node[anchor=south west, text=white, font=\sffamily\bfseries, inner sep=0pt]
+    at ($(current page.south west)+(1.3,4.4)$) {\fontsize{58}{58}\selectfont Pattern Recognition Lab};
+  \node[anchor=south west, fill=FAUBlue, fill opacity=0.85, text opacity=1, text=white,
+        font=\sffamily, inner xsep=0.5cm, inner ysep=0.35cm, align=left]
+    at ($(current page.south west)+(0.8,2.2)$)
+    {\LARGE Friedrich-Alexander-Universität Erlangen-Nürnberg\hspace{1.2em}模式识别实验室};
+\end{tikzpicture}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 8 - History (Landtag slide 6)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Know the Past to Understand the Future}{温故而知新}
+\vspace{1.0em}
+\begin{columns}[T]
+  \begin{column}{0.60\textwidth}
+    \begin{itemize}\itemsep=0.6em\Large
+      \item Founded in 1975, founder: Heinrich Niemann
+      \item Germany's first dedicated Pattern Recognition / Machine Learning Lab
+      \item Medical imaging as early as 1981
+      \item First computer: PDP-11/34 with 248\,kB, 2.5\,MHz
+      \item Focus: theory \& good understanding of hardware
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.36\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{wchc/pdp11_photo.jpg}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 9 - Team (Landtag slide 7, recreated)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Our Team Today}{Pattern Recognition Lab\cn{我们的团队}}
+\vspace{0.4em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily]
+  % top row: secretaries | head of the lab | technician
+  \node[softbox, minimum width=8.6cm, minimum height=6.2cm, anchor=north] (s) at (-10.2,0) {};
+  \node[headbox, minimum width=8.0cm, minimum height=7.0cm, anchor=north] (h) at (0,0.6) {};
+  \node[softbox, minimum width=8.6cm, minimum height=6.2cm, anchor=north] (t) at (10.2,0) {};
+  \node[anchor=north, font=\sffamily\bfseries\Large, text=FAUBlue] at ($(s.north)+(0,-0.3)$) {Secretaries};
+  \node[anchor=north, font=\sffamily\bfseries\Large, text=white] at ($(h.north)+(0,-0.3)$) {Head of the Lab};
+  \node[anchor=north, font=\sffamily\bfseries\Large, text=FAUBlue] at ($(t.north)+(0,-0.3)$) {Technician};
+  \foreach \x/\img/\name in {-12.2/portrait_alexandra.jpg/Alexandra H., -8.2/portrait_claudia.jpg/Claudia S.,
+                             10.2/portrait_sven.png/Sven G.} {
+    \node[anchor=north, inner sep=0pt] (p) at (\x,-1.5) {\includegraphics[height=3.5cm]{wchc/\img}};
+    \node[anchor=north, font=\sffamily\normalsize] at ($(p.south)+(0,-0.15)$) {\name};
+  }
+  \node[anchor=north, inner sep=0pt] (pm) at (0,-0.9) {\includegraphics[height=4.4cm]{wchc/portrait_maier.jpg}};
+  \node[anchor=north, font=\sffamily\normalsize, text=white] at ($(pm.south)+(0,-0.15)$) {Prof.\ Dr.-Ing.\ Andreas Maier};
+  % bottom row
+  \node[softbox, minimum width=13.4cm, minimum height=5.4cm, anchor=north west] (b1) at (-14.5,-7.4) {};
+  \node[softbox, minimum width=13.4cm, minimum height=5.4cm, anchor=north west] (b2) at (1.1,-7.4) {};
+  \node[anchor=west, text width=12.4cm] at ($(b1.west)+(0.3,0)$) {%
+    \begin{itemize}\itemsep=0.25em\large
+      \item $\sim$60 PhD students \& 8 postdocs
+      \item 2 emeritus professors
+      \item $\sim$3\,709 master \& bachelor students
+    \end{itemize}};
+  \node[anchor=west, text width=12.4cm] at ($(b2.west)+(0.3,0)$) {%
+    \begin{itemize}\itemsep=0.25em\large
+      \item Academic partners in Europe, Asia, North/South America, Australia
+      \item Industry partners: Siemens, Fraunhofer, Adidas, Intel, Audi, IBM, and more
+    \end{itemize}};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 10 - Research areas (Landtag slide 8, recreated)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Research Areas}{Pattern Recognition Lab\cn{研究方向}}
+\vspace{1.0em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily\bfseries\large, text=FAUBlue,
+    area/.style={softbox, minimum width=13.6cm, minimum height=2.3cm, align=center, text width=13.0cm}]
+  \node[area] at (-7.4,  0.0) {Computer Vision};
+  \node[area] at (-7.4, -3.0) {Time Series Intelligence};
+  \node[area] at (-7.4, -6.0) {Magnetic Resonance Imaging};
+  \node[area] at (-7.4, -9.0) {Data Processing for Utility Infrastructure};
+  \node[area] at ( 7.4, -0.6) {Learning Algorithms for Medical Big Data Analysis};
+  \node[area] at ( 7.4, -4.2) {Speech Processing \& Language Understanding};
+  \node[area] at ( 7.4, -7.8) {Inverse Problems \& Applications};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 11 - Work at the lab (Landtag slide 9)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Work at the Lab}{实验室的工作}
+\vspace{0.4em}
+\begin{center}
+  \includegraphics[height=5.6cm]{wchc/work_1.png}\hspace{0.2cm}%
+  \includegraphics[height=5.6cm]{wchc/work_2.png}\hspace{0.2cm}%
+  \includegraphics[height=5.6cm]{wchc/work_3.png}\\[0.2cm]
+  \includegraphics[height=5.6cm]{wchc/work_4.png}\hspace{0.2cm}%
+  \includegraphics[height=5.6cm]{wchc/work_5.png}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 12 - Motion compensation (Landtag slide 10).  The two stills are the first
+% frames of the GIFs; the PowerPoint places the animated GIFs exactly on top.
+% Their position is fixed here in page coordinates, and the same numbers are
+% in build_pptx/build_wch_collab.py (MOTION_GIFS): x, y of the top-left corner
+% and the side length, in cm on the 33.867 x 19.05 cm page.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Motion Compensation}{运动补偿}
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[black] ($(current page.north west)+(5.4,-4.6)$) rectangle ($(current page.north west)+(28.47,-17.0)$);
+  \node[anchor=north west, inner sep=0pt] at ($(current page.north west)+(5.9,-5.1)$)
+    {\includegraphics[width=10.8cm,height=10.8cm]{wchc/motion_ecg_gated.png}};
+  \node[anchor=north west, inner sep=0pt] at ($(current page.north west)+(17.17,-5.1)$)
+    {\includegraphics[width=10.8cm,height=10.8cm]{wchc/motion_compensated.png}};
+  \node[anchor=north, text=white, font=\sffamily\small] at ($(current page.north west)+(16.935,-16.15)$)
+    {ECG-gated reconstruction was windowed to be visually comparable.};
+\end{tikzpicture}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 13 - Multi-organ segmentation (Landtag slide 11, recreated)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Multi-Organ Segmentation}{多器官分割}
+\vspace{0.6em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily\normalsize,
+    lg/.style={rounded corners=2pt, minimum width=1.0cm, minimum height=0.45cm, inner sep=0pt}]
+  % legend
+  \foreach \x/\c/\l in {0/D4D49D/Bone, 3.4/857396/Kidney, 6.8/507E50/Liver, 10.2/3E5454/Lung} {
+    \definecolor{lgc}{HTML}{\c}
+    \node[lg, fill=lgc] at (\x,0) {};
+    \node[anchor=west] at (\x+0.65,0) {\l};
+  }
+  \node[lg, draw=red, line width=1.4pt] at (13.6,0) {};
+  \node[anchor=west] at (14.25,0) {MCW-Object};
+  % axial slices
+  \foreach \i in {1,...,4}
+    \node[anchor=north west, inner sep=0pt] at ({(\i-1)*5.15-0.9},-0.9)
+      {\includegraphics[width=5.0cm,height=5.0cm]{wchc/seg_axial_\i.png}};
+  % coronal views
+  \node[anchor=north west, inner sep=0pt] at (20.4,1.5) {\includegraphics[height=12.6cm,width=4.5cm]{wchc/seg_coronal_1.png}};
+  \node[anchor=north west, inner sep=0pt] at (25.2,1.5) {\includegraphics[height=12.6cm,width=4.3cm]{wchc/seg_coronal_2.png}};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 14 - 50 years (Landtag slide 12)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{50 Years in a Nutshell}{五十年历程概览}
+\vspace{0.6em}
+\begin{center}
+  \fcolorbox{FAUBlue!30}{white}{\includegraphics[width=22cm]{wchc/fifty_years.png}}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 15, 16 - Textbook (Landtag slides 13, 14)
+% --------------------------------------------------------------------------
 \begin{frame}[t]{What is agentic AI?}{Textbook\cn{什么是智能体AI？}}
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
@@ -99,22 +419,16 @@
 \end{columns}
 \end{frame}
 
-\setcounter{framenumber}{15}
 \begin{frame}[t]{What is agentic AI?}{Textbook\cn{什么是智能体AI？}}
-\begin{columns}[c]
-  \begin{column}{0.5\textwidth}
-    \centering
-    \includegraphics[height=.78\textheight]{img_11_04.png}
-  \end{column}
-  \begin{column}{0.5\textwidth}
-    \centering
-    \includegraphics[height=.6\textheight]{img_11_05.png}
-  \end{column}
-\end{columns}
+\vspace{0.4em}
+\begin{center}
+  \fcolorbox{FAUBlue!30}{white}{\includegraphics[height=13.2cm]{wchc/springer_vibe_coding.png}}
+\end{center}
 \end{frame}
 
-% Landtag slide 15
-\setcounter{framenumber}{16}
+% --------------------------------------------------------------------------
+% 17 - Publishing (Landtag slide 15)
+% --------------------------------------------------------------------------
 \begin{frame}[t]{Publishing, Disrupted}{Open Access for the price of a pizza party\cn{出版业的变革}}
 \vspace{0.5em}
 \begin{center}
@@ -150,8 +464,9 @@
 \vspace{0.2em}
 \end{frame}
 
-% Landtag slides 16 and 17 (17 adds a screenshot overlay in the PPTX)
-\setcounter{framenumber}{17}
+% --------------------------------------------------------------------------
+% 18, 19 - Speed (Landtag slides 16, 17)
+% --------------------------------------------------------------------------
 \begin{frame}[t]{Speed of Agentic AI}{Wall-clock from idea to working artefact\cn{智能体AI的速度}}
 \vspace{0.4em}
 \begin{center}
@@ -189,54 +504,89 @@
 \end{center}
 \end{frame}
 
-\setcounter{framenumber}{18}
 \begin{frame}[t]{Speed of Agentic AI}{Wall-clock from idea to working artefact\cn{智能体AI的速度}}
 \vspace{0.4em}
 \begin{center}
-\begin{tikzpicture}[font=\sffamily,
-    row/.style={inner sep=2.5mm},
-    time/.style={text=blue!55!black, font=\fontsize{30}{30}\selectfont\bfseries},
-    label/.style={font=\large},
-    src/.style={text=gray, font=\small\ttfamily}]
-  % time         |  what was built                              |  reference
-  \node[row, time, anchor=east] (t1) at (0, 3.0) {3\,h};
-  \node[row, label, anchor=west] at (0.6, 3.0)
-    {Reproduce a paper + code, find new insights, draft a follow-up paper.};
-  \node[src, anchor=west] at (0.6, 2.4)
-    {arxiv.org/abs/2605.02620};
-  %
-  \node[row, time, anchor=east] (t2) at (0, 1.0) {1\,d};
-  \node[row, label, anchor=west] at (0.6, 1.0)
-    {Reproduce a paper \emph{without} its code or data.};
-  \node[src, anchor=west] at (0.6, 0.4)
-    {arxiv.org/abs/2605.12772};
-  %
-  \node[row, time, anchor=east] (t3) at (0,-1.0) {3\,d};
-  \node[row, label, anchor=west] at (0.6,-1.0)
-    {Scrape 200 study programs + ship a RAG chatbot.};
-  \node[src, anchor=west] at (0.6,-1.6)
-    {github.com/akmaier/IfCampoKnew};
-  %
-  \node[row, time, anchor=east] (t4) at (0,-3.0) {1\,w};
-  \node[row, label, anchor=west] at (0.6,-3.0)
-    {Reimplement an entire ATARI VCS emulator
-     -- bit-exact, 16\,k lines of code.};
-  \node[src, anchor=west] at (0.6,-3.6)
-    {github.com/akmaier/UnderstandingVCS};
-\end{tikzpicture}
+  \fcolorbox{FAUBlue!30}{white}{\includegraphics[height=13.2cm]{wchc/agent_m.png}}
 \end{center}
 \end{frame}
 
-% Landtag slide 19
-\setcounter{framenumber}{20}
+% --------------------------------------------------------------------------
+% 20 - NHR@FAU (Landtag slide 18)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{NHR @ FAU -- Equipment Snapshot}{NHR@FAU高性能计算中心：设备概览}
+\vspace{1.0em}
+\begin{columns}[T]
+  \begin{column}{0.60\textwidth}
+    \begin{itemize}\itemsep=0.6em\Large
+      \item Main GPU clusters Alex and Helma:
+      \begin{itemize}\itemsep=0.3em\Large
+        \item Alex runs A100 40\,GB and A40 GPUs.
+        \item Helma GPUs are Nvidia H100 and H200 accelerators.
+      \end{itemize}
+      \item One Helma node is exclusively reserved for LME.
+      \item Total NHR GPU count across projects is 2\,000.
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.36\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{wchc/nhr_banner.png}\\[1.2em]
+    \includegraphics[height=2.0cm]{wchc/rrze_logo.png}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 21 - Foundation models (Landtag slide 19)
+% --------------------------------------------------------------------------
 \begin{frame}[t]{Foundation models}{Bavarian foundation AI model\cn{基础模型}}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_14_01.png}
 \end{center}
 \end{frame}
 
-% Landtag slide 21
-\setcounter{framenumber}{22}
+% --------------------------------------------------------------------------
+% 22 - Cooperations (Landtag slide 20).  Star positions are the Landtag
+% slide's, as fractions of the map.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Cooperations}{合作伙伴}
+\vspace{0.4em}
+\begin{columns}[T]
+  \begin{column}{0.68\textwidth}
+    \begin{tikzpicture}
+      \node[anchor=south west, inner sep=0pt] (map) at (0,0) {\includegraphics[width=21.6cm]{wchc/world_map.jpg}};
+      \begin{scope}[x={(map.south east)}, y={(map.north west)}]
+        \foreach \x/\y in {0.5000/0.3584, 0.5096/0.3428, 0.5288/0.3740, 0.5385/0.3584, 0.5481/0.3584,
+                           0.5288/0.3428, 0.5385/0.2805, 0.5192/0.3221, 0.5000/0.3251, 0.4712/0.3896,
+                           0.3173/0.3632, 0.3077/0.3879, 0.2788/0.3703, 0.1827/0.3859, 0.1827/0.3934,
+                           0.5871/0.2966, 0.5162/0.3561, 0.8654/0.3934, 0.8365/0.3944, 0.7981/0.4675,
+                           0.7981/0.3703, 0.8182/0.4207, 0.8942/0.7480, 0.9038/0.7324, 0.5962/0.5766,
+                           0.3654/0.7149, 0.2993/0.5454, 0.8540/0.4015, 0.2305/0.2719}
+          \node[star, star points=5, star point ratio=2.4, fill=red, draw=white, line width=0.4pt,
+                minimum size=0.42cm, inner sep=0pt] at (\x,1-\y) {};
+      \end{scope}
+    \end{tikzpicture}
+  \end{column}
+  \begin{column}{0.30\textwidth}
+    \textbf{Recent new cooperation sites}\\
+    {\small (in close collaboration with R.~Jerecic)}
+    \vspace{0.6em}
+    \begin{itemize}\itemsep=0.15em
+      \item Shanghai Chest Hospital
+      \item \textbf{West China Hospital}
+      \item Peking Union Medical College Hospital
+      \item IIT Bengaluru
+      \item NIMHANS
+      \item Center for Brain Research
+      \item University of Alberta / Edmonton
+    \end{itemize}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% 23 - References (Landtag slide 21)
+% --------------------------------------------------------------------------
 \begin{frame}[t]{References}{参考文献}
 \scriptsize
 \linespread{0.90}\selectfont

@@ -215,13 +215,17 @@
 %
 \hfil
 %
+% west-china-collaboration-2026: the second logo appears on title and section
+% frames only (#4=1); content frames keep the full width for bilingual titles.
 \iffau@outer@InsertSecondLogo%
+\ifnum#4=1%
 	\includegraphics[
 		width=#5,%
 		height=#6,%
 		keepaspectratio%
 	]{\fau@outer@SecondLogo}%
 	\hfil%
+\fi%
 \fi%
 %
 % insert fau word mark
