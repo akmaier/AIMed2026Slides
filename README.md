@@ -60,7 +60,7 @@ cardiac slides, West China Hospital, 31 October 2026), `puls-retreat-2026`, `vis
 | 50 | A Living Systematic Review (robotic active matter, PRISMA 2020) | 活体系统综述 |
 | 51 | Speed of Agentic AI | 智能体AI的速度 |
 | 52 | Science at Agent Speed | 智能体速度下的科学 |
-| 53 | What This Means for Your PhD | 这对你的博士研究意味着什么 |
+| 53 | What This Means for Your Research | 这对你的研究意味着什么 |
 | 54 | References | 参考文献 |
 | 55 | Thank you! Questions? (GitHub + WeChat QR) | 谢谢！欢迎提问 |
 
