@@ -1,8 +1,9 @@
 % ..............................................................................
-% "What's next in Medical AI?" -- Andreas Maier, invited talk at the 2026
-% Annual Radiology Summit of West China Hospital (Sichuan University), Chengdu,
-% Saturday 31 October 2026 (30 min).  Title as on the speaker form (19 Oct 2026).
-% Branch `wch-radiology-summit-2026`.
+% "AI in Medicine" (人工智能在医学中的应用) -- Andreas Maier, keynote at the
+% 2026 SINO-EURO Conference on Cardio-Thoracic Diseases, Shanghai Chest
+% Hospital, Friday 30 October 2026, 08:25-08:55, room 3C-D, Session 1
+% "Interdisciplinarity in Medicine: A Masters' Roundtable".  Title and slot as
+% in the conference programme (draft V19).  Branch `shanghai-sino-euro-2026`.
 %
 % Storyline and examples: the Zadar talk (branch puls-retreat-2026, "The Impact
 % of Agentic AI on Science"), without the two UnderstandingVCS slides and the
@@ -12,7 +13,7 @@
 % carries the Chinese translation of its title in the subheading.
 %
 % BUILD: XeLaTeX (xeCJK + system CJK fonts), NOT pdflatex:  xelatex main.tex (twice;
-%        the photo slide uses remember-picture overlays)
+%        the photo slide and the motion slide use remember-picture overlays)
 % ------------------------------------------------------------------------------
 \documentclass[final]{beamer}
 
@@ -52,11 +53,11 @@
 % ----------------------------------------------------------------------------------------
 % Title page metadata
 % ----------------------------------------------------------------------------------------
-\title[What's next in Medical AI?]{What's next in Medical AI?}
-\subtitle{\sffamily 医学人工智能的下一步是什么？}
+\title[AI in Medicine]{AI in Medicine}
+\subtitle{\sffamily 人工智能在医学中的应用}
 \author[A.~Maier]{Prof.\ Dr.-Ing.\ habil.\ Andreas Maier, Pattern Recognition Lab}
 \institute[FAU]{Friedrich-Alexander-Universität Erlangen-Nürnberg, Germany}
-\date{31 October 2026 \,\textbullet\, West China Hospital, Chengdu \,\textbullet\, \sffamily 华西医院}
+\date{30 October 2026 \,\textbullet\, Shanghai Chest Hospital \,\textbullet\, \sffamily 上海市胸科医院}
 
 \begin{document}
 % no hyphenation on slides
@@ -216,6 +217,61 @@
 \end{frame}
 
 % --------------------------------------------------------------------------
+% Motion compensation (Landtag slide 10).  The two stills are the first
+% frames of the GIFs; the PowerPoint places the animated GIFs exactly on top.
+% Their position is fixed here in page coordinates, and the same numbers are
+% in build_pptx/build_pptx.py (MOTION_GIFS): x, y of the top-left corner
+% and the side length, in cm on the 33.867 x 19.05 cm page.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Motion Compensation}{运动补偿}
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[black] ($(current page.north west)+(5.4,-4.6)$) rectangle ($(current page.north west)+(28.47,-17.0)$);
+  \node[anchor=north west, inner sep=0pt] at ($(current page.north west)+(5.9,-5.1)$)
+    {\includegraphics[width=10.8cm,height=10.8cm]{talk/motion_ecg_gated.png}};
+  \node[anchor=north west, inner sep=0pt] at ($(current page.north west)+(17.17,-5.1)$)
+    {\includegraphics[width=10.8cm,height=10.8cm]{talk/motion_compensated.png}};
+  \node[anchor=north, text=white, font=\sffamily\small] at ($(current page.north west)+(16.935,-16.15)$)
+    {ECG-gated reconstruction was windowed to be visually comparable.};
+\end{tikzpicture}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% --------------------------------------------------------------------------
+% VesselROVER -- joint SPIE Medical Imaging 2027 paper with Shanghai Chest
+% Hospital (poster 14518-77).  Numbers from the abstract of
+% github.com/akmaier/VesselROVER, paper/main.tex; the figure is the paper's
+% Fig. (consensus overlay), released in that repository.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{VesselROVER}{Coronary centerlines in angiography\cn{冠状动脉中心线提取}}
+\vspace{0.6em}
+\begin{columns}[T]
+  \begin{column}{0.56\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{talk/vesselrover_overlay.png}\\[0.3em]
+    {\footnotesize Left: per-frame centerlines of one run, spread by cardiac motion.
+     Right: fused consensus centerline and branch points on a clinical frame.}
+  \end{column}
+  \begin{column}{0.42\textwidth}
+    \begin{itemize}\itemsep=0.5em
+      \item No single frame shows the complete coronary tree.
+      \item Fuse several segmenters (STAPLE) \emph{and} many frames
+            (ROVER, from speech recognition).
+      \item 13 patients, $\sim$300 clinical runs: centerline tree
+            \textbf{1.22$\times$} more complete, \textbf{6.7$\times$} more
+            distal branches.
+      \item Open source: {\small\ttfamily github.com/akmaier/VesselROVER}
+    \end{itemize}
+    \vspace{0.8em}
+    {\large\bfseries\color{FAUBlue} Joint work with Dr.~Wenzheng Han,\\ Shanghai Chest Hospital}
+  \end{column}
+\end{columns}
+\vfill
+\begin{center}\small\color{gray}
+  A.~K.~Maier, S.~Bayer, W.~Han, \emph{Combining rater fusion and time fusion for coronary
+  centerline extraction from single-plane angiography},\\ SPIE Medical Imaging 2027 (accepted).
+\end{center}
+\end{frame}
+
 % --------------------------------------------------------------------------
 % Outline
 % --------------------------------------------------------------------------
@@ -952,6 +1008,10 @@ What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着�
   \item \emph{UnderstandingVCS}\,\textendash\,agent-reimplemented
         ATARI VCS emulator:
         \url{https://github.com/akmaier/UnderstandingVCS}
+  \item \textbf{A.~K.~Maier}, S.~Bayer and W.~Han,
+        \emph{Combining rater fusion and time fusion for coronary centerline
+        extraction from single-plane angiography}, SPIE Medical Imaging 2027 (accepted);
+        code: \url{https://github.com/akmaier/VesselROVER}
   \item \textbf{A.~Maier}, S.~Bayer et~al.,
         \emph{A Living Systematic Review of Robotic Active Matter}:
         \url{https://akmaier.github.io/ActiveMatterLivingReview}
@@ -969,7 +1029,7 @@ What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着�
     \centering
     {\Large Slides on GitHub\cn{幻灯片见 GitHub}}\\[0.8em]
     \includegraphics[height=8.4cm]{talk/qr_github.png}\\[0.5em]
-    {\scriptsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/wch-radiology-summit-2026}
+    {\scriptsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/shanghai-sino-euro-2026}
   \end{column}
   \begin{column}{0.5\textwidth}
     \centering

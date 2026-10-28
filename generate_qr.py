@@ -15,7 +15,7 @@ from pathlib import Path
 import qrcode
 from qrcode.constants import ERROR_CORRECT_M
 
-URL = "https://github.com/akmaier/AIMed2026Slides/tree/wch-radiology-summit-2026"
+URL = "https://github.com/akmaier/AIMed2026Slides/tree/shanghai-sino-euro-2026"
 OUTPUT = Path(__file__).parent / "output_tex" / "figures" / "talk" / "qr_github.png"
 
 

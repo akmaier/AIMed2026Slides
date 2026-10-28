@@ -1,11 +1,16 @@
-# What's next in Medical AI? — 2026 Annual Radiology Summit of West China Hospital
+# AI in Medicine — 2026 SINO-EURO Conference on Cardio-Thoracic Diseases, Shanghai Chest Hospital
 
-Slides for the invited talk **“What's next in Medical AI?”** (医学人工智能的下一步是什么？) by
-Andreas Maier (FAU Erlangen-Nürnberg) at the **2026 Annual Radiology Summit of West China
-Hospital** (Sichuan University), Chengdu — **Saturday, 31 October 2026**, 30 min. The title
-is the one on the speaker form sent to the organising committee on 19 October 2026.
+Slides for the keynote **“AI in Medicine”** (人工智能在医学中的应用) by Andreas Maier
+(FAU Erlangen-Nürnberg) at the **2026 SINO-EURO Conference on Cardio-Thoracic Diseases**,
+Shanghai Chest Hospital — **Friday, 30 October 2026, 08:25–08:55**, room 3C-D, Session 1
+“Interdisciplinarity in Medicine: A Masters' Roundtable”. Title and slot as in the
+conference programme (draft V19).
 
-This is the `wch-radiology-summit-2026` branch, forked from `puls-retreat-2026`:
+This is the `shanghai-sino-euro-2026` branch, forked from `wch-radiology-summit-2026`
+(itself forked from `puls-retreat-2026`). It is the same deck plus two cardiac slides right
+after the lab introduction: **Motion Compensation** (from the Landtag deck, animated in the
+PPTX) and **VesselROVER**, the joint SPIE Medical Imaging 2027 paper with Dr. Wenzheng Han,
+Shanghai Chest Hospital (poster 14518-77). Common to both China decks:
 
 * **Storyline and examples** of the Zadar talk (*The Impact of Agentic AI on Science*,
   PULS Retreat 2026), without the two UnderstandingVCS slides and the Hands-on AI pointer.
@@ -20,8 +25,8 @@ This is the `wch-radiology-summit-2026` branch, forked from `puls-retreat-2026`:
   `west-china-collaboration-2026` deck.
 * **Closing slide** with the QR code to this branch and the WeChat QR code.
 
-Other versions of the deck: `shanghai-sino-euro-2026` (same storyline, Shanghai Chest
-Hospital, 30 October 2026), `puls-retreat-2026`, `visual-heritage-2026`,
+Other versions of the deck: `wch-radiology-summit-2026` (same storyline without the two
+cardiac slides, West China Hospital, 31 October 2026), `puls-retreat-2026`, `visual-heritage-2026`,
 `dldxhealth-2026`, `main` (AIMed 2026, Kraków), `india-talk`, `de-msd-senso`,
 `wch-80-years-orthopedics`, `west-china-collaboration-2026`,
 `baiosphere-medical-2026-opening` / `…-closing`.
@@ -30,32 +35,34 @@ Hospital, 30 October 2026), `puls-retreat-2026`, `visual-heritage-2026`,
 
 | # | Slide | Chinese subheading |
 |---|---|---|
-| 1 | What's next in Medical AI? | 医学人工智能的下一步是什么？ |
+| 1 | AI in Medicine | 人工智能在医学中的应用 |
 | 2 | About the Speaker | 主讲人简介 |
 | 3 | Pattern Recognition Lab (team photo) | 模式识别实验室 |
 | 4 | Know the Past to Understand the Future | 温故而知新 |
 | 5 | Our Team Today | 我们的团队 |
 | 6 | Research Areas | 研究方向 |
 | 7 | Work at the Lab | 实验室的工作 |
-| 8 | Outline | 提纲 |
-| 9 | Section: What is deep learning? | 什么是深度学习？ |
-| 10–13 | Deep learning | 深度学习 |
-| 14–18 | Generative AI | 生成式人工智能 |
-| 19–21 | Deep learning in medicine | 医学中的深度学习 |
-| 22 | Section: What is agentic AI? | 什么是智能体AI？ |
-| 23–30 | What is agentic AI? (GIFs on 28–30 in the PPTX) | 什么是智能体AI？ |
-| 31 | Section: How about real agentic AI? | 真正的智能体AI又如何？ |
-| 32–40 | What is agentic AI? (Agent4MR, vibe coding, textbook, Agent M) | 什么是智能体AI？ |
-| 41 | Section: What does it mean for science? | 这对科学意味着什么？ |
-| 42–45 | Almost everything is easy now… | 如今几乎一切都变得容易…… |
-| 46 | Publishing, Disrupted | 出版业的变革 |
-| 47 | Agent4CT | 智能体复现CT方法 |
-| 48 | A Living Systematic Review (robotic active matter, PRISMA 2020) | 活体系统综述 |
-| 49 | Speed of Agentic AI | 智能体AI的速度 |
-| 50 | Science at Agent Speed | 智能体速度下的科学 |
-| 51 | What This Means for Your PhD | 这对你的博士研究意味着什么 |
-| 52 | References | 参考文献 |
-| 53 | Thank you! Questions? (GitHub + WeChat QR) | 谢谢！欢迎提问 |
+| 8 | Motion Compensation (GIFs in the PPTX) | 运动补偿 |
+| 9 | VesselROVER — coronary centerlines in angiography (SPIE MI 2027, with Dr. Han) | 冠状动脉中心线提取 |
+| 10 | Outline | 提纲 |
+| 11 | Section: What is deep learning? | 什么是深度学习？ |
+| 12–15 | Deep learning | 深度学习 |
+| 16–20 | Generative AI | 生成式人工智能 |
+| 21–23 | Deep learning in medicine | 医学中的深度学习 |
+| 24 | Section: What is agentic AI? | 什么是智能体AI？ |
+| 25–32 | What is agentic AI? (GIFs on 30–32 in the PPTX) | 什么是智能体AI？ |
+| 33 | Section: How about real agentic AI? | 真正的智能体AI又如何？ |
+| 34–42 | What is agentic AI? (Agent4MR, vibe coding, textbook, Agent M) | 什么是智能体AI？ |
+| 43 | Section: What does it mean for science? | 这对科学意味着什么？ |
+| 44–47 | Almost everything is easy now… | 如今几乎一切都变得容易…… |
+| 48 | Publishing, Disrupted | 出版业的变革 |
+| 49 | Agent4CT | 智能体复现CT方法 |
+| 50 | A Living Systematic Review (robotic active matter, PRISMA 2020) | 活体系统综述 |
+| 51 | Speed of Agentic AI | 智能体AI的速度 |
+| 52 | Science at Agent Speed | 智能体速度下的科学 |
+| 53 | What This Means for Your PhD | 这对你的博士研究意味着什么 |
+| 54 | References | 参考文献 |
+| 55 | Thank you! Questions? (GitHub + WeChat QR) | 谢谢！欢迎提问 |
 
 ## Build
 
@@ -67,7 +74,7 @@ cd output_tex
 xelatex main.tex && xelatex main.tex      # XeLaTeX (xeCJK), twice: remember-picture overlays
 cd ..
 python3 build_pptx/build_pptx.py          # PDF pages at 200 dpi + GIF overlays
-cp build_pptx/What_next_in_Medical_AI_WCH_Radiology_Summit_2026.pptx .
+cp build_pptx/AI_in_Medicine_Shanghai_SINO-EURO_2026.pptx .
 ```
 
 `build_pptx.py` finds the GIF slides by their subheading, so slides can be added or removed
