@@ -1,31 +1,26 @@
-# AI in Medicine — 2026 SINO-EURO Conference on Cardio-Thoracic Diseases, Shanghai Chest Hospital
+# AI in Medicine — Visit of the Shanghai Shenkang Hospital Development Center, Pattern Recognition Lab
 
-Slides for the keynote **“AI in Medicine”** (人工智能在医学中的应用) by Andreas Maier
-(FAU Erlangen-Nürnberg) at the **2026 SINO-EURO Conference on Cardio-Thoracic Diseases**,
-Shanghai Chest Hospital — **Friday, 30 October 2026, 08:25–08:55**, room 3C-D, Session 1
-“Interdisciplinarity in Medicine: A Masters' Roundtable”. Title and slot as in the
-conference programme (draft V19).
+Slides for the talk **“AI in Medicine”** (人工智能在医学中的应用) by Andreas Maier
+(FAU Erlangen-Nürnberg) for the **visit of the Shanghai Shenkang Hospital Development
+Center** (上海申康医院发展中心) at the **Pattern Recognition Lab, Erlangen —
+Wednesday, 4 November 2026**.
 
-This is the `shanghai-sino-euro-2026` branch, forked from `wch-radiology-summit-2026`
-(itself forked from `puls-retreat-2026`). It is the same deck plus two cardiac slides right
-after the lab introduction: **Motion Compensation** (from the Landtag deck, animated in the
-PPTX) and **VesselROVER**, the joint SPIE Medical Imaging 2027 paper with Dr. Wenzheng Han,
-Shanghai Chest Hospital (poster 14518-77). Common to both China decks:
+This is the `shenkang-prl-visit-2026` branch, forked from `shanghai-sino-euro-2026`
+(keynote at the 2026 SINO-EURO Conference on Cardio-Thoracic Diseases, Shanghai Chest
+Hospital, 30 October 2026). The slides are the same; only the occasion changed:
 
-* **Storyline and examples** of the Zadar talk (*The Impact of Agentic AI on Science*,
-  PULS Retreat 2026), without the two UnderstandingVCS slides and the Hands-on AI pointer.
-* **Introduction of the speaker and the lab** from the Landtag deck, as set in LaTeX on
-  branch `west-china-collaboration-2026`: About the Speaker, the team photo, the lab
-  history, the team, the research areas and the work at the lab.
-* **One new slide on living PRISMA reviews**, first use case robotic active matter (
-  idea: Siming Bayer), with the PRISMA flow redrawn in TikZ from
-  [ActiveMatterLivingReview](https://github.com/akmaier/ActiveMatterLivingReview)
-  (`_data/prisma_counts.yml`, snapshot 2026-10-17).
-* **Chinese translation of every slide title as subheading**, as in the
-  `west-china-collaboration-2026` deck.
-* **Closing slide** with the QR code to this branch and the WeChat QR code.
+* Title page: second subtitle line naming the visit (English and Chinese); date line
+  “4 November 2026 • Pattern Recognition Lab, Erlangen” (also in the footer).
+* QR code and printed URL on the closing slide point at this branch.
+* PPTX renamed to `AI_in_Medicine_Shenkang_PRL_Visit_2026.pptx`.
 
-Other versions of the deck: `wch-radiology-summit-2026` (same storyline without the two
+Content of the Shanghai deck, kept unchanged: the speaker and lab introduction from the
+Landtag deck, the two cardiac slides (Motion Compensation, VesselROVER with
+Dr. Wenzheng Han, Shanghai Chest Hospital), the storyline of the Zadar talk, the living
+PRISMA review slide, and a Chinese translation of every slide title as subheading.
+
+Other versions of the deck: `shanghai-sino-euro-2026` (SINO-EURO keynote,
+Shanghai Chest Hospital, 30 October 2026), `wch-radiology-summit-2026` (same storyline without the two
 cardiac slides, West China Hospital, 31 October 2026), `puls-retreat-2026`, `visual-heritage-2026`,
 `dldxhealth-2026`, `main` (AIMed 2026, Kraków), `india-talk`, `de-msd-senso`,
 `wch-80-years-orthopedics`, `west-china-collaboration-2026`,
@@ -74,7 +69,7 @@ cd output_tex
 xelatex main.tex && xelatex main.tex      # XeLaTeX (xeCJK), twice: remember-picture overlays
 cd ..
 python3 build_pptx/build_pptx.py          # PDF pages at 200 dpi + GIF overlays
-cp build_pptx/AI_in_Medicine_Shanghai_SINO-EURO_2026.pptx .
+cp build_pptx/AI_in_Medicine_Shenkang_PRL_Visit_2026.pptx .
 ```
 
 `build_pptx.py` finds the GIF slides by their subheading, so slides can be added or removed
