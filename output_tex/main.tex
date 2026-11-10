@@ -1,23 +1,33 @@
 % ..............................................................................
-% "AI in Medicine" (人工智能在医学中的应用) -- Andreas Maier, talk for the
-% visit of the Shanghai Shenkang Hospital Development Center (上海申康医院发展中心)
-% at the Pattern Recognition Lab, FAU Erlangen, Wednesday 4 November 2026.
-% Branch `shenkang-prl-visit-2026`, forked from `shanghai-sino-euro-2026`
-% (keynote at the 2026 SINO-EURO Conference on Cardio-Thoracic Diseases,
-% Shanghai Chest Hospital, 30 October 2026); only date, venue line, QR code
-% and file names changed.
+% "KI in der Wissenschaft und im Publikationswesen" -- Andreas Maier, Keynote
+% auf der Verbundkonferenz des Bibliotheksverbunds Bayern (BVB), Bayerische
+% Akademie der Wissenschaften, Alfons-Goppel-Str. 11, München,
+% Dienstag 10.11.2026, 10:20-11:10 Uhr.  Eingeladen von Dr. Fabian Franke.
+% Branch `bvb-verbundkonferenz-2026`, geforkt von `shenkang-prl-visit-2026`
+% ("AI in Medicine"): gleicher Inhalt und gleiche Reihenfolge, ins Deutsche
+% übertragen.  Deutsche Folientexte aus `de-msd-senso` (Deep Learning,
+% agentische KI, Konferenzstatistik) und `gdlh-gesundheitsdaten-2026` (Zur
+% Person, Open Access, Tempo); die chinesischen Untertitel und der
+% WeChat-Code entfallen.  Neu für das Bibliothekspublikum: zwei Folien zur
+% qualitativen Inhaltsanalyse von Pflegeinterviews mit LLMs
+% (github.com/akmaier/German-nursing-interviews; Zahlen aus results/
+% RESULTS_taskA.md, RESULTS_taskB.md und DATA_STATEMENT.md).
 %
-% Storyline and examples: the Zadar talk (branch puls-retreat-2026, "The Impact
-% of Agentic AI on Science"), without the two UnderstandingVCS slides and the
-% Hands-on pointer; introduction of the speaker and the lab from the Landtag
-% deck (as on branch west-china-collaboration-2026); a slide on the living
-% systematic review of robotic active matter (idea: Siming Bayer).  Every slide
-% carries the Chinese translation of its title in the subheading.
+% Farben ausschließlich aus dem FAU-Template (institute=Tech, fau-colors.sty):
+% FAUBlue für Hervorhebungen, BaseColor/BaseDarkColor (TechMetallic /
+% TechDarkMetallic) und ihre Abstufungen BaseColorB..D für Rahmen, Flächen
+% und Nebentext.
 %
-% BUILD: XeLaTeX (xeCJK + system CJK fonts), NOT pdflatex:  xelatex main.tex (twice;
-%        the photo slide and the motion slide use remember-picture overlays)
+% BUILD: pdflatex main.tex (zweimal; Foto- und Bewegungsfolie nutzen
+%        remember-picture-Overlays)
 % ------------------------------------------------------------------------------
 \documentclass[final]{beamer}
+
+% Sneak ngerman + main=ngerman into babel BEFORE the FAU theme loads
+% babel with english.  Once the theme later does \RequirePackage[english]{babel}
+% the english option is already in the queue, so no option clash, and
+% ngerman is the active main language.
+\PassOptionsToPackage{main=ngerman,ngerman,english}{babel}
 
 \usepackage[institute=Tech,
             aspectratio=169,
@@ -27,89 +37,86 @@
             SecondLogo=figures/talk/prl_logo.png
            ]{styles/beamerthemefau}
 
-\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usetikzlibrary{positioning,arrows.meta,shadows,shapes.geometric,calc,fadings}
 
-% --- Chinese typesetting (XeLaTeX only) -----------------------------------
-% xeCJK auto-switches to the CJK font for Han characters and keeps Latin in
-% the theme's Helvetica.  Titles run in \sffamily -> Heiti SC (sans, matches
-% the FAU Helvetica); body Chinese -> Songti SC.
-\usepackage{xeCJK}
-\setCJKmainfont{Songti SC}
-\setCJKsansfont{Heiti SC}
-\setCJKmonofont{Heiti SC}
-% \cn{...} = the Chinese title translation, placed after an English subtitle.
-\newcommand{\cn}[1]{\hspace{0.7em}\mbox{#1}}
-
 \graphicspath{{figures/}}
 
-% Card / box styles shared by the Landtag slides (FAU template colours only)
+% Karten- und Boxstile der Landtag-Folien (nur Template-Farben)
 \tikzset{
   card/.style={draw=FAUBlue, line width=1.2pt, rounded corners=8pt, fill=white},
   softbox/.style={draw=none, rounded corners=10pt, fill=BaseColorC},
   headbox/.style={draw=none, rounded corners=10pt, fill=FAUBlue},
 }
+% große Kennzahl in den Ergebnis-Kacheln
+\newcommand{\bignum}[1]{{\fontsize{30}{32}\selectfont\bfseries\color{FAUBlue}#1}}
 
 % ----------------------------------------------------------------------------------------
-% Title page metadata
+% Titel-Metadaten
 % ----------------------------------------------------------------------------------------
-\title[AI in Medicine]{AI in Medicine}
-\subtitle{\sffamily 人工智能在医学中的应用\\[0.4em]
-  {\large Visit of the Shanghai Shenkang Hospital Development Center \,\textbullet\, 上海申康医院发展中心来访}}
-\author[A.~Maier]{Prof.\ Dr.-Ing.\ habil.\ Andreas Maier, Pattern Recognition Lab}
-\institute[FAU]{Friedrich-Alexander-Universität Erlangen-Nürnberg, Germany}
-\date{4 November 2026 \,\textbullet\, Pattern Recognition Lab, Erlangen}
+\title[KI in Wissenschaft und Publikationswesen]{KI in der Wissenschaft und im Publikationswesen}
+\subtitle{Keynote \,\textbullet\, Verbundkonferenz des Bibliotheksverbunds Bayern}
+\author[A.~Maier]{Prof.\ Dr.-Ing.\ habil.\ Andreas Maier, Lehrstuhl für Mustererkennung}
+\institute[FAU]{Friedrich-Alexander-Universität Erlangen-Nürnberg}
+\date{10.~November 2026 \,\textbullet\, BVB-Verbundkonferenz, München}
 
 \begin{document}
-% no hyphenation on slides
+% keine Silbentrennung auf Folien
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
 
 % --------------------------------------------------------------------------
-% Title
+% Titel
 % --------------------------------------------------------------------------
 \begin{frame}[t,titleimage]{-}
 \titlepage%
 \end{frame}
 
-% 2 - About the speaker
 % --------------------------------------------------------------------------
-\begin{frame}[t]{About the Speaker}{Prof.\ Dr.-Ing.\ Andreas Maier\cn{主讲人简介}}
+% Zur Person (wie auf gdlh-gesundheitsdaten-2026; deutsche Bezeichnungen wie
+% vom Referenten vorgegeben)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Zur Person}{Prof.\ Dr.-Ing.\ Andreas Maier}
+\vspace{0.6em}
 \begin{columns}[T]
-  \begin{column}{0.54\textwidth}
-    \textbf{Responsibilities \& Experience}
-    \begin{itemize}\itemsep=0.12em\small
-      \item Head of the Pattern Recognition Lab, FAU
-      \item Head of the Competence Center Medical Engineering Erlangen
-      \item Head of the Medical AI Hub of Bavaria
-      \item Member, AI Council of the Free State of Bavaria
-      \item Scientific Counselor, Fraunhofer Institute
-      \item AI Council, German Radiation Protection Society
-      \item European Research Council (grantee \& reviewer)
-      \item Visiting Professor at Stanford University and MIT
+  \begin{column}{0.58\textwidth}
+    {\Large\bfseries\color{FAUBlue} Funktionen \& Erfahrung}
+    \vspace{0.3em}
+    \begin{itemize}\itemsep=0.6em
+      \item Stellvertretender Leiter der Kollegialen Leitung\\
+            des Department Informatik, FAU
+      \item Inhaber des Lehrstuhls für Mustererkennung, FAU
+      \item Leiter des Profilzentrums Medizintechnik, FAU
+      \item Leiter des Medical AI Hub Bayern
+      \item Mitglied im KI-Rat des Freistaats Bayern
+      \item Wissenschaftlicher Berater eines Fraunhofer-Instituts
+      \item Berater für KI für die Deutsche Gesellschaft für Strahlenschutz
+      \item ERC-Grant-Träger und Gutachter des European Research Council
+      \item Gastprofessuren an der Stanford University und am MIT
     \end{itemize}
   \end{column}
-  \begin{column}{0.44\textwidth}
-    \textbf{Industry \& Entrepreneurship}
-    \begin{itemize}\itemsep=0.12em\small
-      \item Siemens Healthineers
-            (innovation manager / tech lead)
-      \item Start-ups: \emph{Mira Vision} (shareholder, valued
-            at EUR~10\,M); \emph{Norizon} (council, early VC phase)
-      \item Holds more than 15 active US and EU patents
+  \begin{column}{0.40\textwidth}
+    {\Large\bfseries\color{FAUBlue} Industrie \& Gründungen}
+    \vspace{0.3em}
+    \begin{itemize}\itemsep=0.6em
+      \item Siemens Healthineers: Innovationsmanager und Tech Lead
+      \item Start-ups: \emph{Mira Vision} (Anteilseigner, Bewertung
+            10~Mio.~€) und \emph{Norizon} (Beirat, frühe VC-Phase)
+      \item Mehr als 15 aktive US- und EU-Patente
     \end{itemize}
-    \vspace{0.6em}
-    \begin{center}\itshape\small\color{gray}
-      Theory first, application always.
+    \vspace{2.0em}
+    \begin{center}\itshape\large\color{BaseColor}
+      Theorie zuerst -- Anwendung immer.
     \end{center}
   \end{column}
 \end{columns}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% 7 - Pattern Recognition Lab (team photo, Landtag slide 5)
+% Lehrstuhl für Mustererkennung (Teamfoto, Landtag-Folie 5)
 % --------------------------------------------------------------------------
 \begin{frame}[plain]
 \begin{tikzpicture}[remember picture, overlay]
@@ -117,27 +124,27 @@
     {\includegraphics[width=\paperwidth,height=\paperheight]{talk/prl_team_photo.jpg}};
   \fill[black, opacity=0.55, path fading=north] (current page.south west) rectangle ($(current page.south east)+(0,8.0)$);
   \node[anchor=south west, text=white, font=\sffamily\bfseries, inner sep=0pt]
-    at ($(current page.south west)+(1.3,4.4)$) {\fontsize{58}{58}\selectfont Pattern Recognition Lab};
+    at ($(current page.south west)+(1.3,4.4)$) {\fontsize{50}{50}\selectfont Lehrstuhl für Mustererkennung};
   \node[anchor=south west, fill=FAUBlue, fill opacity=0.85, text opacity=1, text=white,
         font=\sffamily, inner xsep=0.5cm, inner ysep=0.35cm, align=left]
     at ($(current page.south west)+(0.8,2.2)$)
-    {\LARGE Friedrich-Alexander-Universität Erlangen-Nürnberg\hspace{1.2em}模式识别实验室};
+    {\LARGE Friedrich-Alexander-Universität Erlangen-Nürnberg};
 \end{tikzpicture}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% 8 - History (Landtag slide 6)
+% Geschichte (Landtag-Folie 6)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Know the Past to Understand the Future}{温故而知新}
+\begin{frame}[t]{Geschichte des Lehrstuhls}{Die Vergangenheit kennen, um die Zukunft zu verstehen}
 \vspace{1.0em}
 \begin{columns}[T]
   \begin{column}{0.60\textwidth}
     \begin{itemize}\itemsep=0.6em\Large
-      \item Founded in 1975, founder: Heinrich Niemann
-      \item Germany's first dedicated Pattern Recognition / Machine Learning Lab
-      \item Medical imaging as early as 1981
-      \item First computer: PDP-11/34 with 248\,kB, 2.5\,MHz
-      \item Focus: theory \& good understanding of hardware
+      \item Gegründet 1975 von Heinrich Niemann
+      \item Deutschlands erster Lehrstuhl speziell für Mustererkennung und maschinelles Lernen
+      \item Medizinische Bildverarbeitung schon seit 1981
+      \item Erster Rechner: PDP-11/34 mit 248\,kB und 2,5\,MHz
+      \item Schwerpunkt: Theorie \& tiefes Verständnis der Hardware
     \end{itemize}
   \end{column}
   \begin{column}{0.36\textwidth}
@@ -148,19 +155,19 @@
 \end{frame}
 
 % --------------------------------------------------------------------------
-% 9 - Team (Landtag slide 7, recreated)
+% Team (Landtag-Folie 7, nachgebaut)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Our Team Today}{Pattern Recognition Lab\cn{我们的团队}}
+\begin{frame}[t]{Unser Team heute}{Lehrstuhl für Mustererkennung}
 \vspace{0.4em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily]
-  % top row: secretaries | head of the lab | technician
+  % obere Reihe: Sekretariat | Lehrstuhlinhaber | Technik
   \node[softbox, minimum width=8.6cm, minimum height=6.2cm, anchor=north] (s) at (-10.2,0) {};
   \node[headbox, minimum width=8.0cm, minimum height=7.0cm, anchor=north] (h) at (0,0.6) {};
   \node[softbox, minimum width=8.6cm, minimum height=6.2cm, anchor=north] (t) at (10.2,0) {};
-  \node[anchor=north, font=\sffamily\bfseries\Large, text=FAUBlue] at ($(s.north)+(0,-0.3)$) {Secretaries};
-  \node[anchor=north, font=\sffamily\bfseries\Large, text=white] at ($(h.north)+(0,-0.3)$) {Head of the Lab};
-  \node[anchor=north, font=\sffamily\bfseries\Large, text=FAUBlue] at ($(t.north)+(0,-0.3)$) {Technician};
+  \node[anchor=north, font=\sffamily\bfseries\Large, text=FAUBlue] at ($(s.north)+(0,-0.3)$) {Sekretariat};
+  \node[anchor=north, font=\sffamily\bfseries\Large, text=white] at ($(h.north)+(0,-0.3)$) {Lehrstuhlinhaber};
+  \node[anchor=north, font=\sffamily\bfseries\Large, text=FAUBlue] at ($(t.north)+(0,-0.3)$) {Technik};
   \foreach \x/\img/\name in {-12.2/portrait_alexandra.jpg/Alexandra H., -8.2/portrait_claudia.jpg/Claudia S.,
                              10.2/portrait_sven.png/Sven G.} {
     \node[anchor=north, inner sep=0pt] (p) at (\x,-1.5) {\includegraphics[height=3.5cm]{talk/\img}};
@@ -168,47 +175,47 @@
   }
   \node[anchor=north, inner sep=0pt] (pm) at (0,-0.9) {\includegraphics[height=4.4cm]{talk/portrait_maier.jpg}};
   \node[anchor=north, font=\sffamily\normalsize, text=white] at ($(pm.south)+(0,-0.15)$) {Prof.\ Dr.-Ing.\ Andreas Maier};
-  % bottom row
+  % untere Reihe
   \node[softbox, minimum width=13.4cm, minimum height=5.4cm, anchor=north west] (b1) at (-14.5,-7.4) {};
   \node[softbox, minimum width=13.4cm, minimum height=5.4cm, anchor=north west] (b2) at (1.1,-7.4) {};
   \node[anchor=west, text width=12.4cm] at ($(b1.west)+(0.3,0)$) {%
     \begin{itemize}\itemsep=0.25em\large
-      \item $\sim$60 PhD students \& 8 postdocs
-      \item 2 emeritus professors
-      \item $\sim$3\,709 master \& bachelor students
+      \item ca.\ 60 Promovierende \& 8 Postdocs
+      \item 2 emeritierte Professoren
+      \item ca.\ 3.709 Studierende in Bachelor und Master
     \end{itemize}};
   \node[anchor=west, text width=12.4cm] at ($(b2.west)+(0.3,0)$) {%
     \begin{itemize}\itemsep=0.25em\large
-      \item Academic partners in Europe, Asia, North/South America, Australia
-      \item Industry partners: Siemens, Fraunhofer, Adidas, Intel, Audi, IBM, and more
+      \item Partner in Europa, Asien, Nord- und Südamerika, Australien
+      \item Industrie: Siemens, Fraunhofer, Adidas, Intel, Audi, IBM u.\,v.\,m.
     \end{itemize}};
 \end{tikzpicture}
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% 10 - Research areas (Landtag slide 8, recreated)
+% Forschungsschwerpunkte (Landtag-Folie 8, nachgebaut)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Research Areas}{Pattern Recognition Lab\cn{研究方向}}
+\begin{frame}[t]{Forschungsschwerpunkte}{Lehrstuhl für Mustererkennung}
 \vspace{1.0em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily\bfseries\large, text=FAUBlue,
     area/.style={softbox, minimum width=13.6cm, minimum height=2.3cm, align=center, text width=13.0cm}]
   \node[area] at (-7.4,  0.0) {Computer Vision};
-  \node[area] at (-7.4, -3.0) {Time Series Intelligence};
-  \node[area] at (-7.4, -6.0) {Magnetic Resonance Imaging};
-  \node[area] at (-7.4, -9.0) {Data Processing for Utility Infrastructure};
-  \node[area] at ( 7.4, -0.6) {Learning Algorithms for Medical Big Data Analysis};
-  \node[area] at ( 7.4, -4.2) {Speech Processing \& Language Understanding};
-  \node[area] at ( 7.4, -7.8) {Inverse Problems \& Applications};
+  \node[area] at (-7.4, -3.0) {Analyse von Zeitreihen};
+  \node[area] at (-7.4, -6.0) {Magnetresonanztomographie};
+  \node[area] at (-7.4, -9.0) {Datenverarbeitung für Versorgungsinfrastruktur};
+  \node[area] at ( 7.4, -0.6) {Lernverfahren für die Analyse medizinischer Big Data};
+  \node[area] at ( 7.4, -4.2) {Sprachverarbeitung \& Sprachverstehen};
+  \node[area] at ( 7.4, -7.8) {Inverse Probleme \& Anwendungen};
 \end{tikzpicture}
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% 11 - Work at the lab (Landtag slide 9)
+% Arbeit am Lehrstuhl (Landtag-Folie 9)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Work at the Lab}{实验室的工作}
+\begin{frame}[t]{Arbeit am Lehrstuhl}{Einblicke}
 \vspace{0.4em}
 \begin{center}
   \includegraphics[height=5.6cm]{talk/work_1.png}\hspace{0.2cm}%
@@ -220,13 +227,13 @@
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Motion compensation (Landtag slide 10).  The two stills are the first
-% frames of the GIFs; the PowerPoint places the animated GIFs exactly on top.
-% Their position is fixed here in page coordinates, and the same numbers are
-% in build_pptx/build_pptx.py (MOTION_GIFS): x, y of the top-left corner
-% and the side length, in cm on the 33.867 x 19.05 cm page.
+% Bewegungskompensation (Landtag-Folie 10).  Die beiden Standbilder sind die
+% ersten Frames der GIFs; die PowerPoint legt die animierten GIFs genau
+% darüber.  Ihre Lage steht hier in Seitenkoordinaten, und dieselben Zahlen
+% stehen in build_pptx/build_pptx.py (MOTION_GIFS): x, y der linken oberen
+% Ecke und die Kantenlänge, in cm auf der 33,867 x 19,05 cm großen Seite.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Motion Compensation}{运动补偿}
+\begin{frame}[t]{Bewegungskompensation}{Herz-CT ohne Bewegungsartefakte}
 \begin{tikzpicture}[remember picture, overlay]
   \fill[black] ($(current page.north west)+(5.4,-4.6)$) rectangle ($(current page.north west)+(28.47,-17.0)$);
   \node[anchor=north west, inner sep=0pt] at ($(current page.north west)+(5.9,-5.1)$)
@@ -234,71 +241,69 @@
   \node[anchor=north west, inner sep=0pt] at ($(current page.north west)+(17.17,-5.1)$)
     {\includegraphics[width=10.8cm,height=10.8cm]{talk/motion_compensated.png}};
   \node[anchor=north, text=white, font=\sffamily\small] at ($(current page.north west)+(16.935,-16.15)$)
-    {ECG-gated reconstruction was windowed to be visually comparable.};
+    {Die EKG-getriggerte Rekonstruktion wurde für die visuelle Vergleichbarkeit gefenstert.};
 \end{tikzpicture}
 \end{frame}
 
 % --------------------------------------------------------------------------
+% VesselROVER -- gemeinsames Paper mit dem Shanghai Chest Hospital, SPIE
+% Medical Imaging 2027 (Poster 14518-77).  Zahlen aus dem Abstract von
+% github.com/akmaier/VesselROVER, paper/main.tex.
 % --------------------------------------------------------------------------
-% VesselROVER -- joint SPIE Medical Imaging 2027 paper with Shanghai Chest
-% Hospital (poster 14518-77).  Numbers from the abstract of
-% github.com/akmaier/VesselROVER, paper/main.tex; the figure is the paper's
-% Fig. (consensus overlay), released in that repository.
-% --------------------------------------------------------------------------
-\begin{frame}[t]{VesselROVER}{Coronary centerlines in angiography\cn{冠状动脉中心线提取}}
+\begin{frame}[t]{VesselROVER}{Koronare Mittellinien in der Angiographie}
 \vspace{0.6em}
 \begin{columns}[T]
   \begin{column}{0.56\textwidth}
     \centering
     \includegraphics[width=\linewidth]{talk/vesselrover_overlay.png}\\[0.3em]
-    {\footnotesize Left: per-frame centerlines of one run, spread by cardiac motion.
-     Right: fused consensus centerline and branch points on a clinical frame.}
+    {\footnotesize Links: Mittellinien der Einzelbilder einer Serie, durch die Herzbewegung gestreut.
+     Rechts: fusionierte Konsens-Mittellinie mit Verzweigungspunkten auf einem klinischen Bild.}
   \end{column}
   \begin{column}{0.42\textwidth}
     \begin{itemize}\itemsep=0.5em
-      \item No single frame shows the complete coronary tree.
-      \item Fuse several segmenters (STAPLE) \emph{and} many frames
-            (ROVER, from speech recognition).
-      \item 13 patients, $\sim$300 clinical runs: centerline tree
-            \textbf{1.22$\times$} more complete, \textbf{6.7$\times$} more
-            distal branches.
-      \item Open source: {\small\ttfamily github.com/akmaier/VesselROVER}
+      \item Kein Einzelbild zeigt den vollständigen Koronarbaum.
+      \item Fusion mehrerer Segmentierer (STAPLE) \emph{und} vieler Bilder
+            (ROVER, aus der Spracherkennung).
+      \item 13 Patienten, ca.\ 300 klinische Serien: Gefäßbaum
+            \textbf{1,22$\times$} vollständiger, \textbf{6,7$\times$} mehr
+            distale Äste.
+      \item Open Source: {\small\ttfamily github.com/akmaier/VesselROVER}
     \end{itemize}
     \vspace{0.8em}
-    {\large\bfseries\color{FAUBlue} Joint work with Dr.~Wenzheng Han,\\ Shanghai Chest Hospital}
+    {\large\bfseries\color{FAUBlue} Gemeinsame Arbeit mit\\ Dr.~Wenzheng Han,\\ Shanghai Chest Hospital}
   \end{column}
 \end{columns}
 \vfill
-\begin{center}\small\color{gray}
+\begin{center}\small\color{BaseDarkColor}
   A.~K.~Maier, S.~Bayer, W.~Han, \emph{Combining rater fusion and time fusion for coronary
-  centerline extraction from single-plane angiography},\\ SPIE Medical Imaging 2027 (accepted).
+  centerline extraction from single-plane angiography},\\ SPIE Medical Imaging 2027 (angenommen).
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Outline
+% Übersicht
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Outline}{提纲}
+\begin{frame}[t]{Übersicht}
 \begin{itemize}
-  \item What is deep learning?
-  \item What is agentic AI?
-  \item What does it mean for science?
+  \item Was ist Deep Learning?
+  \item Was ist agentische KI?
+  \item Was bedeutet das für Wissenschaft und Publikationswesen?
 \end{itemize}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 3 - Section divider
+% Abschnittstrenner
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-What is deep learning?\\[0.25em]{\large\sffamily 什么是深度学习？}
+Was ist Deep Learning?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 4 - Deep Learning (4 sub-slides)
+% Deep Learning (4 Unterfolien)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Deep learning}{Speech\cn{深度学习}}
+\begin{frame}[t]{Deep Learning}{Spracherkennung}
 \begin{itemize}
-  \item Revolutionising pattern recognition and AI for more than 10~years.
+  \item Revolutioniert Mustererkennung und KI seit über 10~Jahren.
 \end{itemize}
 \vspace{0.2em}
 \begin{center}
@@ -306,21 +311,21 @@ What is deep learning?\\[0.25em]{\large\sffamily 什么是深度学习？}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Deep learning}{Image classification\cn{深度学习}}
+\begin{frame}[t]{Deep Learning}{Bildklassifikation}
 \begin{center}
   \includegraphics[height=.7\textheight]{img_03_04.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Deep learning}{Learning to play\cn{深度学习}}
+\begin{frame}[t]{Deep Learning}{Spielen lernen}
 \begin{center}
   \includegraphics[width=.95\textwidth]{img_03_05.png}\\[0.2em]
   {\footnotesize [Mnih 2013]}
 \end{center}
 \vspace{0.3em}
 \begin{itemize}\itemsep=0.15em
-  \item Deep Q-Networks learn Atari games from raw pixels alone.
-  \item One agent, many games -- super-human on several titles.
+  \item Deep Q-Networks lernen Atari-Spiele allein aus den Pixeln.
+  \item Ein Agent, viele Spiele -- in mehreren Titeln übermenschlich.
 \end{itemize}
 \pause
 \vspace{0.4em}
@@ -332,23 +337,23 @@ What is deep learning?\\[0.25em]{\large\sffamily 什么是深度学习？}
   \end{column}
   \begin{column}{0.5\textwidth}
     \begin{itemize}\itemsep=0.15em
-      \item Self-play + Monte-Carlo tree search.
-      \item Defeats world champion Lee Sedol 4--1.
+      \item Selbstspiel $+$ Monte-Carlo-Baumsuche.
+      \item Schlägt Weltmeister Lee Sedol mit 4--1.
     \end{itemize}
   \end{column}
 \end{columns}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 5 - Generative AI (4 sub-slides)
+% Generative KI (4 Unterfolien)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Generative AI}{Source image\cn{生成式人工智能}}
+\begin{frame}[t]{Generative KI}{Originalbild}
 \begin{center}
   \includegraphics[height=.75\textheight]{img_04_01.jpg}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Generative AI}{Image description\cn{生成式人工智能}}
+\begin{frame}[t]{Generative KI}{Bildbeschreibung}
 \begin{columns}[T]
   \begin{column}{0.32\textwidth}
     \centering
@@ -357,24 +362,25 @@ What is deep learning?\\[0.25em]{\large\sffamily 什么是深度学习？}
   \begin{column}{0.66\textwidth}
     \vspace{0.4em}
     \normalsize\itshape
-    ``An athletically built man with a serious expression stands in a
-    well-lit room with a wooden ceiling. He is wearing a blue t-shirt with
-    the phrase `SAVE THE CHUBBY UNICORNS' and an image of a rhinoceros.
-    The man is taking a selfie with a modern smartphone, capturing his
-    reflection in a mirror. In the background, one can see gym equipment
-    including dumbbells and a weight rack. There is also a hanging
-    chandelier with a unique design, illuminating the room.''
+    \glqq Ein athletisch gebauter Mann mit ernstem Gesichtsausdruck steht
+    in einem gut beleuchteten Raum mit Holzdecke. Er trägt ein blaues
+    T-Shirt mit dem Aufdruck \glq SAVE THE CHUBBY UNICORNS\grq{} und
+    dem Bild eines Nashorns. Der Mann macht ein Selfie mit einem
+    modernen Smartphone und fotografiert sein Spiegelbild. Im
+    Hintergrund sind Trainingsgeräte zu sehen, darunter Hanteln und
+    ein Hantelständer. Außerdem hängt ein Kronleuchter mit
+    eigenwilligem Design von der Decke und beleuchtet den Raum.\grqq
   \end{column}
 \end{columns}
 \end{frame}
 
-\begin{frame}[t]{Generative AI}{Generated image\cn{生成式人工智能}}
+\begin{frame}[t]{Generative KI}{Generiertes Bild}
 \begin{center}
   \includegraphics[height=.75\textheight]{img_04_04.jpg}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Generative AI}{Style variations\cn{生成式人工智能}}
+\begin{frame}[t]{Generative KI}{Stilvarianten}
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
     \centering
@@ -388,12 +394,9 @@ What is deep learning?\\[0.25em]{\large\sffamily 什么是深度学习？}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 6 - Deep learning in medicine, trimmed for the Visual Heritage
-% audience to the science-method point (known operators) and the
-% research-to-product story (Zukunftspreis).  The three MRI reconstruction
-% image slides were dropped.
+% Deep Learning in der Medizin: bekannte Operatoren und Zukunftspreis
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Deep learning in medicine}{Known operators\cn{医学中的深度学习}}
+\begin{frame}[t]{Deep Learning in der Medizin}{Bekannte Operatoren}
 \vspace*{0.4em}
 \begin{center}
 \begin{tikzpicture}[
@@ -403,15 +406,15 @@ What is deep learning?\\[0.25em]{\large\sffamily 什么是深度学习？}
                  minimum width=2.6cm, align=center, thick,
                  drop shadow={shadow xshift=0.6mm, shadow yshift=-0.6mm,
                               opacity=0.35}},
-    train/.style={box, fill=gray!12},
-    known/.style={box, fill=blue!12, draw=blue!60!black},
+    train/.style={box, fill=BaseColorD, draw=BaseDarkColor},
+    known/.style={box, fill=FAUBlue!12, draw=FAUBlue},
     arr/.style ={-{Latex[length=3mm]}, thick}
   ]
   \node                                 (in)  {\large $x$};
-  \node[train, right=4mm of in]         (t1)  {Trainable\\$\hat f_1$};
-  \node[known, right=5mm of t1]         (k1)  {Known op.\\$f_2$};
-  \node[train, right=5mm of k1]         (t2)  {Trainable\\$\hat f_3$};
-  \node[known, right=5mm of t2]         (k2)  {Known op.\\$f_4$};
+  \node[train, right=4mm of in]         (t1)  {Trainierbar\\$\hat f_1$};
+  \node[known, right=5mm of t1]         (k1)  {Bekannt\\$f_2$};
+  \node[train, right=5mm of k1]         (t2)  {Trainierbar\\$\hat f_3$};
+  \node[known, right=5mm of t2]         (k2)  {Bekannt\\$f_4$};
   \node[right=4mm of k2]                (out) {\large $\hat f(x)$};
   \draw[arr] (in)  -- (t1);
   \draw[arr] (t1)  -- (k1);
@@ -419,21 +422,21 @@ What is deep learning?\\[0.25em]{\large\sffamily 什么是深度学习？}
   \draw[arr] (t2)  -- (k2);
   \draw[arr] (k2)  -- (out);
 \end{tikzpicture}\\[0.5em]
-{\small Mix \emph{trainable} layers with deterministic operators
-(Fourier transform, gradient descent, projection, \dots).}
+{\small Kombination \emph{trainierbarer} Schichten mit deterministischen
+Operatoren (Fourier-Transformation, Gradientenabstieg, Projektion, \dots).}
 \end{center}
 \pause
 \vspace{0.5em}
-\begin{block}{Theorem -- known operators reduce the error bound}
-For $f=f_n\circ\dots\circ f_1$ approximated by
-$\hat f=\hat f_n\circ\dots\circ \hat f_1$ with per-layer errors
-$\varepsilon_i$ and Lipschitz constants $\hat L_j$,
+\begin{block}{Theorem -- bekannte Operatoren verkleinern die Fehlerschranke}
+Für $f=f_n\circ\dots\circ f_1$, approximiert durch
+$\hat f=\hat f_n\circ\dots\circ \hat f_1$ mit Schichtfehlern
+$\varepsilon_i$ und Lipschitz-Konstanten $\hat L_j$, gilt
 \[
   \varepsilon(\hat f) \;\leq\;
   \sum_{i=1}^{n}\Bigl(\prod_{j=i+1}^{n}\hat L_j\Bigr)\,\varepsilon_i .
 \]
-Replacing $\hat f_k$ with the \emph{known} $f_k$ forces
-$\varepsilon_k=0$ and strictly tightens this bound.
+Ersetzt man $\hat f_k$ durch den \emph{bekannten} Operator $f_k$, wird
+$\varepsilon_k=0$ und die Schranke verbessert sich strikt.
 \end{block}
 \vspace{-0.3em}
 \begin{center}\footnotesize
@@ -441,7 +444,7 @@ $\varepsilon_k=0$ and strictly tightens this bound.
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Deep learning in medicine}{Recognition\cn{医学中的深度学习}}
+\begin{frame}[t]{Deep Learning in der Medizin}{Auszeichnung}
 \begin{columns}[c]
   \begin{column}{0.35\textwidth}
     \centering
@@ -454,68 +457,70 @@ $\varepsilon_k=0$ and strictly tightens this bound.
 \end{columns}
 \vspace{0.4em}
 \begin{center}
-  Deutscher Zukunftspreis -- low-field MRI made possible by deep learning.
+  Deutscher Zukunftspreis -- Niederfeld-MRT, ermöglicht durch Deep Learning.
 \end{center}
 \end{frame}
 
-% (The "Deep learning in visual heritage" / Odeuropa slide from the Visual
-% Heritage deck is dropped for the PULS audience.)
-
 % --------------------------------------------------------------------------
-% Slide 7 - Section divider
+% Abschnittstrenner
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-What is agentic AI?\\[0.25em]{\large\sffamily 什么是智能体AI？}
+Was ist agentische KI?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 8 - What is agentic AI? Intro (3 sub-slides)
+% Was ist agentische KI? Einführung (3 Unterfolien)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{A simple question\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Eine einfache Frage}
 \vspace*{0.6em}
 \begin{flushleft}
-  {\Huge\itshape\textquotedblleft How do you drive a car?\textquotedblright}
+  {\Huge\itshape\glqq Wie fährt man ein Auto?\grqq}
 \end{flushleft}
 \vspace*{0.6em}
-{\large\color{gray}\itshape Thought for a few seconds\dots}
+{\large\color{BaseDarkColor}\itshape Hat einige Sekunden nachgedacht\dots}
 \vspace*{1.4em}
 \begin{itemize}\large
-  \item A classic prompt to a large language model.
-  \item After a short ``thinking pause'' the answer arrives as
-        long-form running text.
-  \item No tools, no actions -- the model just \emph{describes} how to drive.
+  \item Ein klassischer Prompt an ein großes Sprachmodell.
+  \item Nach einer kurzen \glqq Denkpause\grqq{} erscheint die Antwort
+        als langer Fließtext.
+  \item Keine Werkzeuge, keine Aktionen -- das Modell \emph{beschreibt}
+        nur, wie man fährt.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Long text answer of an LLM\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Lange Textantwort eines LLMs}
 \normalsize
-To drive a car, follow these steps:
+Um ein Auto zu fahren, gehen Sie wie folgt vor:
 \begin{itemize}\itemsep=0.3em
-  \item \textbf{Get in and adjust:} fasten your \textbf{seat belt}, set the
-        \textbf{seat} and \textbf{mirrors} so you can see the road clearly.
-  \item \textbf{Start the engine:} press the \textbf{brake pedal}, turn the
-        key or push the start button. Make sure the gear selector is in
-        \textbf{Park (P)} or \textbf{Neutral (N)}.
-  \item \textbf{Engage a gear:} for an automatic, move the lever to
-        \textbf{Drive (D)}; for a manual, press the \textbf{clutch} and
-        select \textbf{1st gear}.
-  \item \textbf{Release the parking brake} and slowly lift your foot off
-        the brake. Gently press the \textbf{accelerator} to move forward.
-  \item \textbf{Steer} smoothly with both hands and \textbf{check mirrors}
-        regularly. Keep a safe distance from the vehicle in front.
-  \item \textbf{To stop:} ease off the accelerator, press the brake, and
-        bring the car to a complete stop. Shift to \textbf{Park} and apply
-        the parking brake before turning off the engine.
+  \item \textbf{Einsteigen und einstellen:} \textbf{Sicherheitsgurt}
+        anlegen, \textbf{Sitz} und \textbf{Spiegel} so einstellen, dass
+        Sie die Straße gut überblicken.
+  \item \textbf{Motor starten:} \textbf{Bremspedal} treten, Schlüssel
+        drehen oder Startknopf drücken. Der Wählhebel muss auf
+        \textbf{Park (P)} oder \textbf{Neutral (N)} stehen.
+  \item \textbf{Gang einlegen:} Beim Automatikgetriebe Hebel auf
+        \textbf{Drive (D)}; beim Schaltgetriebe \textbf{Kupplung}
+        treten und den \textbf{1.~Gang} einlegen.
+  \item \textbf{Handbremse lösen} und Fuß langsam von der Bremse
+        nehmen. Sanft auf das \textbf{Gaspedal} treten, um anzufahren.
+  \item \textbf{Lenken} Sie mit beiden Händen und beobachten Sie
+        regelmäßig die \textbf{Spiegel}. Sicherheitsabstand zum
+        vorausfahrenden Fahrzeug einhalten.
+  \item \textbf{Zum Anhalten:} Gas wegnehmen, Bremse treten und das
+        Fahrzeug vollständig zum Stehen bringen. In \textbf{Park}
+        schalten und Handbremse anziehen, bevor der Motor
+        ausgeschaltet wird.
 \end{itemize}
 \vspace{0.6em}
-\begin{center}\itshape\color{gray}
-Always observe traffic rules and adapt your driving to road and weather.
+\begin{center}\itshape\color{BaseDarkColor}
+Beachten Sie stets die Verkehrsregeln und passen Sie Ihre Fahrweise
+an Straße und Wetter an.
 \end{center}
 \vspace{0.4em}
-\hfill\textbf{$\Rightarrow$ Lots of words, but no \emph{action}.}\hfill\,
+\hfill\textbf{$\Rightarrow$ Viele Worte, aber keine \emph{Aktion}.}\hfill\,
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{From language model to agent\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Vom Sprachmodell zum Agenten}
 \begin{columns}[c]
   \begin{column}{0.48\textwidth}
     \centering
@@ -527,33 +532,34 @@ Always observe traffic rules and adapt your driving to road and weather.
     \includegraphics[height=.76\textheight,keepaspectratio]{img_07_01.png}
     \vspace{-0.5cm}
     \begin{center}
-  {\footnotesize Zaiss et al., \emph{GPT4MR}, 2024.}
-\end{center}
+      {\footnotesize Zaiss et al., \emph{GPT4MR}, 2024.}
+    \end{center}
   \end{column}
 \end{columns}
 \vspace{0.2em}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 9 - Spin-echo EPI: 3 model attempts (4 sub-slides, animated)
+% Spin-Echo-EPI: 3 Modellversuche (4 Unterfolien, animiert in der PPTX;
+% build_pptx.py findet die Folien an den Untertiteln)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{Task for the models\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Aufgabe für die Modelle}
 \vspace*{0.4em}
 \begin{center}
   \begin{minipage}{.92\textwidth}
     \large\itshape
-    \textquotedblleft Code a spin echo EPI (64$\times$64,
-    fov\,=\,(0.2,\,0.2,\,0.08)\,m,
-    TE\,=\,150\,ms)!\textquotedblright
+    \glqq Programmiere ein Spin-Echo-EPI (64$\times$64,
+    fov\,=\,(0{,}2,\,0{,}2,\,0{,}08)\,m,
+    TE\,=\,150\,ms)!\grqq
   \end{minipage}
 \end{center}
 \vspace*{0.6em}
 \begin{itemize}\large\itemsep=0.3em
-  \item \textbf{Spin-echo EPI} -- an advanced MRI sequence used for
-        diffusion and functional imaging.
-  \item Three models receive the \emph{same} natural-language
-        instruction and must produce runnable Python code.
-  \item Contestants:
+  \item \textbf{Spin-Echo-EPI} -- eine fortgeschrittene MRT-Sequenz
+        für Diffusions- und funktionelle Bildgebung.
+  \item Drei Modelle erhalten \emph{dieselbe} natürlichsprachliche
+        Anweisung und müssen lauffähigen Python-Code erzeugen.
+  \item Teilnehmer:
 \end{itemize}
 \vspace*{0.2em}
 \begin{center}
@@ -565,60 +571,60 @@ Always observe traffic rules and adapt your driving to road and weather.
                 drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
                              opacity=0.35}}
   ]
-  \node[box, fill=green!12, draw=green!50!black] (h)               {Human\\\normalsize\mdseries reference};
-  \node[box, fill=blue!12,  draw=blue!60!black,  right=12mm of h]  (g) {GPT-4o\\\normalsize\mdseries OpenAI};
-  \node[box, fill=orange!18,draw=orange!70!black,right=12mm of g]  (k) {GROK-3-think\\\normalsize\mdseries xAI};
+  \node[box, fill=FAUBlue!12, draw=FAUBlue]                          (h) {Mensch\\\normalsize\mdseries Referenz};
+  \node[box, fill=BaseColorD, draw=BaseDarkColor, right=12mm of h]   (g) {GPT-4o\\\normalsize\mdseries OpenAI};
+  \node[box, fill=BaseColorC, draw=BaseDarkColor, right=12mm of g]   (k) {GROK-3-think\\\normalsize\mdseries xAI};
 \end{tikzpicture}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Human baseline\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Mensch als Referenz}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_08_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{GPT-4o attempt\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Versuch von GPT-4o}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_08_03.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{GROK-3-think attempt\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Versuch von GROK-3-think}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_08_04.png}
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Sub-section divider before Agent4MR results
+% Abschnittstrenner vor den Agent4MR-Ergebnissen
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-How about real agentic AI?\\[0.25em]{\large\sffamily 真正的智能体AI又如何？}
+Wie sieht echte agentische KI aus?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 10 - Agent4MR results (4 sub-slides)
+% Agent4MR-Ergebnisse (4 Unterfolien)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{LLM vs.\ Agent4MR\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{LLM vs.\ Agent4MR}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_09_01.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Interactions per model\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Interaktionen pro Modell}
 \begin{center}
   \includegraphics[width=.92\textwidth]{img_09_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Cost comparison\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Kostenvergleich}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_09_03.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Iterative progress\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Iterativer Fortschritt}
 \begin{columns}[c]
   \begin{column}{0.6\textwidth}
     \centering
@@ -632,33 +638,27 @@ How about real agentic AI?\\[0.25em]{\large\sffamily 真正的智能体AI又如�
 \end{frame}
 
 % --------------------------------------------------------------------------
-% (Three "adaptive AI in practice" sub-slides -- Patient information,
-% Adaptive systems, From sketch to diagram -- dropped for DLDxHealth: the
-% 15-min slot leaves no room for them.)
+% Vibe Coding und fortgeschrittene KI-Techniken (4 Unterfolien)
 % --------------------------------------------------------------------------
-
-% --------------------------------------------------------------------------
-% Slide 12 - Vibe coding & advanced AI techniques (4 sub-slides)
-% --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{Vibe coding\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Vibe Coding}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_11_01.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Advanced AI-assisted techniques\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Fortgeschrittene KI-gestützte Techniken}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_11_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Markdown-driven quality gates\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Markdown-gesteuerte Qualitätssicherung}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_11_03.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{What is agentic AI?}{Textbook\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Lehrbuch}
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
     \centering
@@ -672,11 +672,10 @@ How about real agentic AI?\\[0.25em]{\large\sffamily 真正的智能体AI又如�
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Agent M -- the companion tool to the Vibe Coding book.  Full-slide
-% screenshot of akmaier.github.io/agent-m (1600x900 viewport, loaded live
-% with the project's progress card: six stages, % to first release).
+% Agent M -- Begleitwerkzeug zum Buch Vibe Coding.  Screenshot von
+% akmaier.github.io/agent-m (1600x900).
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What is agentic AI?}{Agent M -- companion tool to \emph{Vibe Coding}\cn{什么是智能体AI？}}
+\begin{frame}[t]{Was ist agentische KI?}{Agent M -- Begleitwerkzeug zu \emph{Vibe Coding}}
 \begin{center}
   \includegraphics[width=\textwidth,height=.72\textheight,keepaspectratio]{agentm_screenshot.png}\\[0.15em]
   {\small\ttfamily akmaier.github.io/agent-m}
@@ -684,84 +683,83 @@ How about real agentic AI?\\[0.25em]{\large\sffamily 真正的智能体AI又如�
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 13 - Section divider
+% Abschnittstrenner
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着什么？}
+Was bedeutet das für Wissenschaft und Publikationswesen?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 14 - Almost everything is easy now (4 sub-slides)
+% Fast alles ist jetzt einfach (4 Unterfolien)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Almost everything is easy now\dots}{China and AI\cn{如今几乎一切都变得容易……}}
+\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{China und KI}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_13_01.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Almost everything is easy now\dots}{Conference shares\cn{如今几乎一切都变得容易……}}
+\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{Konferenzanteile}
 \begin{center}
   \includegraphics[width=.9\textwidth]{img_13_02.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Almost everything is easy now\dots}{ConferenceStats workflow\cn{如今几乎一切都变得容易……}}
+\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{ConferenceStats-Workflow}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_13_03.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Almost everything is easy now\dots}{Conference contributions from China\cn{如今几乎一切都变得容易……}}
+\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{Konferenzbeiträge aus China}
 \begin{center}
   \includegraphics[height=.78\textheight]{img_13_04.png}
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Publishing, disrupted -- the agentic Overleaf -> FAU University Press
-% workflow built for BAIOSPHERE MEDICAL 2026. Flash callout: 10,000 EUR
-% Springer Open Access vs 150 EUR FAU University Press.
+% Publikationswesen im Umbruch -- agentischer Workflow Overleaf -> FAU
+% University Press für BAIOSPHERE MEDICAL 2026 (Gestaltung wie auf
+% gdlh-gesundheitsdaten-2026).
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Publishing, Disrupted}{Open Access for the price of a pizza party\cn{出版业的变革}}
+\begin{frame}[t]{Publikationswesen im Umbruch}{Open Access zum Preis einer Pizzarunde}
 \vspace{0.5em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
-    box/.style={rounded corners=6pt, thick, inner sep=4mm,
-                text width=5.2cm, align=center,
+    box/.style={rounded corners=6pt, very thick, inner sep=5mm,
+                text width=8.6cm, align=center,
                 drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
                              opacity=0.35}},
-    old/.style={box, draw=red!55!black,    fill=red!8},
-    new/.style={box, draw=green!45!black,  fill=green!10},
-    arr/.style={-{Latex[length=3.5mm]}, very thick, draw=blue!50!black}]
-  \node[old]                  (a) {\large\bfseries Springer Open Access\\[0.4em]
-                                  {\fontsize{36}{36}\selectfont\bfseries\color{red!55!black} 10\,000 EUR}\\[0.15em]
-                                  \footnotesize per Open Access fee};
-  \node[right=50mm of a, new] (b) {\large\bfseries FAU University Press\\[0.4em]
-                                  {\fontsize{36}{36}\selectfont\bfseries\color{green!45!black} 150 EUR}\\[0.15em]
-                                  \footnotesize per Open Access fee};
-  \draw[arr] (a.east) -- node[above=1mm, font=\bfseries, text=blue!50!black]
-        {$\sim$\,66$\times$ cheaper} (b.west);
+    old/.style={box, draw=BaseColor,  fill=BaseColorD},
+    new/.style={box, draw=FAUBlue,    fill=FAUBlue!8},
+    arr/.style={-{Latex[length=5mm]}, line width=2.5pt, draw=FAUBlue}]
+  \node[old]                   (a) {{\LARGE\bfseries Springer\\ Open Access\par}\vspace{0.5em}
+                                   {\fontsize{44}{52}\selectfont\bfseries\color{BaseDarkColor} 10.000\,€\par}\vspace{0.2em}
+                                   {\large Open-Access-Gebühr\par}};
+  \node[right=95mm of a, new] (b) {{\LARGE\bfseries FAU\\ University Press\par}\vspace{0.5em}
+                                   {\fontsize{44}{52}\selectfont\bfseries\color{FAUBlue} 150\,€\par}\vspace{0.2em}
+                                   {\large Open-Access-Gebühr\par}};
+  \draw[arr] (a.east) -- node[above=2mm, font=\LARGE\bfseries, text=FAUBlue]
+        {$\approx$\,66$\times$ günstiger} (b.west);
 \end{tikzpicture}
 \end{center}
 \vspace{0.8em}
 \begin{itemize}\itemsep=0.4em\Large
-  \item \textbf{106} submissions \,\textrightarrow\, \textbf{93} accepted
-        \,\textrightarrow\, one Open Access volume.
-  \item Idea to printed book: \textbf{three months}, including
-        \textbf{peer review}.
+  \item \textbf{106} Einreichungen \,\textrightarrow\, \textbf{93} angenommen
+        \,\textrightarrow\, ein Open-Access-Band.
+  \item Von der Idee zum gedruckten Buch: \textbf{drei Monate} --
+        inklusive \textbf{Peer Review}.
 \end{itemize}
 \vfill
 \begin{center}
-  \includegraphics[height=3.4cm,keepaspectratio]{baiomed_logo.jpg}
+  \includegraphics[height=2.6cm,keepaspectratio]{baiomed_logo.jpg}
 \end{center}
 \vspace{0.2em}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Slide 15a-c - Agent4CT (India branch insertion: project intro, leaderboard,
-% structured software process).  Source: github.com/akmaier/Agent4CT.
+% Agent4CT -- Projektüberblick als Diagramm.  Quelle: github.com/akmaier/Agent4CT.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Agent4CT}{All deep-learning CT methods, in one weekend\cn{智能体复现CT方法}}
+\begin{frame}[t]{Agent4CT}{Alle Deep-Learning-CT-Methoden an einem Wochenende}
 \vspace{0.2em}
 \begin{columns}[T]
   \begin{column}{0.65\textwidth}
@@ -772,14 +770,14 @@ What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着�
         cat/.style={draw=FAUBlue, line width=1pt, rounded corners=5pt, fill=BaseColorC,
                     text width=6.9cm, minimum height=2.1cm, align=center, inner sep=1.5mm},
         lnk/.style={thick, draw=FAUBlue!60}]
-      \node[hub] (h) at (0,0) {\textbf{\Large Agent4CT}\\[0.2em]5 agents\\5 CT challenges\\shared\\scratch pad};
+      \node[hub] (h) at (0,0) {\textbf{\Large Agent4CT}\\[0.2em]5 Agenten\\5 CT-Challenges\\gemeinsames\\Scratchpad};
       \foreach \pos/\head/\list [count=\i] in {
-          {-6.6, 3.5}/Analytical/{FBP (PyroNN)},
-          {-6.6, 0.0}/Classical iterative/{TV; Wu et~al.\ 2015},
-          {-6.6,-3.5}/Neural fields/{NAF; R2Gaussian},
+          {-6.6, 3.5}/Analytisch/{FBP (PyroNN)},
+          {-6.6, 0.0}/Klassisch-iterativ/{TV; Wu et~al.\ 2015},
+          {-6.6,-3.5}/Neuronale Felder/{NAF; R2Gaussian},
           { 6.6, 3.5}/Variational \& unrolled/{VN; Primal-Dual; ITNet},
-          { 6.6, 0.0}/Denoising/{Self-supervised dual-domain U-Net; trainable bilateral filters},
-          { 6.6,-3.5}/Foundation \& diffusion/{RAM; DDPM; diffusion priors; U-Swin}} {
+          { 6.6, 0.0}/Denoising/{Dual-Domain-U-Net; bilaterale Filter},
+          { 6.6,-3.5}/Foundation \& Diffusion/{RAM; DDPM; Diffusions-Priors; U-Swin}} {
         \node[cat] (c\i) at (\pos) {\textbf{\head}\\[0.15em]{\normalsize \list}};
         \draw[lnk] (h) -- (c\i);
       }
@@ -789,17 +787,17 @@ What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着�
     \vspace{0.6em}
     \begin{tikzpicture}[font=\sffamily,
         bx/.style={rounded corners=6pt, thick, inner sep=3.5mm, text width=8.8cm, align=center}]
-      \node[bx, draw=gray, fill=gray!8] (a) at (0,0)
-        {\large Classical re-implementation\\[0.2em]
-         {\fontsize{26}{28}\selectfont\bfseries\color{gray!40!black} $\approx$\,1 month}\\[0.1em]
-         \normalsize per method -- 15 methods};
+      \node[bx, draw=BaseDarkColor, fill=BaseColorD] (a) at (0,0)
+        {\large Klassische Nachimplementierung\\[0.2em]
+         {\fontsize{26}{28}\selectfont\bfseries\color{BaseDarkColor} $\approx$\,1 Monat}\\[0.1em]
+         \normalsize pro Methode -- 15 Methoden};
       \node[bx, draw=FAUBlue, fill=BaseColorC, below=7mm of a] (b)
         {\large Agent4CT\\[0.2em]
-         {\fontsize{26}{28}\selectfont\bfseries\color{FAUBlue} one weekend}\\[0.1em]
-         \normalsize all of them};
+         {\fontsize{26}{28}\selectfont\bfseries\color{FAUBlue} ein Wochenende}\\[0.1em]
+         \normalsize für alle zusammen};
       \draw[-{Latex[length=3mm]}, very thick, draw=FAUBlue] (a) -- (b);
       \node[below=6mm of b, text width=8.8cm, align=center, font=\sffamily\large]
-        {the work of \textbf{15--20 PhD theses}\\{\normalsize\color{gray}(re-implementation only)}};
+        {die Arbeit von \textbf{15--20 Doktorarbeiten}\\{\normalsize\color{BaseDarkColor}(nur die Nachimplementierung)}};
     \end{tikzpicture}
   \end{column}
 \end{columns}
@@ -809,107 +807,191 @@ What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着�
 \end{center}
 \end{frame}
 
-% (Agent4CT "From paper to benchmark -- a structured loop" and "The
-% Pentathlon -- five CT leaderboards" slides dropped: the Visual Heritage
-% audience needs the headline, not the CT benchmark details.)
-
 % --------------------------------------------------------------------------
-% Living PRISMA reviews, run by agents.  Numbers from
+% Living PRISMA Reviews, von Agenten erstellt.  Zahlen aus
 % github.com/akmaier/ActiveMatterLivingReview, _data/prisma_counts.yml
-% (snapshot 2026-10-17), README.md (first cycle 11-17 Oct 2026) and
-% protocol/PROTOCOL.md (searches re-run monthly).  Writing time "about five
-% months" and "automatic monthly update": Andreas, 2026-10-28.
-% The PRISMA 2020 flow is redrawn here in TikZ.
+% (Stand 2026-10-17), README.md und protocol/PROTOCOL.md.  Schreibzeit
+% "etwa fünf Monate" und "automatische monatliche Aktualisierung": Andreas,
+% 2026-10-28.  Das PRISMA-2020-Flussdiagramm ist in TikZ nachgezeichnet,
+% Begriffe nach der deutschen PRISMA-2020-Übersetzung.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Living PRISMA Reviews}{Systematic reviews at agent speed\cn{活体PRISMA系统综述}}
+\begin{frame}[t]{Living PRISMA Reviews}{Systematische Übersichtsarbeiten im Agententempo}
 \vspace{0.2em}
 \begin{columns}[T]
   \begin{column}{0.60\textwidth}
     \centering
-    {\sffamily\bfseries\Large\color{FAUBlue} PRISMA 2020 flow}\\[0.3em]
+    {\sffamily\bfseries\Large\color{FAUBlue} PRISMA-2020-Flussdiagramm}\\[0.3em]
     \begin{tikzpicture}[font=\sffamily\large, scale=0.92, every node/.style={transform shape},
         st/.style={draw=FAUBlue, line width=1pt, rounded corners=4pt, fill=BaseColorC,
                    minimum width=8.6cm, minimum height=1.35cm, align=center},
-        ex/.style={draw=gray, rounded corners=4pt, fill=white, text=gray!30!black,
+        ex/.style={draw=BaseColor, rounded corners=4pt, fill=white, text=BaseDarkColor,
                    minimum width=5.6cm, minimum height=1.05cm, align=center, font=\sffamily\normalsize},
         arr/.style={-{Latex[length=2.6mm]}, very thick, draw=FAUBlue},
         ph/.style={rotate=90, font=\sffamily\bfseries\small, text=FAUBlue}]
-      \node[st] (id) at (0, 0)    {\textbf{15\,034} records identified\\{\normalsize in 8 databases}};
-      \node[st] (sc) at (0,-2.5)  {\textbf{8\,699} records screened};
-      \node[st] (so) at (0,-4.8)  {\textbf{1\,276} reports sought};
-      \node[st] (as) at (0,-7.2)  {\textbf{976} full texts + \textbf{179} abstracts\\assessed};
-      \node[st, fill=FAUBlue, text=white] (in) at (0,-9.6) {\textbf{489} studies included};
+      \node[st] (id) at (0, 0)    {\textbf{15\,034} Datensätze identifiziert\\{\normalsize in 8 Datenbanken}};
+      \node[st] (sc) at (0,-2.5)  {\textbf{8\,699} Datensätze gescreent};
+      \node[st] (so) at (0,-4.8)  {\textbf{1\,276} Berichte angefordert};
+      \node[st] (as) at (0,-7.2)  {\textbf{976} Volltexte + \textbf{179} Abstracts\\auf Eignung geprüft};
+      \node[st, fill=FAUBlue, text=white] (in) at (0,-9.6) {\textbf{489} Studien eingeschlossen};
       \draw[arr] (id) -- (sc); \draw[arr] (sc) -- (so);
       \draw[arr] (so) -- (as); \draw[arr] (as) -- (in);
-      \foreach \y/\t in {-1.2/{6\,335 duplicates removed}, -3.6/{7\,423 excluded},
-                         -6.0/{300 not retrieved}, -8.4/{662 excluded}} {
+      \foreach \y/\t in {-1.2/{6\,335 Duplikate entfernt}, -3.6/{7\,423 ausgeschlossen},
+                         -6.0/{300 nicht beschafft}, -8.4/{662 ausgeschlossen}} {
         \node[ex, anchor=west] (x) at (5.0,\y) {\t};
-        \draw[-{Latex[length=2mm]}, thick, draw=gray] (0,\y) -- (x.west);
+        \draw[-{Latex[length=2mm]}, thick, draw=BaseColor] (0,\y) -- (x.west);
       }
-      \node[ph] at (-5.3,-0.6)  {Identification};
+      \node[ph] at (-5.3,-0.6)  {Identifikation};
       \node[ph] at (-5.3,-4.8)  {Screening};
-      \node[ph] at (-5.3,-9.0)  {Included};
+      \node[ph] at (-5.3,-9.0)  {Eingeschlossen};
       \draw[FAUBlue!40, thick] (-4.95,0.9) -- (-4.95,-1.6) (-4.95,-1.9) -- (-4.95,-8.1) (-4.95,-8.4) -- (-4.95,-9.9);
     \end{tikzpicture}
   \end{column}
   \begin{column}{0.38\textwidth}
     \vspace{0.4em}
-    {\large Writing time}\\[0.2em]
-    {\fontsize{30}{32}\selectfont\bfseries\color{gray} $\sim$5 months}
-    {\fontsize{30}{32}\selectfont\bfseries\color{FAUBlue}\,$\rightarrow$ 7 days}\\[1.0em]
-    \begin{itemize}\itemsep=0.6em\large
-      \item \textbf{PRISMA 2020} end to end: search, screening, extraction by a
-            three-LLM panel; authors validate.
-      \item \textbf{Automatic monthly update}: a \emph{living} review.
-      \item First use case: \textbf{robotic active matter}.
+    {\large Schreibzeit}\\[0.2em]
+    {\fontsize{30}{32}\selectfont\bfseries\color{BaseColor} $\sim$5 Monate}
+    {\fontsize{30}{32}\selectfont\bfseries\color{FAUBlue}\,$\rightarrow$ 7 Tage}\\[1.0em]
+    \begin{itemize}\itemsep=0.45em\large
+      \item \textbf{PRISMA 2020} durchgängig: Suche, Screening, Extraktion
+            durch drei LLMs; die Autoren validieren.
+      \item \textbf{Monatliche Aktualisierung}: ein \emph{lebendes} Review.
+      \item Erster Anwendungsfall: \textbf{robotische aktive Materie}.
     \end{itemize}
-    \vspace{0.8em}
+    \vspace{0.5em}
     {\small\ttfamily akmaier.github.io/ActiveMatterLivingReview}
   \end{column}
 \end{columns}
 \vfill
 \begin{center}
-  {\large\itshape\color{FAUBlue} Thanks to Siming Bayer for the idea!}
+  {\large\itshape\color{FAUBlue} Danke an Siming Bayer für die Idee!}
 \end{center}
 \vspace{0.1em}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Flash callout: what an LLM coding agent can build now, in wall-clock.
-% Four data points -- 3 h paper-reproduction + new paper, 1 d paper without
-% code, 3 d study-program scraper + RAG chatbot, 1 w ATARI emulator.
+% NEU für die BVB-Verbundkonferenz: qualitative Inhaltsanalyse nach Mayring
+% mit LLMs und Agenten (R. Zöllner, S. Mages, A. Maier).  Quelle:
+% github.com/akmaier/German-nursing-interviews -- README.md (Workflow),
+% results/RESULTS_taskA.md (685 Passagen, 27 Hauptkategorien, 13 Modelle x 5
+% Seeds; Mistral-Large-4.0 0,720; Kimi-K3 0,629 exakt, von zwei Gutachtern
+% zu 91,3 % bzw. 99,1 % akzeptiert; Mehrheitsklasse 0,127),
+% results/RESULTS_taskB.md (thematisch 89--91 %), DATA_STATEMENT.md (307
+% freigegebene Passagen, zwei Interviews mit hohem Risiko vollständig
+% zurückgehalten, Daten CC BY 4.0), LICENSE (GPL-3.0).
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Speed of Agentic AI}{Wall-clock from idea to working artefact\cn{智能体AI的速度}}
+\begin{frame}[t]{Qualitative Inhaltsanalyse mit KI}{Pflegeinterviews nach Mayring -- ein offener Workflow}
+\vspace{0.4em}
+\begin{columns}[T]
+  \begin{column}{0.52\textwidth}
+    \begin{tikzpicture}[font=\sffamily,
+        num/.style={circle, fill=FAUBlue, text=white, minimum size=1.15cm,
+                    font=\large\bfseries, inner sep=0pt},
+        hum/.style={num, fill=white, draw=FAUBlue, line width=1.5pt, text=FAUBlue},
+        txt/.style={anchor=west, font=\large, text width=13.2cm,
+                    text height=2.0ex, text depth=0.6ex},
+        sub/.style={anchor=north west, font=\normalsize, text=BaseDarkColor, text width=13.2cm}]
+      \foreach \i/\style/\t/\s in {
+          1/num/{\textbf{Transkribieren}}/{Whisper, lokal -- Aufnahmen bleiben im Haus},
+          2/num/{\textbf{Kategorien bilden} (induktiv)}/{LLMs schlagen Feinkategorien vor},
+          3/hum/{\textbf{Expertenprüfung}}/{Fachleute benennen, ordnen, geben frei},
+          4/num/{\textbf{Kategorien zuordnen} (deduktiv)}/{13 offene Modelle $\times$ 5 Seeds},
+          5/hum/{\textbf{Kalibrieren}}/{LLM-Judge und zwei verblindete Gutachter},
+          6/num/{\textbf{Veröffentlichen}}/{Daten, Code und Demonstrator}} {
+        \node[\style] (n\i) at (0, -1.85*\i) {\i};
+        \node[txt] (t\i) at (0.95, -1.85*\i+0.22) {\t};
+        \node[sub] at ($(t\i.south west)+(0,0.08)$) {\s};
+      }
+      \node[hum, minimum size=0.6cm, font=\small] (lg) at (0,-12.6) {};
+      \node[anchor=west, font=\sffamily\normalsize, text=FAUBlue] at ($(lg.east)+(0.2,0)$)
+        {Schritt mit menschlicher Kontrolle};
+    \end{tikzpicture}
+  \end{column}
+  \begin{column}{0.46\textwidth}
+    \vspace{0.2em}
+    \begin{tikzpicture}[font=\sffamily,
+        tile/.style={draw=FAUBlue, line width=1pt, rounded corners=6pt, fill=BaseColorD,
+                     text width=13.0cm, inner sep=3mm, align=left}]
+      \node[tile] (a) at (0,0)
+        {{\large \textbf{685} Passagen \,\textbullet\, \textbf{27} Hauptkategorien}};
+      \node[tile, below=4mm of a] (b)
+        {\bignum{72\,\%}\hspace{0.5em}{\large exakte Übereinstimmung}\par
+         {\normalsize\color{BaseDarkColor} bestes Modell (Mistral-Large-4.0); Mehrheitsklasse: 13\,\%}};
+      \node[tile, below=4mm of b] (c)
+        {\bignum{91--99\,\%}\hspace{0.5em}{\large von Fachleuten akzeptiert}\par
+         {\normalsize\color{BaseDarkColor} Kimi-K3: 63\,\% exakt -- die meisten Abweichungen sind vertretbar}};
+      \node[tile, below=4mm of c] (d)
+        {\bignum{89--91\,\%}\hspace{0.5em}{\large im richtigen Themenfeld}\par
+         {\normalsize\color{BaseDarkColor} induktive Kategorien, ohne Kodierleitfaden}};
+      \node[below=5mm of d, text width=13.6cm, align=center, font=\sffamily\large\bfseries, text=FAUBlue]
+        {Gemeinsame Arbeit mit\\ Rita Zöllner und Silke Mages};
+    \end{tikzpicture}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{Qualitative Inhaltsanalyse mit KI}{Offen und nachnutzbar}
+\vspace{0.2em}
+\begin{columns}[T]
+  \begin{column}{0.36\textwidth}
+    \centering
+    \fcolorbox{BaseColor}{white}{\includegraphics[height=12.2cm,keepaspectratio]{talk/nursing_demo.png}}
+  \end{column}
+  \begin{column}{0.40\textwidth}
+    \vspace{0.2em}
+    \begin{itemize}\itemsep=0.55em
+      \item \textbf{Daten unter CC BY 4.0}, Code unter GPL-3.0.
+      \item Kategoriensystem, Goldstandard, alle Modellvorhersagen,
+            Judge- und Gutachterurteile.
+      \item \textbf{307} geprüfte Passagen; zwei Interviews mit hohem
+            Reidentifikationsrisiko vollständig zurückgehalten.
+      \item Alle Ergebnistabellen ohne Modellzugang reproduzierbar.
+      \item Vorlage für eigene Interviewstudien: forken, \emph{Agent M}
+            führt durch die Pipeline.
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.22\textwidth}
+    \centering
+    {\large\bfseries\color{FAUBlue} Live-Demonstrator}\\[0.5em]
+    \includegraphics[height=6.2cm]{talk/qr_nursing_demo.png}\\[0.4em]
+    {\footnotesize\ttfamily akmaier.github.io/\\German-nursing-interviews}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Tempo agentischer KI (wie auf gdlh-gesundheitsdaten-2026)
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Tempo agentischer KI}{Von der Idee zum funktionierenden Ergebnis}
 \vspace{0.4em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
     row/.style={inner sep=2.5mm},
-    time/.style={text=blue!55!black, font=\fontsize{30}{30}\selectfont\bfseries},
+    time/.style={text=FAUBlue, font=\fontsize{30}{30}\selectfont\bfseries},
     label/.style={font=\large},
-    src/.style={text=gray, font=\small\ttfamily}]
-  % time         |  what was built                              |  reference
+    src/.style={text=BaseDarkColor, font=\small\ttfamily}]
+  % Zeit         |  was entstanden ist                         |  Quelle
   \node[row, time, anchor=east] (t1) at (0, 3.0) {3\,h};
   \node[row, label, anchor=west] at (0.6, 3.0)
-    {Reproduce a paper + code, find new insights, draft a follow-up paper.};
+    {Paper samt Code reproduzieren, neue Erkenntnisse finden, Folge-Paper entwerfen.};
   \node[src, anchor=west] at (0.6, 2.4)
     {arxiv.org/abs/2605.02620};
   %
-  \node[row, time, anchor=east] (t2) at (0, 1.0) {1\,d};
+  \node[row, time, anchor=east] (t2) at (0, 1.0) {1\,Tag};
   \node[row, label, anchor=west] at (0.6, 1.0)
-    {Reproduce a paper \emph{without} its code or data.};
+    {Paper reproduzieren -- \emph{ohne} Code und Daten.};
   \node[src, anchor=west] at (0.6, 0.4)
     {arxiv.org/abs/2605.12772};
   %
-  \node[row, time, anchor=east] (t3) at (0,-1.0) {3\,d};
+  \node[row, time, anchor=east] (t3) at (0,-1.0) {3\,Tage};
   \node[row, label, anchor=west] at (0.6,-1.0)
-    {Scrape 200 study programs + ship a RAG chatbot.};
+    {200 Studiengänge erfassen + RAG-Chatbot ausliefern.};
   \node[src, anchor=west] at (0.6,-1.6)
     {github.com/akmaier/IfCampoKnew};
   %
-  \node[row, time, anchor=east] (t4) at (0,-3.0) {1\,w};
+  \node[row, time, anchor=east] (t4) at (0,-3.0) {1\,Woche};
   \node[row, label, anchor=west] at (0.6,-3.0)
-    {Reimplement an entire ATARI VCS emulator
-     -- bit-exact, 16\,k lines of code.};
+    {Kompletten ATARI-VCS-Emulator nachbauen
+     -- bitgenau, 16.000 Zeilen Code.};
   \node[src, anchor=west] at (0.6,-3.6)
     {github.com/akmaier/UnderstandingVCS};
 \end{tikzpicture}
@@ -917,57 +999,57 @@ What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着�
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Science at agent speed -- opportunities vs. risks.  The two risk items
-% with arXiv numbers are the papers already cited on the Speed slide.
+% Wissenschaft im Agententempo -- Chancen und Risiken.  Die beiden Risiken
+% mit arXiv-Nummer sind die Paper von der Tempo-Folie.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Science at Agent Speed}{Opportunities and risks\cn{智能体速度下的科学}}
+\begin{frame}[t]{Wissenschaft im Agententempo}{Chancen und Risiken}
 \vspace{0.6em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
-    box/.style={rounded corners=6pt, thick, inner sep=5mm,
+    box/.style={rounded corners=6pt, very thick, inner sep=5mm,
                 text width=13.4cm, align=left, minimum height=8.4cm,
                 drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
                              opacity=0.35}},
-    pro/.style={box, draw=green!45!black, fill=green!8},
-    con/.style={box, draw=red!55!black,   fill=red!7}]
+    pro/.style={box, draw=FAUBlue,   fill=FAUBlue!8},
+    con/.style={box, draw=BaseColor, fill=BaseColorD}]
   \node[pro, anchor=north] (p) at (-7.4,0) {%
-    {\LARGE\bfseries\color{green!40!black} Opportunities}\\[0.6em]
+    {\LARGE\bfseries\color{FAUBlue} Chancen}\\[0.6em]
     {\Large\begin{tabular}{@{}l@{}}
-      \textbullet\; Months of work in hours.\\[0.6em]
-      \textbullet\; Reproduce papers without code.\\[0.6em]
-      \textbullet\; Open Access for 150 EUR.\\[0.6em]
-      \textbullet\; Coding for every discipline.
+      \textbullet\; Monate an Arbeit in Stunden.\\[0.6em]
+      \textbullet\; Paper ohne Code reproduzieren.\\[0.6em]
+      \textbullet\; Open Access für 150\,€.\\[0.6em]
+      \textbullet\; Programmieren für jede Disziplin.
     \end{tabular}}};
   \node[con, anchor=north] (c) at ( 7.4,0) {%
-    {\LARGE\bfseries\color{red!50!black} Risks}\\[0.6em]
+    {\LARGE\bfseries\color{BaseDarkColor} Risiken}\\[0.6em]
     {\Large\begin{tabular}{@{}l@{}}
-      \textbullet\; Plausible is not correct.\\[0.6em]
-      \textbullet\; Hallucinated references.\\[0.6em]
-      \textbullet\; AI-text detectors beaten in 3\,h.\\[0.6em]
-      \textbullet\; Sponsored bias in 12 LLMs.
+      \textbullet\; Plausibel ist nicht korrekt.\\[0.6em]
+      \textbullet\; Halluzinierte Referenzen.\\[0.6em]
+      \textbullet\; KI-Detektoren in 3\,h ausgehebelt.\\[0.6em]
+      \textbullet\; Gesponserter Bias in 12 LLMs.
     \end{tabular}}};
 \end{tikzpicture}\\[0.6em]
-{\small\color{gray} Maier et al., arXiv:2605.02620 (style detector)
- \,\textbullet\, Maier et al., arXiv:2605.12772 (sponsored recommendations)}
+{\small\color{BaseDarkColor} Maier et al., arXiv:2605.02620 (Stildetektor)
+ \,\textbullet\, Maier et al., arXiv:2605.12772 (gesponserte Empfehlungen)}
 \end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Closing advice for the doctoral audience (5x5 style).
+% Abschließende Empfehlungen (5x5-Stil)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{What This Means for Your Research}{Five rules for working with agents\cn{这对你的研究意味着什么}}
+\begin{frame}[t]{Was das für die Forschung bedeutet}{Fünf Regeln für die Arbeit mit Agenten}
 \vspace{0.6em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
-    num/.style={circle, fill=blue!55!black, text=white, minimum size=1.5cm,
+    num/.style={circle, fill=FAUBlue, text=white, minimum size=1.5cm,
                 font=\LARGE\bfseries, inner sep=0pt},
     txt/.style={anchor=west, font=\LARGE,
                 text height=2.2ex, text depth=0.6ex}]
-  \foreach \i/\t in {1/{Be the verifier, not the typist.},
-                     2/{Reproduce before you build.},
-                     3/{Keep a git-backed lab journal.},
-                     4/{Write quality gates, not just prompts.},
-                     5/{Disclose AI use -- own the final word.}} {
+  \foreach \i/\t in {1/{Prüfen statt tippen.},
+                     2/{Erst reproduzieren, dann aufbauen.},
+                     3/{Ein Git-gestütztes Laborbuch führen.},
+                     4/{Qualitätsprüfungen schreiben, nicht nur Prompts.},
+                     5/{KI-Nutzung offenlegen -- das letzte Wort behalten.}} {
     \node[num] (n\i) at (0, -2.0*\i) {\i};
     \node[txt] at (1.2, -2.0*\i) {\t};
   }
@@ -976,13 +1058,13 @@ What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着�
 \end{frame}
 
 % --------------------------------------------------------------------------
-
-% References
+% Referenzen
 % --------------------------------------------------------------------------
-\begin{frame}[t]{References}{参考文献}
+\begin{frame}[t]{Referenzen}
+\vspace*{-1.0em}
 \tiny
-\linespread{0.90}\selectfont
-\begin{itemize}\itemsep=0em
+\linespread{0.84}\selectfont
+\begin{itemize}\itemsep=-0.1em
   \item V.~Mnih et~al.,
         \emph{Playing Atari with Deep Reinforcement Learning},
         arXiv:1312.5602, 2013.
@@ -993,67 +1075,69 @@ What does it mean for science?\\[0.25em]{\large\sffamily 这对科学意味着�
         \emph{Learning with Known Operators Reduces Maximum Error Bounds},
         \emph{Nat.\ Mach.\ Intell.}, 1:373--380, 2019.
   \item M.~Zaiss, J.~R.~Rajput, H.~N.~Dang, V.~Golkov, D.~Cremers,
-        F.~Knoll and \textbf{A.~Maier},
+        F.~Knoll und \textbf{A.~Maier},
         \emph{Exploring GPT-4 as MR sequence and reconstruction programming
         assistant: GPT4MR},
-        BVM Workshop, pp.~94--99, Springer, 2024.
-  \item M.~Zaiss, A.~Aly, J.~Endres, T.~Dornstetter, S.~Weinm\"uller and
+        BVM Workshop, S.~94--99, Springer, 2024.
+  \item M.~Zaiss, A.~Aly, J.~Endres, T.~Dornstetter, S.~Weinmüller und
         \textbf{A.~Maier},
         \emph{Agentic MR sequence development: leveraging LLMs with MR skills
         for automatic physics-informed sequence development},
         arXiv:2604.13282, 2026 (Agent4MR).
-  \item Deutscher Zukunftspreis (low-field MRI):
+  \item Deutscher Zukunftspreis (Niederfeld-MRT):
         \url{https://www.deutscher-zukunftspreis.de}
-  \item Agent M -- companion tool to the book \emph{Vibe Coding}:
+  \item Agent M -- Begleitwerkzeug zum Buch \emph{Vibe Coding}:
         \url{https://github.com/akmaier/agent-m}
-  \item Conference statistics tooling:
+  \item Konferenzstatistik-Werkzeug:
         \url{https://github.com/akmaier/ConferenceStats}
-  \item Agent4CT -- agentic re-implementation of deep-learning CT
-        methods:
+  \item Agent4CT -- agentische Nachimplementierung von CT-Methoden:
         \url{https://github.com/akmaier/Agent4CT}
-  \item \textbf{A.~Maier}, M.~Zaiss and S.~Bayer,
+  \item \textbf{A.~Maier}, M.~Zaiss und S.~Bayer,
         \emph{Beating the Style Detector: Three Hours of Agentic
         Research on the AI-Text Arms Race},
         arXiv:2605.02620, 2026.
-  \item \textbf{A.~Maier}, J.~Sopa, G.~G.~Sahin, P.~Perez-Toro and
+  \item \textbf{A.~Maier}, J.~Sopa, G.~G.~Sahin, P.~Perez-Toro und
         S.~Bayer,
         \emph{Just Ask for a Table: A Thirty-Token User Prompt
         Defeats Sponsored Recommendations in Twelve LLMs},
         arXiv:2605.12772, 2026.
-  \item \emph{IfCampoKnew}\,\textendash\,scraper for 200 study programs
-        and an AI RAG chatbot:
+  \item \emph{IfCampoKnew}\,\textendash\,200 Studiengänge und
+        KI-RAG-Chatbot:
         \url{https://github.com/akmaier/IfCampoKnew}
-  \item \emph{UnderstandingVCS}\,\textendash\,agent-reimplemented
-        ATARI VCS emulator:
+  \item \emph{UnderstandingVCS}\,\textendash\,ATARI-VCS-Emulator:
         \url{https://github.com/akmaier/UnderstandingVCS}
-  \item \textbf{A.~K.~Maier}, S.~Bayer and W.~Han,
+  \item \textbf{A.~K.~Maier}, S.~Bayer und W.~Han,
         \emph{Combining rater fusion and time fusion for coronary centerline
-        extraction from single-plane angiography}, SPIE Medical Imaging 2027 (accepted);
-        code: \url{https://github.com/akmaier/VesselROVER}
+        extraction from single-plane angiography}, SPIE Medical Imaging 2027 (angenommen);
+        Code: \url{https://github.com/akmaier/VesselROVER}
   \item \textbf{A.~Maier}, S.~Bayer et~al.,
         \emph{A Living Systematic Review of Robotic Active Matter}:
         \url{https://akmaier.github.io/ActiveMatterLivingReview}
+  \item R.~Zöllner, S.~Mages und \textbf{A.~Maier},
+        \emph{An open workflow for Mayring qualitative content analysis of
+        nursing interviews with large language models and artificial
+        intelligence agents}, 2026:
+        \url{https://github.com/akmaier/German-nursing-interviews}
 \end{itemize}
 \end{frame}
 
 % --------------------------------------------------------------------------
+% Vielen Dank + QR-Codes: dieser Branch auf GitHub und der Demonstrator
 % --------------------------------------------------------------------------
-% Closing slide - Thank you + QR code to this branch on GitHub + WeChat
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Thank you! Questions?}{谢谢！欢迎提问}
+\begin{frame}[t]{Vielen Dank! Fragen?}
 \vspace{0.8em}
 \begin{columns}[T]
   \begin{column}{0.5\textwidth}
     \centering
-    {\Large Slides on GitHub\cn{幻灯片见 GitHub}}\\[0.8em]
+    {\Large Folien auf GitHub}\\[0.8em]
     \includegraphics[height=8.4cm]{talk/qr_github.png}\\[0.5em]
-    {\scriptsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/shenkang-prl-visit-2026}
+    {\scriptsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/bvb-verbundkonferenz-2026}
   \end{column}
   \begin{column}{0.5\textwidth}
     \centering
-    {\Large WeChat\cn{微信}}\\[0.8em]
-    \includegraphics[height=8.4cm]{talk/wechat_qr.jpg}\\[0.5em]
-    {\scriptsize Andreas Maier}
+    {\Large Demonstrator Pflegeinterviews}\\[0.8em]
+    \includegraphics[height=8.4cm]{talk/qr_nursing_demo.png}\\[0.5em]
+    {\scriptsize\ttfamily akmaier.github.io/German-nursing-interviews}
   \end{column}
 \end{columns}
 \end{frame}

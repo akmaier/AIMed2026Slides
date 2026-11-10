@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Convert the rendered PDF deck to a PowerPoint, embedding animated GIFs
-on the three "What is agentic AI?" attempt slides (and, where the deck has
-it, on the Motion Compensation slide).
+on the three "Was ist agentische KI?" attempt slides (and, where the deck has
+it, on the Bewegungskompensation / Motion Compensation slide).
 
 For every PDF page we add a full-bleed picture of the rasterized page
 (the PDF is rasterized here, with Ghostscript at 200 dpi).  The GIF pages
@@ -39,19 +39,19 @@ FIG_DIR = ROOT / "output_tex" / "figures"
 PAGES_DIR = ROOT / "build_pptx" / "pages"
 # Write the regenerated deck *inside* build_pptx/ so we never clobber
 # the manually-edited committed copy at the repo root.
-OUT = ROOT / "build_pptx" / "AI_in_Medicine_Shenkang_PRL_Visit_2026.pptx"
+OUT = ROOT / "build_pptx" / "KI_in_Wissenschaft_und_Publikationswesen_BVB_2026.pptx"
 
 # Subheading text on the page -> (gif filename, source png filename)
 TARGETS = {
-    "Human baseline": ("img_08_02.gif", "img_08_02.png"),
-    "GPT-4o attempt": ("img_08_03.gif", "img_08_03.png"),
-    "GROK-3-think attempt": ("img_08_04.gif", "img_08_04.png"),
+    "Mensch als Referenz": ("img_08_02.gif", "img_08_02.png"),
+    "Versuch von GPT-4o": ("img_08_03.gif", "img_08_03.png"),
+    "Versuch von GROK-3-think": ("img_08_04.gif", "img_08_04.png"),
 }
 
 # Motion Compensation slide: the GIFs sit at fixed page coordinates, the same
 # numbers as in the frame in main.tex -- (gif, x_cm, y_cm, side_cm) on the
 # 33.867 x 19.05 cm page.
-MOTION_MARKER = "Motion Compensation"
+MOTION_MARKER = "Bewegungskompensation"
 MOTION_GIFS = [("talk/motion_ecg_gated.gif", 5.9, 5.1, 10.8),
                ("talk/motion_compensated.gif", 17.17, 5.1, 10.8)]
 PAGE_W_CM, PAGE_H_CM = 33.867, 19.05

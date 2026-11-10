@@ -1,77 +1,83 @@
-# AI in Medicine — Visit of the Shanghai Shenkang Hospital Development Center, Pattern Recognition Lab
+# KI in der Wissenschaft und im Publikationswesen — Keynote, BVB-Verbundkonferenz 2026
 
-Slides for the talk **“AI in Medicine”** (人工智能在医学中的应用) by Andreas Maier
-(FAU Erlangen-Nürnberg) for the **visit of the Shanghai Shenkang Hospital Development
-Center** (上海申康医院发展中心) at the **Pattern Recognition Lab, Erlangen —
-Wednesday, 4 November 2026**.
+Slides for the keynote **“KI in der Wissenschaft und im Publikationswesen”** by Andreas Maier
+(FAU Erlangen-Nürnberg) at the **Verbundkonferenz des Bibliotheksverbunds Bayern (BVB)**,
+Bayerische Akademie der Wissenschaften, Alfons-Goppel-Str. 11, München —
+**Tuesday, 10 November 2026, 10:20–11:10**. Invited by Dr. Fabian Franke, chair of the
+Bibliotheksverbund. Programme: <https://www.bib-bvb.de/web/guest/bvb-verbundkonferenz-2026>
 
-This is the `shenkang-prl-visit-2026` branch, forked from `shanghai-sino-euro-2026`
-(keynote at the 2026 SINO-EURO Conference on Cardio-Thoracic Diseases, Shanghai Chest
-Hospital, 30 October 2026). The slides are the same; only the occasion changed:
+This is the `bvb-verbundkonferenz-2026` branch, forked from `shenkang-prl-visit-2026`
+(“AI in Medicine”, 4 November 2026). It has the same storyline and slides, in German:
 
-* Title page: second subtitle line naming the visit (English and Chinese); date line
-  “4 November 2026 • Pattern Recognition Lab, Erlangen” (also in the footer).
-* QR code and printed URL on the closing slide point at this branch.
-* PPTX renamed to `AI_in_Medicine_Shenkang_PRL_Visit_2026.pptx`.
+* All slide texts are German. Translations are reused from the German decks `de-msd-senso`
+  (deep learning, agentic AI, conference statistics) and `gdlh-gesundheitsdaten-2026`
+  (Zur Person, Open Access, Tempo). The Chinese subheadings and the WeChat QR code are gone.
+* **New for the library audience:** two slides on *qualitative content analysis with AI*:
+  Mayring analysis of German nursing interviews with LLMs and agents (with Rita Zöllner and
+  Silke Mages). The first shows the workflow and results, the second the open release and the
+  live demonstrator. Source: <https://github.com/akmaier/German-nursing-interviews>.
+  The screenshot `output_tex/figures/talk/nursing_demo.png` was taken from
+  <https://akmaier.github.io/German-nursing-interviews/> with headless Chrome (1600×900, 2×).
+* Only FAU template colors (FAUBlue, TechMetallic / TechDarkMetallic and their tints) in
+  boxes, diagrams and highlights.
+* The closing slide has two QR codes: this branch on GitHub and the nursing-interview demonstrator.
 
-Content of the Shanghai deck, kept unchanged: the speaker and lab introduction from the
-Landtag deck, the two cardiac slides (Motion Compensation, VesselROVER with
-Dr. Wenzheng Han, Shanghai Chest Hospital), the storyline of the Zadar talk, the living
-PRISMA review slide, and a Chinese translation of every slide title as subheading.
-
-Other versions of the deck: `shanghai-sino-euro-2026` (SINO-EURO keynote,
-Shanghai Chest Hospital, 30 October 2026), `wch-radiology-summit-2026` (same storyline without the two
-cardiac slides, West China Hospital, 31 October 2026), `puls-retreat-2026`, `visual-heritage-2026`,
-`dldxhealth-2026`, `main` (AIMed 2026, Kraków), `india-talk`, `de-msd-senso`,
+Other versions of the deck: `shenkang-prl-visit-2026`, `shanghai-sino-euro-2026` (SINO-EURO
+keynote, Shanghai Chest Hospital, 30 October 2026), `wch-radiology-summit-2026`,
+`gdlh-gesundheitsdaten-2026` (German, 10 min), `de-msd-senso` (German), `puls-retreat-2026`,
+`visual-heritage-2026`, `dldxhealth-2026`, `main` (AIMed 2026, Kraków), `india-talk`,
 `wch-80-years-orthopedics`, `west-china-collaboration-2026`,
 `baiosphere-medical-2026-opening` / `…-closing`.
 
 ## Slides
 
-| # | Slide | Chinese subheading |
-|---|---|---|
-| 1 | AI in Medicine | 人工智能在医学中的应用 |
-| 2 | About the Speaker | 主讲人简介 |
-| 3 | Pattern Recognition Lab (team photo) | 模式识别实验室 |
-| 4 | Know the Past to Understand the Future | 温故而知新 |
-| 5 | Our Team Today | 我们的团队 |
-| 6 | Research Areas | 研究方向 |
-| 7 | Work at the Lab | 实验室的工作 |
-| 8 | Motion Compensation (GIFs in the PPTX) | 运动补偿 |
-| 9 | VesselROVER — coronary centerlines in angiography (SPIE MI 2027, with Dr. Han) | 冠状动脉中心线提取 |
-| 10 | Outline | 提纲 |
-| 11 | Section: What is deep learning? | 什么是深度学习？ |
-| 12–15 | Deep learning | 深度学习 |
-| 16–20 | Generative AI | 生成式人工智能 |
-| 21–23 | Deep learning in medicine | 医学中的深度学习 |
-| 24 | Section: What is agentic AI? | 什么是智能体AI？ |
-| 25–32 | What is agentic AI? (GIFs on 30–32 in the PPTX) | 什么是智能体AI？ |
-| 33 | Section: How about real agentic AI? | 真正的智能体AI又如何？ |
-| 34–42 | What is agentic AI? (Agent4MR, vibe coding, textbook, Agent M) | 什么是智能体AI？ |
-| 43 | Section: What does it mean for science? | 这对科学意味着什么？ |
-| 44–47 | Almost everything is easy now… | 如今几乎一切都变得容易…… |
-| 48 | Publishing, Disrupted | 出版业的变革 |
-| 49 | Agent4CT (diagram: 15 methods in one weekend) | 智能体复现CT方法 |
-| 50 | Living PRISMA Reviews (first use case: robotic active matter) | 活体PRISMA系统综述 |
-| 51 | Speed of Agentic AI | 智能体AI的速度 |
-| 52 | Science at Agent Speed | 智能体速度下的科学 |
-| 53 | What This Means for Your Research | 这对你的研究意味着什么 |
-| 54 | References | 参考文献 |
-| 55 | Thank you! Questions? (GitHub + WeChat QR) | 谢谢！欢迎提问 |
+| # | Slide |
+|---|---|
+| 1 | KI in der Wissenschaft und im Publikationswesen |
+| 2 | Zur Person |
+| 3 | Lehrstuhl für Mustererkennung (team photo) |
+| 4 | Geschichte des Lehrstuhls |
+| 5 | Unser Team heute |
+| 6 | Forschungsschwerpunkte |
+| 7 | Arbeit am Lehrstuhl |
+| 8 | Bewegungskompensation (GIFs in the PPTX) |
+| 9 | VesselROVER — koronare Mittellinien in der Angiographie (with Dr. Han) |
+| 10 | Übersicht |
+| 11 | Section: Was ist Deep Learning? |
+| 12–15 | Deep Learning |
+| 16–20 | Generative KI |
+| 21–23 | Deep Learning in der Medizin |
+| 24 | Section: Was ist agentische KI? |
+| 25–32 | Was ist agentische KI? (GIFs on 30–32 in the PPTX) |
+| 33 | Section: Wie sieht echte agentische KI aus? |
+| 34–42 | Was ist agentische KI? (Agent4MR, Vibe Coding, Lehrbuch, Agent M) |
+| 43 | Section: Was bedeutet das für Wissenschaft und Publikationswesen? |
+| 44–47 | Fast alles ist jetzt einfach… |
+| 48 | Publikationswesen im Umbruch — Open Access zum Preis einer Pizzarunde |
+| 49 | Agent4CT |
+| 50 | Living PRISMA Reviews |
+| 51 | **Qualitative Inhaltsanalyse mit KI** — Pflegeinterviews nach Mayring (new) |
+| 52 | **Qualitative Inhaltsanalyse mit KI** — Offen und nachnutzbar (new, QR to the demonstrator) |
+| 53 | Tempo agentischer KI |
+| 54 | Wissenschaft im Agententempo — Chancen und Risiken |
+| 55 | Was das für die Forschung bedeutet — fünf Regeln |
+| 56 | Referenzen |
+| 57 | Vielen Dank! Fragen? (QR: slides + demonstrator) |
 
 ## Build
 
 The deck is typeset in LaTeX; PowerPoint is only the container for presenting and for the
-animated GIFs.
+animated GIFs. Without Chinese text this branch builds with pdflatex (German babel, as on
+`de-msd-senso` and `gdlh-gesundheitsdaten-2026`).
 
 ```
 cd output_tex
-xelatex main.tex && xelatex main.tex      # XeLaTeX (xeCJK), twice: remember-picture overlays
+pdflatex main.tex && pdflatex main.tex    # twice: remember-picture overlays
 cd ..
 python3 build_pptx/build_pptx.py          # PDF pages at 200 dpi + GIF overlays
-cp build_pptx/AI_in_Medicine_Shenkang_PRL_Visit_2026.pptx .
+cp build_pptx/KI_in_Wissenschaft_und_Publikationswesen_BVB_2026.pptx .
 ```
 
-`build_pptx.py` finds the GIF slides by their subheading, so slides can be added or removed
-without touching it. The QR code is generated by `generate_qr.py`
-(`output_tex/figures/talk/qr_github.png`).
+`build_pptx.py` finds the GIF slides by their (German) subheading, so slides can be added or
+removed without touching it. The QR codes are generated by `generate_qr.py`
+(`output_tex/figures/talk/qr_github.png`, `output_tex/figures/talk/qr_nursing_demo.png`).
