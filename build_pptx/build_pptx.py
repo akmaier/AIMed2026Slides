@@ -39,7 +39,7 @@ FIG_DIR = ROOT / "output_tex" / "figures"
 PAGES_DIR = ROOT / "build_pptx" / "pages"
 # Write the regenerated deck *inside* build_pptx/ so we never clobber
 # the manually-edited committed copy at the repo root.
-OUT = ROOT / "build_pptx" / "KI_in_Wissenschaft_und_Publikationswesen_BVB_2026.pptx"
+OUT = ROOT / "build_pptx" / "KI_in_Big_Data_Mamma_Ostsachsen_2026.pptx"
 
 # Subheading text on the page -> (gif filename, source png filename)
 TARGETS = {

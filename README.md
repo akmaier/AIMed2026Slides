@@ -1,83 +1,77 @@
-# KI in der Wissenschaft und im Publikationswesen — Keynote, BVB-Verbundkonferenz 2026
+# Zukunft von KI in Big Data — Mamma-Symposium Ostsachsen 2026
 
-Slides for the keynote **“KI in der Wissenschaft und im Publikationswesen”** by Andreas Maier
-(FAU Erlangen-Nürnberg) at the **Verbundkonferenz des Bibliotheksverbunds Bayern (BVB)**,
-Bayerische Akademie der Wissenschaften, Alfons-Goppel-Str. 11, München —
-**Tuesday, 10 November 2026, 10:20–11:10**. Invited by Dr. Fabian Franke, chair of the
-Bibliotheksverbund. Programme: <https://www.bib-bvb.de/web/guest/bvb-verbundkonferenz-2026>
+Folien zum Closing-Talk **„Zukunft von KI in Big Data — Einfluss auf
+Arbeitsabläufe"** von Andreas Maier (FAU Erlangen-Nürnberg) auf dem
+**Mamma-Symposium des Brustzentrums Ostsachsen** (Klinikum Oberlausitzer
+Bergland) — **Freitag, 27. November 2026, 16:20–17:00, online**
+(Vor-Ort-Veranstaltung Taubenheim/Spree, Haus Oberlausitz, 13:45–18:00).
+Eingeladen von Christin Keßner, organisatorische Leitung Brustzentrum
+Zittau. Publikum: Klinikerinnen und Kliniker verschiedener Fachrichtungen.
 
-This is the `bvb-verbundkonferenz-2026` branch, forked from `shenkang-prl-visit-2026`
-(“AI in Medicine”, 4 November 2026). It has the same storyline and slides, in German:
+Branch `mamma-ostsachsen-2026`, geforkt von `bvb-verbundkonferenz-2026`.
+Gegenüber der BVB-Keynote:
 
-* All slide texts are German. Translations are reused from the German decks `de-msd-senso`
-  (deep learning, agentic AI, conference statistics) and `gdlh-gesundheitsdaten-2026`
-  (Zur Person, Open Access, Tempo). The Chinese subheadings and the WeChat QR code are gone.
-* **New for the library audience:** two slides on *qualitative content analysis with AI*:
-  Mayring analysis of German nursing interviews with LLMs and agents (with Rita Zöllner and
-  Silke Mages). The first shows the workflow and results, the second the open release and the
-  live demonstrator. Source: <https://github.com/akmaier/German-nursing-interviews>.
-  The screenshot `output_tex/figures/talk/nursing_demo.png` was taken from
-  <https://akmaier.github.io/German-nursing-interviews/> with headless Chrome (1600×900, 2×).
-* Only FAU template colors (FAUBlue, TechMetallic / TechDarkMetallic and their tints) in
-  boxes, diagrams and highlights.
-* The closing slide has two QR codes: this branch on GitHub and the nursing-interview demonstrator.
+* **Entfernt** (für klinisches Publikum nicht relevant): Herz-CT-Bewegungs-
+  kompensation, VesselROVER (Koronar-Angiographie), die vier
+  „Fast alles ist jetzt einfach…"-Folien (ConferenceStats), die
+  Publikationswesen-/Agent4CT-/Living-PRISMA-Folien, zwei Vibe-Coding-
+  Unterfolien.
+* **Konsolidiert**: die beiden Pflegeinterview-Folien sind zu einer
+  zusammengezogen (Workflow + Kernzahlen auf einer Folie).
+* **Neu ergänzt**: zwei PRAEGNANT-Folien aus `de-msd-senso` (multimodale
+  Datenintegration in der Onkologie + Generieren → Verifizieren →
+  Falsifizieren-Loop am Beispiel [PRAEGNANT](https://praegnant.org)).
+  Eine neue Abschluss-Folie *„Einfluss auf Arbeitsabläufe"* mit
+  konkreten Effekten im Brustzentrum (Tumorboard-Vorbereitung,
+  Studien-Matching, Dokumentation & Arztbrief, Zweitmeinung).
+* **Angepasst an klinisches Publikum**: *„Medizin im Agententempo –
+  Chancen und Risiken"* (zuvor „Wissenschaft im Agententempo") und
+  *„Was das für die klinische Arbeit bedeutet – fünf Regeln"*.
 
-Other versions of the deck: `shenkang-prl-visit-2026`, `shanghai-sino-euro-2026` (SINO-EURO
-keynote, Shanghai Chest Hospital, 30 October 2026), `wch-radiology-summit-2026`,
-`gdlh-gesundheitsdaten-2026` (German, 10 min), `de-msd-senso` (German), `puls-retreat-2026`,
-`visual-heritage-2026`, `dldxhealth-2026`, `main` (AIMed 2026, Kraków), `india-talk`,
+Die drei Spin-Echo-EPI-Demovideos (Mensch / GPT-4o / GROK-3-think) bleiben
+als animierte GIFs in der PowerPoint erhalten; in der PDF werden sie als
+Standbilder gezeigt.
+
+Andere Varianten dieses Foliensatzes: `main` (AIMed 2026, Kraków),
+`india-talk` (Bangalore), `de-msd-senso` (MSD Senso-Abend, München),
+`dldxhealth-2026` (DLDxHealth, München),
+`bvb-verbundkonferenz-2026` (BVB-Keynote, München), `bacai-vibe-coding`
+(Bamberg), `gdlh-gesundheitsdaten-2026`, `puls-retreat-2026`,
+`visual-heritage-2026`, `shenkang-prl-visit-2026`,
+`shanghai-sino-euro-2026`, `wch-radiology-summit-2026`,
 `wch-80-years-orthopedics`, `west-china-collaboration-2026`,
-`baiosphere-medical-2026-opening` / `…-closing`.
-
-## Slides
-
-| # | Slide |
-|---|---|
-| 1 | KI in der Wissenschaft und im Publikationswesen |
-| 2 | Zur Person |
-| 3 | Lehrstuhl für Mustererkennung (team photo) |
-| 4 | Geschichte des Lehrstuhls |
-| 5 | Unser Team heute |
-| 6 | Forschungsschwerpunkte |
-| 7 | Arbeit am Lehrstuhl |
-| 8 | Bewegungskompensation (GIFs in the PPTX) |
-| 9 | VesselROVER — koronare Mittellinien in der Angiographie (with Dr. Han) |
-| 10 | Übersicht |
-| 11 | Section: Was ist Deep Learning? |
-| 12–15 | Deep Learning |
-| 16–20 | Generative KI |
-| 21–23 | Deep Learning in der Medizin |
-| 24 | Section: Was ist agentische KI? |
-| 25–32 | Was ist agentische KI? (GIFs on 30–32 in the PPTX) |
-| 33 | Section: Wie sieht echte agentische KI aus? |
-| 34–42 | Was ist agentische KI? (Agent4MR, Vibe Coding, Lehrbuch, Agent M) |
-| 43 | Section: Was bedeutet das für Wissenschaft und Publikationswesen? |
-| 44–47 | Fast alles ist jetzt einfach… |
-| 48 | Publikationswesen im Umbruch — Open Access zum Preis einer Pizzarunde |
-| 49 | Agent4CT |
-| 50 | Living PRISMA Reviews |
-| 51 | **Qualitative Inhaltsanalyse mit KI** — Pflegeinterviews nach Mayring (new) |
-| 52 | **Qualitative Inhaltsanalyse mit KI** — Offen und nachnutzbar (new, QR to the demonstrator) |
-| 53 | Tempo agentischer KI |
-| 54 | Wissenschaft im Agententempo — Chancen und Risiken |
-| 55 | Was das für die Forschung bedeutet — fünf Regeln |
-| 56 | Referenzen |
-| 57 | Vielen Dank! Fragen? (QR: slides + demonstrator) |
+`baiosphere-medical-2026-opening` / `…-closing`,
+`robotics-ai-hackathon-2026`.
 
 ## Build
 
-The deck is typeset in LaTeX; PowerPoint is only the container for presenting and for the
-animated GIFs. Without Chinese text this branch builds with pdflatex (German babel, as on
-`de-msd-senso` and `gdlh-gesundheitsdaten-2026`).
+Der Foliensatz wird in LaTeX gesetzt; die PowerPoint ist nur der Container
+fürs Präsentieren und für die animierten GIFs. pdflatex mit ngerman-babel.
 
 ```
 cd output_tex
-pdflatex main.tex && pdflatex main.tex    # twice: remember-picture overlays
+pdflatex main.tex && pdflatex main.tex    # zweimal: remember-picture-Overlays
 cd ..
-python3 build_pptx/build_pptx.py          # PDF pages at 200 dpi + GIF overlays
-cp build_pptx/KI_in_Wissenschaft_und_Publikationswesen_BVB_2026.pptx .
+python3 build_pptx/build_pptx.py          # PDF-Seiten @200 dpi + GIF-Overlays
+cp build_pptx/KI_in_Big_Data_Mamma_Ostsachsen_2026.pptx .
 ```
 
-`build_pptx.py` finds the GIF slides by their (German) subheading, so slides can be added or
-removed without touching it. The QR codes are generated by `generate_qr.py`
-(`output_tex/figures/talk/qr_github.png`, `output_tex/figures/talk/qr_nursing_demo.png`).
+`build_pptx.py` erkennt die GIF-Folien an ihrem (deutschen) Untertitel,
+Folien können also ohne Nacharbeit umsortiert werden. Die beiden QR-Codes
+werden von `generate_qr.py` erzeugt (`output_tex/figures/talk/qr_github.png`
+für den Slides-Branch, `output_tex/figures/talk/qr_nursing_demo.png` für
+den Live-Demonstrator der Pflegeinterviews).
+
+## Inhalt
+
+* `output_tex/main.tex` — LaTeX-Quelle (ngerman)
+* `output_tex/main.pdf` — fertiges Deck (48 Folien)
+* `KI_in_Big_Data_Mamma_Ostsachsen_2026.pptx` — PowerPoint mit eingebetteten
+  Spin-Echo-EPI-GIFs auf den Folien *„Mensch als Referenz"*,
+  *„Versuch von GPT-4o"* und *„Versuch von GROK-3-think"*
+* `output_tex/figures/` + `output_tex/figures/talk/` — Grafiken, QR-Codes,
+  GIFs und Fotos
+* `output_tex/styles/`, `output_tex/template-art/`, `output_tex/conf-art/`
+  — vendorte FAU-Beamer-Vorlage
+* `generate_qr.py` — QR-Erzeugung (beide QRs)
+* `build_pptx/build_pptx.py` — PDF → PowerPoint + GIF-Overlays

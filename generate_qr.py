@@ -18,7 +18,7 @@ from qrcode.constants import ERROR_CORRECT_M
 FIG = Path(__file__).parent / "output_tex" / "figures" / "talk"
 QR_CODES = [
     # closing slide: this branch on GitHub
-    ("https://github.com/akmaier/AIMed2026Slides/tree/bvb-verbundkonferenz-2026",
+    ("https://github.com/akmaier/AIMed2026Slides/tree/mamma-ostsachsen-2026",
      FIG / "qr_github.png"),
     # nursing-interviews slide: the live demonstrator
     ("https://akmaier.github.io/German-nursing-interviews/",

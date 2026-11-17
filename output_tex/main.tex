@@ -1,17 +1,18 @@
 % ..............................................................................
-% "KI in der Wissenschaft und im Publikationswesen" -- Andreas Maier, Keynote
-% auf der Verbundkonferenz des Bibliotheksverbunds Bayern (BVB), Bayerische
-% Akademie der Wissenschaften, Alfons-Goppel-Str. 11, München,
-% Dienstag 10.11.2026, 10:20-11:10 Uhr.  Eingeladen von Dr. Fabian Franke.
-% Branch `bvb-verbundkonferenz-2026`, geforkt von `shenkang-prl-visit-2026`
-% ("AI in Medicine"): gleicher Inhalt und gleiche Reihenfolge, ins Deutsche
-% übertragen.  Deutsche Folientexte aus `de-msd-senso` (Deep Learning,
-% agentische KI, Konferenzstatistik) und `gdlh-gesundheitsdaten-2026` (Zur
-% Person, Open Access, Tempo); die chinesischen Untertitel und der
-% WeChat-Code entfallen.  Neu für das Bibliothekspublikum: zwei Folien zur
-% qualitativen Inhaltsanalyse von Pflegeinterviews mit LLMs
-% (github.com/akmaier/German-nursing-interviews; Zahlen aus results/
-% RESULTS_taskA.md, RESULTS_taskB.md und DATA_STATEMENT.md).
+% "Zukunft von KI in Big Data -- Einfluss auf Arbeitsabläufe" -- Andreas Maier,
+% Closing-Talk des Mamma-Symposiums des Brustzentrums Ostsachsen (Klinikum
+% Oberlausitzer Bergland), Freitag 27.11.2026, 16:20-17:00 Uhr, online
+% (Vor-Ort-Veranstaltung Taubenheim/Spree, Haus Oberlausitz, 13:45-18:00).
+% Eingeladen von Christin Keßner, organisatorische Leitung Brustzentrum Zittau.
+% Branch `mamma-ostsachsen-2026`, geforkt von `bvb-verbundkonferenz-2026`:
+% Teamfoto, Geschichte, Forschungsschwerpunkte, Deep Learning, agentische KI
+% und Spin-Echo-EPI-Demo bleiben; die herz-/koronar-spezifischen Methoden-
+% folien, die "Fast alles ist jetzt einfach"-Konferenzstatistik, die
+% Publikations-/Agent4CT-/Living-PRISMA-Folien entfallen.  Zwei neue PRAEGNANT-
+% Folien aus `de-msd-senso` (multimodale Datenintegration + Hypothesen-Loop)
+% und eine neue Abschlussfolie zu konkreten Arbeitsflusseffekten im Brust-
+% zentrum (Tumorboard, Studien-Matching, Dokumentation, Zweitmeinung) sind
+% dazugekommen.  Nursing-Interviews stehen auf einer konsolidierten Folie.
 %
 % Farben ausschließlich aus dem FAU-Template (institute=Tech, fau-colors.sty):
 % FAUBlue für Hervorhebungen, BaseColor/BaseDarkColor (TechMetallic /
@@ -57,11 +58,11 @@
 % ----------------------------------------------------------------------------------------
 % Titel-Metadaten
 % ----------------------------------------------------------------------------------------
-\title[KI in Wissenschaft und Publikationswesen]{KI in der Wissenschaft und im Publikationswesen}
-\subtitle{Keynote \,\textbullet\, Verbundkonferenz des Bibliotheksverbunds Bayern}
+\title[KI in Big Data]{Zukunft von KI in Big Data -- Einfluss auf Arbeitsabläufe}
+\subtitle{Mamma-Symposium \,\textbullet\, Brustzentrum Ostsachsen}
 \author[A.~Maier]{Prof.\ Dr.-Ing.\ habil.\ Andreas Maier, Lehrstuhl für Mustererkennung}
 \institute[FAU]{Friedrich-Alexander-Universität Erlangen-Nürnberg}
-\date{10.~November 2026 \,\textbullet\, BVB-Verbundkonferenz, München}
+\date{27.~November 2026, 16:20--17:00 \,\textbullet\, online (Taubenheim/Spree)}
 
 \begin{document}
 % keine Silbentrennung auf Folien
@@ -227,67 +228,13 @@
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Bewegungskompensation (Landtag-Folie 10).  Die beiden Standbilder sind die
-% ersten Frames der GIFs; die PowerPoint legt die animierten GIFs genau
-% darüber.  Ihre Lage steht hier in Seitenkoordinaten, und dieselben Zahlen
-% stehen in build_pptx/build_pptx.py (MOTION_GIFS): x, y der linken oberen
-% Ecke und die Kantenlänge, in cm auf der 33,867 x 19,05 cm großen Seite.
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Bewegungskompensation}{Herz-CT ohne Bewegungsartefakte}
-\begin{tikzpicture}[remember picture, overlay]
-  \fill[black] ($(current page.north west)+(5.4,-4.6)$) rectangle ($(current page.north west)+(28.47,-17.0)$);
-  \node[anchor=north west, inner sep=0pt] at ($(current page.north west)+(5.9,-5.1)$)
-    {\includegraphics[width=10.8cm,height=10.8cm]{talk/motion_ecg_gated.png}};
-  \node[anchor=north west, inner sep=0pt] at ($(current page.north west)+(17.17,-5.1)$)
-    {\includegraphics[width=10.8cm,height=10.8cm]{talk/motion_compensated.png}};
-  \node[anchor=north, text=white, font=\sffamily\small] at ($(current page.north west)+(16.935,-16.15)$)
-    {Die EKG-getriggerte Rekonstruktion wurde für die visuelle Vergleichbarkeit gefenstert.};
-\end{tikzpicture}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% VesselROVER -- gemeinsames Paper mit dem Shanghai Chest Hospital, SPIE
-% Medical Imaging 2027 (Poster 14518-77).  Zahlen aus dem Abstract von
-% github.com/akmaier/VesselROVER, paper/main.tex.
-% --------------------------------------------------------------------------
-\begin{frame}[t]{VesselROVER}{Koronare Mittellinien in der Angiographie}
-\vspace{0.6em}
-\begin{columns}[T]
-  \begin{column}{0.56\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{talk/vesselrover_overlay.png}\\[0.3em]
-    {\footnotesize Links: Mittellinien der Einzelbilder einer Serie, durch die Herzbewegung gestreut.
-     Rechts: fusionierte Konsens-Mittellinie mit Verzweigungspunkten auf einem klinischen Bild.}
-  \end{column}
-  \begin{column}{0.42\textwidth}
-    \begin{itemize}\itemsep=0.5em
-      \item Kein Einzelbild zeigt den vollständigen Koronarbaum.
-      \item Fusion mehrerer Segmentierer (STAPLE) \emph{und} vieler Bilder
-            (ROVER, aus der Spracherkennung).
-      \item 13 Patienten, ca.\ 300 klinische Serien: Gefäßbaum
-            \textbf{1,22$\times$} vollständiger, \textbf{6,7$\times$} mehr
-            distale Äste.
-      \item Open Source: {\small\ttfamily github.com/akmaier/VesselROVER}
-    \end{itemize}
-    \vspace{0.8em}
-    {\large\bfseries\color{FAUBlue} Gemeinsame Arbeit mit\\ Dr.~Wenzheng Han,\\ Shanghai Chest Hospital}
-  \end{column}
-\end{columns}
-\vfill
-\begin{center}\small\color{BaseDarkColor}
-  A.~K.~Maier, S.~Bayer, W.~Han, \emph{Combining rater fusion and time fusion for coronary
-  centerline extraction from single-plane angiography},\\ SPIE Medical Imaging 2027 (angenommen).
-\end{center}
-\end{frame}
-
-% --------------------------------------------------------------------------
 % Übersicht
 % --------------------------------------------------------------------------
 \begin{frame}[t]{Übersicht}
 \begin{itemize}
   \item Was ist Deep Learning?
   \item Was ist agentische KI?
-  \item Was bedeutet das für Wissenschaft und Publikationswesen?
+  \item Was bedeutet das für die Arbeitsabläufe im Brustzentrum?
 \end{itemize}
 \end{frame}
 
@@ -646,18 +593,6 @@ Wie sieht echte agentische KI aus?
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Was ist agentische KI?}{Fortgeschrittene KI-gestützte Techniken}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_11_02.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Was ist agentische KI?}{Markdown-gesteuerte Qualitätssicherung}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_11_03.png}
-\end{center}
-\end{frame}
-
 \begin{frame}[t]{Was ist agentische KI?}{Lehrbuch}
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
@@ -686,186 +621,91 @@ Wie sieht echte agentische KI aus?
 % Abschnittstrenner
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-Was bedeutet das für Wissenschaft und Publikationswesen?
+Was bedeutet das für die Arbeit im Brustzentrum?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Fast alles ist jetzt einfach (4 Unterfolien)
+% PRAEGNANT-Integration (zwei Folien aus de-msd-senso): multimodale Basis-
+% modelle in der Onkologie und der Generieren -> Verifizieren -> Falsifizieren-
+% Loop am Beispiel PRAEGNANT (metastasiertes Mammakarzinom, Fasching et al.).
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{China und KI}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_13_01.png}
+\begin{frame}[t]{Basismodelle}{Multimodale Datenintegration in der Onkologie}
+\vspace{0.2em}
+Multimodale Basismodelle vereinen sehr unterschiedliche Datenquellen
+in einem gemeinsamen Repräsentationsraum:
+\vspace{0.4em}
+\begin{columns}[T]
+  \begin{column}{0.49\textwidth}
+    \begin{itemize}\itemsep=0.15em\small
+      \item \textbf{Multi-Omics:} Genom, Transkriptom, Proteom,
+            Methylom.
+      \item \textbf{Bildgebung:} CT, MRT, PET, Histopathologie,
+            Mammographie.
+      \item \textbf{Sprache:} Anamnese, Tumorboard-Mitschnitte,
+            Arztbriefe.
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.49\textwidth}
+    \begin{itemize}\itemsep=0.15em\small
+      \item \textbf{Labordaten:} Blutwerte, Tumormarker,
+            therapiebegleitende Verlaufsparameter.
+      \item \textbf{LLMs:} Fachliteratur, Leitlinien,
+            Studienprotokolle.
+      \item \textbf{Simulationen:} Pharmakokinetik,
+            Behandlungssimulationen, \emph{Digital Twins}.
+    \end{itemize}
+  \end{column}
+\end{columns}
+\vspace{0.6em}
+\begin{center}\small
+  $\Rightarrow$ Ein gemeinsames Modell anstelle vieler isolierter Werkzeuge.
 \end{center}
 \end{frame}
 
-\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{Konferenzanteile}
+\begin{frame}[t]{Basismodelle}{Hypothesen aus Studiendaten -- PRAEGNANT}
+\vspace{0.1em}
+\begin{itemize}\itemsep=0.15em\small
+  \item \textbf{PRAEGNANT}: deutsches akademisches Studiennetzwerk zum
+        fortgeschrittenen Mammakarzinom (Fasching et~al.); Tumorgewebe,
+        Blut, Biomarker und Patient-Reported Outcomes aus vielen
+        Zentren und tausenden Patientinnen
+        ({\ttfamily praegnant.org}).
+\end{itemize}
+\vspace{0.3em}
 \begin{center}
-  \includegraphics[width=.9\textwidth]{img_13_02.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{ConferenceStats-Workflow}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_13_03.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{Konferenzbeiträge aus China}
-\begin{center}
-  \includegraphics[height=.78\textheight]{img_13_04.png}
-\end{center}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Publikationswesen im Umbruch -- agentischer Workflow Overleaf -> FAU
-% University Press für BAIOSPHERE MEDICAL 2026 (Gestaltung wie auf
-% gdlh-gesundheitsdaten-2026).
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Publikationswesen im Umbruch}{Open Access zum Preis einer Pizzarunde}
-\vspace{0.5em}
-\begin{center}
-\begin{tikzpicture}[font=\sffamily,
-    box/.style={rounded corners=6pt, very thick, inner sep=5mm,
-                text width=8.6cm, align=center,
-                drop shadow={shadow xshift=0.7mm, shadow yshift=-0.7mm,
+\begin{tikzpicture}[
+    every node/.style={font=\small\bfseries},
+    box/.style={draw, rounded corners=3pt, thick, minimum height=1.1cm,
+                minimum width=3.2cm, text width=3.0cm, align=center,
+                drop shadow={shadow xshift=0.6mm, shadow yshift=-0.6mm,
                              opacity=0.35}},
-    old/.style={box, draw=BaseColor,  fill=BaseColorD},
-    new/.style={box, draw=FAUBlue,    fill=FAUBlue!8},
-    arr/.style={-{Latex[length=5mm]}, line width=2.5pt, draw=FAUBlue}]
-  \node[old]                   (a) {{\LARGE\bfseries Springer\\ Open Access\par}\vspace{0.5em}
-                                   {\fontsize{44}{52}\selectfont\bfseries\color{BaseDarkColor} 10.000\,€\par}\vspace{0.2em}
-                                   {\large Open-Access-Gebühr\par}};
-  \node[right=95mm of a, new] (b) {{\LARGE\bfseries FAU\\ University Press\par}\vspace{0.5em}
-                                   {\fontsize{44}{52}\selectfont\bfseries\color{FAUBlue} 150\,€\par}\vspace{0.2em}
-                                   {\large Open-Access-Gebühr\par}};
-  \draw[arr] (a.east) -- node[above=2mm, font=\LARGE\bfseries, text=FAUBlue]
-        {$\approx$\,66$\times$ günstiger} (b.west);
+    gen/.style ={box, fill=blue!12,   draw=blue!60!black},
+    ver/.style ={box, fill=green!14,  draw=green!50!black},
+    fal/.style ={box, fill=orange!18, draw=orange!70!black},
+    arr/.style ={-{Latex[length=3mm]}, thick}
+  ]
+  \node[gen]                    (g) {Generieren\\\small\mdseries Hypothesen aus den Daten};
+  \node[ver, right=10mm of g]   (v) {Verifizieren\\\small\mdseries Kohorte, Subgruppe};
+  \node[fal, right=10mm of v]   (f) {Falsifizieren\\\small\mdseries gezielte Gegenprobe};
+  \draw[arr] (g) -- (v);
+  \draw[arr] (v) -- (f);
+  \draw[arr, dashed] (f.south) to[bend left=45] (g.south);
 \end{tikzpicture}
 \end{center}
-\vspace{0.8em}
-\begin{itemize}\itemsep=0.4em\Large
-  \item \textbf{106} Einreichungen \,\textrightarrow\, \textbf{93} angenommen
-        \,\textrightarrow\, ein Open-Access-Band.
-  \item Von der Idee zum gedruckten Buch: \textbf{drei Monate} --
-        inklusive \textbf{Peer Review}.
+\vspace{0.3em}
+\begin{itemize}\itemsep=0.15em\small
+  \item Das Basismodell schlägt aus den vereinheitlichten
+        Multi-Omics-, Bildgebungs- und Klinikdaten \emph{neue
+        Hypothesen} vor (z.\,B. Mutations-Therapie-Interaktionen,
+        Bildmarker für das Therapieansprechen).
+  \item \emph{Verifikation} per simulierter und retrospektiver
+        Subgruppenanalyse in PRAEGNANT-ähnlichen Kohorten;
+        \emph{Falsifikation} per gezielter Gegenprobe -- alles
+        automatisch protokolliert und für Klinikerinnen und Kliniker
+        nachvollziehbar.
+  \item Ergebnis: vom Datensatz zu prüfbaren Studienhypothesen in
+        Stunden statt Monaten.
 \end{itemize}
-\vfill
-\begin{center}
-  \includegraphics[height=2.6cm,keepaspectratio]{baiomed_logo.jpg}
-\end{center}
-\vspace{0.2em}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Agent4CT -- Projektüberblick als Diagramm.  Quelle: github.com/akmaier/Agent4CT.
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Agent4CT}{Alle Deep-Learning-CT-Methoden an einem Wochenende}
-\vspace{0.2em}
-\begin{columns}[T]
-  \begin{column}{0.65\textwidth}
-    \centering
-    \begin{tikzpicture}[font=\sffamily,
-        hub/.style={circle, fill=FAUBlue, text=white, minimum size=3.9cm, inner sep=1mm, align=center,
-                    font=\sffamily\normalsize},
-        cat/.style={draw=FAUBlue, line width=1pt, rounded corners=5pt, fill=BaseColorC,
-                    text width=6.9cm, minimum height=2.1cm, align=center, inner sep=1.5mm},
-        lnk/.style={thick, draw=FAUBlue!60}]
-      \node[hub] (h) at (0,0) {\textbf{\Large Agent4CT}\\[0.2em]5 Agenten\\5 CT-Challenges\\gemeinsames\\Scratchpad};
-      \foreach \pos/\head/\list [count=\i] in {
-          {-6.6, 3.5}/Analytisch/{FBP (PyroNN)},
-          {-6.6, 0.0}/Klassisch-iterativ/{TV; Wu et~al.\ 2015},
-          {-6.6,-3.5}/Neuronale Felder/{NAF; R2Gaussian},
-          { 6.6, 3.5}/Variational \& unrolled/{VN; Primal-Dual; ITNet},
-          { 6.6, 0.0}/Denoising/{Dual-Domain-U-Net; bilaterale Filter},
-          { 6.6,-3.5}/Foundation \& Diffusion/{RAM; DDPM; Diffusions-Priors; U-Swin}} {
-        \node[cat] (c\i) at (\pos) {\textbf{\head}\\[0.15em]{\normalsize \list}};
-        \draw[lnk] (h) -- (c\i);
-      }
-    \end{tikzpicture}
-  \end{column}
-  \begin{column}{0.33\textwidth}
-    \vspace{0.6em}
-    \begin{tikzpicture}[font=\sffamily,
-        bx/.style={rounded corners=6pt, thick, inner sep=3.5mm, text width=8.8cm, align=center}]
-      \node[bx, draw=BaseDarkColor, fill=BaseColorD] (a) at (0,0)
-        {\large Klassische Nachimplementierung\\[0.2em]
-         {\fontsize{26}{28}\selectfont\bfseries\color{BaseDarkColor} $\approx$\,1 Monat}\\[0.1em]
-         \normalsize pro Methode -- 15 Methoden};
-      \node[bx, draw=FAUBlue, fill=BaseColorC, below=7mm of a] (b)
-        {\large Agent4CT\\[0.2em]
-         {\fontsize{26}{28}\selectfont\bfseries\color{FAUBlue} ein Wochenende}\\[0.1em]
-         \normalsize für alle zusammen};
-      \draw[-{Latex[length=3mm]}, very thick, draw=FAUBlue] (a) -- (b);
-      \node[below=6mm of b, text width=8.8cm, align=center, font=\sffamily\large]
-        {die Arbeit von \textbf{15--20 Doktorarbeiten}\\{\normalsize\color{BaseDarkColor}(nur die Nachimplementierung)}};
-    \end{tikzpicture}
-  \end{column}
-\end{columns}
-\vfill
-\begin{center}
-  {\small\ttfamily github.com/akmaier/Agent4CT}
-\end{center}
-\end{frame}
-
-% --------------------------------------------------------------------------
-% Living PRISMA Reviews, von Agenten erstellt.  Zahlen aus
-% github.com/akmaier/ActiveMatterLivingReview, _data/prisma_counts.yml
-% (Stand 2026-10-17), README.md und protocol/PROTOCOL.md.  Schreibzeit
-% "etwa fünf Monate" und "automatische monatliche Aktualisierung": Andreas,
-% 2026-10-28.  Das PRISMA-2020-Flussdiagramm ist in TikZ nachgezeichnet,
-% Begriffe nach der deutschen PRISMA-2020-Übersetzung.
-% --------------------------------------------------------------------------
-\begin{frame}[t]{Living PRISMA Reviews}{Systematische Übersichtsarbeiten im Agententempo}
-\vspace{0.2em}
-\begin{columns}[T]
-  \begin{column}{0.60\textwidth}
-    \centering
-    {\sffamily\bfseries\Large\color{FAUBlue} PRISMA-2020-Flussdiagramm}\\[0.3em]
-    \begin{tikzpicture}[font=\sffamily\large, scale=0.92, every node/.style={transform shape},
-        st/.style={draw=FAUBlue, line width=1pt, rounded corners=4pt, fill=BaseColorC,
-                   minimum width=8.6cm, minimum height=1.35cm, align=center},
-        ex/.style={draw=BaseColor, rounded corners=4pt, fill=white, text=BaseDarkColor,
-                   minimum width=5.6cm, minimum height=1.05cm, align=center, font=\sffamily\normalsize},
-        arr/.style={-{Latex[length=2.6mm]}, very thick, draw=FAUBlue},
-        ph/.style={rotate=90, font=\sffamily\bfseries\small, text=FAUBlue}]
-      \node[st] (id) at (0, 0)    {\textbf{15\,034} Datensätze identifiziert\\{\normalsize in 8 Datenbanken}};
-      \node[st] (sc) at (0,-2.5)  {\textbf{8\,699} Datensätze gescreent};
-      \node[st] (so) at (0,-4.8)  {\textbf{1\,276} Berichte angefordert};
-      \node[st] (as) at (0,-7.2)  {\textbf{976} Volltexte + \textbf{179} Abstracts\\auf Eignung geprüft};
-      \node[st, fill=FAUBlue, text=white] (in) at (0,-9.6) {\textbf{489} Studien eingeschlossen};
-      \draw[arr] (id) -- (sc); \draw[arr] (sc) -- (so);
-      \draw[arr] (so) -- (as); \draw[arr] (as) -- (in);
-      \foreach \y/\t in {-1.2/{6\,335 Duplikate entfernt}, -3.6/{7\,423 ausgeschlossen},
-                         -6.0/{300 nicht beschafft}, -8.4/{662 ausgeschlossen}} {
-        \node[ex, anchor=west] (x) at (5.0,\y) {\t};
-        \draw[-{Latex[length=2mm]}, thick, draw=BaseColor] (0,\y) -- (x.west);
-      }
-      \node[ph] at (-5.3,-0.6)  {Identifikation};
-      \node[ph] at (-5.3,-4.8)  {Screening};
-      \node[ph] at (-5.3,-9.0)  {Eingeschlossen};
-      \draw[FAUBlue!40, thick] (-4.95,0.9) -- (-4.95,-1.6) (-4.95,-1.9) -- (-4.95,-8.1) (-4.95,-8.4) -- (-4.95,-9.9);
-    \end{tikzpicture}
-  \end{column}
-  \begin{column}{0.38\textwidth}
-    \vspace{0.4em}
-    {\large Schreibzeit}\\[0.2em]
-    {\fontsize{30}{32}\selectfont\bfseries\color{BaseColor} $\sim$5 Monate}
-    {\fontsize{30}{32}\selectfont\bfseries\color{FAUBlue}\,$\rightarrow$ 7 Tage}\\[1.0em]
-    \begin{itemize}\itemsep=0.45em\large
-      \item \textbf{PRISMA 2020} durchgängig: Suche, Screening, Extraktion
-            durch drei LLMs; die Autoren validieren.
-      \item \textbf{Monatliche Aktualisierung}: ein \emph{lebendes} Review.
-      \item Erster Anwendungsfall: \textbf{robotische aktive Materie}.
-    \end{itemize}
-    \vspace{0.5em}
-    {\small\ttfamily akmaier.github.io/ActiveMatterLivingReview}
-  \end{column}
-\end{columns}
-\vfill
-\begin{center}
-  {\large\itshape\color{FAUBlue} Danke an Siming Bayer für die Idee!}
-\end{center}
-\vspace{0.1em}
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -879,17 +719,21 @@ Was bedeutet das für Wissenschaft und Publikationswesen?
 % freigegebene Passagen, zwei Interviews mit hohem Risiko vollständig
 % zurückgehalten, Daten CC BY 4.0), LICENSE (GPL-3.0).
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Qualitative Inhaltsanalyse mit KI}{Pflegeinterviews nach Mayring -- ein offener Workflow}
-\vspace{0.4em}
+% --------------------------------------------------------------------------
+% Qualitative Inhaltsanalyse mit KI -- konsolidiert auf eine Folie
+% (Workflow + Kernergebnisse + Link auf eine Seite).
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Qualitative Inhaltsanalyse mit KI}{Pflegeinterviews nach Mayring -- offener Workflow}
+\vspace{0.3em}
 \begin{columns}[T]
-  \begin{column}{0.52\textwidth}
+  \begin{column}{0.56\textwidth}
     \begin{tikzpicture}[font=\sffamily,
-        num/.style={circle, fill=FAUBlue, text=white, minimum size=1.15cm,
-                    font=\large\bfseries, inner sep=0pt},
-        hum/.style={num, fill=white, draw=FAUBlue, line width=1.5pt, text=FAUBlue},
-        txt/.style={anchor=west, font=\large, text width=13.2cm,
+        num/.style={circle, fill=FAUBlue, text=white, minimum size=1.0cm,
+                    font=\normalsize\bfseries, inner sep=0pt},
+        hum/.style={num, fill=white, draw=FAUBlue, line width=1.4pt, text=FAUBlue},
+        txt/.style={anchor=west, font=\normalsize, text width=13.2cm,
                     text height=2.0ex, text depth=0.6ex},
-        sub/.style={anchor=north west, font=\normalsize, text=BaseDarkColor, text width=13.2cm}]
+        sub/.style={anchor=north west, font=\small, text=BaseDarkColor, text width=13.2cm}]
       \foreach \i/\style/\t/\s in {
           1/num/{\textbf{Transkribieren}}/{Whisper, lokal -- Aufnahmen bleiben im Haus},
           2/num/{\textbf{Kategorien bilden} (induktiv)}/{LLMs schlagen Feinkategorien vor},
@@ -897,63 +741,32 @@ Was bedeutet das für Wissenschaft und Publikationswesen?
           4/num/{\textbf{Kategorien zuordnen} (deduktiv)}/{13 offene Modelle $\times$ 5 Seeds},
           5/hum/{\textbf{Kalibrieren}}/{LLM-Judge und zwei verblindete Gutachter},
           6/num/{\textbf{Veröffentlichen}}/{Daten, Code und Demonstrator}} {
-        \node[\style] (n\i) at (0, -1.85*\i) {\i};
-        \node[txt] (t\i) at (0.95, -1.85*\i+0.22) {\t};
-        \node[sub] at ($(t\i.south west)+(0,0.08)$) {\s};
+        \node[\style] (n\i) at (0, -1.55*\i) {\i};
+        \node[txt] (t\i) at (0.85, -1.55*\i+0.22) {\t};
+        \node[sub] at ($(t\i.south west)+(0,0.1)$) {\s};
       }
-      \node[hum, minimum size=0.6cm, font=\small] (lg) at (0,-12.6) {};
-      \node[anchor=west, font=\sffamily\normalsize, text=FAUBlue] at ($(lg.east)+(0.2,0)$)
-        {Schritt mit menschlicher Kontrolle};
     \end{tikzpicture}
   \end{column}
-  \begin{column}{0.46\textwidth}
-    \vspace{0.2em}
+  \begin{column}{0.42\textwidth}
+    \vspace{0.3em}
     \begin{tikzpicture}[font=\sffamily,
         tile/.style={draw=FAUBlue, line width=1pt, rounded corners=6pt, fill=BaseColorD,
-                     text width=13.0cm, inner sep=3mm, align=left}]
+                     text width=12.6cm, inner sep=3mm, align=left}]
       \node[tile] (a) at (0,0)
-        {{\large \textbf{685} Passagen \,\textbullet\, \textbf{27} Hauptkategorien}};
-      \node[tile, below=4mm of a] (b)
-        {\bignum{72\,\%}\hspace{0.5em}{\large exakte Übereinstimmung}\par
-         {\normalsize\color{BaseDarkColor} bestes Modell (Mistral-Large-4.0); Mehrheitsklasse: 13\,\%}};
-      \node[tile, below=4mm of b] (c)
-        {\bignum{91--99\,\%}\hspace{0.5em}{\large von Fachleuten akzeptiert}\par
-         {\normalsize\color{BaseDarkColor} Kimi-K3: 63\,\% exakt -- die meisten Abweichungen sind vertretbar}};
-      \node[tile, below=4mm of c] (d)
-        {\bignum{89--91\,\%}\hspace{0.5em}{\large im richtigen Themenfeld}\par
-         {\normalsize\color{BaseDarkColor} induktive Kategorien, ohne Kodierleitfaden}};
-      \node[below=5mm of d, text width=13.6cm, align=center, font=\sffamily\large\bfseries, text=FAUBlue]
-        {Gemeinsame Arbeit mit\\ Rita Zöllner und Silke Mages};
+        {{\normalsize \textbf{685} Passagen \,\textbullet\, \textbf{27} Hauptkategorien}};
+      \node[tile, below=3mm of a] (b)
+        {{\large\bfseries\color{FAUBlue} 72\,\%}\hspace{0.4em}{\normalsize exakte Übereinstimmung}\par
+         {\small\color{BaseDarkColor} bestes Modell; Mehrheitsklasse: 13\,\%}};
+      \node[tile, below=3mm of b] (c)
+        {{\large\bfseries\color{FAUBlue} 91--99\,\%}\hspace{0.4em}{\normalsize von Fachleuten akzeptiert}\par
+         {\small\color{BaseDarkColor} meist vertretbare Abweichungen}};
+      \node[tile, below=3mm of c] (d)
+        {{\large\bfseries\color{FAUBlue} 89--91\,\%}\hspace{0.4em}{\normalsize im richtigen Themenfeld}\par
+         {\small\color{BaseDarkColor} induktive Kategorien, ohne Kodierleitfaden}};
+      \node[below=4mm of d, text width=12.6cm, align=center, font=\sffamily\normalsize\bfseries, text=FAUBlue]
+        {Arbeit mit Rita Zöllner und Silke Mages\\
+         {\small\mdseries\ttfamily akmaier.github.io/German-nursing-interviews}};
     \end{tikzpicture}
-  \end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}[t]{Qualitative Inhaltsanalyse mit KI}{Offen und nachnutzbar}
-\vspace{0.2em}
-\begin{columns}[T]
-  \begin{column}{0.36\textwidth}
-    \centering
-    \fcolorbox{BaseColor}{white}{\includegraphics[height=12.2cm,keepaspectratio]{talk/nursing_demo.png}}
-  \end{column}
-  \begin{column}{0.40\textwidth}
-    \vspace{0.2em}
-    \begin{itemize}\itemsep=0.55em
-      \item \textbf{Daten unter CC BY 4.0}, Code unter GPL-3.0.
-      \item Kategoriensystem, Goldstandard, alle Modellvorhersagen,
-            Judge- und Gutachterurteile.
-      \item \textbf{307} geprüfte Passagen; zwei Interviews mit hohem
-            Reidentifikationsrisiko vollständig zurückgehalten.
-      \item Alle Ergebnistabellen ohne Modellzugang reproduzierbar.
-      \item Vorlage für eigene Interviewstudien: forken, \emph{Agent M}
-            führt durch die Pipeline.
-    \end{itemize}
-  \end{column}
-  \begin{column}{0.22\textwidth}
-    \centering
-    {\large\bfseries\color{FAUBlue} Live-Demonstrator}\\[0.5em]
-    \includegraphics[height=6.2cm]{talk/qr_nursing_demo.png}\\[0.4em]
-    {\footnotesize\ttfamily akmaier.github.io/\\German-nursing-interviews}
   \end{column}
 \end{columns}
 \end{frame}
@@ -1002,7 +815,7 @@ Was bedeutet das für Wissenschaft und Publikationswesen?
 % Wissenschaft im Agententempo -- Chancen und Risiken.  Die beiden Risiken
 % mit arXiv-Nummer sind die Paper von der Tempo-Folie.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Wissenschaft im Agententempo}{Chancen und Risiken}
+\begin{frame}[t]{Medizin im Agententempo}{Chancen und Risiken}
 \vspace{0.6em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
@@ -1015,18 +828,18 @@ Was bedeutet das für Wissenschaft und Publikationswesen?
   \node[pro, anchor=north] (p) at (-7.4,0) {%
     {\LARGE\bfseries\color{FAUBlue} Chancen}\\[0.6em]
     {\Large\begin{tabular}{@{}l@{}}
-      \textbullet\; Monate an Arbeit in Stunden.\\[0.6em]
-      \textbullet\; Paper ohne Code reproduzieren.\\[0.6em]
-      \textbullet\; Open Access für 150\,€.\\[0.6em]
-      \textbullet\; Programmieren für jede Disziplin.
+      \textbullet\; Hypothesen aus eigenen Daten.\\[0.6em]
+      \textbullet\; Tumorboards besser vorbereiten.\\[0.6em]
+      \textbullet\; Dokumentation \& Arztbriefe schneller.\\[0.6em]
+      \textbullet\; Studien-Matching für jede Patientin.
     \end{tabular}}};
   \node[con, anchor=north] (c) at ( 7.4,0) {%
     {\LARGE\bfseries\color{BaseDarkColor} Risiken}\\[0.6em]
     {\Large\begin{tabular}{@{}l@{}}
       \textbullet\; Plausibel ist nicht korrekt.\\[0.6em]
       \textbullet\; Halluzinierte Referenzen.\\[0.6em]
-      \textbullet\; KI-Detektoren in 3\,h ausgehebelt.\\[0.6em]
-      \textbullet\; Gesponserter Bias in 12 LLMs.
+      \textbullet\; Datenschutz \& Haftungsfragen.\\[0.6em]
+      \textbullet\; Gesponserter Bias in LLMs.
     \end{tabular}}};
 \end{tikzpicture}\\[0.6em]
 {\small\color{BaseDarkColor} Maier et al., arXiv:2605.02620 (Stildetektor)
@@ -1035,9 +848,44 @@ Was bedeutet das für Wissenschaft und Publikationswesen?
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Abschließende Empfehlungen (5x5-Stil)
+% Einfluss auf den klinischen Alltag -- konkrete Arbeitsflusseffekte
+% im Brustzentrum (neue Folie für Mamma-Symposium Ostsachsen).
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Was das für die Forschung bedeutet}{Fünf Regeln für die Arbeit mit Agenten}
+\begin{frame}[t]{Einfluss auf Arbeitsabläufe}{Was ändert sich im Brustzentrum konkret?}
+\vspace{0.4em}
+\begin{center}
+\begin{tikzpicture}[font=\sffamily,
+    card/.style={rounded corners=6pt, draw=FAUBlue, line width=1pt, fill=BaseColorC,
+                 inner sep=3mm, text width=13.2cm, align=left,
+                 minimum height=4.6cm,
+                 drop shadow={shadow xshift=0.6mm, shadow yshift=-0.6mm,
+                              opacity=0.30}},
+    head/.style={font=\large\bfseries, text=FAUBlue},
+    body/.style={font=\normalsize}]
+  % Zeile 1
+  \node[card] (tb) at (-7.1,0) {\head Tumorboard-Vorbereitung\par\vspace{0.2em}
+    \body Vollautomatische Patientenakten-Zusammenfassung,
+    Leitlinien-Abgleich und Vorauswahl relevanter Vorbefunde.};
+  \node[card, right=6mm of tb] (sm) {\head Studien-Matching\par\vspace{0.2em}
+    \body Agent liest Molekularbefund + Anamnese und schlägt alle
+    offenen Studien (z.\,B. PRAEGNANT) mit passenden Kriterien vor.};
+  % Zeile 2
+  \node[card, below=5mm of tb] (do) {\head Dokumentation \& Arztbrief\par\vspace{0.2em}
+    \body Diktat $\rightarrow$ Entwurf eines strukturierten
+    Berichts/Arztbriefs, mit Zitaten auf Quellen; Freigabe durch Arzt/Ärztin.};
+  \node[card, right=6mm of do] (zm) {\head Zweitmeinung \& Entscheidung\par\vspace{0.2em}
+    \body KI als zweite Lesestimme auf Bildgebung, Pathologie und
+    molekularer Diagnostik -- transparent, zitationsfähig,
+    nicht entscheidungsersetzend.};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Abschließende Empfehlungen -- fünf Regeln, an die klinische Arbeit
+% angepasst.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Was das für die klinische Arbeit bedeutet}{Fünf Regeln für die Arbeit mit Agenten}
 \vspace{0.6em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
@@ -1045,11 +893,11 @@ Was bedeutet das für Wissenschaft und Publikationswesen?
                 font=\LARGE\bfseries, inner sep=0pt},
     txt/.style={anchor=west, font=\LARGE,
                 text height=2.2ex, text depth=0.6ex}]
-  \foreach \i/\t in {1/{Prüfen statt tippen.},
-                     2/{Erst reproduzieren, dann aufbauen.},
-                     3/{Ein Git-gestütztes Laborbuch führen.},
-                     4/{Qualitätsprüfungen schreiben, nicht nur Prompts.},
-                     5/{KI-Nutzung offenlegen -- das letzte Wort behalten.}} {
+  \foreach \i/\t in {1/{Prüfen vor Übernahme -- jedes KI-Ergebnis validieren.},
+                     2/{Quellen nachvollziehbar -- Zitate und Herkunft prüfen.},
+                     3/{Datenschutz zuerst -- lokal verarbeiten, wo immer möglich.},
+                     4/{Qualitätssicherung eintakten -- Regressionen vermeiden.},
+                     5/{KI-Nutzung offenlegen -- das letzte Wort bleibt beim Arzt.}} {
     \node[num] (n\i) at (0, -2.0*\i) {\i};
     \node[txt] at (1.2, -2.0*\i) {\t};
   }
@@ -1061,14 +909,14 @@ Was bedeutet das für Wissenschaft und Publikationswesen?
 % Referenzen
 % --------------------------------------------------------------------------
 \begin{frame}[t]{Referenzen}
-\vspace*{-1.0em}
-\tiny
-\linespread{0.84}\selectfont
-\begin{itemize}\itemsep=-0.1em
+\vspace*{-0.4em}
+\scriptsize
+\linespread{0.92}\selectfont
+\begin{itemize}\itemsep=0.05em
   \item V.~Mnih et~al.,
         \emph{Playing Atari with Deep Reinforcement Learning},
         arXiv:1312.5602, 2013.
-  \item D.~Silver et al.,
+  \item D.~Silver et~al.,
         \emph{Mastering the game of Go with deep neural networks and tree search},
         \emph{Nature}, 529:484--489, 2016.
   \item \textbf{A.~Maier} et~al.,
@@ -1084,14 +932,12 @@ Was bedeutet das für Wissenschaft und Publikationswesen?
         \emph{Agentic MR sequence development: leveraging LLMs with MR skills
         for automatic physics-informed sequence development},
         arXiv:2604.13282, 2026 (Agent4MR).
+  \item \textbf{PRAEGNANT}-Studie (metastasiertes Mammakarzinom,
+        Fasching et~al.): \url{https://praegnant.org}
   \item Deutscher Zukunftspreis (Niederfeld-MRT):
         \url{https://www.deutscher-zukunftspreis.de}
   \item Agent M -- Begleitwerkzeug zum Buch \emph{Vibe Coding}:
         \url{https://github.com/akmaier/agent-m}
-  \item Konferenzstatistik-Werkzeug:
-        \url{https://github.com/akmaier/ConferenceStats}
-  \item Agent4CT -- agentische Nachimplementierung von CT-Methoden:
-        \url{https://github.com/akmaier/Agent4CT}
   \item \textbf{A.~Maier}, M.~Zaiss und S.~Bayer,
         \emph{Beating the Style Detector: Three Hours of Agentic
         Research on the AI-Text Arms Race},
@@ -1101,18 +947,6 @@ Was bedeutet das für Wissenschaft und Publikationswesen?
         \emph{Just Ask for a Table: A Thirty-Token User Prompt
         Defeats Sponsored Recommendations in Twelve LLMs},
         arXiv:2605.12772, 2026.
-  \item \emph{IfCampoKnew}\,\textendash\,200 Studiengänge und
-        KI-RAG-Chatbot:
-        \url{https://github.com/akmaier/IfCampoKnew}
-  \item \emph{UnderstandingVCS}\,\textendash\,ATARI-VCS-Emulator:
-        \url{https://github.com/akmaier/UnderstandingVCS}
-  \item \textbf{A.~K.~Maier}, S.~Bayer und W.~Han,
-        \emph{Combining rater fusion and time fusion for coronary centerline
-        extraction from single-plane angiography}, SPIE Medical Imaging 2027 (angenommen);
-        Code: \url{https://github.com/akmaier/VesselROVER}
-  \item \textbf{A.~Maier}, S.~Bayer et~al.,
-        \emph{A Living Systematic Review of Robotic Active Matter}:
-        \url{https://akmaier.github.io/ActiveMatterLivingReview}
   \item R.~Zöllner, S.~Mages und \textbf{A.~Maier},
         \emph{An open workflow for Mayring qualitative content analysis of
         nursing interviews with large language models and artificial
@@ -1131,7 +965,7 @@ Was bedeutet das für Wissenschaft und Publikationswesen?
     \centering
     {\Large Folien auf GitHub}\\[0.8em]
     \includegraphics[height=8.4cm]{talk/qr_github.png}\\[0.5em]
-    {\scriptsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/bvb-verbundkonferenz-2026}
+    {\scriptsize\ttfamily github.com/akmaier/AIMed2026Slides/tree/mamma-ostsachsen-2026}
   \end{column}
   \begin{column}{0.5\textwidth}
     \centering
