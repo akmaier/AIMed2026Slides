@@ -593,6 +593,18 @@ Wie sieht echte agentische KI aus?
 \end{center}
 \end{frame}
 
+\begin{frame}[t]{Was ist agentische KI?}{Fortgeschrittene KI-gestützte Techniken}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_11_02.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Was ist agentische KI?}{Markdown-gesteuerte Qualitätssicherung}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_11_03.png}
+\end{center}
+\end{frame}
+
 \begin{frame}[t]{Was ist agentische KI?}{Lehrbuch}
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
@@ -772,6 +784,52 @@ in einem gemeinsamen Repräsentationsraum:
 \end{frame}
 
 % --------------------------------------------------------------------------
+% Agent4CT + Living PRISMA Reviews auf einer kombinierten Folie
+% (zwei Beispiele dafür, was agentische KI heute kann).
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Agent4CT \& Living PRISMA}{Zwei Beispiele für Agententempo}
+\vspace{0.3em}
+\begin{columns}[T]
+  \begin{column}{0.48\textwidth}
+    \centering
+    {\large\bfseries\color{FAUBlue} Agent4CT}\\[0.3em]
+    \begin{tikzpicture}[font=\sffamily,
+        bx/.style={rounded corners=6pt, thick, inner sep=3mm, text width=12.4cm, align=center}]
+      \node[bx, draw=BaseDarkColor, fill=BaseColorD] (a) at (0,0)
+        {\normalsize Klassische Nachimplementierung\\[0.15em]
+         {\fontsize{22}{24}\selectfont\bfseries\color{BaseDarkColor} $\approx$\,1 Monat}\\[0.05em]
+         \small pro Methode -- 15 Methoden};
+      \node[bx, draw=FAUBlue, fill=BaseColorC, below=5mm of a] (b)
+        {\normalsize Agent4CT\\[0.15em]
+         {\fontsize{22}{24}\selectfont\bfseries\color{FAUBlue} ein Wochenende}\\[0.05em]
+         \small für alle zusammen};
+      \draw[-{Latex[length=3mm]}, very thick, draw=FAUBlue] (a) -- (b);
+    \end{tikzpicture}\\[0.3em]
+    {\footnotesize 5 Agenten, 5 CT-Challenges, gemeinsames Scratchpad;\\
+     FBP, TV, VN, Primal-Dual, Diffusion, \dots}\\[0.2em]
+    {\small\ttfamily github.com/akmaier/Agent4CT}
+  \end{column}
+  \begin{column}{0.48\textwidth}
+    \centering
+    {\large\bfseries\color{FAUBlue} Living PRISMA Reviews}\\[0.3em]
+    \begin{tikzpicture}[font=\sffamily,
+        bx/.style={rounded corners=6pt, thick, inner sep=3mm, text width=12.4cm, align=center}]
+      \node[bx, draw=BaseDarkColor, fill=BaseColorD] (a) at (0,0)
+        {\normalsize Klassische Review-Schreibzeit\\[0.15em]
+         {\fontsize{22}{24}\selectfont\bfseries\color{BaseDarkColor} $\sim$5 Monate}};
+      \node[bx, draw=FAUBlue, fill=BaseColorC, below=5mm of a] (b)
+        {\normalsize Agent-gestützt (PRISMA 2020)\\[0.15em]
+         {\fontsize{22}{24}\selectfont\bfseries\color{FAUBlue} 7 Tage}};
+      \draw[-{Latex[length=3mm]}, very thick, draw=FAUBlue] (a) -- (b);
+    \end{tikzpicture}\\[0.3em]
+    {\footnotesize 15.034 identifiziert $\rightarrow$ 489 Studien eingeschlossen;\\
+     monatliche automatische Aktualisierung.}\\[0.2em]
+    {\small\ttfamily akmaier.github.io/ActiveMatterLivingReview}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------------
 % Tempo agentischer KI (wie auf gdlh-gesundheitsdaten-2026)
 % --------------------------------------------------------------------------
 \begin{frame}[t]{Tempo agentischer KI}{Von der Idee zum funktionierenden Ergebnis}
@@ -815,7 +873,7 @@ in einem gemeinsamen Repräsentationsraum:
 % Wissenschaft im Agententempo -- Chancen und Risiken.  Die beiden Risiken
 % mit arXiv-Nummer sind die Paper von der Tempo-Folie.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Medizin im Agententempo}{Chancen und Risiken}
+\begin{frame}[t]{Wissenschaft im Agententempo}{Chancen und Risiken}
 \vspace{0.6em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
@@ -828,18 +886,18 @@ in einem gemeinsamen Repräsentationsraum:
   \node[pro, anchor=north] (p) at (-7.4,0) {%
     {\LARGE\bfseries\color{FAUBlue} Chancen}\\[0.6em]
     {\Large\begin{tabular}{@{}l@{}}
-      \textbullet\; Hypothesen aus eigenen Daten.\\[0.6em]
-      \textbullet\; Tumorboards besser vorbereiten.\\[0.6em]
-      \textbullet\; Dokumentation \& Arztbriefe schneller.\\[0.6em]
-      \textbullet\; Studien-Matching für jede Patientin.
+      \textbullet\; Monate an Arbeit in Stunden.\\[0.6em]
+      \textbullet\; Paper ohne Code reproduzieren.\\[0.6em]
+      \textbullet\; Open Access für 150\,€.\\[0.6em]
+      \textbullet\; Programmieren für jede Disziplin.
     \end{tabular}}};
   \node[con, anchor=north] (c) at ( 7.4,0) {%
     {\LARGE\bfseries\color{BaseDarkColor} Risiken}\\[0.6em]
     {\Large\begin{tabular}{@{}l@{}}
       \textbullet\; Plausibel ist nicht korrekt.\\[0.6em]
       \textbullet\; Halluzinierte Referenzen.\\[0.6em]
-      \textbullet\; Datenschutz \& Haftungsfragen.\\[0.6em]
-      \textbullet\; Gesponserter Bias in LLMs.
+      \textbullet\; KI-Detektoren in 3\,h ausgehebelt.\\[0.6em]
+      \textbullet\; Gesponserter Bias in 12 LLMs.
     \end{tabular}}};
 \end{tikzpicture}\\[0.6em]
 {\small\color{BaseDarkColor} Maier et al., arXiv:2605.02620 (Stildetektor)
@@ -882,10 +940,9 @@ in einem gemeinsamen Repräsentationsraum:
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Abschließende Empfehlungen -- fünf Regeln, an die klinische Arbeit
-% angepasst.
+% Abschließende Empfehlungen (5x5-Stil)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Was das für die klinische Arbeit bedeutet}{Fünf Regeln für die Arbeit mit Agenten}
+\begin{frame}[t]{Was das für die Forschung bedeutet}{Fünf Regeln für die Arbeit mit Agenten}
 \vspace{0.6em}
 \begin{center}
 \begin{tikzpicture}[font=\sffamily,
@@ -893,11 +950,11 @@ in einem gemeinsamen Repräsentationsraum:
                 font=\LARGE\bfseries, inner sep=0pt},
     txt/.style={anchor=west, font=\LARGE,
                 text height=2.2ex, text depth=0.6ex}]
-  \foreach \i/\t in {1/{Prüfen vor Übernahme -- jedes KI-Ergebnis validieren.},
-                     2/{Quellen nachvollziehbar -- Zitate und Herkunft prüfen.},
-                     3/{Datenschutz zuerst -- lokal verarbeiten, wo immer möglich.},
-                     4/{Qualitätssicherung eintakten -- Regressionen vermeiden.},
-                     5/{KI-Nutzung offenlegen -- das letzte Wort bleibt beim Arzt.}} {
+  \foreach \i/\t in {1/{Prüfen statt tippen.},
+                     2/{Erst reproduzieren, dann aufbauen.},
+                     3/{Ein Git-gestütztes Laborbuch führen.},
+                     4/{Qualitätsprüfungen schreiben, nicht nur Prompts.},
+                     5/{KI-Nutzung offenlegen -- das letzte Wort behalten.}} {
     \node[num] (n\i) at (0, -2.0*\i) {\i};
     \node[txt] at (1.2, -2.0*\i) {\t};
   }

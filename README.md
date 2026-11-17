@@ -65,7 +65,7 @@ den Live-Demonstrator der Pflegeinterviews).
 ## Inhalt
 
 * `output_tex/main.tex` — LaTeX-Quelle (ngerman)
-* `output_tex/main.pdf` — fertiges Deck (48 Folien)
+* `output_tex/main.pdf` — fertiges Deck (51 Folien)
 * `KI_in_Big_Data_Mamma_Ostsachsen_2026.pptx` — PowerPoint mit eingebetteten
   Spin-Echo-EPI-GIFs auf den Folien *„Mensch als Referenz"*,
   *„Versuch von GPT-4o"* und *„Versuch von GROK-3-think"*
