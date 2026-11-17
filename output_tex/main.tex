@@ -6,13 +6,15 @@
 % Eingeladen von Christin Keßner, organisatorische Leitung Brustzentrum Zittau.
 % Branch `mamma-ostsachsen-2026`, geforkt von `bvb-verbundkonferenz-2026`:
 % Teamfoto, Geschichte, Forschungsschwerpunkte, Deep Learning, agentische KI
-% und Spin-Echo-EPI-Demo bleiben; die herz-/koronar-spezifischen Methoden-
-% folien, die "Fast alles ist jetzt einfach"-Konferenzstatistik, die
-% Publikations-/Agent4CT-/Living-PRISMA-Folien entfallen.  Zwei neue PRAEGNANT-
-% Folien aus `de-msd-senso` (multimodale Datenintegration + Hypothesen-Loop)
-% und eine neue Abschlussfolie zu konkreten Arbeitsflusseffekten im Brust-
-% zentrum (Tumorboard, Studien-Matching, Dokumentation, Zweitmeinung) sind
-% dazugekommen.  Nursing-Interviews stehen auf einer konsolidierten Folie.
+% und Spin-Echo-EPI-Demo bleiben, ebenso "Fast alles ist jetzt einfach"
+% (direkt nach Agent M) sowie Agent4CT und Living PRISMA (je eine Folie, wie
+% auf BVB); die herz-/koronar-spezifischen Methodenfolien und die
+% Publikationsfolie entfallen.  Zwei neue PRAEGNANT-Folien aus `de-msd-senso`
+% (multimodale Datenintegration + Hypothesen-Loop) stehen mit dem Abschnitts-
+% trenner "Was bedeutet das für die Arbeit im Brustzentrum?" nach der Tempo-
+% Folie; dazu eine neue Abschlussfolie zu konkreten Arbeitsflusseffekten im
+% Brustzentrum (Tumorboard, Studien-Matching, Dokumentation, Zweitmeinung).
+% Nursing-Interviews stehen auf einer konsolidierten Folie.
 %
 % Farben ausschließlich aus dem FAU-Template (institute=Tech, fau-colors.sty):
 % FAUBlue für Hervorhebungen, BaseColor/BaseDarkColor (TechMetallic /
@@ -633,91 +635,34 @@ Wie sieht echte agentische KI aus?
 % Abschnittstrenner
 % --------------------------------------------------------------------------
 \begin{frame}[t,title]{-}
-Was bedeutet das für die Arbeit im Brustzentrum?
+Fast alles ist jetzt einfach\dots
 \end{frame}
 
 % --------------------------------------------------------------------------
-% PRAEGNANT-Integration (zwei Folien aus de-msd-senso): multimodale Basis-
-% modelle in der Onkologie und der Generieren -> Verifizieren -> Falsifizieren-
-% Loop am Beispiel PRAEGNANT (metastasiertes Mammakarzinom, Fasching et al.).
+% Fast alles ist jetzt einfach (4 Unterfolien)
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Basismodelle}{Multimodale Datenintegration in der Onkologie}
-\vspace{0.2em}
-Multimodale Basismodelle vereinen sehr unterschiedliche Datenquellen
-in einem gemeinsamen Repräsentationsraum:
-\vspace{0.4em}
-\begin{columns}[T]
-  \begin{column}{0.49\textwidth}
-    \begin{itemize}\itemsep=0.15em\small
-      \item \textbf{Multi-Omics:} Genom, Transkriptom, Proteom,
-            Methylom.
-      \item \textbf{Bildgebung:} CT, MRT, PET, Histopathologie,
-            Mammographie.
-      \item \textbf{Sprache:} Anamnese, Tumorboard-Mitschnitte,
-            Arztbriefe.
-    \end{itemize}
-  \end{column}
-  \begin{column}{0.49\textwidth}
-    \begin{itemize}\itemsep=0.15em\small
-      \item \textbf{Labordaten:} Blutwerte, Tumormarker,
-            therapiebegleitende Verlaufsparameter.
-      \item \textbf{LLMs:} Fachliteratur, Leitlinien,
-            Studienprotokolle.
-      \item \textbf{Simulationen:} Pharmakokinetik,
-            Behandlungssimulationen, \emph{Digital Twins}.
-    \end{itemize}
-  \end{column}
-\end{columns}
-\vspace{0.6em}
-\begin{center}\small
-  $\Rightarrow$ Ein gemeinsames Modell anstelle vieler isolierter Werkzeuge.
-\end{center}
-\end{frame}
-
-\begin{frame}[t]{Basismodelle}{Hypothesen aus Studiendaten -- PRAEGNANT}
-\vspace{0.1em}
-\begin{itemize}\itemsep=0.15em\small
-  \item \textbf{PRAEGNANT}: deutsches akademisches Studiennetzwerk zum
-        fortgeschrittenen Mammakarzinom (Fasching et~al.); Tumorgewebe,
-        Blut, Biomarker und Patient-Reported Outcomes aus vielen
-        Zentren und tausenden Patientinnen
-        ({\ttfamily praegnant.org}).
-\end{itemize}
-\vspace{0.3em}
+\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{China und KI}
 \begin{center}
-\begin{tikzpicture}[
-    every node/.style={font=\small\bfseries},
-    box/.style={draw, rounded corners=3pt, thick, minimum height=1.1cm,
-                minimum width=3.2cm, text width=3.0cm, align=center,
-                drop shadow={shadow xshift=0.6mm, shadow yshift=-0.6mm,
-                             opacity=0.35}},
-    gen/.style ={box, fill=blue!12,   draw=blue!60!black},
-    ver/.style ={box, fill=green!14,  draw=green!50!black},
-    fal/.style ={box, fill=orange!18, draw=orange!70!black},
-    arr/.style ={-{Latex[length=3mm]}, thick}
-  ]
-  \node[gen]                    (g) {Generieren\\\small\mdseries Hypothesen aus den Daten};
-  \node[ver, right=10mm of g]   (v) {Verifizieren\\\small\mdseries Kohorte, Subgruppe};
-  \node[fal, right=10mm of v]   (f) {Falsifizieren\\\small\mdseries gezielte Gegenprobe};
-  \draw[arr] (g) -- (v);
-  \draw[arr] (v) -- (f);
-  \draw[arr, dashed] (f.south) to[bend left=45] (g.south);
-\end{tikzpicture}
+  \includegraphics[height=.78\textheight]{img_13_01.png}
 \end{center}
-\vspace{0.3em}
-\begin{itemize}\itemsep=0.15em\small
-  \item Das Basismodell schlägt aus den vereinheitlichten
-        Multi-Omics-, Bildgebungs- und Klinikdaten \emph{neue
-        Hypothesen} vor (z.\,B. Mutations-Therapie-Interaktionen,
-        Bildmarker für das Therapieansprechen).
-  \item \emph{Verifikation} per simulierter und retrospektiver
-        Subgruppenanalyse in PRAEGNANT-ähnlichen Kohorten;
-        \emph{Falsifikation} per gezielter Gegenprobe -- alles
-        automatisch protokolliert und für Klinikerinnen und Kliniker
-        nachvollziehbar.
-  \item Ergebnis: vom Datensatz zu prüfbaren Studienhypothesen in
-        Stunden statt Monaten.
-\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{Konferenzanteile}
+\begin{center}
+  \includegraphics[width=.9\textwidth]{img_13_02.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{ConferenceStats-Workflow}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_13_03.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Fast alles ist jetzt einfach\dots}{Konferenzbeiträge aus China}
+\begin{center}
+  \includegraphics[height=.78\textheight]{img_13_04.png}
+\end{center}
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -784,49 +729,115 @@ in einem gemeinsamen Repräsentationsraum:
 \end{frame}
 
 % --------------------------------------------------------------------------
-% Agent4CT + Living PRISMA Reviews auf einer kombinierten Folie
-% (zwei Beispiele dafür, was agentische KI heute kann).
+% Agent4CT -- Projektüberblick als Diagramm.  Quelle: github.com/akmaier/Agent4CT.
 % --------------------------------------------------------------------------
-\begin{frame}[t]{Agent4CT \& Living PRISMA}{Zwei Beispiele für Agententempo}
-\vspace{0.3em}
+\begin{frame}[t]{Agent4CT}{Alle Deep-Learning-CT-Methoden an einem Wochenende}
+\vspace{0.2em}
 \begin{columns}[T]
-  \begin{column}{0.48\textwidth}
+  \begin{column}{0.65\textwidth}
     \centering
-    {\large\bfseries\color{FAUBlue} Agent4CT}\\[0.3em]
     \begin{tikzpicture}[font=\sffamily,
-        bx/.style={rounded corners=6pt, thick, inner sep=3mm, text width=12.4cm, align=center}]
-      \node[bx, draw=BaseDarkColor, fill=BaseColorD] (a) at (0,0)
-        {\normalsize Klassische Nachimplementierung\\[0.15em]
-         {\fontsize{22}{24}\selectfont\bfseries\color{BaseDarkColor} $\approx$\,1 Monat}\\[0.05em]
-         \small pro Methode -- 15 Methoden};
-      \node[bx, draw=FAUBlue, fill=BaseColorC, below=5mm of a] (b)
-        {\normalsize Agent4CT\\[0.15em]
-         {\fontsize{22}{24}\selectfont\bfseries\color{FAUBlue} ein Wochenende}\\[0.05em]
-         \small für alle zusammen};
-      \draw[-{Latex[length=3mm]}, very thick, draw=FAUBlue] (a) -- (b);
-    \end{tikzpicture}\\[0.3em]
-    {\footnotesize 5 Agenten, 5 CT-Challenges, gemeinsames Scratchpad;\\
-     FBP, TV, VN, Primal-Dual, Diffusion, \dots}\\[0.2em]
-    {\small\ttfamily github.com/akmaier/Agent4CT}
+        hub/.style={circle, fill=FAUBlue, text=white, minimum size=3.9cm, inner sep=1mm, align=center,
+                    font=\sffamily\normalsize},
+        cat/.style={draw=FAUBlue, line width=1pt, rounded corners=5pt, fill=BaseColorC,
+                    text width=6.9cm, minimum height=2.1cm, align=center, inner sep=1.5mm},
+        lnk/.style={thick, draw=FAUBlue!60}]
+      \node[hub] (h) at (0,0) {\textbf{\Large Agent4CT}\\[0.2em]5 Agenten\\5 CT-Challenges\\gemeinsames\\Scratchpad};
+      \foreach \pos/\head/\list [count=\i] in {
+          {-6.6, 3.5}/Analytisch/{FBP (PyroNN)},
+          {-6.6, 0.0}/Klassisch-iterativ/{TV; Wu et~al.\ 2015},
+          {-6.6,-3.5}/Neuronale Felder/{NAF; R2Gaussian},
+          { 6.6, 3.5}/Variational \& unrolled/{VN; Primal-Dual; ITNet},
+          { 6.6, 0.0}/Denoising/{Dual-Domain-U-Net; bilaterale Filter},
+          { 6.6,-3.5}/Foundation \& Diffusion/{RAM; DDPM; Diffusions-Priors; U-Swin}} {
+        \node[cat] (c\i) at (\pos) {\textbf{\head}\\[0.15em]{\normalsize \list}};
+        \draw[lnk] (h) -- (c\i);
+      }
+    \end{tikzpicture}
   \end{column}
-  \begin{column}{0.48\textwidth}
-    \centering
-    {\large\bfseries\color{FAUBlue} Living PRISMA Reviews}\\[0.3em]
+  \begin{column}{0.33\textwidth}
+    \vspace{0.6em}
     \begin{tikzpicture}[font=\sffamily,
-        bx/.style={rounded corners=6pt, thick, inner sep=3mm, text width=12.4cm, align=center}]
+        bx/.style={rounded corners=6pt, thick, inner sep=3.5mm, text width=8.8cm, align=center}]
       \node[bx, draw=BaseDarkColor, fill=BaseColorD] (a) at (0,0)
-        {\normalsize Klassische Review-Schreibzeit\\[0.15em]
-         {\fontsize{22}{24}\selectfont\bfseries\color{BaseDarkColor} $\sim$5 Monate}};
-      \node[bx, draw=FAUBlue, fill=BaseColorC, below=5mm of a] (b)
-        {\normalsize Agent-gestützt (PRISMA 2020)\\[0.15em]
-         {\fontsize{22}{24}\selectfont\bfseries\color{FAUBlue} 7 Tage}};
+        {\large Klassische Nachimplementierung\\[0.2em]
+         {\fontsize{26}{28}\selectfont\bfseries\color{BaseDarkColor} $\approx$\,1 Monat}\\[0.1em]
+         \normalsize pro Methode -- 15 Methoden};
+      \node[bx, draw=FAUBlue, fill=BaseColorC, below=7mm of a] (b)
+        {\large Agent4CT\\[0.2em]
+         {\fontsize{26}{28}\selectfont\bfseries\color{FAUBlue} ein Wochenende}\\[0.1em]
+         \normalsize für alle zusammen};
       \draw[-{Latex[length=3mm]}, very thick, draw=FAUBlue] (a) -- (b);
-    \end{tikzpicture}\\[0.3em]
-    {\footnotesize 15.034 identifiziert $\rightarrow$ 489 Studien eingeschlossen;\\
-     monatliche automatische Aktualisierung.}\\[0.2em]
+      \node[below=6mm of b, text width=8.8cm, align=center, font=\sffamily\large]
+        {die Arbeit von \textbf{15--20 Doktorarbeiten}\\{\normalsize\color{BaseDarkColor}(nur die Nachimplementierung)}};
+    \end{tikzpicture}
+  \end{column}
+\end{columns}
+\vfill
+\begin{center}
+  {\small\ttfamily github.com/akmaier/Agent4CT}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Living PRISMA Reviews, von Agenten erstellt.  Zahlen aus
+% github.com/akmaier/ActiveMatterLivingReview, _data/prisma_counts.yml
+% (Stand 2026-10-17), README.md und protocol/PROTOCOL.md.  Schreibzeit
+% "etwa fünf Monate" und "automatische monatliche Aktualisierung": Andreas,
+% 2026-10-28.  Das PRISMA-2020-Flussdiagramm ist in TikZ nachgezeichnet,
+% Begriffe nach der deutschen PRISMA-2020-Übersetzung.
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Living PRISMA Reviews}{Systematische Übersichtsarbeiten im Agententempo}
+\vspace{0.2em}
+\begin{columns}[T]
+  \begin{column}{0.60\textwidth}
+    \centering
+    {\sffamily\bfseries\Large\color{FAUBlue} PRISMA-2020-Flussdiagramm}\\[0.3em]
+    \begin{tikzpicture}[font=\sffamily\large, scale=0.92, every node/.style={transform shape},
+        st/.style={draw=FAUBlue, line width=1pt, rounded corners=4pt, fill=BaseColorC,
+                   minimum width=8.6cm, minimum height=1.35cm, align=center},
+        ex/.style={draw=BaseColor, rounded corners=4pt, fill=white, text=BaseDarkColor,
+                   minimum width=5.6cm, minimum height=1.05cm, align=center, font=\sffamily\normalsize},
+        arr/.style={-{Latex[length=2.6mm]}, very thick, draw=FAUBlue},
+        ph/.style={rotate=90, font=\sffamily\bfseries\small, text=FAUBlue}]
+      \node[st] (id) at (0, 0)    {\textbf{15\,034} Datensätze identifiziert\\{\normalsize in 8 Datenbanken}};
+      \node[st] (sc) at (0,-2.5)  {\textbf{8\,699} Datensätze gescreent};
+      \node[st] (so) at (0,-4.8)  {\textbf{1\,276} Berichte angefordert};
+      \node[st] (as) at (0,-7.2)  {\textbf{976} Volltexte + \textbf{179} Abstracts\\auf Eignung geprüft};
+      \node[st, fill=FAUBlue, text=white] (in) at (0,-9.6) {\textbf{489} Studien eingeschlossen};
+      \draw[arr] (id) -- (sc); \draw[arr] (sc) -- (so);
+      \draw[arr] (so) -- (as); \draw[arr] (as) -- (in);
+      \foreach \y/\t in {-1.2/{6\,335 Duplikate entfernt}, -3.6/{7\,423 ausgeschlossen},
+                         -6.0/{300 nicht beschafft}, -8.4/{662 ausgeschlossen}} {
+        \node[ex, anchor=west] (x) at (5.0,\y) {\t};
+        \draw[-{Latex[length=2mm]}, thick, draw=BaseColor] (0,\y) -- (x.west);
+      }
+      \node[ph] at (-5.3,-0.6)  {Identifikation};
+      \node[ph] at (-5.3,-4.8)  {Screening};
+      \node[ph] at (-5.3,-9.0)  {Eingeschlossen};
+      \draw[FAUBlue!40, thick] (-4.95,0.9) -- (-4.95,-1.6) (-4.95,-1.9) -- (-4.95,-8.1) (-4.95,-8.4) -- (-4.95,-9.9);
+    \end{tikzpicture}
+  \end{column}
+  \begin{column}{0.38\textwidth}
+    \vspace{0.4em}
+    {\large Schreibzeit}\\[0.2em]
+    {\fontsize{30}{32}\selectfont\bfseries\color{BaseColor} $\sim$5 Monate}
+    {\fontsize{30}{32}\selectfont\bfseries\color{FAUBlue}\,$\rightarrow$ 7 Tage}\\[1.0em]
+    \begin{itemize}\itemsep=0.45em\large
+      \item \textbf{PRISMA 2020} durchgängig: Suche, Screening, Extraktion
+            durch drei LLMs; die Autoren validieren.
+      \item \textbf{Monatliche Aktualisierung}: ein \emph{lebendes} Review.
+      \item Erster Anwendungsfall: \textbf{robotische aktive Materie}.
+    \end{itemize}
+    \vspace{0.5em}
     {\small\ttfamily akmaier.github.io/ActiveMatterLivingReview}
   \end{column}
 \end{columns}
+\vfill
+\begin{center}
+  {\large\itshape\color{FAUBlue} Danke an Siming Bayer für die Idee!}
+\end{center}
+\vspace{0.1em}
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -867,6 +878,95 @@ in einem gemeinsamen Repräsentationsraum:
     {github.com/akmaier/UnderstandingVCS};
 \end{tikzpicture}
 \end{center}
+\end{frame}
+
+% --------------------------------------------------------------------------
+% Abschnittstrenner
+% --------------------------------------------------------------------------
+\begin{frame}[t,title]{-}
+Was bedeutet das für die Arbeit im Brustzentrum?
+\end{frame}
+
+% --------------------------------------------------------------------------
+% PRAEGNANT-Integration (zwei Folien aus de-msd-senso): multimodale Basis-
+% modelle in der Onkologie und der Generieren -> Verifizieren -> Falsifizieren-
+% Loop am Beispiel PRAEGNANT (metastasiertes Mammakarzinom, Fasching et al.).
+% --------------------------------------------------------------------------
+\begin{frame}[t]{Basismodelle}{Multimodale Datenintegration in der Onkologie}
+\vspace{0.2em}
+Multimodale Basismodelle vereinen sehr unterschiedliche Datenquellen
+in einem gemeinsamen Repräsentationsraum:
+\vspace{0.4em}
+\begin{columns}[T]
+  \begin{column}{0.49\textwidth}
+    \begin{itemize}\itemsep=0.15em\small
+      \item \textbf{Multi-Omics:} Genom, Transkriptom, Proteom,
+            Methylom.
+      \item \textbf{Bildgebung:} CT, MRT, PET, Histopathologie,
+            Mammographie.
+      \item \textbf{Sprache:} Anamnese, Tumorboard-Mitschnitte,
+            Arztbriefe.
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.49\textwidth}
+    \begin{itemize}\itemsep=0.15em\small
+      \item \textbf{Labordaten:} Blutwerte, Tumormarker,
+            therapiebegleitende Verlaufsparameter.
+      \item \textbf{LLMs:} Fachliteratur, Leitlinien,
+            Studienprotokolle.
+      \item \textbf{Simulationen:} Pharmakokinetik,
+            Behandlungssimulationen, \emph{Digital Twins}.
+    \end{itemize}
+  \end{column}
+\end{columns}
+\vspace{0.6em}
+\begin{center}\small
+  $\Rightarrow$ Ein gemeinsames Modell anstelle vieler isolierter Werkzeuge.
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Basismodelle}{Hypothesen aus Studiendaten -- PRAEGNANT}
+\vspace{0.1em}
+\begin{itemize}\itemsep=0.15em\small
+  \item \textbf{PRAEGNANT}: deutsches akademisches Studiennetzwerk zum
+        fortgeschrittenen Mammakarzinom (Fasching et~al.); Tumorgewebe,
+        Blut, Biomarker und Patient-Reported Outcomes aus vielen
+        Zentren und tausenden Patientinnen
+        ({\ttfamily praegnant.org}).
+\end{itemize}
+\vspace{0.3em}
+\begin{center}
+\begin{tikzpicture}[
+    every node/.style={font=\small\bfseries},
+    box/.style={draw=FAUBlue, line width=1pt, rounded corners=5pt, minimum height=1.1cm,
+                minimum width=3.2cm, text width=3.0cm, align=center},
+    gen/.style ={box, fill=FAUBlue, text=white},
+    ver/.style ={box, fill=BaseColorC},
+    fal/.style ={box, fill=BaseColorD},
+    arr/.style ={-{Latex[length=3mm]}, thick, draw=FAUBlue}
+  ]
+  \node[gen]                    (g) {Generieren\\\small\mdseries Hypothesen aus den Daten};
+  \node[ver, right=10mm of g]   (v) {Verifizieren\\\small\mdseries Kohorte, Subgruppe};
+  \node[fal, right=10mm of v]   (f) {Falsifizieren\\\small\mdseries gezielte Gegenprobe};
+  \draw[arr] (g) -- (v);
+  \draw[arr] (v) -- (f);
+  \draw[arr, dashed] (f.south) to[bend left=45] (g.south);
+\end{tikzpicture}
+\end{center}
+\vspace{0.3em}
+\begin{itemize}\itemsep=0.15em\small
+  \item Das Basismodell schlägt aus den vereinheitlichten
+        Multi-Omics-, Bildgebungs- und Klinikdaten \emph{neue
+        Hypothesen} vor (z.\,B. Mutations-Therapie-Interaktionen,
+        Bildmarker für das Therapieansprechen).
+  \item \emph{Verifikation} per simulierter und retrospektiver
+        Subgruppenanalyse in PRAEGNANT-ähnlichen Kohorten;
+        \emph{Falsifikation} per gezielter Gegenprobe -- alles
+        automatisch protokolliert und für Klinikerinnen und Kliniker
+        nachvollziehbar.
+  \item Ergebnis: vom Datensatz zu prüfbaren Studienhypothesen in
+        Stunden statt Monaten.
+\end{itemize}
 \end{frame}
 
 % --------------------------------------------------------------------------
@@ -966,10 +1066,10 @@ in einem gemeinsamen Repräsentationsraum:
 % Referenzen
 % --------------------------------------------------------------------------
 \begin{frame}[t]{Referenzen}
-\vspace*{-0.4em}
+\vspace*{-0.8em}
 \scriptsize
-\linespread{0.92}\selectfont
-\begin{itemize}\itemsep=0.05em
+\linespread{0.88}\selectfont
+\begin{itemize}\itemsep=-0.05em
   \item V.~Mnih et~al.,
         \emph{Playing Atari with Deep Reinforcement Learning},
         arXiv:1312.5602, 2013.
@@ -995,6 +1095,13 @@ in einem gemeinsamen Repräsentationsraum:
         \url{https://www.deutscher-zukunftspreis.de}
   \item Agent M -- Begleitwerkzeug zum Buch \emph{Vibe Coding}:
         \url{https://github.com/akmaier/agent-m}
+  \item Konferenzstatistik-Werkzeug:
+        \url{https://github.com/akmaier/ConferenceStats}
+  \item Agent4CT -- agentische Nachimplementierung von CT-Methoden:
+        \url{https://github.com/akmaier/Agent4CT}
+  \item \textbf{A.~Maier}, S.~Bayer et~al.,
+        \emph{A Living Systematic Review of Robotic Active Matter}:
+        \url{https://akmaier.github.io/ActiveMatterLivingReview}
   \item \textbf{A.~Maier}, M.~Zaiss und S.~Bayer,
         \emph{Beating the Style Detector: Three Hours of Agentic
         Research on the AI-Text Arms Race},
@@ -1026,9 +1133,9 @@ in einem gemeinsamen Repräsentationsraum:
   \end{column}
   \begin{column}{0.5\textwidth}
     \centering
-    {\Large Demonstrator Pflegeinterviews}\\[0.8em]
-    \includegraphics[height=8.4cm]{talk/qr_nursing_demo.png}\\[0.5em]
-    {\scriptsize\ttfamily akmaier.github.io/German-nursing-interviews}
+    {\Large Agent M auf GitHub}\\[0.8em]
+    \includegraphics[height=8.4cm]{talk/qr_agentm.png}\\[0.5em]
+    {\scriptsize\ttfamily akmaier.github.io/agent-m}
   \end{column}
 \end{columns}
 \end{frame}

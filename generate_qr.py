@@ -20,9 +20,9 @@ QR_CODES = [
     # closing slide: this branch on GitHub
     ("https://github.com/akmaier/AIMed2026Slides/tree/mamma-ostsachsen-2026",
      FIG / "qr_github.png"),
-    # nursing-interviews slide: the live demonstrator
-    ("https://akmaier.github.io/German-nursing-interviews/",
-     FIG / "qr_nursing_demo.png"),
+    # closing slide: Agent M, the companion tool to the book Vibe Coding
+    ("https://akmaier.github.io/agent-m/",
+     FIG / "qr_agentm.png"),
 ]
 
 

@@ -12,21 +12,28 @@ Branch `mamma-ostsachsen-2026`, geforkt von `bvb-verbundkonferenz-2026`.
 Gegenüber der BVB-Keynote:
 
 * **Entfernt** (für klinisches Publikum nicht relevant): Herz-CT-Bewegungs-
-  kompensation, VesselROVER (Koronar-Angiographie), die vier
-  „Fast alles ist jetzt einfach…"-Folien (ConferenceStats), die
-  Publikationswesen-/Agent4CT-/Living-PRISMA-Folien, zwei Vibe-Coding-
-  Unterfolien.
+  kompensation, VesselROVER (Koronar-Angiographie) und die
+  Publikationswesen-Folie (Open Access).
+* **Unverändert wie auf BVB**: alle vier Vibe-Coding-Folien, direkt nach
+  Agent M der Abschnitt „Fast alles ist jetzt einfach…" mit seinen vier Folien (ConferenceStats),
+  Agent4CT und Living PRISMA Reviews auf je einer eigenen Folie, Chancen und
+  Risiken sowie die fünf Regeln.
 * **Konsolidiert**: die beiden Pflegeinterview-Folien sind zu einer
   zusammengezogen (Workflow + Kernzahlen auf einer Folie).
-* **Neu ergänzt**: zwei PRAEGNANT-Folien aus `de-msd-senso` (multimodale
-  Datenintegration in der Onkologie + Generieren → Verifizieren →
-  Falsifizieren-Loop am Beispiel [PRAEGNANT](https://praegnant.org)).
-  Eine neue Abschluss-Folie *„Einfluss auf Arbeitsabläufe"* mit
-  konkreten Effekten im Brustzentrum (Tumorboard-Vorbereitung,
-  Studien-Matching, Dokumentation & Arztbrief, Zweitmeinung).
-* **Angepasst an klinisches Publikum**: *„Medizin im Agententempo –
-  Chancen und Risiken"* (zuvor „Wissenschaft im Agententempo") und
-  *„Was das für die klinische Arbeit bedeutet – fünf Regeln"*.
+* **Neu ergänzt**: nach *„Tempo agentischer KI"* der Abschnitt *„Was bedeutet
+  das für die Arbeit im Brustzentrum?"* mit zwei PRAEGNANT-Folien aus
+  `de-msd-senso` (multimodale Datenintegration in der Onkologie + Generieren →
+  Verifizieren → Falsifizieren-Loop am Beispiel
+  [PRAEGNANT](https://praegnant.org)). Eine neue Folie *„Einfluss auf
+  Arbeitsabläufe"* mit konkreten Effekten im Brustzentrum
+  (Tumorboard-Vorbereitung, Studien-Matching, Dokumentation & Arztbrief,
+  Zweitmeinung).
+
+Ablauf ab Agent M: Agent M → *Fast alles ist jetzt einfach…* (Trenner + 4) → Qualitative
+Inhaltsanalyse mit KI → Agent4CT → Living PRISMA Reviews → Tempo agentischer
+KI → *Was bedeutet das für die Arbeit im Brustzentrum?* → Basismodelle (2) →
+Wissenschaft im Agententempo → Einfluss auf Arbeitsabläufe → Fünf Regeln →
+Referenzen → Vielen Dank.
 
 Die drei Spin-Echo-EPI-Demovideos (Mensch / GPT-4o / GROK-3-think) bleiben
 als animierte GIFs in der PowerPoint erhalten; in der PDF werden sie als
@@ -59,13 +66,14 @@ cp build_pptx/KI_in_Big_Data_Mamma_Ostsachsen_2026.pptx .
 `build_pptx.py` erkennt die GIF-Folien an ihrem (deutschen) Untertitel,
 Folien können also ohne Nacharbeit umsortiert werden. Die beiden QR-Codes
 werden von `generate_qr.py` erzeugt (`output_tex/figures/talk/qr_github.png`
-für den Slides-Branch, `output_tex/figures/talk/qr_nursing_demo.png` für
-den Live-Demonstrator der Pflegeinterviews).
+für den Slides-Branch, `output_tex/figures/talk/qr_agentm.png` für
+Agent M unter <https://akmaier.github.io/agent-m/>), beide auf der
+Abschlussfolie.
 
 ## Inhalt
 
 * `output_tex/main.tex` — LaTeX-Quelle (ngerman)
-* `output_tex/main.pdf` — fertiges Deck (51 Folien)
+* `output_tex/main.pdf` — fertiges Deck (57 Folien)
 * `KI_in_Big_Data_Mamma_Ostsachsen_2026.pptx` — PowerPoint mit eingebetteten
   Spin-Echo-EPI-GIFs auf den Folien *„Mensch als Referenz"*,
   *„Versuch von GPT-4o"* und *„Versuch von GROK-3-think"*
